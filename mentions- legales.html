@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mentions légales — N/ Studio Digital</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --black:   #0D0D0D;
+      --white:   #FFFFFF;
+      --gray-mid:#888888;
+      --gray-lt: #CCCCCC;
+      --gray-bg: #F4F4F4;
+      --gray-bd: #E0E0E0;
+      --sage:    #7A9478;
+      --sage-lt: #9AB098;
+      --font:    'Inter', sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font); background: var(--white); color: var(--black); -webkit-font-smoothing: antialiased; }
+
+    /* RETOUR EN HAUT */
+    .back-to-top { position: fixed; bottom: 24px; right: 24px; z-index: 200; width: 44px; height: 44px; background: var(--white); border: 1px solid var(--gray-bd); border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; opacity: 0; pointer-events: none; transition: opacity .3s, transform .3s, background .2s, border-color .2s; box-shadow: 0 4px 16px rgba(0,0,0,.1); }
+    .back-to-top.visible { opacity: 1; pointer-events: all; }
+    .back-to-top:hover { background: var(--sage); border-color: var(--sage); transform: translateY(-2px); }
+    .back-to-top:hover svg { stroke: var(--white); }
+    .back-to-top svg { width: 18px; height: 18px; stroke: var(--black); transition: stroke .2s; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+    /* NAV */
+    nav { background: var(--white); border-bottom: 1px solid var(--gray-bd); position: sticky; top: 0; z-index: 100; }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 64px; max-width: 1140px; margin: 0 auto; padding: 0 48px; }
+    @media(max-width:768px){ .nav-inner{ padding: 0 20px; } }
+    .nav-logo { font-size: 18px; font-weight: 400; color: var(--black); text-decoration: none; }
+    .nav-logo .slash { font-weight: 300; color: var(--sage); }
+    .nav-back { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; color: var(--gray-mid); text-decoration: none; transition: color .2s; }
+    .nav-back:hover { color: var(--black); }
+
+    /* HEADER */
+    .page-header { background: var(--black); padding: 72px 0 52px; position: relative; overflow: hidden; }
+    .page-header::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 70% 60% at 50% 50%, rgba(122,148,120,.12) 0%, transparent 70%); pointer-events: none; }
+    .page-header-inner { max-width: 860px; margin: 0 auto; padding: 0 48px; position: relative; z-index: 2; }
+    @media(max-width:768px){ .page-header-inner{ padding: 0 20px; } }
+    .page-label { font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 2.5px; color: var(--sage); margin-bottom: 14px; display: flex; align-items: center; gap: 10px; opacity: .8; }
+    .page-label::before { content: '/'; font-weight: 300; color: var(--sage); }
+    .page-title { font-size: clamp(28px, 4vw, 48px); font-weight: 400; color: var(--white); line-height: 1.1; letter-spacing: -1px; margin-bottom: 14px; }
+    .page-date { font-size: 12px; color: rgba(255,255,255,.25); }
+
+    /* CONTENT */
+    .content { padding: 64px 0 80px; }
+    .container { max-width: 860px; margin: 0 auto; padding: 0 48px; }
+    @media(max-width:768px){ .container{ padding: 0 20px; } }
+
+    .ml-section { margin-bottom: 48px; padding-bottom: 48px; border-bottom: 1px solid var(--gray-bd); }
+    .ml-section:last-child { border-bottom: none; margin-bottom: 0; }
+
+    .ml-section-title { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; color: var(--black); margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
+    .ml-section-title::before { content: '/'; font-weight: 300; color: var(--sage); font-size: 15px; }
+
+    .ml-block { margin-bottom: 18px; }
+    .ml-block:last-child { margin-bottom: 0; }
+    .ml-label { font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 1.5px; color: var(--gray-mid); margin-bottom: 5px; }
+    .ml-value { font-size: 14px; color: var(--black); line-height: 1.7; }
+    .ml-value a { color: var(--black); text-decoration: underline; text-underline-offset: 3px; }
+    .ml-value a:hover { color: var(--gray-mid); }
+
+    .ml-text { font-size: 14px; color: var(--gray-mid); line-height: 1.8; }
+    .ml-text + .ml-text { margin-top: 12px; }
+
+    .ml-note { background: var(--gray-bg); border: 1px solid var(--gray-bd); border-left: 3px solid var(--sage); padding: 14px 18px; font-size: 13px; color: var(--gray-mid); line-height: 1.7; margin-top: 18px; font-style: italic; }
+
+    /* FOOTER */
+    footer { background: var(--black); border-top: 1px solid rgba(255,255,255,.07); padding: 36px 0; }
+    .footer-inner { max-width: 1140px; margin: 0 auto; padding: 0 48px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 14px; }
+    @media(max-width:768px){ .footer-inner{ padding: 0 20px; flex-direction: column; align-items: flex-start; gap: 10px; } }
+    .f-logo { font-size: 16px; font-weight: 400; color: var(--white); }
+    .f-logo .slash { font-weight: 300; color: var(--sage); }
+    .f-copy { font-size: 11px; color: rgba(255,255,255,.2); }
+    .f-back { font-size: 12px; color: rgba(255,255,255,.3); text-decoration: none; transition: color .2s; display: inline-flex; align-items: center; gap: 6px; }
+    .f-back:hover { color: rgba(255,255,255,.6); }
+  </style>
+</head>
+<body>
+
+  <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Retour en haut">
+    <svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"></polyline></svg>
+  </button>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">N<span class="slash">/</span> Studio Digital</a>
+      <a href="index.html" class="nav-back">← Retour au site</a>
+    </div>
+  </nav>
+
+  <!-- HEADER -->
+  <div class="page-header">
+    <div class="page-header-inner">
+      <div class="page-label">Informations légales</div>
+      <h1 class="page-title">Mentions légales</h1>
+      <div class="page-date">Dernière mise à jour : janvier 2026</div>
+    </div>
+  </div>
+
+  <!-- CONTENT -->
+  <div class="content">
+    <div class="container">
+
+      <!-- Éditeur -->
+      <div class="ml-section">
+        <div class="ml-section-title">Éditeur du site</div>
+        <div class="ml-block"><div class="ml-label">Nom</div><div class="ml-value">Nadège Dufour</div></div>
+        <div class="ml-block"><div class="ml-label">Activité</div><div class="ml-value">N/ Studio Digital — Création de sites web</div></div>
+        <div class="ml-block"><div class="ml-label">Statut juridique</div><div class="ml-value">Auto-entrepreneur (en cours d'immatriculation)</div></div>
+        <div class="ml-block"><div class="ml-label">Numéro SIRET</div><div class="ml-value">En cours d'immatriculation</div></div>
+        <div class="ml-block"><div class="ml-label">Adresse</div><div class="ml-value">15 rue du Drévieux<br>69140 Rillieux-la-Pape<br>France</div></div>
+        <div class="ml-block"><div class="ml-label">Email</div><div class="ml-value"><a href="mailto:contact@nstudiodigital.fr">contact@nstudiodigital.fr</a></div></div>
+        <div class="ml-block"><div class="ml-label">Téléphone</div><div class="ml-value"><a href="tel:0668904411">06 68 90 44 11</a></div></div>
+      </div>
+
+      <!-- Hébergement -->
+      <div class="ml-section">
+        <div class="ml-section-title">Hébergement</div>
+        <div class="ml-block">
+          <div class="ml-label">Hébergeur</div>
+          <div class="ml-value">
+            Netlify, Inc.<br>
+            44 Montgomery Street, Suite 300<br>
+            San Francisco, CA 94104 — États-Unis<br>
+            <a href="https://www.netlify.com" target="_blank" rel="noopener">www.netlify.com</a>
+          </div>
+        </div>
+        <div class="ml-block"><div class="ml-label">Nom de domaine</div><div class="ml-value">nstudiodigital.fr</div></div>
+      </div>
+
+      <!-- Propriété intellectuelle -->
+      <div class="ml-section">
+        <div class="ml-section-title">Propriété intellectuelle</div>
+        <p class="ml-text">L'ensemble des contenus présents sur ce site (textes, visuels, logo, structure, charte graphique) est la propriété exclusive de Nadège Dufour — N/ Studio Digital, sauf mention contraire.</p>
+        <p class="ml-text">Toute reproduction, représentation, modification, publication ou adaptation de tout ou partie des éléments du site, quel que soit le moyen ou le procédé utilisé, est interdite sans autorisation écrite préalable.</p>
+      </div>
+
+      <!-- Responsabilité -->
+      <div class="ml-section">
+        <div class="ml-section-title">Limitation de responsabilité</div>
+        <p class="ml-text">N/ Studio Digital s'efforce d'assurer l'exactitude et la mise à jour des informations diffusées sur ce site. Cependant, N/ Studio Digital ne peut garantir l'exactitude, la complétude ou l'actualité des informations diffusées.</p>
+        <p class="ml-text">N/ Studio Digital décline toute responsabilité pour tout dommage résultant d'une intrusion frauduleuse d'un tiers ayant entraîné une modification des informations mises à disposition sur le site.</p>
+      </div>
+
+      <!-- Données personnelles -->
+      <div class="ml-section">
+        <div class="ml-section-title">Données personnelles & RGPD</div>
+        <p class="ml-text">Ce site ne collecte aucune donnée personnelle sans votre consentement. Les informations transmises via le formulaire de contact (nom, email, message) sont utilisées uniquement pour répondre à vos demandes et ne sont jamais transmises à des tiers.</p>
+        <p class="ml-text">Conformément au Règlement Général sur la Protection des Données (RGPD) et à la loi Informatique et Libertés, vous disposez d'un droit d'accès, de rectification, de suppression et de portabilité de vos données personnelles.</p>
+        <p class="ml-text">Pour exercer ces droits : <a href="mailto:contact@nstudiodigital.fr">contact@nstudiodigital.fr</a></p>
+      </div>
+
+      <!-- Cookies -->
+      <div class="ml-section">
+        <div class="ml-section-title">Politique de cookies</div>
+        <p class="ml-text">Ce site utilise uniquement des cookies techniques strictement nécessaires à son bon fonctionnement. Ces cookies ne permettent pas de vous identifier personnellement et ne sont pas utilisés à des fins publicitaires ou de traçage.</p>
+        <p class="ml-text">Les cookies déposés sont notamment utilisés pour mémoriser votre choix concernant la politique de cookies (acceptation ou refus), afin de ne pas vous présenter le bandeau d'information à chaque visite.</p>
+        <p class="ml-text">Conformément à la réglementation en vigueur (directive ePrivacy et RGPD), ces cookies techniques ne nécessitent pas votre consentement préalable. Cependant, vous pouvez à tout moment supprimer ces cookies via les paramètres de votre navigateur.</p>
+        <div class="ml-note">Ce site n'utilise aucun cookie publicitaire, cookie de réseaux sociaux ou outil de traçage tel que Google Analytics. Aucune donnée de navigation n'est collectée à des fins commerciales.</div>
+      </div>
+
+      <!-- Droit applicable -->
+      <div class="ml-section">
+        <div class="ml-section-title">Droit applicable</div>
+        <p class="ml-text">Les présentes mentions légales sont soumises au droit français. En cas de litige, et après échec de toute tentative de résolution amiable, les tribunaux français seront seuls compétents.</p>
+        <div class="ml-note">Ces mentions légales sont susceptibles d'être mises à jour à tout moment, notamment lors de l'immatriculation de l'entreprise ou d'un changement d'hébergeur. Nous vous invitons à les consulter régulièrement.</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="f-logo">N<span class="slash">/</span> Studio Digital</div>
+      <div class="f-copy">© 2026 N/ Studio Digital — Nadège Dufour, Directrice Créative</div>
+      <a href="index.html" class="f-back">← Retour au site</a>
+    </div>
+  </footer>
+
+  <script>
+    const backBtn = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => { backBtn.classList.toggle('visible', window.scrollY > 300); });
+  </script>
+
+</body>
+</html>

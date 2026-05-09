@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Studio Mova — Pilates Réformateur · Villeurbanne</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --concrete:  #EDEAE5;
+      --concrete2: #E0DDD8;
+      --concrete3: #D4D0CA;
+      --smoke:     #F7F5F2;
+      --white:     #FFFFFF;
+      --brick:     #B84C35;
+      --brick-dk:  #9A3D29;
+      --brick-lt:  #C96650;
+      --charcoal:  #1E1C1A;
+      --gray:      #6B6560;
+      --gray-lt:   #9C9790;
+      --font-display: 'Bebas Neue', sans-serif;
+      --font-body:    'DM Sans', sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font-body); background: var(--smoke); color: var(--charcoal); overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 48px; }
+    @media(max-width:768px) { .container { padding: 0 20px; } }
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s ease; }
+    .reveal.vis { opacity: 1; transform: none; }
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 500; height: 72px; display: flex; align-items: center; transition: background .3s, box-shadow .3s; }
+    nav.scrolled { background: rgba(237,234,229,.96); backdrop-filter: blur(10px); box-shadow: 0 1px 0 var(--concrete3); }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; width: 100%; }
+    .nav-logo { font-family: var(--font-display); font-size: 26px; letter-spacing: 2px; color: var(--white); text-decoration: none; margin-right: auto; transition: color .3s; }
+    nav.scrolled .nav-logo { color: var(--charcoal); }
+    .nav-logo span { color: var(--brick); }
+    .nav-links { display: flex; gap: 36px; list-style: none; margin: 0 48px; }
+    .nav-links a { font-size: 12px; font-weight: 500; color: rgba(255,255,255,.75); text-decoration: none; letter-spacing: 1px; text-transform: uppercase; transition: color .2s; }
+    nav.scrolled .nav-links a { color: var(--gray); }
+    .nav-links a:hover { color: var(--brick-lt); }
+    nav.scrolled .nav-links a:hover { color: var(--brick); }
+    .nav-cta { background: var(--brick); color: var(--white); padding: 10px 22px; font-size: 12px; font-weight: 500; text-decoration: none; letter-spacing: 1px; text-transform: uppercase; border-radius: 2px; transition: background .2s; }
+    .nav-cta:hover { background: var(--brick-dk); }
+    .nav-hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; }
+    .nav-hamburger span { display: block; width: 24px; height: 2px; background: var(--white); border-radius: 1px; transition: all .3s; }
+    nav.scrolled .nav-hamburger span { background: var(--charcoal); }
+    .nav-hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(5px,5px); }
+    .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+    .nav-hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px,-5px); }
+    @media(max-width:900px) { .nav-links, .nav-cta { display: none; } .nav-hamburger { display: flex; } }
+    .mobile-menu { display: none; position: fixed; inset: 0; background: var(--charcoal); z-index: 490; flex-direction: column; align-items: center; justify-content: center; gap: 32px; }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a { font-family: var(--font-display); font-size: 48px; letter-spacing: 3px; color: var(--white); text-decoration: none; transition: color .2s; }
+    .mobile-menu a:hover { color: var(--brick); }
+    .hero { height: 100vh; min-height: 700px; position: relative; overflow: hidden; display: flex; align-items: flex-end; }
+    .hero-bg { position: absolute; inset: 0; }
+    .hero-bg img { width: 100%; height: 100%; object-fit: cover; object-position: center 30%; filter: brightness(.55); }
+    .hero-bg::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(30,28,26,.85) 0%, rgba(30,28,26,.2) 60%, transparent 100%); }
+    .hero-content { position: relative; z-index: 2; padding: 0 48px 72px; width: 100%; }
+    @media(max-width:768px) { .hero-content { padding: 0 20px 48px; } }
+    .hero-eyebrow { font-size: 11px; font-weight: 500; letter-spacing: 4px; text-transform: uppercase; color: var(--brick-lt); margin-bottom: 16px; opacity: 0; animation: fadeUp .7s .2s forwards; }
+    .hero-title { font-family: var(--font-display); font-size: clamp(72px, 12vw, 180px); line-height: .9; letter-spacing: 2px; color: var(--white); margin-bottom: 28px; opacity: 0; animation: fadeUp .7s .4s forwards; }
+    .hero-title .accent { color: var(--brick); display: block; }
+    .hero-sub { font-size: 16px; font-weight: 300; color: rgba(255,255,255,.65); line-height: 1.7; max-width: 480px; margin-bottom: 40px; opacity: 0; animation: fadeUp .7s .6s forwards; }
+    .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; opacity: 0; animation: fadeUp .7s .8s forwards; }
+    .btn-brick { display: inline-flex; align-items: center; gap: 8px; background: var(--brick); color: var(--white); padding: 15px 32px; font-size: 13px; font-weight: 500; text-decoration: none; letter-spacing: 1px; text-transform: uppercase; border-radius: 2px; transition: background .2s; }
+    .btn-brick:hover { background: var(--brick-dk); }
+    .btn-ghost { display: inline-flex; align-items: center; gap: 8px; background: transparent; color: rgba(255,255,255,.7); padding: 15px 32px; font-size: 13px; font-weight: 400; text-decoration: none; letter-spacing: 1px; border: 1px solid rgba(255,255,255,.25); border-radius: 2px; transition: border-color .2s, color .2s; }
+    .btn-ghost:hover { border-color: var(--brick); color: var(--white); }
+    @keyframes fadeUp { from { opacity:0; transform:translateY(20px); } to { opacity:1; transform:none; } }
+    .stats-strip { background: var(--brick); padding: 28px 0; }
+    .stats-inner { display: flex; justify-content: space-around; flex-wrap: wrap; gap: 24px; }
+    .stat-num { font-family: var(--font-display); font-size: 48px; color: var(--white); line-height: 1; letter-spacing: 1px; text-align:center; }
+    .stat-label { font-size: 11px; color: rgba(255,255,255,.65); letter-spacing: 1.5px; text-transform: uppercase; margin-top: 4px; text-align:center; }
+    .intro { background: var(--charcoal); padding: 100px 0; overflow: hidden; position: relative; }
+    .intro::before { content: 'MOVA'; font-family: var(--font-display); font-size: 300px; color: rgba(255,255,255,.03); position: absolute; right: -40px; top: 50%; transform: translateY(-50%); letter-spacing: 8px; pointer-events: none; line-height: 1; }
+    .intro-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    @media(max-width:768px) { .intro-grid { grid-template-columns: 1fr; gap: 40px; } }
+    .intro-img { position: relative; }
+    .intro-img img { width: 100%; height: 520px; object-fit: cover; }
+    .intro-img-tag { position: absolute; bottom: 24px; left: 24px; background: var(--brick); color: var(--white); font-family: var(--font-display); font-size: 14px; letter-spacing: 2px; padding: 10px 18px; }
+    .section-label { font-size: 10px; font-weight: 500; letter-spacing: 4px; text-transform: uppercase; color: var(--brick); margin-bottom: 20px; display: flex; align-items: center; gap: 12px; }
+    .section-label::before { content: ''; display: block; width: 28px; height: 1px; background: var(--brick); }
+    .section-title { font-family: var(--font-display); font-size: clamp(40px, 5vw, 72px); color: var(--white); line-height: .95; letter-spacing: 1px; margin-bottom: 28px; }
+    .section-title .accent { color: var(--brick); }
+    .intro-body { font-size: 15px; font-weight: 300; color: rgba(255,255,255,.5); line-height: 1.9; margin-bottom: 16px; }
+    .intro-pills { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+    .intro-pill { padding: 7px 16px; border: 1px solid rgba(255,255,255,.12); color: rgba(255,255,255,.4); font-size: 12px; border-radius: 100px; }
+    .cours { background: var(--smoke); padding: 100px 0; }
+    .cours-header { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: end; margin-bottom: 64px; }
+    @media(max-width:768px) { .cours-header { grid-template-columns: 1fr; gap: 20px; } }
+    .cours-title { font-family: var(--font-display); font-size: clamp(40px, 5vw, 72px); color: var(--charcoal); line-height: .95; letter-spacing: 1px; }
+    .cours-sub { font-size: 14px; font-weight: 300; color: var(--gray); line-height: 1.8; }
+    .cours-big { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; margin-bottom: 4px; }
+    .cours-card-text { background: var(--concrete); padding: 48px 40px; display: flex; flex-direction: column; gap: 16px; min-height: 360px; position: relative; overflow: hidden; transition: background .3s; }
+    .cours-card-text::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--brick); }
+    .cours-card-text:hover { background: var(--concrete2); }
+    .cours-card-text-dark { background: var(--charcoal); }
+    .cours-card-text-dark:hover { background: #2a2724; }
+    .cours-card-text-dark .cours-card-num { color: rgba(255,255,255,.1); }
+    .cours-card-text-dark .cours-card-name { color: var(--white); }
+    .cours-card-text-dark .cours-card-type { color: var(--brick-lt); }
+    .cours-card-text-dark .cours-card-desc-visible { color: rgba(255,255,255,.45); }
+    .cours-card-text-dark .cours-card-price { color: var(--brick-lt); }
+    .cours-card-desc-visible { font-size: 14px; font-weight: 300; color: var(--gray); line-height: 1.8; flex: 1; }
+    @media(max-width:768px) { .cours-big { grid-template-columns: 1fr; } }
+    .cours-card { position: relative; overflow: hidden; cursor: pointer; }
+    .cours-card img { width: 100%; height: 420px; object-fit: cover; transition: transform .5s ease, filter .5s ease; filter: brightness(.7); display: block; }
+    @media(max-width:768px) { .cours-card img { height: 280px; } }
+    .cours-card:hover img { transform: scale(1.04); filter: brightness(.5); }
+    .cours-card-overlay { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: flex-end; padding: 32px; }
+    .cours-card-num { font-family: var(--font-display); font-size: 56px; color: rgba(0,0,0,.08); line-height: 1; margin-bottom: 4px; }
+    .cours-card-name { font-family: var(--font-display); font-size: 32px; color: var(--charcoal); letter-spacing: 1px; line-height: 1; margin-bottom: 4px; }
+    .cours-card-type { font-size: 11px; font-weight: 500; letter-spacing: 2px; text-transform: uppercase; color: var(--brick); margin-bottom: 12px; }
+    .cours-card-desc { font-size: 13px; font-weight: 300; color: rgba(255,255,255,0); line-height: 1.7; transition: color .3s; max-width: 320px; }
+    .cours-card:hover .cours-card-desc { color: rgba(255,255,255,.6); }
+    .cours-card-price { font-family: var(--font-display); font-size: 36px; color: var(--brick); letter-spacing: 1px; margin-top: auto; }
+    .cours-small { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px; }
+    @media(max-width:768px) { .cours-small { grid-template-columns: 1fr; } }
+    .cours-mini { background: var(--concrete); padding: 28px 24px; transition: background .25s; }
+    .cours-mini:hover { background: var(--charcoal); }
+    .cours-mini:hover .mini-name,.cours-mini:hover .mini-price { color: var(--white); }
+    .cours-mini:hover .mini-type { color: var(--brick-lt); }
+    .cours-mini:hover .mini-desc { color: rgba(255,255,255,.4); }
+    .cours-mini:hover .mini-price { color: var(--brick-lt); }
+    .mini-num { font-family: var(--font-display); font-size: 32px; color: var(--concrete3); margin-bottom: 12px; }
+    .mini-name { font-family: var(--font-display); font-size: 22px; color: var(--charcoal); letter-spacing: 1px; margin-bottom: 6px; transition: color .25s; }
+    .mini-type { font-size: 10px; font-weight: 500; letter-spacing: 2px; text-transform: uppercase; color: var(--gray-lt); margin-bottom: 12px; transition: color .25s; }
+    .mini-desc { font-size: 12px; font-weight: 300; color: var(--gray); line-height: 1.7; margin-bottom: 16px; transition: color .25s; }
+    .mini-price { font-family: var(--font-display); font-size: 28px; color: var(--charcoal); transition: color .25s; }
+    .planning { background: var(--charcoal); padding: 100px 0; }
+    .planning-head { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: end; margin-bottom: 48px; }
+    @media(max-width:768px) { .planning-head { grid-template-columns: 1fr; gap: 20px; } }
+    .planning-sub { font-size: 14px; font-weight: 300; color: rgba(255,255,255,.4); line-height: 1.8; }
+    .planning-table { width: 100%; border-collapse: collapse; }
+    .planning-table th { font-size: 11px; font-weight: 500; letter-spacing: 2px; text-transform: uppercase; color: var(--brick); padding: 12px 10px; text-align: left; border-bottom: 1px solid rgba(255,255,255,.08); }
+    .planning-table td { padding: 0; vertical-align: top; border-right: 1px solid rgba(255,255,255,.05); width: 16.6%; }
+    .planning-table td:last-child { border-right: none; }
+    .slot-cell { padding: 6px; display: flex; flex-direction: column; gap: 5px; }
+    .slot-item { background: rgba(255,255,255,.05); padding: 9px 10px; border-left: 2px solid transparent; }
+    .slot-item.reformer { border-left-color: var(--brick); }
+    .slot-item.mat { border-left-color: rgba(255,255,255,.2); }
+    .slot-item.prenatal { border-left-color: #7A9478; }
+    .slot-item.duo { border-left-color: #C4A35A; }
+    .slot-time { font-size: 9px; font-weight: 500; color: rgba(255,255,255,.3); letter-spacing: 1px; margin-bottom: 2px; }
+    .slot-name { font-size: 10px; font-weight: 500; color: rgba(255,255,255,.75); line-height: 1.3; }
+    .slot-prof { font-size: 9px; color: rgba(255,255,255,.25); margin-top: 2px; }
+    .slot-tag { display: inline-block; font-size: 8px; letter-spacing: 1px; text-transform: uppercase; padding: 2px 5px; border-radius: 2px; margin-top: 3px; }
+    .tag-complet { background: rgba(184,76,53,.3); color: var(--brick-lt); }
+    .tag-places { background: rgba(122,148,120,.2); color: #7A9478; }
+    @media(max-width:900px) { .planning-table { display: none; } }
+    .planning-mobile { display: none; }
+    @media(max-width:900px) { .planning-mobile { display: flex; flex-direction: column; gap: 2px; } }
+    .planning-mobile-day { background: rgba(255,255,255,.04); }
+    .planning-mobile-day-title { font-family: var(--font-display); font-size: 18px; color: var(--white); letter-spacing: 2px; padding: 14px 16px; border-bottom: 1px solid rgba(255,255,255,.06); }
+    .planning-mobile-slots { padding: 8px; display: flex; flex-direction: column; gap: 4px; }
+    .planning-legend { display: flex; gap: 20px; flex-wrap: wrap; margin-top: 24px; }
+    .legend-item { display: flex; align-items: center; gap: 7px; font-size: 11px; color: rgba(255,255,255,.35); }
+    .legend-dot { width: 10px; height: 10px; border-radius: 1px; flex-shrink: 0; }
+    .planning-cta-wrap { margin-top: 40px; display: flex; align-items: center; gap: 24px; flex-wrap: wrap; }
+    .planning-note { font-size: 13px; color: rgba(255,255,255,.3); font-weight: 300; }
+    .tarifs { background: var(--smoke); padding: 100px 0; }
+    .tarifs-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 4px; margin-top: 48px; align-items: stretch; }
+    @media(max-width:768px) { .tarifs-grid { grid-template-columns: 1fr; } }
+    .tarif-card { background: var(--concrete); padding: 36px 28px; display: flex; flex-direction: column; }
+    .tarif-card.featured { background: var(--charcoal); display: flex; flex-direction: column; }
+    .tarif-badge { display: inline-block; font-size: 9px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--white); background: var(--brick); padding: 4px 10px; border-radius: 1px; margin-bottom: 20px; }
+    .tarif-name { font-family: var(--font-display); font-size: 24px; color: var(--charcoal); letter-spacing: 1px; margin-bottom: 8px; }
+    .tarif-card.featured .tarif-name { color: var(--white); }
+    .tarif-price { font-family: var(--font-display); font-size: 56px; color: var(--charcoal); line-height: 1; letter-spacing: -1px; margin-bottom: 4px; }
+    .tarif-card.featured .tarif-price { color: var(--brick-lt); }
+    .tarif-price-note { font-size: 11px; color: var(--gray-lt); margin-bottom: 24px; }
+    .tarif-card.featured .tarif-price-note { color: rgba(255,255,255,.3); }
+    .tarif-sep { height: 1px; background: rgba(0,0,0,.08); margin-bottom: 20px; }
+    .tarif-card.featured .tarif-sep { background: rgba(255,255,255,.08); }
+    .tarif-features { list-style: none; display: flex; flex-direction: column; gap: 9px; flex: 1; }
+    .tarif-features li { font-size: 13px; color: var(--gray); display: flex; gap: 8px; align-items: flex-start; }
+    .tarif-card.featured .tarif-features li { color: rgba(255,255,255,.45); }
+    .tarif-features li::before { content: '—'; color: var(--brick); flex-shrink: 0; font-size: 11px; margin-top: 1px; }
+    .tarif-cta { display: block; text-align: center; margin-top: 28px; padding: 12px; font-size: 12px; font-weight: 500; letter-spacing: 1.5px; text-transform: uppercase; text-decoration: none; border-radius: 2px; transition: background .2s, color .2s; }
+    .tarif-cta-outline { border: 1px solid var(--concrete3); color: var(--gray); }
+    .tarif-cta-outline:hover { border-color: var(--brick); color: var(--brick); }
+    .tarif-cta-solid { background: var(--brick); color: var(--white); }
+    .tarif-cta-solid:hover { background: var(--brick-dk); }
+    .galerie { background: var(--charcoal); }
+    .galerie-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; grid-template-rows: 300px 300px; gap: 4px; }
+    @media(max-width:768px) { .galerie-grid { grid-template-columns: 1fr 1fr; grid-template-rows: 200px 200px 200px; } }
+    .galerie-item { overflow: hidden; }
+    .galerie-item img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s ease, filter .5s ease; filter: brightness(.75); }
+    .galerie-item:hover img { transform: scale(1.05); filter: brightness(1); }
+    .galerie-item.tall { grid-row: 1/3; }
+    @media(max-width:768px) { .galerie-item.tall { grid-row:auto; grid-column:1/3; } }
+    .galerie-item.wide { grid-column: 2/4; }
+    @media(max-width:768px) { .galerie-item.wide { grid-column:auto; } }
+    .lea { background: var(--smoke); padding: 100px 0; }
+    .lea-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    @media(max-width:768px) { .lea-grid { grid-template-columns: 1fr; gap: 40px; } }
+    .lea-img-wrap { position: relative; }
+    .lea-img { width: 100%; height: 600px; object-fit: cover; object-position: center top; }
+    .lea-img-badge { position: absolute; bottom: -20px; right: -20px; background: var(--brick); color: var(--white); width: 120px; height: 120px; border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
+    .lea-img-badge-num { font-family: var(--font-display); font-size: 36px; line-height: 1; }
+    .lea-img-badge-text { font-size: 9px; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(255,255,255,.75); margin-top: 2px; }
+    .lea-content { display: flex; flex-direction: column; gap: 24px; }
+    .lea-title { font-family: var(--font-display); font-size: clamp(40px,5vw,72px); color: var(--charcoal); line-height: .95; letter-spacing: 1px; }
+    .lea-title span { color: var(--brick); }
+    .lea-text { font-size: 14px; font-weight: 300; color: var(--gray); line-height: 1.9; }
+    .lea-certifs { display: flex; flex-direction: column; gap: 10px; }
+    .lea-certif { display: flex; gap: 10px; font-size: 13px; color: var(--gray); }
+    .lea-certif::before { content: '→'; color: var(--brick); flex-shrink: 0; }
+    .temos { background: var(--concrete); padding: 100px 0; }
+    .temos-header { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: end; margin-bottom: 56px; }
+    @media(max-width:768px) { .temos-header { grid-template-columns: 1fr; gap: 20px; } }
+    .temos-title { font-family: var(--font-display); font-size: clamp(40px,5vw,72px); color: var(--charcoal); line-height: .95; letter-spacing: 1px; }
+    .temos-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 4px; }
+    @media(max-width:768px) { .temos-grid { grid-template-columns: 1fr; } }
+    .temo-card { background: var(--white); padding: 36px 28px; }
+    .temo-stars { color: var(--brick); font-size: 14px; letter-spacing: 3px; margin-bottom: 20px; }
+    .temo-text { font-size: 15px; font-weight: 300; color: var(--charcoal); line-height: 1.8; margin-bottom: 20px; font-style: italic; }
+    .temo-author { font-size: 11px; font-weight: 500; color: var(--gray-lt); letter-spacing: 1px; text-transform: uppercase; }
+    .reservation { background: var(--smoke); padding: 100px 0; }
+    .resa-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; }
+    @media(max-width:768px) { .resa-grid { grid-template-columns: 1fr; gap: 40px; } }
+    .resa-title { font-family: var(--font-display); font-size: clamp(40px,5vw,72px); color: var(--charcoal); line-height: .95; letter-spacing: 1px; margin-bottom: 40px; }
+    .resa-title span { color: var(--brick); }
+    .resa-info { padding: 20px 0; border-bottom: 1px solid var(--concrete3); }
+    .resa-info-label { font-size: 10px; font-weight: 600; letter-spacing: 2.5px; text-transform: uppercase; color: var(--brick); margin-bottom: 6px; }
+    .resa-info-val { font-size: 14px; color: var(--charcoal); line-height: 1.6; font-weight: 300; }
+    .resa-planity { background: var(--charcoal); padding: 40px; }
+    .resa-planity-label { font-size: 10px; font-weight: 500; letter-spacing: 3px; text-transform: uppercase; color: var(--brick); margin-bottom: 16px; }
+    .resa-planity-title { font-family: var(--font-display); font-size: 36px; color: var(--white); letter-spacing: 1px; margin-bottom: 8px; line-height: 1; }
+    .resa-planity-sub { font-size: 13px; font-weight: 300; color: rgba(255,255,255,.4); line-height: 1.7; margin-bottom: 28px; }
+    .resa-planity-feats { display: flex; flex-direction: column; gap: 10px; margin-bottom: 32px; }
+    .resa-planity-feat { font-size: 13px; color: rgba(255,255,255,.4); display: flex; gap: 10px; }
+    .resa-planity-feat::before { content: '—'; color: var(--brick); flex-shrink: 0; }
+    .resa-planity-btn { display: flex; align-items: center; justify-content: center; gap: 10px; background: var(--brick); color: var(--white); padding: 16px 28px; font-size: 12px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; text-decoration: none; border-radius: 2px; transition: background .2s; margin-bottom: 14px; }
+    .resa-planity-btn:hover { background: var(--brick-dk); }
+    .resa-planity-note { font-size: 12px; color: rgba(255,255,255,.25); text-align: center; }
+    .cta-final { background: var(--brick); padding: 120px 0; text-align: center; position: relative; overflow: hidden; }
+    .cta-final::before { content: 'REFORMER'; font-family: var(--font-display); font-size: 180px; color: rgba(0,0,0,.08); position: absolute; left: 50%; top: 50%; transform: translate(-50%,-50%); white-space: nowrap; pointer-events: none; letter-spacing: 4px; }
+    .cta-big { font-family: var(--font-display); font-size: clamp(48px,8vw,120px); color: var(--white); letter-spacing: 2px; line-height: .9; margin-bottom: 24px; }
+    .cta-sub { font-size: 15px; font-weight: 300; color: rgba(255,255,255,.65); margin-bottom: 48px; }
+    .cta-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+    .btn-white-solid { display: inline-flex; align-items: center; gap: 8px; background: var(--white); color: var(--brick); padding: 15px 36px; font-size: 13px; font-weight: 600; text-decoration: none; letter-spacing: 1.5px; text-transform: uppercase; border-radius: 2px; transition: background .2s; }
+    .btn-white-solid:hover { background: var(--smoke); }
+    .btn-ghost-white { display: inline-flex; align-items: center; gap: 8px; background: transparent; color: rgba(255,255,255,.7); padding: 15px 36px; font-size: 13px; font-weight: 400; text-decoration: none; letter-spacing: 1px; border: 1px solid rgba(255,255,255,.3); border-radius: 2px; transition: border-color .2s,color .2s; }
+    .btn-ghost-white:hover { border-color: var(--white); color: var(--white); }
+    footer { background: var(--charcoal); padding: 56px 0 32px; }
+    .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 48px; margin-bottom: 48px; }
+    @media(max-width:768px) { .footer-grid { grid-template-columns: 1fr; gap: 32px; } }
+    .f-logo { font-family: var(--font-display); font-size: 28px; letter-spacing: 2px; color: var(--white); margin-bottom: 12px; }
+    .f-logo span { color: var(--brick); }
+    .f-desc { font-size: 13px; font-weight: 300; color: rgba(255,255,255,.3); line-height: 1.8; max-width: 260px; }
+    .f-col-title { font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--brick); margin-bottom: 18px; }
+    .f-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .f-links a { font-size: 13px; color: rgba(255,255,255,.3); text-decoration: none; font-weight: 300; transition: color .2s; }
+    .f-links a:hover { color: var(--brick); }
+    .f-contact { font-size: 13px; color: rgba(255,255,255,.3); line-height: 1.9; font-weight: 300; }
+    .f-bottom { border-top: 1px solid rgba(255,255,255,.06); padding-top: 24px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+    .f-copy { font-size: 11px; color: rgba(255,255,255,.15); }
+    .f-credits a { font-size: 11px; color: rgba(255,255,255,.15); text-decoration: none; transition: color .2s; }
+    .f-credits a:hover { color: rgba(255,255,255,.4); }
+  </style>
+</head>
+<body>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#cours" onclick="closeMenu()">Cours</a>
+    <a href="#planning" onclick="closeMenu()">Planning</a>
+    <a href="#tarifs" onclick="closeMenu()">Tarifs</a>
+    <a href="#lea" onclick="closeMenu()">Léa Moretti</a>
+    <a href="#reservation" onclick="closeMenu()">Réserver</a>
+  </div>
+  <nav id="nav">
+    <div class="container">
+      <div class="nav-inner">
+        <a href="#" class="nav-logo">STUDIO <span>MOVA</span></a>
+        <ul class="nav-links">
+          <li><a href="#cours">Cours</a></li>
+          <li><a href="#planning">Planning</a></li>
+          <li><a href="#tarifs">Tarifs</a></li>
+          <li><a href="#lea">Léa Moretti</a></li>
+          <li><a href="#reservation">Contact</a></li>
+        </ul>
+        <a href="#reservation" class="nav-cta">Réserver</a>
+        <button class="nav-hamburger" id="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </nav>
+  <section class="hero" id="accueil">
+    <div class="hero-bg"><img src="https://images.unsplash.com/photo-1601422407692-ec4eeec1d9b3?w=1600&q=85" alt="Pilates Réformateur Studio Mova"/></div>
+    <div class="hero-content">
+      <div class="hero-eyebrow">Villeurbanne · Studio de Pilates</div>
+      <h1 class="hero-title">FEEL<span class="accent">STRONG.</span></h1>
+      <p class="hero-sub">Pilates Réformateur et Mat. Des cours intenses, précis, transformants. Pour celles qui veulent vraiment changer.</p>
+      <div class="hero-actions">
+        <a href="#planning" class="btn-brick">Voir le planning</a>
+        <a href="#cours" class="btn-ghost">Découvrir les cours</a>
+      </div>
+    </div>
+  </section>
+  <div class="stats-strip">
+    <div class="container">
+      <div class="stats-inner">
+        <div><div class="stat-num">8</div><div class="stat-label">Ans d'expérience</div></div>
+        <div><div class="stat-num">+200</div><div class="stat-label">Élèves formées</div></div>
+        <div><div class="stat-num">6</div><div class="stat-label">Pers. max / cours</div></div>
+        <div><div class="stat-num">100%</div><div class="stat-label">Satisfaction</div></div>
+      </div>
+    </div>
+  </div>
+  <section class="intro">
+    <div class="container">
+      <div class="intro-grid">
+        <div class="intro-img reveal">
+          <img src="https://images.unsplash.com/photo-1574680096145-d05b474e2155?w=800&q=85" alt="Réformateur Pilates"/>
+          <div class="intro-img-tag">REFORMER · VILLEURBANNE</div>
+        </div>
+        <div class="reveal" style="transition-delay:.15s">
+          <div class="section-label">Notre concept</div>
+          <h2 class="section-title">L'ÉNERGIE D'UN COURS <span class="accent">COLLECTIF.</span> L'ATTENTION D'UN COURS <span class="accent">PRIVÉ.</span></h2>
+          <p class="intro-body">Studio Mova, c'est un espace où on transpire vraiment — et où on ressort transformée. Chaque séance est construite pour vous faire progresser, corriger votre posture et renforcer en profondeur.</p>
+          <p class="intro-body">Cours limités à 6 élèves. Léa connaît votre corps, vos limites, vos objectifs. Elle les pousse — dans le bon sens.</p>
+          <div class="intro-pills">
+            <span class="intro-pill">Max 6 par cours</span>
+            <span class="intro-pill">Tous niveaux</span>
+            <span class="intro-pill">Matériel fourni</span>
+            <span class="intro-pill">Parking gratuit</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="cours" id="cours">
+    <div class="container">
+      <div class="cours-header">
+        <div class="reveal"><div class="section-label" style="color:var(--brick)">Nos disciplines</div><h2 class="cours-title">VOS COURS.</h2></div>
+        <p class="cours-sub reveal" style="transition-delay:.1s">Du réformateur au mat, en passant par le prénatal — chaque cours est une expérience à part entière.</p>
+      </div>
+      <div class="cours-big reveal">
+        <div class="cours-card-text">
+          <div class="cours-card-num">01</div>
+          <div class="cours-card-name">PILATES RÉFORMATEUR</div>
+          <div class="cours-card-type">Individuel · 55 min</div>
+          <div class="cours-card-desc-visible">Sur machine, résistance ajustable. Renforcement en profondeur, correction posturale, progression rapide. Le format le plus efficace pour des résultats visibles.</div>
+          <div class="cours-card-price">75€</div>
+        </div>
+        <div class="cours-card-text cours-card-text-dark">
+          <div class="cours-card-num">02</div>
+          <div class="cours-card-name">PILATES MAT</div>
+          <div class="cours-card-type">Collectif · Max 6 · 60 min</div>
+          <div class="cours-card-desc-visible">Au sol, pur et intense. Gainage, mobilité, coordination. L'essence du Pilates dans sa forme la plus accessible. Sueur garantie.</div>
+          <div class="cours-card-price">25€</div>
+        </div>
+      </div>
+      <div class="cours-small reveal" style="transition-delay:.1s">
+        <div class="cours-mini">
+          <div class="mini-num">03</div>
+          <div class="mini-name">PILATES &amp; MOBILITÉ</div>
+          <div class="mini-type">Collectif · Max 6 · 60 min</div>
+          <div class="mini-desc">Pilates + mobilité articulaire. Libère les tensions, améliore l'amplitude. Idéal en fin de journée.</div>
+          <div class="mini-price">25€</div>
+        </div>
+        <div class="cours-mini">
+          <div class="mini-num">04</div>
+          <div class="mini-name">COURS DUO</div>
+          <div class="mini-type">Semi-privé · 2 pers. · 55 min</div>
+          <div class="mini-desc">À deux, sur réformateur ou mat. L'attention d'un cours privé partagée avec quelqu'un que vous choisissez.</div>
+          <div class="mini-price">100€</div>
+        </div>
+        <div class="cours-mini">
+          <div class="mini-num">05</div>
+          <div class="mini-name">PILATES PRÉNATAL</div>
+          <div class="mini-type">Individuel · 50 min</div>
+          <div class="mini-desc">Adapté trimestre par trimestre. Périnée, dos, préparation à l'accouchement. En toute sécurité.</div>
+          <div class="mini-price">80€</div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="planning" id="planning">
+    <div class="container">
+      <div class="planning-head">
+        <div class="reveal"><div class="section-label">Semaine type</div><h2 class="section-title">PLANNING.</h2></div>
+        <p class="planning-sub reveal" style="transition-delay:.1s">Réservez votre place sur Planity. Les créneaux se remplissent vite — anticipez !</p>
+      </div>
+      <div class="reveal">
+        <table class="planning-table">
+          <thead><tr><th>Lundi</th><th>Mardi</th><th>Mercredi</th><th>Jeudi</th><th>Vendredi</th><th>Samedi</th></tr></thead>
+          <tbody><tr>
+            <td><div class="slot-cell">
+              <div class="slot-item mat"><div class="slot-time">09:00</div><div class="slot-name">Pilates Mat</div><div class="slot-prof">Léa M.</div><span class="slot-tag tag-places">3 places</span></div>
+              <div class="slot-item mat"><div class="slot-time">18:30</div><div class="slot-name">Pilates &amp; Mobilité</div><div class="slot-prof">Léa M.</div><span class="slot-tag tag-complet">Complet</span></div>
+            </div></td>
+            <td><div class="slot-cell">
+              <div class="slot-item reformer"><div class="slot-time">10:00</div><div class="slot-name">Réformateur Solo</div><div class="slot-prof">Léa M.</div><span class="slot-tag tag-places">1 place</span></div>
+              <div class="slot-item prenatal"><div class="slot-time">14:00</div><div class="slot-name">Pilates Prénatal</div><div class="slot-prof">Léa M.</div><span class="slot-tag tag-places">Dispo</span></div>
+              <div class="slot-item mat"><div class="slot-time">19:00</div><div class="slot-name">Pilates Mat</div><div class="slot-prof">Léa M.</div><span class="slot-tag tag-complet">Complet</span></div>
+            </div></td>
+            <td><div class="slot-cell">
+              <div class="slot-item prenatal"><div class="slot-time">09:30</div><div class="slot-name">Pilates Prénatal</div><div class="slot-prof">Léa M.</div><span class="slot-tag tag-places">Dispo</span></div>
+              <div class="slot-item duo"><div class="slot-time">11:00</div><div class="slot-name">Cours Duo</div><div class="slot-prof">Léa M.</div><span class="slot-tag tag-places">Dispo</span></div>
+              <div class="slot-item mat"><div class="slot-time">17:30</div><div class="slot-name">Pilates &amp; Mobilité</div><div class="slot-prof">Léa M.</div><span class="slot-tag tag-places">2 places</span></div>
+            </div></td>
+            <td><div class="slot-cell">
+              <div class="slot-item mat"><div class="slot-time">08:30</div><div class="slot-name">Pilates Mat</div><div class="slot-prof">Léa M.</div><span class="slot-tag tag-complet">Complet</span></div>
+              <div class="slot-item reformer"><div class="slot-time">10:00</div><div class="slot-name">Réformateur Solo</div><div class="slot-prof">Léa M.</div><span class="slot-tag tag-places">Dispo</span></div>
+              <div class="slot-item mat"><div class="slot-time">19:30</div><div class="slot-name">Pilates &amp; Mobilité</div><div class="slot-prof">Léa M.</div><span class="slot-tag tag-places">4 places</span></div>
+            </div></td>
+            <td><div class="slot-cell">
+              <div class="slot-item mat"><div class="slot-time">09:00</div><div class="slot-name">Pilates Mat</div><div class="slot-prof">Léa M.</div><span class="slot-tag tag-places">2 places</span></div>
+              <div class="slot-item prenatal"><div class="slot-time">11:00</div><div class="slot-name">Pilates Prénatal</div><div class="slot-prof">Léa M.</div><span class="slot-tag tag-places">Dispo</span></div>
+              <div class="slot-item reformer"><div class="slot-time">18:00</div><div class="slot-name">Réformateur Solo</div><div class="slot-prof">Léa M.</div><span class="slot-tag tag-complet">Complet</span></div>
+            </div></td>
+            <td><div class="slot-cell">
+              <div class="slot-item mat"><div class="slot-time">09:00</div><div class="slot-name">Pilates Mat</div><div class="slot-prof">Léa M.</div><span class="slot-tag tag-places">3 places</span></div>
+              <div class="slot-item duo"><div class="slot-time">10:30</div><div class="slot-name">Cours Duo</div><div class="slot-prof">Léa M.</div><span class="slot-tag tag-places">Dispo</span></div>
+              <div class="slot-item reformer"><div class="slot-time">12:00</div><div class="slot-name">Réformateur Solo</div><div class="slot-prof">Léa M.</div><span class="slot-tag tag-complet">Complet</span></div>
+            </div></td>
+          </tr></tbody>
+        </table>
+        <div class="planning-mobile">
+          <div class="planning-mobile-day"><div class="planning-mobile-day-title">LUNDI</div><div class="planning-mobile-slots"><div class="slot-item mat"><div class="slot-time">09:00</div><div class="slot-name">Pilates Mat</div><span class="slot-tag tag-places">3 places</span></div><div class="slot-item mat"><div class="slot-time">18:30</div><div class="slot-name">Pilates &amp; Mobilité</div><span class="slot-tag tag-complet">Complet</span></div></div></div>
+          <div class="planning-mobile-day"><div class="planning-mobile-day-title">MARDI</div><div class="planning-mobile-slots"><div class="slot-item reformer"><div class="slot-time">10:00</div><div class="slot-name">Réformateur Solo</div><span class="slot-tag tag-places">1 place</span></div><div class="slot-item prenatal"><div class="slot-time">14:00</div><div class="slot-name">Pilates Prénatal</div><span class="slot-tag tag-places">Dispo</span></div><div class="slot-item mat"><div class="slot-time">19:00</div><div class="slot-name">Pilates Mat</div><span class="slot-tag tag-complet">Complet</span></div></div></div>
+          <div class="planning-mobile-day"><div class="planning-mobile-day-title">MERCREDI</div><div class="planning-mobile-slots"><div class="slot-item prenatal"><div class="slot-time">09:30</div><div class="slot-name">Pilates Prénatal</div><span class="slot-tag tag-places">Dispo</span></div><div class="slot-item duo"><div class="slot-time">11:00</div><div class="slot-name">Cours Duo</div><span class="slot-tag tag-places">Dispo</span></div></div></div>
+          <div class="planning-mobile-day"><div class="planning-mobile-day-title">JEUDI</div><div class="planning-mobile-slots"><div class="slot-item mat"><div class="slot-time">08:30</div><div class="slot-name">Pilates Mat</div><span class="slot-tag tag-complet">Complet</span></div><div class="slot-item mat"><div class="slot-time">19:30</div><div class="slot-name">Pilates &amp; Mobilité</div><span class="slot-tag tag-places">4 places</span></div></div></div>
+          <div class="planning-mobile-day"><div class="planning-mobile-day-title">SAMEDI</div><div class="planning-mobile-slots"><div class="slot-item mat"><div class="slot-time">09:00</div><div class="slot-name">Pilates Mat</div><span class="slot-tag tag-places">3 places</span></div><div class="slot-item duo"><div class="slot-time">10:30</div><div class="slot-name">Cours Duo</div><span class="slot-tag tag-places">Dispo</span></div></div></div>
+        </div>
+        <div class="planning-legend">
+          <div class="legend-item"><div class="legend-dot" style="background:var(--brick)"></div>Réformateur</div>
+          <div class="legend-item"><div class="legend-dot" style="background:rgba(255,255,255,.2)"></div>Mat / Mobilité</div>
+          <div class="legend-item"><div class="legend-dot" style="background:#7A9478"></div>Prénatal</div>
+          <div class="legend-item"><div class="legend-dot" style="background:#C4A35A"></div>Duo</div>
+        </div>
+        <div class="planning-cta-wrap">
+          <a href="#reservation" class="btn-brick">Réserver ma place →</a>
+          <span class="planning-note">Planning mis à jour en temps réel sur Planity</span>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="tarifs" id="tarifs">
+    <div class="container">
+      <div class="reveal"><div class="section-label" style="color:var(--brick)">Tarifs</div><h2 class="cours-title">VOTRE FORFAIT.</h2></div>
+      <div class="tarifs-grid reveal">
+        <div class="tarif-card">
+          <div class="tarif-name">DÉCOUVERTE</div>
+          <div class="tarif-price">25€</div>
+          <div class="tarif-price-note">la séance · cours collectif</div>
+          <div class="tarif-sep"></div>
+          <ul class="tarif-features"><li>Cours Mat ou Mobilité</li><li>Matériel inclus</li><li>Sans abonnement</li></ul>
+          <a href="#reservation" class="tarif-cta tarif-cta-outline">Réserver</a>
+        </div>
+        <div class="tarif-card featured">
+          <div class="tarif-badge">Le plus populaire</div>
+          <div class="tarif-name">CARTE 10</div>
+          <div class="tarif-price">220€</div>
+          <div class="tarif-price-note">10 séances · valable 6 mois</div>
+          <div class="tarif-sep"></div>
+          <ul class="tarif-features"><li>Cours collectifs au choix</li><li>Valable 6 mois</li><li>Transférable</li><li>Report si annulation 12h avant</li></ul>
+          <a href="#reservation" class="tarif-cta tarif-cta-solid">Choisir ce forfait</a>
+        </div>
+        <div class="tarif-card">
+          <div class="tarif-name">SUIVI PERSO</div>
+          <div class="tarif-price">75€</div>
+          <div class="tarif-price-note">la séance individuelle réformateur</div>
+          <div class="tarif-sep"></div>
+          <ul class="tarif-features"><li>Cours individuel réformateur</li><li>Bilan postural offert</li><li>Programme sur-mesure</li><li>Suivi entre séances</li></ul>
+          <a href="#reservation" class="tarif-cta tarif-cta-outline">Réserver</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="galerie">
+    <div class="galerie-grid">
+      <div class="galerie-item tall"><img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=700&q=85" alt="Studio Mova"/></div>
+      <div class="galerie-item"><img src="https://images.unsplash.com/photo-1599901860904-17e6ed7083a0?w=500&q=85" alt="Réformateur"/></div>
+      <div class="galerie-item"><img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?w=500&q=85" alt="Cours Mat"/></div>
+      <div class="galerie-item wide"><img src="https://images.unsplash.com/photo-1540497077202-7c8a3999166f?w=900&q=85" alt="Studio Mova Villeurbanne"/></div>
+    </div>
+  </div>
+  <section class="lea" id="lea">
+    <div class="container">
+      <div class="lea-grid">
+        <div class="lea-img-wrap reveal">
+          <img class="lea-img" src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=700&q=85" alt="Léa Moretti Pilates"/>
+          <div class="lea-img-badge"><div class="lea-img-badge-num">8</div><div class="lea-img-badge-text">ans d'exp.</div></div>
+        </div>
+        <div class="lea-content reveal" style="transition-delay:.15s">
+          <div class="section-label" style="color:var(--brick)">Votre professeure</div>
+          <h2 class="lea-title">LÉA<br><span>MORETTI.</span></h2>
+          <p class="lea-text">Certifiée Body Control Pilates, Léa a fondé Studio Mova avec une obsession : vous faire progresser vraiment. Pas du sport aquagym. Du Pilates exigeant, précis, efficace — adapté à chaque corps.</p>
+          <p class="lea-text">8 ans sur le terrain, à Lyon et à l'étranger. Spécialisée rééducation posturale et prénatal. Elle repère ce que vous ne voyez pas, corrige ce que vous croyez bien faire.</p>
+          <div class="lea-certifs">
+            <div class="lea-certif">Certification Body Control Pilates · Londres</div>
+            <div class="lea-certif">Spécialisation Pilates Prénatal</div>
+            <div class="lea-certif">Formation Réformateur · Barcelona Pilates</div>
+            <div class="lea-certif">Formation continue annuelle</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="temos">
+    <div class="container">
+      <div class="temos-header">
+        <div class="reveal"><div class="section-label" style="color:var(--brick)">Elles témoignent</div><h2 class="temos-title">CE QU'ELLES EN DISENT.</h2></div>
+        <p class="reveal" style="transition-delay:.1s;font-size:14px;color:var(--gray);line-height:1.8;font-weight:300">Des résultats concrets. Des corps transformés. Des élèves qui reviennent chaque semaine depuis des mois.</p>
+      </div>
+      <div class="temos-grid">
+        <div class="temo-card reveal"><div class="temo-stars">★★★★★</div><p class="temo-text">"Léa m'a complètement remise sur pied après 2 ans de douleurs dorsales chroniques. 3 mois de Réformateur — je ne me reconnais plus dans le bon sens du terme."</p><div class="temo-author">Camille D. · Villeurbanne</div></div>
+        <div class="temo-card reveal" style="transition-delay:.1s"><div class="temo-stars">★★★★★</div><p class="temo-text">"Je faisais du sport depuis des années mais jamais ça ne m'avait autant transformée physiquement. Le cours collectif de mat est intense mais on ressort sur un nuage."</p><div class="temo-author">Sophie M. · Lyon 6ème</div></div>
+        <div class="temo-card reveal" style="transition-delay:.2s"><div class="temo-stars">★★★★★</div><p class="temo-text">"Le suivi prénatal de Léa a été une révélation. Elle sait exactement quoi faire selon le trimestre. Je me suis sentie entre de bonnes mains du début à la fin."</p><div class="temo-author">Marine L. · Caluire</div></div>
+      </div>
+    </div>
+  </section>
+  <section class="reservation" id="reservation">
+    <div class="container">
+      <div class="resa-grid">
+        <div class="reveal">
+          <h2 class="resa-title">INFOS<br><span>PRATIQUES.</span></h2>
+          <div class="resa-info"><div class="resa-info-label">Adresse</div><div class="resa-info-val">12 cours Emile Zola<br>69100 Villeurbanne<br>Métro Gratte-Ciel · Ligne A</div></div>
+          <div class="resa-info"><div class="resa-info-label">Horaires</div><div class="resa-info-val">Lun — Ven : 8h30 — 20h00<br>Samedi : 9h00 — 13h00</div></div>
+          <div class="resa-info"><div class="resa-info-label">Contact</div><div class="resa-info-val">04 78 XX XX XX<br>contact@studiomova.fr</div></div>
+          <div class="resa-info"><div class="resa-info-label">Première visite</div><div class="resa-info-val">Arrivez 10 min avant. Tenue confortable, pieds nus. Matériel fourni. <strong>Première séance offerte.</strong></div></div>
+        </div>
+        <div class="resa-planity reveal" style="transition-delay:.15s">
+          <div class="resa-planity-label">Réservation en ligne</div>
+          <div class="resa-planity-title">RÉSERVEZ SUR PLANITY.</div>
+          <p class="resa-planity-sub">Choisissez votre cours, votre créneau, payez en ligne. Confirmé instantanément.</p>
+          <div class="resa-planity-feats">
+            <div class="resa-planity-feat">Disponibilités en temps réel</div>
+            <div class="resa-planity-feat">Confirmation email + SMS</div>
+            <div class="resa-planity-feat">Annulation gratuite jusqu'à 12h avant</div>
+            <div class="resa-planity-feat">Paiement sécurisé en ligne</div>
+          </div>
+          <a href="https://www.planity.com" target="_blank" class="resa-planity-btn">Réserver maintenant →</a>
+          <div class="resa-planity-note">Ou appelez le 04 78 XX XX XX</div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="cta-final">
+    <div class="container">
+      <h2 class="cta-big reveal">VOTRE<br>PREMIÈRE<br>SÉANCE<br>EST OFFERTE.</h2>
+      <p class="cta-sub reveal">Sans engagement · Tous niveaux · Villeurbanne</p>
+      <div class="cta-btns reveal">
+        <a href="#reservation" class="btn-white-solid">Réserver maintenant</a>
+        <a href="#planning" class="btn-ghost-white">Voir le planning</a>
+      </div>
+    </div>
+  </section>
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div><div class="f-logo">STUDIO <span>MOVA</span></div><p class="f-desc">Studio de Pilates à Villeurbanne. Réformateur, Mat, Prénatal, Duo. Cours intensifs, petits groupes, résultats réels.</p></div>
+        <div><div class="f-col-title">Navigation</div><ul class="f-links"><li><a href="#cours">Nos cours</a></li><li><a href="#planning">Planning</a></li><li><a href="#tarifs">Tarifs</a></li><li><a href="#lea">Léa Moretti</a></li><li><a href="#reservation">Réservation</a></li></ul></div>
+        <div><div class="f-col-title">Contact</div><div class="f-contact">12 cours Emile Zola<br>69100 Villeurbanne<br><br>04 78 XX XX XX<br>contact@studiomova.fr<br><br>Lun — Ven : 8h30 — 20h<br>Sam : 9h — 13h</div></div>
+      </div>
+      <div class="f-bottom">
+        <div class="f-copy">© 2026 Studio Mova · Villeurbanne · Mentions légales</div>
+        <div class="f-copy">Site réalisé par N/ Studio Digital</div>
+      </div>
+    </div>
+  </footer>
+  <script>
+    window.addEventListener('scroll', () => { document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 60); });
+    function toggleMenu() { document.getElementById('hamburger').classList.toggle('open'); document.getElementById('mobileMenu').classList.toggle('open'); }
+    function closeMenu() { document.getElementById('hamburger').classList.remove('open'); document.getElementById('mobileMenu').classList.remove('open'); }
+    const obs = new IntersectionObserver(entries => { entries.forEach(e => { if(e.isIntersecting){e.target.classList.add('vis');obs.unobserve(e.target);} }); }, {threshold:.08});
+    document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+  </script>
+</body>
+</html>

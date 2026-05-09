@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Kō Spa — Head Spa Japonais à Lyon</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600&family=Zen+Kaku+Gothic+New:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --ink:     #1a1a18;
+      --stone:   #3d3d38;
+      --sand:    #c8b99a;
+      --mist:    #e8e2d9;
+      --paper:   #f5f2ed;
+      --white:   #fdfcfa;
+      --moss:    #5c6b4a;
+      --water:   #7a9490;
+      --gold:    #b8955a;
+      --font-serif: 'Shippori Mincho', serif;
+      --font-sans:  'Zen Kaku Gothic New', sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body { font-family: var(--font-sans); background: var(--paper); color: var(--ink); overflow-x: hidden; -webkit-font-smoothing: antialiased; cursor: none; }
+
+    /* CURSOR */
+    .cursor { position: fixed; width: 8px; height: 8px; background: var(--gold); border-radius: 50%; pointer-events: none; z-index: 9999; transform: translate(-50%, -50%); transition: transform .15s ease, width .3s, height .3s, background .3s; }
+    .cursor-ring { position: fixed; width: 32px; height: 32px; border: 1px solid var(--gold); border-radius: 50%; pointer-events: none; z-index: 9998; transform: translate(-50%, -50%); transition: transform .4s ease, width .3s, height .3s, opacity .3s; opacity: .5; }
+    body:hover .cursor { opacity: 1; }
+
+    /* NAV */
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 500; padding: 0 48px; height: 72px; display: flex; align-items: center; justify-content: space-between; transition: background .4s, backdrop-filter .4s; }
+    nav.scrolled { background: rgba(245,242,237,.92); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(200,185,154,.3); }
+    .nav-logo { font-family: var(--font-serif); font-size: 22px; font-weight: 400; color: var(--ink); text-decoration: none; letter-spacing: 2px; }
+    .nav-logo span { color: var(--gold); }
+    .nav-links { display: flex; gap: 36px; list-style: none; }
+    .nav-links a { font-size: 12px; font-weight: 300; color: var(--stone); text-decoration: none; letter-spacing: 2px; text-transform: uppercase; transition: color .3s; }
+    .nav-links a:hover { color: var(--gold); }
+    .nav-cta { font-size: 11px; font-weight: 500; color: var(--white); background: var(--ink); padding: 10px 22px; text-decoration: none; letter-spacing: 2px; text-transform: uppercase; transition: background .3s; }
+    .nav-cta:hover { background: var(--gold); }
+    .nav-hamburger { display: none; flex-direction: column; gap: 5px; cursor: none; background: none; border: none; padding: 4px; }
+    .nav-hamburger span { display: block; width: 22px; height: 1px; background: var(--ink); transition: all .3s; }
+    @media(max-width:900px) { .nav-links, .nav-cta { display: none; } .nav-hamburger { display: flex; } nav { padding: 0 24px; } }
+
+    /* MOBILE MENU */
+    .mobile-menu { display: none; position: fixed; inset: 0; background: var(--paper); z-index: 490; flex-direction: column; align-items: center; justify-content: center; gap: 32px; }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a { font-family: var(--font-serif); font-size: 28px; color: var(--ink); text-decoration: none; transition: color .3s; }
+    .mobile-menu a:hover { color: var(--gold); }
+
+    /* HERO */
+    .hero { min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr; position: relative; overflow: hidden; }
+    @media(max-width:768px) { .hero { grid-template-columns: 1fr; } }
+    .hero-left { background: var(--ink); display: flex; flex-direction: column; justify-content: center; padding: 120px 64px 80px; position: relative; overflow: hidden; }
+    .hero-left::before { content: '光'; font-family: var(--font-serif); font-size: 320px; color: rgba(255,255,255,.03); position: absolute; right: -60px; bottom: -60px; line-height: 1; pointer-events: none; }
+    .hero-kanji { font-family: var(--font-serif); font-size: 13px; color: var(--gold); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 24px; opacity: 0; animation: fadeUp .8s .2s forwards; }
+    .hero-title { font-family: var(--font-serif); font-size: clamp(42px, 5vw, 72px); font-weight: 400; color: var(--white); line-height: 1.1; letter-spacing: -1px; margin-bottom: 24px; opacity: 0; animation: fadeUp .8s .4s forwards; }
+    .hero-title em { font-style: italic; color: var(--sand); }
+    .hero-sub { font-size: 14px; font-weight: 300; color: rgba(255,255,255,.5); line-height: 1.8; max-width: 340px; margin-bottom: 48px; opacity: 0; animation: fadeUp .8s .6s forwards; }
+    .hero-btns { display: flex; gap: 16px; flex-wrap: wrap; opacity: 0; animation: fadeUp .8s .8s forwards; }
+    .btn-gold { display: inline-flex; align-items: center; gap: 10px; background: var(--gold); color: var(--white); padding: 14px 28px; font-family: var(--font-sans); font-size: 12px; font-weight: 500; text-decoration: none; letter-spacing: 2px; text-transform: uppercase; transition: background .3s; }
+    .btn-gold:hover { background: var(--sand); }
+    .btn-ghost { display: inline-flex; align-items: center; gap: 10px; background: transparent; color: rgba(255,255,255,.6); padding: 14px 28px; font-family: var(--font-sans); font-size: 12px; font-weight: 300; text-decoration: none; letter-spacing: 2px; text-transform: uppercase; border: 1px solid rgba(255,255,255,.15); transition: border-color .3s, color .3s; }
+    .btn-ghost:hover { border-color: var(--gold); color: var(--gold); }
+    .hero-right { position: relative; overflow: hidden; min-height: 60vh; }
+    .hero-right img { width: 100%; height: 100%; object-fit: cover; transform: scale(1.05); animation: zoomOut 1.2s .3s forwards ease-out; }
+    .hero-right::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to right, rgba(26,26,24,.3) 0%, transparent 50%); }
+    .hero-scroll { position: absolute; bottom: 40px; left: 64px; display: flex; align-items: center; gap: 12px; font-size: 10px; color: rgba(255,255,255,.3); letter-spacing: 3px; text-transform: uppercase; opacity: 0; animation: fadeUp .8s 1.2s forwards; }
+    .hero-scroll::before { content: ''; display: block; width: 40px; height: 1px; background: rgba(255,255,255,.2); }
+
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: none; } }
+    @keyframes zoomOut { from { transform: scale(1.05); } to { transform: scale(1); } }
+
+    /* SECTION BASE */
+    section { padding: 100px 0; }
+    @media(max-width:768px) { section { padding: 64px 0; } }
+    .container { max-width: 1140px; margin: 0 auto; padding: 0 48px; }
+    @media(max-width:768px) { .container { padding: 0 24px; } }
+    .s-label { font-size: 10px; font-weight: 400; letter-spacing: 4px; text-transform: uppercase; color: var(--gold); margin-bottom: 20px; }
+    .s-title { font-family: var(--font-serif); font-size: clamp(28px, 4vw, 52px); font-weight: 400; line-height: 1.15; color: var(--ink); margin-bottom: 20px; }
+    .s-sub { font-size: 14px; font-weight: 300; color: var(--stone); line-height: 1.9; max-width: 480px; }
+
+    /* REVEAL */
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s ease; }
+    .reveal.vis { opacity: 1; transform: none; }
+
+    /* INTRO STRIP */
+    .intro-strip { background: var(--ink); padding: 32px 0; overflow: hidden; }
+    .intro-strip-track { display: flex; animation: marquee 30s linear infinite; white-space: nowrap; }
+    @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+    .strip-item { font-family: var(--font-serif); font-size: 13px; color: rgba(255,255,255,.3); letter-spacing: 3px; text-transform: uppercase; padding: 0 32px; display: inline-flex; align-items: center; gap: 24px; }
+    .strip-dot { width: 4px; height: 4px; border-radius: 50%; background: var(--gold); flex-shrink: 0; }
+
+    /* PHILOSOPHY */
+    .philosophy { background: var(--white); }
+    .philosophy-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    @media(max-width:768px) { .philosophy-grid { grid-template-columns: 1fr; gap: 40px; } }
+    .philosophy-img { position: relative; }
+    .philosophy-img img { width: 100%; height: 520px; object-fit: cover; }
+    .philosophy-img::before { content: ''; position: absolute; top: -20px; left: -20px; right: 20px; bottom: 20px; border: 1px solid var(--sand); z-index: -1; }
+    .philosophy-tag { position: absolute; bottom: -16px; right: -16px; background: var(--gold); color: var(--white); font-size: 10px; letter-spacing: 3px; text-transform: uppercase; padding: 12px 20px; }
+    .philosophy-text { display: flex; flex-direction: column; gap: 24px; }
+    .philosophy-quote { font-family: var(--font-serif); font-size: 20px; font-weight: 400; color: var(--ink); line-height: 1.6; font-style: italic; padding-left: 24px; border-left: 2px solid var(--gold); }
+    .philosophy-body { font-size: 14px; font-weight: 300; color: var(--stone); line-height: 1.9; }
+    .philosophy-vals { display: flex; flex-direction: column; gap: 12px; margin-top: 8px; }
+    .philosophy-val { display: flex; gap: 12px; align-items: flex-start; font-size: 13px; color: var(--stone); }
+    .philosophy-val::before { content: '一'; font-family: var(--font-serif); color: var(--gold); flex-shrink: 0; }
+
+    /* SOINS */
+    .soins { background: var(--paper); }
+    .soins-intro { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: end; margin-bottom: 64px; }
+    @media(max-width:768px) { .soins-intro { grid-template-columns: 1fr; gap: 24px; } }
+    .soins-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--mist); }
+    @media(max-width:768px) { .soins-grid { grid-template-columns: 1fr; } }
+    .soin-card { background: var(--white); padding: 36px 32px; transition: background .3s; cursor: none; position: relative; overflow: hidden; }
+    .soin-card::before { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px; background: var(--gold); transform: scaleX(0); transition: transform .4s; transform-origin: left; }
+    .soin-card:hover { background: var(--ink); }
+    .soin-card:hover .soin-name, .soin-card:hover .soin-duration { color: var(--white); }
+    .soin-card:hover .soin-desc { color: rgba(255,255,255,.45); }
+    .soin-card:hover .soin-price { color: var(--gold); }
+    .soin-card:hover::before { transform: scaleX(1); }
+    .soin-num { font-size: 10px; color: var(--gold); letter-spacing: 3px; margin-bottom: 20px; }
+    .soin-name { font-family: var(--font-serif); font-size: 20px; color: var(--ink); margin-bottom: 8px; transition: color .3s; }
+    .soin-duration { font-size: 11px; color: var(--stone); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 16px; transition: color .3s; }
+    .soin-desc { font-size: 13px; font-weight: 300; color: var(--stone); line-height: 1.8; margin-bottom: 24px; transition: color .3s; }
+    .soin-price { font-family: var(--font-serif); font-size: 28px; color: var(--ink); transition: color .3s; }
+    .soin-duo { grid-column: 1 / -1; background: var(--ink); padding: 36px 32px; display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 40px; }
+    @media(max-width:768px) { .soin-duo { grid-template-columns: 1fr; } }
+    .soin-duo .soin-name, .soin-duo .soin-duration { color: var(--white); }
+    .soin-duo .soin-desc { color: rgba(255,255,255,.45); }
+    .soin-duo .soin-price { color: var(--gold); }
+    .soin-duo-cta { display: inline-flex; align-items: center; gap: 10px; background: var(--gold); color: var(--white); padding: 14px 28px; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; text-decoration: none; white-space: nowrap; transition: background .3s; }
+    .soin-duo-cta:hover { background: var(--sand); }
+
+    /* EXPERIENCE */
+    .experience { background: var(--ink); position: relative; overflow: hidden; }
+    .experience::before { content: '癒'; font-family: var(--font-serif); font-size: 500px; color: rgba(255,255,255,.02); position: absolute; right: -100px; top: -100px; line-height: 1; pointer-events: none; }
+    .experience-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1px; background: rgba(255,255,255,.06); margin-top: 56px; }
+    @media(max-width:768px) { .experience-grid { grid-template-columns: 1fr; } }
+    .exp-card { background: var(--ink); padding: 40px 32px; }
+    .exp-num { font-family: var(--font-serif); font-size: 48px; font-weight: 400; color: var(--gold); line-height: 1; margin-bottom: 12px; }
+    .exp-title { font-family: var(--font-serif); font-size: 16px; color: var(--white); margin-bottom: 12px; }
+    .exp-text { font-size: 13px; font-weight: 300; color: rgba(255,255,255,.4); line-height: 1.8; }
+    .experience .s-title { color: var(--white); }
+    .experience .s-label { color: var(--gold); }
+    .experience .s-sub { color: rgba(255,255,255,.45); }
+
+    /* GALERIE */
+    .galerie { background: var(--paper); }
+    .galerie-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; grid-template-rows: auto auto; gap: 8px; margin-top: 48px; }
+    @media(max-width:768px) { .galerie-grid { grid-template-columns: 1fr 1fr; } }
+    .galerie-item { overflow: hidden; }
+    .galerie-item img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s ease; }
+    .galerie-item:hover img { transform: scale(1.05); }
+    .galerie-item:nth-child(1) { grid-row: 1 / 3; height: 480px; }
+    .galerie-item:nth-child(2) { height: 232px; }
+    .galerie-item:nth-child(3) { height: 232px; }
+    .galerie-item:nth-child(4) { height: 232px; }
+    .galerie-item:nth-child(5) { height: 232px; }
+    @media(max-width:768px) { .galerie-item:nth-child(1) { grid-row: auto; height: 240px; grid-column: 1 / -1; } .galerie-item { height: 180px !important; } }
+
+    /* TARIFS */
+    .tarifs { background: var(--white); }
+    .tarifs-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+    @media(max-width:768px) { .tarifs-layout { grid-template-columns: 1fr; gap: 40px; } }
+    .tarif-list { display: flex; flex-direction: column; }
+    .tarif-item { display: flex; align-items: baseline; justify-content: space-between; padding: 18px 0; border-bottom: 1px solid var(--mist); gap: 16px; }
+    .tarif-item:first-child { border-top: 1px solid var(--mist); }
+    .tarif-left { display: flex; flex-direction: column; gap: 4px; }
+    .tarif-name { font-family: var(--font-serif); font-size: 16px; color: var(--ink); }
+    .tarif-duration { font-size: 11px; color: var(--stone); letter-spacing: 1.5px; }
+    .tarif-price { font-family: var(--font-serif); font-size: 22px; color: var(--gold); white-space: nowrap; }
+    .tarif-note { background: var(--paper); border-left: 2px solid var(--gold); padding: 20px 24px; font-size: 13px; font-weight: 300; color: var(--stone); line-height: 1.8; margin-top: 24px; }
+    .tarifs-right { display: flex; flex-direction: column; gap: 24px; }
+    .tarif-panel { background: var(--ink); padding: 36px 32px; }
+    .tarif-panel-title { font-family: var(--font-serif); font-size: 20px; color: var(--white); margin-bottom: 16px; }
+    .tarif-panel-text { font-size: 13px; font-weight: 300; color: rgba(255,255,255,.45); line-height: 1.8; margin-bottom: 24px; }
+    .tarif-panel-cta { display: block; text-align: center; padding: 14px; background: var(--gold); color: var(--white); text-decoration: none; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; transition: background .3s; }
+    .tarif-panel-cta:hover { background: var(--sand); }
+    .tarif-gift { background: var(--paper); border: 1px solid var(--mist); padding: 28px 32px; }
+    .tarif-gift-title { font-family: var(--font-serif); font-size: 18px; color: var(--ink); margin-bottom: 10px; }
+    .tarif-gift-text { font-size: 13px; color: var(--stone); line-height: 1.7; margin-bottom: 16px; }
+    .tarif-gift-link { font-size: 12px; color: var(--gold); letter-spacing: 2px; text-decoration: none; text-transform: uppercase; }
+
+    /* RESERVATION */
+    .reservation { background: var(--paper); }
+    .resa-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+    @media(max-width:768px) { .resa-layout { grid-template-columns: 1fr; gap: 40px; } }
+    .resa-info { display: flex; flex-direction: column; gap: 24px; }
+    .resa-info-item { display: flex; gap: 16px; align-items: flex-start; }
+    .resa-info-icon { width: 40px; height: 40px; border: 1px solid var(--mist); display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-family: var(--font-serif); font-size: 16px; color: var(--gold); }
+    .resa-info-label { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-bottom: 4px; }
+    .resa-info-val { font-size: 14px; color: var(--ink); line-height: 1.6; }
+    .resa-form { background: var(--white); padding: 40px; border: 1px solid var(--mist); }
+    .form-title { font-family: var(--font-serif); font-size: 22px; color: var(--ink); margin-bottom: 8px; }
+    .form-sub { font-size: 13px; color: var(--stone); margin-bottom: 32px; line-height: 1.6; }
+    .form-group { margin-bottom: 20px; }
+    .form-label { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--stone); display: block; margin-bottom: 8px; }
+    .form-input, .form-select, .form-textarea { width: 100%; padding: 12px 16px; border: 1px solid var(--mist); background: var(--paper); font-family: var(--font-sans); font-size: 14px; color: var(--ink); outline: none; transition: border-color .3s; appearance: none; }
+    .form-input:focus, .form-select:focus, .form-textarea:focus { border-color: var(--gold); }
+    .form-textarea { min-height: 100px; resize: vertical; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    @media(max-width:480px) { .form-row { grid-template-columns: 1fr; } }
+    .form-submit { width: 100%; padding: 16px; background: var(--ink); color: var(--white); font-family: var(--font-sans); font-size: 11px; letter-spacing: 3px; text-transform: uppercase; border: none; cursor: none; transition: background .3s; margin-top: 8px; }
+    .form-submit:hover { background: var(--gold); }
+
+    /* A PROPOS */
+    .apropos { background: var(--ink); }
+    .apropos-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 80px; align-items: center; }
+    @media(max-width:768px) { .apropos-grid { grid-template-columns: 1fr; gap: 40px; } }
+    .apropos-img { position: relative; }
+    .apropos-img img { width: 100%; height: 560px; object-fit: cover; filter: grayscale(20%); }
+    .apropos-img::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to bottom, transparent 60%, rgba(26,26,24,.5)); }
+    .apropos-kanji { position: absolute; top: -24px; right: -24px; font-family: var(--font-serif); font-size: 80px; color: var(--gold); opacity: .3; line-height: 1; }
+    .apropos-text { display: flex; flex-direction: column; gap: 24px; }
+    .apropos .s-label { color: var(--gold); }
+    .apropos .s-title { color: var(--white); }
+    .apropos-body { font-size: 14px; font-weight: 300; color: rgba(255,255,255,.55); line-height: 1.9; }
+    .apropos-signature { font-family: var(--font-serif); font-size: 18px; color: var(--sand); font-style: italic; }
+    .apropos-vals { display: flex; flex-direction: column; gap: 14px; margin-top: 8px; }
+    .apropos-val { display: flex; gap: 14px; align-items: flex-start; }
+    .apropos-val-icon { font-family: var(--font-serif); font-size: 14px; color: var(--gold); flex-shrink: 0; margin-top: 2px; }
+    .apropos-val-text { font-size: 13px; font-weight: 300; color: rgba(255,255,255,.5); line-height: 1.6; }
+
+    /* TEMOIGNAGES */
+    .temoignages { background: var(--paper); }
+    .temo-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--mist); margin-top: 56px; }
+    @media(max-width:768px) { .temo-grid { grid-template-columns: 1fr; } }
+    .temo-card { background: var(--white); padding: 36px 32px; }
+    .temo-stars { color: var(--gold); font-size: 12px; letter-spacing: 2px; margin-bottom: 20px; }
+    .temo-text { font-family: var(--font-serif); font-size: 15px; color: var(--ink); line-height: 1.7; font-style: italic; margin-bottom: 20px; }
+    .temo-author { font-size: 11px; color: var(--stone); letter-spacing: 2px; text-transform: uppercase; }
+
+    /* CONTACT */
+    .contact { background: var(--white); }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; }
+    @media(max-width:768px) { .contact-grid { grid-template-columns: 1fr; gap: 40px; } }
+    .contact-map { background: var(--mist); height: 300px; display: flex; align-items: center; justify-content: center; margin-top: 32px; position: relative; overflow: hidden; }
+    .contact-map img { width: 100%; height: 100%; object-fit: cover; opacity: .7; }
+    .contact-map-overlay { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; }
+    .contact-map-pin { width: 48px; height: 48px; background: var(--gold); border-radius: 50% 50% 50% 0; transform: rotate(-45deg); display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 20px rgba(184,149,90,.5); }
+    .contact-map-pin::after { content: ''; width: 16px; height: 16px; background: var(--white); border-radius: 50%; transform: rotate(45deg); }
+    .contact-infos { display: flex; flex-direction: column; gap: 20px; margin-top: 32px; }
+    .contact-info { display: flex; gap: 16px; align-items: flex-start; }
+    .contact-info-label { font-size: 10px; color: var(--gold); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 4px; }
+    .contact-info-val { font-size: 14px; color: var(--ink); line-height: 1.6; }
+    .contact-right { }
+    .contact-hours { display: flex; flex-direction: column; gap: 10px; margin-top: 32px; }
+    .contact-hour { display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid var(--mist); font-size: 13px; }
+    .contact-hour-day { color: var(--stone); font-weight: 300; }
+    .contact-hour-time { color: var(--ink); }
+    .contact-hour.closed .contact-hour-time { color: var(--sand); font-style: italic; }
+
+    /* CTA FINAL */
+    .cta-final { background: var(--ink); text-align: center; padding: 120px 0; position: relative; overflow: hidden; }
+    .cta-final::before { content: '美'; font-family: var(--font-serif); font-size: 600px; color: rgba(255,255,255,.02); position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); pointer-events: none; }
+    .cta-final .s-label { justify-content: center; color: var(--gold); }
+    .cta-final .s-title { color: var(--white); text-align: center; margin: 0 auto 32px; max-width: 600px; }
+    .cta-final-sub { font-size: 14px; color: rgba(255,255,255,.4); margin-bottom: 48px; font-weight: 300; }
+    .cta-final-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+
+    /* FOOTER */
+    footer { background: #111110; padding: 56px 0 32px; }
+    .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 48px; margin-bottom: 48px; }
+    @media(max-width:768px) { .footer-grid { grid-template-columns: 1fr; gap: 32px; } }
+    .f-logo { font-family: var(--font-serif); font-size: 24px; color: var(--white); letter-spacing: 2px; margin-bottom: 12px; }
+    .f-logo span { color: var(--gold); }
+    .f-desc { font-size: 12px; font-weight: 300; color: rgba(255,255,255,.3); line-height: 1.8; max-width: 260px; }
+    .f-col-title { font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); margin-bottom: 20px; }
+    .f-links { display: flex; flex-direction: column; gap: 10px; list-style: none; }
+    .f-links a { font-size: 13px; color: rgba(255,255,255,.35); text-decoration: none; font-weight: 300; transition: color .3s; }
+    .f-links a:hover { color: var(--gold); }
+    .f-contact-line { font-size: 13px; color: rgba(255,255,255,.35); margin-bottom: 8px; font-weight: 300; }
+    .f-bottom { border-top: 1px solid rgba(255,255,255,.06); padding-top: 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+    .f-copy { font-size: 11px; color: rgba(255,255,255,.15); }
+    .f-credits { font-size: 11px; color: rgba(255,255,255,.15); }
+    .f-credits a { color: var(--gold); text-decoration: none; opacity: .7; }
+
+    /* PLANITY BLOCK */
+    .planity-block { background: var(--white); border: 1px solid var(--mist); padding: 40px; }
+    .planity-header { display: flex; gap: 20px; align-items: flex-start; margin-bottom: 32px; padding-bottom: 32px; border-bottom: 1px solid var(--mist); }
+    .planity-logo { width: 52px; height: 52px; background: var(--paper); border: 1px solid var(--mist); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .planity-title { font-family: var(--font-serif); font-size: 20px; color: var(--ink); margin-bottom: 6px; }
+    .planity-sub { font-size: 13px; color: var(--stone); line-height: 1.6; font-weight: 300; }
+    .planity-features { display: flex; flex-direction: column; gap: 12px; margin-bottom: 32px; }
+    .planity-feat { font-size: 13px; color: var(--stone); font-weight: 300; }
+    .planity-cta { display: flex; align-items: center; justify-content: center; gap: 10px; background: var(--ink); color: var(--white); padding: 16px 28px; font-family: var(--font-sans); font-size: 12px; letter-spacing: 2px; text-transform: uppercase; text-decoration: none; transition: background .3s; margin-bottom: 16px; }
+    .planity-cta:hover { background: var(--gold); }
+    .planity-note { font-size: 12px; color: var(--stone); text-align: center; font-weight: 300; }
+    .planity-note strong { color: var(--ink); font-weight: 500; }
+  </style>
+</head>
+<body>
+
+  <!-- CURSOR -->
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#accueil" onclick="closeMenu()">Accueil</a>
+    <a href="#soins" onclick="closeMenu()">Nos soins</a>
+    <a href="#tarifs" onclick="closeMenu()">Tarifs</a>
+    <a href="#reservation" onclick="closeMenu()">Réservation</a>
+    <a href="#apropos" onclick="closeMenu()">Notre histoire</a>
+    <a href="#contact" onclick="closeMenu()">Contact</a>
+  </div>
+
+  <!-- NAV -->
+  <nav id="nav">
+    <a href="#accueil" class="nav-logo">K<span>ō</span> Spa</a>
+    <ul class="nav-links">
+      <li><a href="#soins">Nos soins</a></li>
+      <li><a href="#tarifs">Tarifs</a></li>
+      <li><a href="#reservation">Réservation</a></li>
+      <li><a href="#apropos">Notre histoire</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="#reservation" class="nav-cta">Réserver</a>
+    <button class="nav-hamburger" id="hamburger" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="accueil">
+    <div class="hero-left">
+      <div class="hero-kanji">光 · Lumière · Sérénité</div>
+      <h1 class="hero-title">L'art du soin<br>capillaire<br><em>japonais</em></h1>
+      <p class="hero-sub">Kō Spa vous invite à découvrir les rituels ancestraux du Head Spa, au cœur de Lyon. Une expérience sensorielle unique pour le cuir chevelu et l'esprit.</p>
+      <div class="hero-btns">
+        <a href="#reservation" class="btn-gold">Réserver un soin</a>
+        <a href="#soins" class="btn-ghost">Découvrir</a>
+      </div>
+      <div class="hero-scroll">Défiler</div>
+    </div>
+    <div class="hero-right">
+      <img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=800&q=80" alt="Head Spa Kō Lyon"/>
+    </div>
+  </section>
+
+  <!-- STRIP -->
+  <div class="intro-strip">
+    <div class="intro-strip-track">
+      <span class="strip-item">Head Spa<span class="strip-dot"></span></span>
+      <span class="strip-item">Rituels japonais<span class="strip-dot"></span></span>
+      <span class="strip-item">Lyon 6ème<span class="strip-dot"></span></span>
+      <span class="strip-item">Soin du cuir chevelu<span class="strip-dot"></span></span>
+      <span class="strip-item">Massage crânien<span class="strip-dot"></span></span>
+      <span class="strip-item">Bien-être<span class="strip-dot"></span></span>
+      <span class="strip-item">Head Spa<span class="strip-dot"></span></span>
+      <span class="strip-item">Rituels japonais<span class="strip-dot"></span></span>
+      <span class="strip-item">Lyon 6ème<span class="strip-dot"></span></span>
+      <span class="strip-item">Soin du cuir chevelu<span class="strip-dot"></span></span>
+      <span class="strip-item">Massage crânien<span class="strip-dot"></span></span>
+      <span class="strip-item">Bien-être<span class="strip-dot"></span></span>
+    </div>
+  </div>
+
+  <!-- PHILOSOPHIE -->
+  <section class="philosophy" id="philosophie">
+    <div class="container">
+      <div class="philosophy-grid">
+        <div class="philosophy-img reveal">
+          <img src="data:image/jpeg;base64,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" alt="Massage crânien Head Spa Kō"/>
+          <div class="philosophy-tag">Lyon · Depuis 2023</div>
+        </div>
+        <div class="philosophy-text reveal">
+          <div class="s-label">Notre philosophie</div>
+          <h2 class="s-title">Le soin comme<br>une pratique<br>spirituelle</h2>
+          <div class="philosophy-quote">"Le cuir chevelu est le reflet de notre équilibre intérieur."</div>
+          <p class="philosophy-body">Chez Kō Spa, nous puisons dans la tradition japonaise du Head Spa pour offrir une expérience qui va bien au-delà du soin capillaire. Chaque rituel est conçu pour libérer les tensions, nourrir le cuir chevelu et apaiser l'esprit.</p>
+          <div class="philosophy-vals">
+            <div class="philosophy-val">Produits naturels sélectionnés au Japon</div>
+            <div class="philosophy-val">Techniques ancestrales transmises par des maîtres</div>
+            <div class="philosophy-val">Un espace pensé pour la déconnexion totale</div>
+            <div class="philosophy-val">Protocoles personnalisés selon votre cuir chevelu</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOINS -->
+  <section class="soins" id="soins">
+    <div class="container">
+      <div class="soins-intro">
+        <div class="reveal">
+          <div class="s-label">Nos rituels</div>
+          <h2 class="s-title">Des soins conçus<br>pour votre<br><em style="font-style:italic;color:var(--gold)">équilibre</em></h2>
+        </div>
+        <p class="s-sub reveal" style="align-self:end">Chaque soin est une invitation au lâcher-prise. Nos protocoles combinent techniques japonaises et produits naturels pour une efficacité visible dès la première séance.</p>
+      </div>
+      <div class="soins-grid">
+        <div class="soin-card reveal">
+          <div class="soin-num">01</div>
+          <div class="soin-name">Rituel Kō Signature</div>
+          <div class="soin-duration">60 minutes</div>
+          <p class="soin-desc">Notre soin emblématique. Analyse du cuir chevelu, soin purifiant, massage crânien en profondeur et masque nourrissant. L'expérience Kō dans sa totalité.</p>
+          <div class="soin-price">85€</div>
+        </div>
+        <div class="soin-card reveal" style="transition-delay:.1s">
+          <div class="soin-num">02</div>
+          <div class="soin-name">Soin Purifiant</div>
+          <div class="soin-duration">45 minutes</div>
+          <p class="soin-desc">Détox profonde du cuir chevelu. Élimine l'excès de sébum, les résidus de produits et libère les pores pour une chevelure légère et respirante.</p>
+          <div class="soin-price">65€</div>
+        </div>
+        <div class="soin-card reveal" style="transition-delay:.2s">
+          <div class="soin-num">03</div>
+          <div class="soin-name">Rituel Sérénité</div>
+          <div class="soin-duration">75 minutes</div>
+          <p class="soin-desc">Pour ceux qui portent le stress dans la tête et les épaules. Massage crânien prolongé, nuque et épaules. Un moment de déconnexion totale.</p>
+          <div class="soin-price">95€</div>
+        </div>
+        <div class="soin-card reveal" style="transition-delay:.3s">
+          <div class="soin-num">04</div>
+          <div class="soin-name">Soin Nourrissant</div>
+          <div class="soin-duration">45 minutes</div>
+          <p class="soin-desc">Masque cheveux concentré aux huiles précieuses + massage du cuir chevelu. Idéal pour les cheveux fragilisés, colorés ou abîmés par la chaleur.</p>
+          <div class="soin-price">65€</div>
+        </div>
+        <div class="soin-card reveal" style="transition-delay:.4s">
+          <div class="soin-num">05</div>
+          <div class="soin-name">Soin Équilibrant</div>
+          <div class="soin-duration">50 minutes</div>
+          <p class="soin-desc">Spécialement formulé pour les cuirs chevelus mixtes. Rééquilibre la production de sébum et apporte confort durable sur les longueurs.</p>
+          <div class="soin-price">70€</div>
+        </div>
+        <div class="soin-card reveal" style="transition-delay:.5s">
+          <div class="soin-num">06</div>
+          <div class="soin-name">Rituel Duo</div>
+          <div class="soin-duration">90 minutes · 2 personnes</div>
+          <p class="soin-desc">Partagez l'expérience Kō avec la personne de votre choix. Deux cabines côte à côte, même rituel, moment de complicité unique.</p>
+          <div class="soin-price">180€</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section class="experience">
+    <div class="container">
+      <div class="s-label reveal">L'expérience Kō</div>
+      <h2 class="s-title reveal" style="color:var(--white)">Ce qui rend<br>chaque visite<br><em style="color:var(--sand)">unique</em></h2>
+      <div class="experience-grid">
+        <div class="exp-card reveal">
+          <div class="exp-num">01</div>
+          <div class="exp-title">Diagnostic personnalisé</div>
+          <p class="exp-text">Chaque séance commence par une analyse précise de votre cuir chevelu. Votre protocole est adapté en temps réel à vos besoins du moment.</p>
+        </div>
+        <div class="exp-card reveal" style="transition-delay:.1s">
+          <div class="exp-num">02</div>
+          <div class="exp-title">Produits naturels japonais</div>
+          <p class="exp-text">Nous utilisons exclusivement des formules naturelles issues de la tradition japonaise — sans sulfates, sans parabènes, sans compromis.</p>
+        </div>
+        <div class="exp-card reveal" style="transition-delay:.2s">
+          <div class="exp-num">03</div>
+          <div class="exp-title">Un espace de déconnexion</div>
+          <p class="exp-text">Lumière tamisée, sons de la nature, température maîtrisée. Notre espace est pensé pour que vous oubliiez tout dès que vous franchissez la porte.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALERIE -->
+  <section class="galerie">
+    <div class="container">
+      <div class="s-label reveal">Notre espace</div>
+      <h2 class="s-title reveal">Un écrin de<br>sérénité au cœur<br>de <em style="color:var(--gold)">Lyon</em></h2>
+      <div class="galerie-grid">
+        <div class="galerie-item reveal">
+          <img src="https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?w=800&q=80" alt="Kō Spa Lyon intérieur"/>
+        </div>
+        <div class="galerie-item reveal" style="transition-delay:.1s">
+          <img src="https://images.unsplash.com/photo-1519823551278-64ac92734fb1?w=400&q=80" alt="Soin capillaire zen"/>
+        </div>
+        <div class="galerie-item reveal" style="transition-delay:.2s">
+          <img src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=400&q=80" alt="Massage crânien"/>
+        </div>
+        <div class="galerie-item reveal" style="transition-delay:.3s">
+          <img src="https://images.unsplash.com/photo-1608248597279-f99d160bfcbc?w=400&q=80" alt="Produits naturels japonais"/>
+        </div>
+        <div class="galerie-item reveal" style="transition-delay:.4s">
+          <img src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?w=400&q=80" alt="Ambiance zen spa"/>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TARIFS -->
+  <section class="tarifs" id="tarifs">
+    <div class="container">
+      <div class="s-label reveal">Tarifs</div>
+      <h2 class="s-title reveal">Des soins<br>d'exception à<br>votre portée</h2>
+      <div class="tarifs-layout" style="margin-top:48px">
+        <div class="reveal">
+          <div class="tarif-list">
+            <div class="tarif-item">
+              <div class="tarif-left">
+                <div class="tarif-name">Rituel Kō Signature</div>
+                <div class="tarif-duration">60 minutes</div>
+              </div>
+              <div class="tarif-price">85€</div>
+            </div>
+            <div class="tarif-item">
+              <div class="tarif-left">
+                <div class="tarif-name">Soin Purifiant</div>
+                <div class="tarif-duration">45 minutes</div>
+              </div>
+              <div class="tarif-price">65€</div>
+            </div>
+            <div class="tarif-item">
+              <div class="tarif-left">
+                <div class="tarif-name">Rituel Sérénité</div>
+                <div class="tarif-duration">75 minutes</div>
+              </div>
+              <div class="tarif-price">95€</div>
+            </div>
+            <div class="tarif-item">
+              <div class="tarif-left">
+                <div class="tarif-name">Soin Nourrissant</div>
+                <div class="tarif-duration">45 minutes</div>
+              </div>
+              <div class="tarif-price">65€</div>
+            </div>
+            <div class="tarif-item">
+              <div class="tarif-left">
+                <div class="tarif-name">Soin Équilibrant</div>
+                <div class="tarif-duration">50 minutes</div>
+              </div>
+              <div class="tarif-price">70€</div>
+            </div>
+            <div class="tarif-item">
+              <div class="tarif-left">
+                <div class="tarif-name">Rituel Duo</div>
+                <div class="tarif-duration">90 minutes · 2 personnes</div>
+              </div>
+              <div class="tarif-price">180€</div>
+            </div>
+          </div>
+          <div class="tarif-note">Les soins sont réalisés sur rendez-vous uniquement. Nous vous recommandons de réserver 48h à l'avance pour garantir votre créneau.</div>
+        </div>
+        <div class="reveal" style="transition-delay:.15s">
+          <div class="tarif-panel">
+            <div class="tarif-panel-title">Forfait Découverte</div>
+            <p class="tarif-panel-text">Première visite chez Kō Spa ? Profitez de notre offre découverte : le Rituel Kō Signature à tarif privilégié pour vivre l'expérience complète.</p>
+            <div style="font-family:var(--font-serif);font-size:36px;color:var(--gold);margin-bottom:20px">72€ <span style="font-size:14px;color:rgba(255,255,255,.3);text-decoration:line-through">85€</span></div>
+            <a href="#reservation" class="tarif-panel-cta">Profiter de l'offre</a>
+          </div>
+          <div class="tarif-gift" style="margin-top:20px">
+            <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px">
+              <svg viewBox="0 0 512 512" width="20" height="20" fill="var(--gold)"><g><path d="M32,271.692v192c0,17.664,14.368,32,32,32h160v-224H32z"/></g><g><path d="M480,143.692H378.752c7.264-4.96,13.504-9.888,17.856-14.304c25.824-25.952,25.824-68.192,0-94.144c-25.088-25.28-68.8-25.216-93.856,0c-13.888,13.92-50.688,70.592-45.6,108.448h-2.304c5.056-37.856-31.744-94.528-45.6-108.448c-25.088-25.216-68.8-25.216-93.856,0C89.6,61.196,89.6,103.436,115.36,129.388c4.384,4.416,10.624,9.344,17.888,14.304H32c-17.632,0-32,14.368-32,32v48c0,8.832,7.168,16,16,16h208v-64h64v64h208c8.832,0,16-7.168,16-16v-48C512,158.06,497.664,143.692,480,143.692z"/></g><g><path d="M288,271.692v224h160c17.664,0,32-14.336,32-32v-192H288z"/></g></svg>
+              <div class="tarif-gift-title" style="margin-bottom:0">Offrir un soin</div>
+            </div>
+            <p class="tarif-gift-text">Nos cartes cadeaux sont disponibles pour tous les rituels. Un présent rare et mémorable pour ceux qui méritent le meilleur.</p>
+            <a href="#contact" class="tarif-gift-link">Commander une carte cadeau →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESERVATION -->
+  <section class="reservation" id="reservation">
+    <div class="container">
+      <div class="s-label reveal">Réservation</div>
+      <h2 class="s-title reveal">Votre moment<br>de sérénité<br>commence ici</h2>
+      <div class="resa-layout" style="margin-top:48px">
+        <div class="resa-info reveal">
+          <div class="resa-info-item">
+            <div class="resa-info-icon">
+              <svg viewBox="0 0 433.488 433.488" width="22" height="22" fill="var(--gold)"><g><g><g><path d="m216.752 44.762c-3.877 0-7-3.14-7-7v-30.762c0-3.877 3.14-7 7-7s7 3.14 7 7v30.745c0 3.878-3.139 7.017-7 7.017z"/></g><g><path d="m127.262 68.748c-2.419 0-4.77-1.252-6.074-3.5l-15.372-26.628c-1.939-3.346-.789-7.635 2.556-9.574 3.346-1.939 7.635-.789 9.574 2.556l15.373 26.628c1.939 3.346.789 7.635-2.556 9.574-1.116.635-2.317.944-3.501.944z"/></g><g><path d="m61.739 134.253c-1.184 0-2.385-.309-3.5-.944l-26.628-15.373c-3.346-1.939-4.495-6.211-2.556-9.574 1.939-3.346 6.211-4.495 9.574-2.556l26.628 15.373c3.346 1.939 4.495 6.211 2.556 9.574-1.304 2.248-3.655 3.5-6.074 3.5z"/></g><g><path d="m37.754 223.744h-30.745c-3.877 0-7-3.14-7-7s3.14-7 7-7h30.745c3.877 0 7 3.14 7 7s-3.123 7-7 7z"/></g><g><path d="m35.112 328.624c-2.419 0-4.77-1.252-6.074-3.5-1.939-3.346-.789-7.635 2.556-9.574l26.628-15.373c3.346-1.939 7.635-.789 9.574 2.556 1.939 3.346.789 7.635-2.556 9.574l-26.628 15.373c-1.098.635-2.316.944-3.5.944z"/></g><g><path d="m111.872 405.385c-1.184 0-2.385-.309-3.5-.944-3.346-1.939-4.495-6.211-2.556-9.574l15.373-26.628c1.939-3.346 6.211-4.495 9.574-2.556 3.346 1.939 4.495 6.211 2.556 9.574l-15.373 26.628c-1.304 2.247-3.655 3.5-6.074 3.5z"/></g><g><path d="m216.752 433.488c-3.877 0-7-3.14-7-7v-30.745c0-3.878 3.14-7 7-7s7 3.14 7 7v30.745c0 3.86-3.139 7-7 7z"/></g><g><path d="m321.616 405.385c-2.419 0-4.77-1.253-6.074-3.5l-15.373-26.628c-1.939-3.346-.789-7.635 2.574-9.574 3.346-1.939 7.635-.789 9.574 2.556l15.373 26.628c1.939 3.346.789 7.635-2.574 9.574-1.098.652-2.299.944-3.5.944z"/></g><g><path d="m398.376 328.624c-1.184 0-2.402-.309-3.5-.944l-26.628-15.373c-3.346-1.939-4.495-6.211-2.574-9.574 1.939-3.346 6.228-4.495 9.574-2.556l26.628 15.373c3.346 1.939 4.495 6.211 2.574 9.574-1.287 2.248-3.655 3.5-6.074 3.5z"/></g><g><path d="m426.479 223.744h-30.745c-3.878 0-7-3.14-7-7s3.14-7 7-7h30.745c3.878 0 7 3.14 7 7s-3.123 7-7 7z"/></g><g><path d="m371.765 134.253c-2.419 0-4.77-1.252-6.074-3.5-1.939-3.346-.789-7.635 2.574-9.574l26.628-15.373c3.346-1.939 7.635-.789 9.574 2.556 1.939 3.346.789 7.635-2.574 9.574l-26.628 15.373c-1.115.635-2.316.944-3.5.944z"/></g><g><path d="m306.243 68.748c-1.184 0-2.402-.309-3.5-.944-3.346-1.939-4.495-6.228-2.574-9.574l15.373-26.628c1.939-3.346 6.228-4.495 9.574-2.556s4.495 6.228 2.574 9.574l-15.373 26.628c-1.304 2.23-3.655 3.5-6.074 3.5z"/></g><g><path d="m216.752 223.744h-70.927c-3.877 0-7-3.14-7-7s3.14-7 7-7h63.91v-100.66c0-3.877 3.14-7 7-7s7 3.14 7 7v107.66c.017 3.877-3.122 7-6.983 7z"/></g></g></g></svg>
+            </div>
+            <div>
+              <div class="resa-info-label">Horaires</div>
+              <div class="resa-info-val">Mardi — Samedi<br>10h00 — 19h30<br>Dimanche sur demande</div>
+            </div>
+          </div>
+          <div class="resa-info-item">
+            <div class="resa-info-icon">
+              <svg viewBox="0 0 43.3492 43.3492" width="22" height="22" fill="var(--gold)"><g><path d="m21.6746 0c6.4829 0 11.7384 4.7192 11.7384 10.5408 0 4.2806-9.5672 24.2237-11.7697 29.4473-3.1266-7.4154-9.5421-19.9465-11.3957-27.027l-.0012-.0029h.0004c-.203-.7763-.3106-1.5856-.3106-2.4174 0-5.8216 5.2555-10.5408 11.7384-10.5408zm0 4.9443c3.0871 0 5.5897 2.5026 5.5897 5.5897s-2.5026 5.5897-5.5897 5.5897-5.5897-2.5026-5.5897-5.5897 2.5026-5.5897 5.5897-5.5897z"/><path d="m30.4074 38.9707c0-1.8343-2.2744-3.4564-5.6397-4.0945-.8141 1.7959-1.646 3.598-2.4111 5.4126l-.7133 1.6917-.7132-1.6917-2.2872-5.4242c-3.3991.63-5.7011 2.2607-5.7011 4.1061 0 2.4182 3.9098 4.3785 8.7328 4.3785s8.7328-1.9603 8.7328-4.3785z"/></g></svg>
+            </div>
+            <div>
+              <div class="resa-info-label">Adresse</div>
+              <div class="resa-info-val">24 rue Sala<br>69002 Lyon<br>Métro Bellecour</div>
+            </div>
+          </div>
+          <div class="resa-info-item">
+            <div class="resa-info-icon">
+              <svg viewBox="0 0 23.625 23.625" width="22" height="22" fill="var(--gold)"><path d="M11.812,0C5.289,0,0,5.289,0,11.812s5.289,11.813,11.812,11.813s11.813-5.29,11.813-11.813S18.335,0,11.812,0z M14.271,18.307c-0.608,0.24-1.092,0.422-1.455,0.548c-0.362,0.126-0.783,0.189-1.262,0.189c-0.736,0-1.309-0.18-1.717-0.539s-0.611-0.814-0.611-1.367c0-0.215,0.015-0.435,0.045-0.659c0.031-0.224,0.08-0.476,0.147-0.759l0.761-2.688c0.067-0.258,0.125-0.503,0.171-0.731c0.046-0.23,0.068-0.441,0.068-0.633c0-0.342-0.071-0.582-0.212-0.717c-0.143-0.135-0.412-0.201-0.813-0.201c-0.196,0-0.398,0.029-0.605,0.09c-0.205,0.063-0.383,0.12-0.529,0.176l0.201-0.828c0.498-0.203,0.975-0.377,1.43-0.521c0.455-0.146,0.885-0.218,1.29-0.218c0.731,0,1.295,0.178,1.692,0.53c0.395,0.353,0.594,0.812,0.594,1.376c0,0.117-0.014,0.323-0.041,0.617c-0.027,0.295-0.078,0.564-0.152,0.811l-0.757,2.68c-0.062,0.215-0.117,0.461-0.167,0.736c-0.049,0.275-0.073,0.485-0.073,0.626c0,0.356,0.079,0.599,0.239,0.728c0.158,0.129,0.435,0.194,0.827,0.194c0.185,0,0.392-0.033,0.626-0.097c0.232-0.064,0.4-0.121,0.506-0.17L14.271,18.307z M14.137,7.429c-0.353,0.328-0.778,0.492-1.275,0.492c-0.496,0-0.924-0.164-1.28-0.492c-0.354-0.328-0.533-0.727-0.533-1.193c0-0.465,0.18-0.865,0.533-1.196c0.356-0.332,0.784-0.497,1.28-0.497c0.497,0,0.923,0.165,1.275,0.497c0.353,0.331,0.53,0.731,0.53,1.196C14.667,6.703,14.49,7.101,14.137,7.429z"/></svg>
+            </div>
+            <div>
+              <div class="resa-info-label">À savoir</div>
+              <div class="resa-info-val">Arrivez 10 minutes avant votre soin. Nous vous accueillons avec une infusion japonaise. Annulation possible jusqu'à 24h avant.</div>
+            </div>
+          </div>
+          <div class="resa-info-item">
+            <div class="resa-info-icon">
+              <svg viewBox="0 0 442 442" width="22" height="22" fill="var(--gold)"><path d="M105.4,221c0,9.391-7.609,17-17,17h-34c-9.391,0-17-7.609-17-17l0,0c0-9.391,7.609-17,17-17h34C97.792,204,105.4,211.609,105.4,221L105.4,221z M105.4,112.2c0-9.391-7.609-17-17-17h-34c-9.391,0-17,7.609-17,17l0,0c0,9.391,7.609,17,17,17h34C97.792,129.2,105.4,121.591,105.4,112.2L105.4,112.2z M105.4,329.801c0-9.393-7.609-17-17-17h-34c-9.391,0-17,7.607-17,17l0,0c0,9.391,7.609,17,17,17h34C97.792,346.801,105.4,339.191,105.4,329.801L105.4,329.801z M404.6,54.4v333.2c0,30.043-24.357,54.4-54.398,54.4h-238c-30.042,0-54.4-24.357-54.4-54.4V360.4h30.6c16.871,0,30.6-13.73,30.6-30.6c0-16.871-13.729-30.602-30.6-30.602H57.8v-47.6h30.6c16.871,0,30.6-13.729,30.6-30.6s-13.729-30.6-30.6-30.6H57.8v-47.6h30.6c16.871,0,30.6-13.729,30.6-30.6c0-16.871-13.729-30.6-30.6-30.6H57.8V54.4c0-30.042,24.358-54.4,54.4-54.4h238C380.242,0,404.6,24.357,404.6,54.4z M188.945,161.255c0,28.968,23.487,52.455,52.455,52.455c28.969,0,52.455-23.487,52.455-52.455c0-28.968-23.486-52.456-52.455-52.456C212.433,108.8,188.945,132.287,188.945,161.255z M323,289.482c0-32.184-26.098-58.283-58.283-58.283H218.09c-32.191,0-58.29,26.1-58.29,58.283v23.318H323V289.482z"/></svg>
+            </div>
+            <div>
+              <div class="resa-info-label">Contact direct</div>
+              <div class="resa-info-val">04 72 XX XX XX<br>contact@kospa-lyon.fr</div>
+            </div>
+          </div>
+        </div>
+        <div class="reveal" style="transition-delay:.15s">
+          <div class="planity-block">
+            <div class="planity-header">
+              <div class="planity-logo">
+                <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="var(--gold)" stroke-width="1.5"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="16" y1="2" x2="16" y2="6"/></svg>
+              </div>
+              <div>
+                <div class="planity-title">Réservation en ligne</div>
+                <div class="planity-sub">Choisissez votre soin, votre date et votre heure directement en ligne.</div>
+              </div>
+            </div>
+            <div class="planity-features">
+              <div class="planity-feat">/ Disponibilités en temps réel</div>
+              <div class="planity-feat">/ Confirmation instantanée par email</div>
+              <div class="planity-feat">/ Rappel SMS 24h avant</div>
+              <div class="planity-feat">/ Annulation gratuite jusqu'à 24h avant</div>
+            </div>
+            <a href="https://www.planity.com" target="_blank" class="planity-cta">
+              <span>Réserver sur Planity</span>
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+            <div class="planity-note">Vous préférez nous appeler ? <strong>04 72 XX XX XX</strong></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- A PROPOS -->
+  <section class="apropos" id="apropos">
+    <div class="container">
+      <div class="apropos-grid">
+        <div class="apropos-img reveal">
+          <img src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?w=600&q=80" alt="Kō Spa fondatrice"/>
+          <div class="apropos-kanji">和</div>
+        </div>
+        <div class="apropos-text reveal" style="transition-delay:.2s">
+          <div class="s-label">Notre histoire</div>
+          <h2 class="s-title" style="color:var(--white)">Née d'une passion<br>pour le soin<br><em style="color:var(--sand)">authentique</em></h2>
+          <p class="apropos-body">Kō Spa est né d'un voyage au Japon et d'une révélation : le Head Spa n'est pas un simple soin capillaire, c'est une philosophie du prendre soin de soi. De retour à Lyon, il a fallu créer l'espace qui manquait — un lieu où la tradition japonaise rencontre l'exigence française.</p>
+          <p class="apropos-body">Chaque détail de Kō Spa — les produits, les protocoles, l'architecture intérieure — a été pensé pour recréer cet état de grâce que procurent les meilleurs spas japonais.</p>
+          <div class="apropos-vals">
+            <div class="apropos-val">
+              <div class="apropos-val-icon">一</div>
+              <div class="apropos-val-text">Formation auprès de maîtres praticiens japonais</div>
+            </div>
+            <div class="apropos-val">
+              <div class="apropos-val-icon">二</div>
+              <div class="apropos-val-text">Produits sourcés directement au Japon, deux fois par an</div>
+            </div>
+            <div class="apropos-val">
+              <div class="apropos-val-icon">三</div>
+              <div class="apropos-val-text">Un espace conçu avec un architecte spécialisé en bien-être</div>
+            </div>
+          </div>
+          <div class="apropos-signature">Avec sérénité et passion — L'équipe Kō Spa</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TEMOIGNAGES -->
+  <section class="temoignages">
+    <div class="container">
+      <div class="s-label reveal">Témoignages</div>
+      <h2 class="s-title reveal">Ce qu'elles<br>disent de<br><em style="color:var(--gold)">Kō Spa</em></h2>
+      <div class="temo-grid">
+        <div class="temo-card reveal">
+          <div class="temo-stars">★★★★★</div>
+          <p class="temo-text">"Une expérience absolument hors du temps. J'avais des tensions dans le cuir chevelu depuis des mois — après le Rituel Sérénité, j'ai retrouvé une légèreté incroyable."</p>
+          <div class="temo-author">Amélie R. · Lyon 6ème</div>
+        </div>
+        <div class="temo-card reveal" style="transition-delay:.1s">
+          <div class="temo-stars">★★★★★</div>
+          <p class="temo-text">"L'accueil, les produits, le soin… tout est d'une qualité rare. Je reviens chaque mois depuis 6 mois. Kō Spa est devenu mon espace de ressourcement."</p>
+          <div class="temo-author">Sophie M. · Villeurbanne</div>
+        </div>
+        <div class="temo-card reveal" style="transition-delay:.2s">
+          <div class="temo-stars">★★★★★</div>
+          <p class="temo-text">"J'ai offert le Rituel Duo à ma meilleure amie pour son anniversaire. On a passé un moment absolument magique. Le cadeau parfait pour une personne qui mérite le meilleur."</p>
+          <div class="temo-author">Clara B. · Lyon 3ème</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="container">
+      <div class="contact-grid">
+        <div class="reveal">
+          <div class="s-label">Nous trouver</div>
+          <h2 class="s-title">Venez nous<br>rendre visite</h2>
+          <div class="contact-map">
+            <img src="https://images.unsplash.com/photo-1524661135-423995f22d0b?w=800&q=80" alt="Lyon carte"/>
+            <div class="contact-map-overlay">
+              <div class="contact-map-pin"></div>
+            </div>
+          </div>
+          <div class="contact-infos">
+            <div class="contact-info">
+              <div>
+                <div class="contact-info-label">Adresse</div>
+                <div class="contact-info-val">24 rue Sala, 69002 Lyon<br>Métro Bellecour (ligne A)</div>
+              </div>
+            </div>
+            <div class="contact-info">
+              <div>
+                <div class="contact-info-label">Contact</div>
+                <div class="contact-info-val">04 72 XX XX XX<br>contact@kospa-lyon.fr</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="reveal" style="transition-delay:.15s">
+          <div class="s-label">Horaires</div>
+          <h2 class="s-title">Ouvert<br>du mardi<br>au samedi</h2>
+          <div class="contact-hours">
+            <div class="contact-hour closed">
+              <span class="contact-hour-day">Lundi</span>
+              <span class="contact-hour-time">Fermé</span>
+            </div>
+            <div class="contact-hour">
+              <span class="contact-hour-day">Mardi — Vendredi</span>
+              <span class="contact-hour-time">10h — 19h30</span>
+            </div>
+            <div class="contact-hour">
+              <span class="contact-hour-day">Samedi</span>
+              <span class="contact-hour-time">9h — 19h</span>
+            </div>
+            <div class="contact-hour closed">
+              <span class="contact-hour-day">Dimanche</span>
+              <span class="contact-hour-time">Sur demande</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA FINAL -->
+  <section class="cta-final">
+    <div class="container">
+      <div class="s-label reveal">Commencez votre voyage</div>
+      <h2 class="s-title reveal">Offrez-vous<br>un moment<br><em style="color:var(--sand)">rien qu'à vous</em></h2>
+      <p class="cta-final-sub reveal">Première séance à tarif découverte · Annulation gratuite jusqu'à 24h avant</p>
+      <div class="cta-final-btns reveal">
+        <a href="#reservation" class="btn-gold">Réserver mon soin</a>
+        <a href="#soins" class="btn-ghost">Voir tous les rituels</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="f-logo">K<span>ō</span> Spa</div>
+          <p class="f-desc">Head Spa japonais au cœur de Lyon. Des rituels ancestraux pour le cuir chevelu et l'esprit. Un espace de sérénité unique.</p>
+        </div>
+        <div>
+          <div class="f-col-title">Navigation</div>
+          <ul class="f-links">
+            <li><a href="#soins">Nos soins</a></li>
+            <li><a href="#tarifs">Tarifs</a></li>
+            <li><a href="#reservation">Réservation</a></li>
+            <li><a href="#apropos">Notre histoire</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="f-col-title">Contact</div>
+          <div class="f-contact-line">24 rue Sala, 69002 Lyon</div>
+          <div class="f-contact-line">04 72 XX XX XX</div>
+          <div class="f-contact-line">contact@kospa-lyon.fr</div>
+          <div style="margin-top:16px">
+            <div class="f-col-title">Horaires</div>
+            <div class="f-contact-line">Mar — Ven : 10h — 19h30</div>
+            <div class="f-contact-line">Sam : 9h — 19h</div>
+          </div>
+        </div>
+      </div>
+      <div class="f-bottom">
+        <div class="f-copy">© 2026 Kō Spa · Lyon · Tous droits réservés · Mentions légales</div>
+        <div class="f-credits">Site réalisé par <a href="https://nstudiodigital.fr">N/ Studio Digital</a></div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // CURSOR
+    const cursor = document.getElementById('cursor');
+    const ring = document.getElementById('cursorRing');
+    document.addEventListener('mousemove', e => {
+      cursor.style.left = e.clientX + 'px';
+      cursor.style.top = e.clientY + 'px';
+      setTimeout(() => { ring.style.left = e.clientX + 'px'; ring.style.top = e.clientY + 'px'; }, 80);
+    });
+    document.querySelectorAll('a, button, .soin-card').forEach(el => {
+      el.addEventListener('mouseenter', () => { cursor.style.width = '16px'; cursor.style.height = '16px'; ring.style.width = '48px'; ring.style.height = '48px'; });
+      el.addEventListener('mouseleave', () => { cursor.style.width = '8px'; cursor.style.height = '8px'; ring.style.width = '32px'; ring.style.height = '32px'; });
+    });
+
+    // NAV SCROLL
+    window.addEventListener('scroll', () => { document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 60); });
+
+    // MOBILE MENU
+    function toggleMenu() { document.getElementById('mobileMenu').classList.toggle('open'); }
+    function closeMenu() { document.getElementById('mobileMenu').classList.remove('open'); }
+
+    // REVEAL
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('vis'); obs.unobserve(e.target); } });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+  </script>
+</body>
+</html>
