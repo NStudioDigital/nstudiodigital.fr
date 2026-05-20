@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Conditions Générales de Vente — N/ Studio Digital</title>
+  <meta name="robots" content="noindex"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --black: #0D0D0D;
+      --white: #FFFFFF;
+      --gray-mid: #888888;
+      --gray-bg: #F4F4F4;
+      --gray-bd: #E0E0E0;
+      --sage: #7A9478;
+      --font: 'Inter', sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body { font-family: var(--font); background: var(--white); color: var(--black); -webkit-font-smoothing: antialiased; }
+    .container { max-width: 780px; margin: 0 auto; padding: 0 40px; }
+    @media(max-width:600px){ .container { padding: 0 20px; } }
+
+    /* NAV */
+    nav { background: var(--white); border-bottom: 1px solid var(--gray-bd); padding: 0; position: sticky; top: 0; z-index: 100; }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 60px; }
+    .nav-logo { font-size: 17px; font-weight: 400; color: var(--black); text-decoration: none; }
+    .nav-logo .slash { font-weight: 300; color: var(--sage); }
+    .nav-back { font-size: 13px; color: var(--gray-mid); text-decoration: none; display: flex; align-items: center; gap: 6px; transition: color .2s; }
+    .nav-back:hover { color: var(--black); }
+
+    /* HEADER */
+    .page-header { padding: 56px 0 40px; border-bottom: 1px solid var(--gray-bd); margin-bottom: 48px; }
+    .page-label { font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 2.5px; color: var(--sage); margin-bottom: 16px; display: flex; align-items: center; gap: 10px; }
+    .page-label::before { content: '/'; font-weight: 300; font-size: 16px; }
+    .page-title { font-size: clamp(26px, 4vw, 40px); font-weight: 400; line-height: 1.15; letter-spacing: -1px; margin-bottom: 16px; }
+    .page-meta { font-size: 13px; color: var(--gray-mid); line-height: 1.6; }
+
+    /* CONTENU */
+    .cgv-content { padding-bottom: 80px; }
+    .cgv-section { margin-bottom: 44px; }
+    .cgv-section-title {
+      font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px;
+      color: var(--black); margin-bottom: 18px; padding-bottom: 12px;
+      border-bottom: 1px solid var(--gray-bd);
+      display: flex; align-items: center; gap: 10px;
+    }
+    .cgv-section-title::before { content: '/'; color: var(--sage); font-weight: 300; font-size: 16px; }
+    .cgv-section p { font-size: 14px; color: var(--black); line-height: 1.8; margin-bottom: 14px; }
+    .cgv-section p:last-child { margin-bottom: 0; }
+    .cgv-section ul { padding-left: 0; list-style: none; display: flex; flex-direction: column; gap: 8px; margin-bottom: 14px; }
+    .cgv-section ul li { font-size: 14px; color: var(--black); line-height: 1.7; padding-left: 18px; position: relative; }
+    .cgv-section ul li::before { content: '/'; position: absolute; left: 0; color: var(--sage); font-weight: 300; }
+    .cgv-section strong { font-weight: 600; }
+    .cgv-section em { font-style: italic; color: var(--gray-mid); }
+
+    /* BOX */
+    .info-box { background: var(--gray-bg); border: 1px solid var(--gray-bd); padding: 20px 24px; margin: 20px 0; border-left: 3px solid var(--sage); }
+    .info-box p { font-size: 13px; color: var(--gray-mid); line-height: 1.7; margin: 0; }
+    .info-box strong { color: var(--black); }
+
+    /* FOOTER */
+    footer { background: var(--black); padding: 32px 0; margin-top: 0; }
+    .footer-inner { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+    .f-copy { font-size: 12px; color: rgba(255,255,255,.35); }
+    .f-links { display: flex; gap: 20px; }
+    .f-links a { font-size: 12px; color: rgba(255,255,255,.35); text-decoration: none; transition: color .2s; }
+    .f-links a:hover { color: rgba(255,255,255,.7); }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="container">
+      <div class="nav-inner">
+        <a href="index.html" class="nav-logo">N<span class="slash">/</span> Studio Digital</a>
+        <a href="index.html" class="nav-back">← Retour au site</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container">
+
+    <!-- HEADER -->
+    <div class="page-header">
+      <div class="page-label">Documents légaux</div>
+      <h1 class="page-title">Conditions Générales de Vente</h1>
+      <p class="page-meta">N/ Studio Digital — Nadège Dufour, Directrice Créative<br>
+      Dernière mise à jour : mai 2026</p>
+    </div>
+
+    <!-- CONTENU -->
+    <div class="cgv-content">
+
+      <div class="cgv-section">
+        <div class="cgv-section-title">Article 1 — Identification du prestataire</div>
+        <p>Les présentes Conditions Générales de Vente (ci-après « CGV ») s'appliquent à toutes les prestations conclues entre :</p>
+        <p><strong>N/ Studio Digital</strong><br>
+        Représentée par Nadège Dufour, Directrice Créative<br>
+        Micro-entreprise<br>
+        Siège social : Rillieux-la-Pape (69140), France<br>
+        Email : <a href="mailto:contact@nstudiodigital.fr">contact@nstudiodigital.fr</a><br>
+        Téléphone : 06 68 90 44 11<br>
+        Site internet : <a href="https://nstudiodigital.fr">nstudiodigital.fr</a><br>
+        TVA non applicable — art. 293 B du Code Général des Impôts</p>
+        <p>Ci-après désignée « le Prestataire ».</p>
+        <p>Et toute personne physique ou morale ayant recours aux services du Prestataire, ci-après désignée « le Client ».</p>
+      </div>
+
+      <div class="cgv-section">
+        <div class="cgv-section-title">Article 2 — Acceptation des CGV</div>
+        <p>Toute commande passée auprès de N/ Studio Digital implique l'acceptation pleine et entière des présentes Conditions Générales de Vente. Ces CGV prévalent sur tout autre document du Client, sauf accord écrit préalable du Prestataire.</p>
+        <p>Le Client reconnaît avoir pris connaissance des présentes CGV avant de passer commande.</p>
+      </div>
+
+      <div class="cgv-section">
+        <div class="cgv-section-title">Article 3 — Description des prestations</div>
+        <p>N/ Studio Digital propose les prestations suivantes :</p>
+        <ul>
+          <li><strong>Création de site vitrine sur-mesure</strong> : développement d'un site internet statique (HTML/CSS), hébergé sur Vercel, avec optimisation SEO local, formulaire de contact, et mise en ligne sur le nom de domaine du Client.</li>
+          <li><strong>Forfait de maintenance mensuel</strong> : service optionnel de modifications du site après livraison, selon les conditions définies à l'article 6.</li>
+          <li><strong>Options à la carte</strong> : pages supplémentaires, intégration d'un système de réservation en ligne, rédaction des textes, galerie photos avant/après.</li>
+        </ul>
+        <p>Le détail de chaque prestation est précisé dans le devis ou la proposition commerciale remis au Client avant la commande.</p>
+      </div>
+
+      <div class="cgv-section">
+        <div class="cgv-section-title">Article 4 — Commande et formation du contrat</div>
+        <p>Toute commande est formalisée par la signature ou l'acceptation par email du devis établi par le Prestataire, accompagnée du paiement de l'acompte correspondant.</p>
+        <p>Le Prestataire se réserve le droit de refuser toute commande pour des motifs légitimes, notamment en cas d'indisponibilité, de contenu contraire à la loi ou aux bonnes mœurs, ou de litige antérieur.</p>
+      </div>
+
+      <div class="cgv-section">
+        <div class="cgv-section-title">Article 5 — Tarifs et modalités de paiement</div>
+        <p><strong>5.1 Tarifs</strong></p>
+        <p>Les prix sont exprimés en euros TTC. N/ Studio Digital bénéficie de la franchise en base de TVA (art. 293 B du CGI) ; aucune TVA n'est donc facturée.</p>
+
+        <p><strong>5.2 Création de site — paiement en deux fois</strong></p>
+        <ul>
+          <li>50 % du montant total à la commande, pour démarrer le projet.</li>
+          <li>50 % du montant total à la livraison, avant mise en ligne.</li>
+        </ul>
+        <p>Le règlement s'effectue par virement bancaire. Les coordonnées bancaires sont communiquées sur la facture.</p>
+
+        <p><strong>5.3 Retard de paiement</strong></p>
+        <p>Tout retard de paiement entraîne de plein droit l'application d'intérêts de retard au taux légal en vigueur, ainsi qu'une indemnité forfaitaire de recouvrement de 40€ (art. L.441-10 du Code de Commerce). En cas de non-paiement du solde, le Prestataire se réserve le droit de ne pas procéder à la mise en ligne du site, ou d'en suspendre l'accès.</p>
+      </div>
+
+      <div class="cgv-section">
+        <div class="cgv-section-title">Article 6 — Forfait de maintenance mensuel</div>
+        <p>Le forfait de maintenance est un service optionnel, sans engagement de durée, résiliable à tout moment avec un préavis de 30 jours.</p>
+
+        <p><strong>6.1 Ce qui est inclus</strong></p>
+        <ul>
+          <li>Jusqu'à <strong>3 modifications simples par mois</strong> (ex : modification de texte, mise à jour d'une photo, modification d'horaires ou de tarifs).</li>
+          <li>Délai d'intervention : <strong>48h ouvrées</strong> à compter de la réception de la demande.</li>
+        </ul>
+
+        <p><strong>6.2 Ce qui n'est pas inclus</strong></p>
+        <ul>
+          <li>Les modifications non utilisées au cours d'un mois ne sont ni reportées ni remboursées.</li>
+          <li>Toute demande dépassant le cadre d'une modification simple (ajout de section, refonte partielle, nouvelle fonctionnalité) fait l'objet d'un devis séparé.</li>
+        </ul>
+
+        <p><strong>6.3 Modalités de paiement</strong></p>
+        <p>Le forfait est facturé mensuellement, par prélèvement ou virement selon accord. La résiliation prend effet à la fin du mois en cours.</p>
+
+        <p><strong>6.4 Modulation</strong></p>
+        <p>Le forfait est modulable selon les besoins du Client. Toute modification de la formule est formalisée par accord écrit.</p>
+      </div>
+
+      <div class="cgv-section">
+        <div class="cgv-section-title">Article 7 — Délais de livraison</div>
+        <p>Le délai de livraison indicatif est de <strong>3 semaines</strong> à compter de la réception de l'ensemble des éléments nécessaires à la réalisation (textes, photos, identifiants de connexion, informations pratiques, etc.).</p>
+        <p>Ce délai est conditionné à la réactivité du Client dans la validation des maquettes et la fourniture des éléments. Tout retard imputable au Client entraîne un décalage équivalent du délai de livraison.</p>
+        <p>Le Prestataire ne peut être tenu responsable de retards liés à des événements indépendants de sa volonté (force majeure, indisponibilité de services tiers, etc.).</p>
+      </div>
+
+      <div class="cgv-section">
+        <div class="cgv-section-title">Article 8 — Hébergement et nom de domaine</div>
+        <p><strong>8.1 Hébergement</strong></p>
+        <p>Le site est hébergé sur <strong>Vercel</strong> (infrastructure professionnelle, HTTPS automatique, CDN mondial). L'hébergement est inclus dans la prestation de création. N/ Studio Digital ne peut être tenu responsable d'interruptions de service ou de problèmes techniques liés à l'infrastructure Vercel.</p>
+
+        <p><strong>8.2 Nom de domaine</strong></p>
+        <p>Le nom de domaine est la propriété exclusive du Client. Son acquisition, son renouvellement annuel et sa gestion sont de la responsabilité du Client. Le Prestataire peut conseiller le Client dans le choix et la configuration du nom de domaine, sans en assurer la gestion administrative.</p>
+      </div>
+
+      <div class="cgv-section">
+        <div class="cgv-section-title">Article 9 — Propriété intellectuelle et transfert</div>
+        <p><strong>9.1 Propriété du site livré</strong></p>
+        <p>À réception du paiement intégral, le Client devient propriétaire à 100% du site livré. Le code source lui est remis. Il est libre de le modifier, le transférer ou le confier à un autre prestataire.</p>
+
+        <p><strong>9.2 Contenus fournis par le Client</strong></p>
+        <p>Le Client garantit être propriétaire ou disposer des droits nécessaires sur l'ensemble des contenus qu'il fournit (textes, photos, logos, vidéos). Il déclare que ces contenus ne portent pas atteinte aux droits de tiers. N/ Studio Digital ne peut être tenu responsable des litiges liés aux contenus fournis par le Client.</p>
+
+        <p><strong>9.3 Droits du Prestataire</strong></p>
+        <p>Sauf mention contraire écrite, le Prestataire se réserve le droit de mentionner la réalisation du site dans son portfolio et ses supports de communication, avec l'accord tacite du Client.</p>
+      </div>
+
+      <div class="cgv-section">
+        <div class="cgv-section-title">Article 10 — Révisions et modifications</div>
+        <p>Les révisions sont incluses dans le délai de réalisation, dans le cadre du brief initial validé par le Client. Toute demande de modification substantielle en cours de projet (changement de direction créative, ajout de fonctionnalités non prévues) peut faire l'objet d'un avenant tarifaire.</p>
+        <p>Après livraison, les modifications du site sont régies par l'article 6 (forfait maintenance) ou font l'objet d'un devis ponctuel.</p>
+      </div>
+
+      <div class="cgv-section">
+        <div class="cgv-section-title">Article 11 — Résiliation</div>
+        <p><strong>11.1 Résiliation par le Client</strong></p>
+        <p>En cas d'annulation après signature du devis et versement de l'acompte, ce dernier reste acquis au Prestataire à titre d'indemnisation du travail engagé.</p>
+
+        <p><strong>11.2 Résiliation du forfait maintenance</strong></p>
+        <p>Le Client peut résilier le forfait mensuel à tout moment, par email, avec un préavis de 30 jours. La résiliation prend effet à la fin du mois en cours après expiration du préavis.</p>
+      </div>
+
+      <div class="cgv-section">
+        <div class="cgv-section-title">Article 12 — Responsabilité</div>
+        <p>Le Prestataire s'engage à apporter tout le soin et la compétence nécessaires à la réalisation de la prestation. Cependant, sa responsabilité ne saurait être engagée pour :</p>
+        <ul>
+          <li>Les contenus fournis par le Client (textes, photos, informations).</li>
+          <li>Les interruptions de service liées à des tiers (hébergeur, registraire de nom de domaine, outils de prise de RDV).</li>
+          <li>L'évolution des algorithmes Google affectant le référencement.</li>
+          <li>Tout dommage indirect lié à l'utilisation ou à l'indisponibilité du site.</li>
+        </ul>
+        <p>La responsabilité du Prestataire est, en tout état de cause, limitée au montant de la prestation facturée.</p>
+      </div>
+
+      <div class="cgv-section">
+        <div class="cgv-section-title">Article 13 — Protection des données personnelles</div>
+        <p>Les données personnelles collectées dans le cadre de la relation commerciale (nom, email, téléphone) sont utilisées exclusivement pour la gestion et l'exécution des prestations. Elles ne sont ni vendues, ni transmises à des tiers.</p>
+        <p>Conformément au RGPD (Règlement Général sur la Protection des Données) et à la loi Informatique et Libertés, le Client dispose d'un droit d'accès, de rectification et de suppression de ses données, en adressant sa demande à : <a href="mailto:contact@nstudiodigital.fr">contact@nstudiodigital.fr</a>.</p>
+      </div>
+
+      <div class="cgv-section">
+        <div class="cgv-section-title">Article 14 — Droit applicable et juridiction</div>
+        <p>Les présentes CGV sont soumises au droit français. En cas de litige, les parties s'engagent à rechercher une solution amiable avant tout recours judiciaire.</p>
+        <p>À défaut d'accord amiable, le litige sera soumis aux tribunaux compétents du ressort du siège du Prestataire.</p>
+      </div>
+
+      <div class="cgv-section">
+        <div class="cgv-section-title">Article 15 — Médiation de la consommation</div>
+        <div class="info-box">
+          <p>Conformément aux articles L.616-1 et R.616-1 du Code de la Consommation, et à la directive européenne 2013/11/UE relative au règlement extrajudiciaire des litiges de consommation, N/ Studio Digital propose un dispositif de médiation de la consommation.</p>
+        </div>
+        <p>En cas de litige non résolu après une tentative de résolution amiable directe avec N/ Studio Digital, le Client peut recourir gratuitement au médiateur de la consommation :</p>
+        <p><strong>Médiateur des entreprises</strong> (service public gratuit)<br>
+        Site internet : <a href="https://www.mediateurdesentreprises.fr" target="_blank" rel="noopener">www.mediateurdesentreprises.fr</a><br>
+        Ce service est accessible à tous les consommateurs, sans frais.</p>
+        <p>La médiation est possible pour tout litige relatif à l'exécution d'un contrat de vente ou de prestation de services conclu entre un professionnel et un consommateur.</p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <div class="f-copy">© 2026 N/ Studio Digital — Nadège Dufour · TVA non applicable, art. 293 B du CGI</div>
+        <div class="f-links">
+          <a href="mentions-legales.html">Mentions légales</a>
+          <a href="cgv.html">CGV</a>
+          <a href="index.html">Accueil</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
