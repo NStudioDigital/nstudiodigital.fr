@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mentions Légales — N/ Studio Digital</title>
+  <meta name="robots" content="noindex"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --black: #0D0D0D;
+      --white: #FFFFFF;
+      --gray-mid: #888888;
+      --gray-bg: #F4F4F4;
+      --gray-bd: #E0E0E0;
+      --sage: #7A9478;
+      --font: 'Inter', sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body { font-family: var(--font); background: var(--white); color: var(--black); -webkit-font-smoothing: antialiased; }
+    .container { max-width: 780px; margin: 0 auto; padding: 0 40px; }
+    @media(max-width:600px){ .container { padding: 0 20px; } }
+
+    nav { background: var(--white); border-bottom: 1px solid var(--gray-bd); position: sticky; top: 0; z-index: 100; }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 60px; }
+    .nav-logo { font-size: 17px; font-weight: 400; color: var(--black); text-decoration: none; }
+    .nav-logo .slash { font-weight: 300; color: var(--sage); }
+    .nav-back { font-size: 13px; color: var(--gray-mid); text-decoration: none; display: flex; align-items: center; gap: 6px; transition: color .2s; }
+    .nav-back:hover { color: var(--black); }
+
+    .page-header { padding: 56px 0 40px; border-bottom: 1px solid var(--gray-bd); margin-bottom: 48px; }
+    .page-label { font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 2.5px; color: var(--sage); margin-bottom: 16px; display: flex; align-items: center; gap: 10px; }
+    .page-label::before { content: '/'; font-weight: 300; font-size: 16px; }
+    .page-title { font-size: clamp(26px, 4vw, 40px); font-weight: 400; line-height: 1.15; letter-spacing: -1px; margin-bottom: 16px; }
+    .page-meta { font-size: 13px; color: var(--gray-mid); line-height: 1.6; }
+
+    .ml-content { padding-bottom: 80px; }
+    .ml-section { margin-bottom: 44px; }
+    .ml-section-title {
+      font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px;
+      color: var(--black); margin-bottom: 18px; padding-bottom: 12px;
+      border-bottom: 1px solid var(--gray-bd);
+      display: flex; align-items: center; gap: 10px;
+    }
+    .ml-section-title::before { content: '/'; color: var(--sage); font-weight: 300; font-size: 16px; }
+    .ml-section p { font-size: 14px; color: var(--black); line-height: 1.8; margin-bottom: 14px; }
+    .ml-section p:last-child { margin-bottom: 0; }
+    .ml-section ul { padding-left: 0; list-style: none; display: flex; flex-direction: column; gap: 8px; margin-bottom: 14px; }
+    .ml-section ul li { font-size: 14px; color: var(--black); line-height: 1.7; padding-left: 18px; position: relative; }
+    .ml-section ul li::before { content: '/'; position: absolute; left: 0; color: var(--sage); font-weight: 300; }
+    .ml-section strong { font-weight: 600; }
+    .ml-section a { color: var(--sage); text-decoration: none; }
+    .ml-section a:hover { text-decoration: underline; }
+
+    footer { background: var(--black); padding: 32px 0; }
+    .footer-inner { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+    .f-copy { font-size: 12px; color: rgba(255,255,255,.35); }
+    .f-links { display: flex; gap: 20px; }
+    .f-links a { font-size: 12px; color: rgba(255,255,255,.35); text-decoration: none; transition: color .2s; }
+    .f-links a:hover { color: rgba(255,255,255,.7); }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="container">
+      <div class="nav-inner">
+        <a href="index.html" class="nav-logo">N<span class="slash">/</span> Studio Digital</a>
+        <a href="index.html" class="nav-back">← Retour au site</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container">
+
+    <div class="page-header">
+      <div class="page-label">Documents légaux</div>
+      <h1 class="page-title">Mentions Légales</h1>
+      <p class="page-meta">N/ Studio Digital — nstudiodigital.fr<br>
+      Dernière mise à jour : mai 2026</p>
+    </div>
+
+    <div class="ml-content">
+
+      <div class="ml-section">
+        <div class="ml-section-title">Éditeur du site</div>
+        <p><strong>N/ Studio Digital</strong><br>
+        Représentée par Nadège Dufour, Directrice Créative<br>
+        Micro-entreprise<br>
+        Siège social : Rillieux-la-Pape (69140), France<br>
+        Email : <a href="mailto:contact@nstudiodigital.fr">contact@nstudiodigital.fr</a><br>
+        Téléphone : 06 68 90 44 11<br>
+        TVA non applicable — art. 293 B du Code Général des Impôts</p>
+      </div>
+
+      <div class="ml-section">
+        <div class="ml-section-title">Hébergement</div>
+        <p>Le site nstudiodigital.fr est hébergé par :</p>
+        <p><strong>Vercel Inc.</strong><br>
+        440 N Barranca Ave #4133<br>
+        Covina, CA 91723, États-Unis<br>
+        Site : <a href="https://vercel.com" target="_blank" rel="noopener">vercel.com</a></p>
+      </div>
+
+      <div class="ml-section">
+        <div class="ml-section-title">Directrice de la publication</div>
+        <p>Nadège Dufour — <a href="mailto:contact@nstudiodigital.fr">contact@nstudiodigital.fr</a></p>
+      </div>
+
+      <div class="ml-section">
+        <div class="ml-section-title">Propriété intellectuelle</div>
+        <p>L'ensemble du contenu de ce site (textes, visuels, structure, code) est la propriété exclusive de N/ Studio Digital, sauf mentions contraires.</p>
+        <p>Toute reproduction, représentation, modification, publication ou adaptation, totale ou partielle, de l'un des éléments du site, quel que soit le moyen ou le procédé utilisé, est interdite sans l'autorisation écrite préalable de N/ Studio Digital.</p>
+        <p>Toute exploitation non autorisée constitue une contrefaçon sanctionnée par les articles L.335-2 et suivants du Code de la Propriété Intellectuelle.</p>
+      </div>
+
+      <div class="ml-section">
+        <div class="ml-section-title">Protection des données personnelles</div>
+        <p>N/ Studio Digital collecte des données personnelles uniquement dans le cadre du formulaire de contact présent sur le site (nom, email, téléphone, message). Ces données sont utilisées exclusivement pour répondre aux demandes des utilisateurs et ne sont ni vendues, ni transmises à des tiers.</p>
+        <p>Conformément au Règlement Général sur la Protection des Données (RGPD — UE 2016/679) et à la loi n°78-17 du 6 janvier 1978 relative à l'informatique, aux fichiers et aux libertés, vous disposez des droits suivants :</p>
+        <ul>
+          <li>Droit d'accès à vos données personnelles</li>
+          <li>Droit de rectification des données inexactes</li>
+          <li>Droit à l'effacement (droit à l'oubli)</li>
+          <li>Droit à la portabilité de vos données</li>
+          <li>Droit d'opposition au traitement</li>
+        </ul>
+        <p>Pour exercer ces droits, adressez votre demande par email à : <a href="mailto:contact@nstudiodigital.fr">contact@nstudiodigital.fr</a>. Une réponse vous sera apportée dans un délai de 30 jours.</p>
+        <p>En cas de réclamation, vous pouvez également contacter la <strong>CNIL</strong> (Commission Nationale de l'Informatique et des Libertés) : <a href="https://www.cnil.fr" target="_blank" rel="noopener">www.cnil.fr</a></p>
+      </div>
+
+      <div class="ml-section">
+        <div class="ml-section-title">Cookies</div>
+        <p>Ce site peut utiliser des cookies techniques nécessaires à son fonctionnement. Aucun cookie publicitaire ou de tracking tiers n'est utilisé sans votre consentement explicite.</p>
+        <p>Vous pouvez configurer votre navigateur pour refuser les cookies. Cela peut affecter certaines fonctionnalités du site.</p>
+      </div>
+
+      <div class="ml-section">
+        <div class="ml-section-title">Liens hypertextes</div>
+        <p>Le site nstudiodigital.fr peut contenir des liens vers des sites tiers. N/ Studio Digital ne peut être tenu responsable du contenu de ces sites externes ni de leur politique en matière de données personnelles.</p>
+        <p>La création de liens hypertextes vers le site nstudiodigital.fr est possible sous réserve d'accord préalable de N/ Studio Digital.</p>
+      </div>
+
+      <div class="ml-section">
+        <div class="ml-section-title">Médiation de la consommation</div>
+        <p>Conformément aux articles L.616-1 et R.616-1 du Code de la Consommation, et à la directive 2013/11/UE, N/ Studio Digital propose un recours au médiateur de la consommation en cas de litige non résolu :</p>
+        <p><strong>Médiateur des entreprises</strong> (service public gratuit)<br>
+        <a href="https://www.mediateurdesentreprises.fr" target="_blank" rel="noopener">www.mediateurdesentreprises.fr</a></p>
+      </div>
+
+      <div class="ml-section">
+        <div class="ml-section-title">Droit applicable</div>
+        <p>Les présentes mentions légales sont soumises au droit français. En cas de litige, les tribunaux français seront seuls compétents.</p>
+      </div>
+
+    </div>
+  </div>
+
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <div class="f-copy">© 2026 N/ Studio Digital — Nadège Dufour · TVA non applicable, art. 293 B du CGI</div>
+        <div class="f-links">
+          <a href="mentions-legales.html">Mentions légales</a>
+          <a href="cgv.html">CGV</a>
+          <a href="index.html">Accueil</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
