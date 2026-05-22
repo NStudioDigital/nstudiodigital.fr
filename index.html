@@ -78,46 +78,6 @@
     .btn-hero-ghost { display: inline-flex; align-items: center; gap: 8px; background: transparent; color: rgba(255,255,255,.7); padding: 13px 24px; border-radius: 100px; font-family: var(--font); font-size: 14px; font-weight: 400; text-decoration: none; border: 1px solid rgba(255,255,255,.2); transition: border-color .25s, color .25s; }
     .btn-hero-ghost:hover { border-color: rgba(255,255,255,.5); color: white; }
 
-    /* ── STATS ── */
-    .stats-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.06); }
-    .stat-cell { padding:32px 20px; text-align:center; }
-    .stat-cell-mid { border-left:1px solid rgba(255,255,255,.06); border-right:1px solid rgba(255,255,255,.06); }
-    .stat-num { font-size:clamp(28px,7vw,48px); font-weight:300; color:var(--white); letter-spacing:-2px; line-height:1; }
-    .stat-num-sage { color:var(--sage-lt); }
-    .stat-label { font-size:10px; text-transform:uppercase; letter-spacing:2px; color:rgba(255,255,255,.25); margin-top:8px; }
-
-    /* ── TABLEAU COMPARATIF ── */
-    .comp-table-wrap { overflow-x:auto; }
-    .comp-table { width:100%; border-collapse:collapse; font-size:13px; }
-    .comp-th { padding:14px 16px; font-size:11px; font-weight:500; text-transform:uppercase; letter-spacing:1.5px; color:var(--gray-mid); border-bottom:1px solid var(--gray-bd); text-align:center; }
-    .comp-th-empty { text-align:left; }
-    .comp-th-main { font-size:13px; font-weight:600; color:var(--black); border-bottom:2px solid var(--black); background:var(--white); }
-    .comp-td { padding:14px 16px; border-bottom:1px solid var(--gray-bd); text-align:center; color:var(--gray-mid); }
-    .comp-td-label { text-align:left; }
-    .comp-td-main { background:rgba(122,148,120,.06); }
-    .comp-td-bold { font-weight:600; color:var(--black); }
-    .comp-yes { color:var(--sage); }
-    .comp-no { color:#ccc; }
-    .comp-cards { display:none; flex-direction:column; gap:12px; }
-    .comp-card { border-radius:12px; padding:20px; }
-    .comp-card-alt { background:var(--white); border:1px solid var(--gray-bd); }
-    .comp-card-main { background:var(--black); border:2px solid var(--black); }
-    .comp-card-title { font-size:13px; font-weight:600; margin-bottom:14px; padding-bottom:12px; border-bottom:1px solid var(--gray-bd); }
-    .comp-card-main .comp-card-title { color:var(--white); border-bottom-color:rgba(255,255,255,.12); }
-    .comp-card-row { display:flex; justify-content:space-between; align-items:center; padding:8px 0; border-bottom:1px solid var(--gray-bg); font-size:12px; gap:8px; }
-    .comp-card-row:last-child { border-bottom:none; }
-    .comp-card-row span:first-child { color:var(--gray-mid); flex:1; }
-    .comp-card-row span:last-child { font-weight:500; text-align:right; }
-    .comp-card-main .comp-card-row { border-bottom-color:rgba(255,255,255,.06); }
-    .comp-card-main .comp-card-row span:first-child { color:rgba(255,255,255,.45); }
-    .comp-card-main .comp-card-row span:last-child { color:var(--white); }
-    .comp-card-main .comp-yes { color:var(--sage-lt); }
-    .comp-card-bold { font-weight:700 !important; }
-    @media(max-width:768px) {
-      .comp-table-wrap { display:none; }
-      .comp-cards { display:flex; }
-    }
-
     /* ── MARQUEE ── */
     .logos-band { background: var(--white); border-bottom: 1px solid var(--gray-bd); padding: 16px 0; overflow: hidden; }
     .logos-track { display: flex; animation: marqueeX 38s linear infinite; white-space: nowrap; }
@@ -525,26 +485,24 @@
         <p class="s-sub reveal" style="transition-delay:.1s;align-self:end">Chaque site est conçu sur-mesure selon l'univers de votre activité. Voici deux exemples fictifs pour illustrer notre savoir-faire.</p>
       </div>
       <div class="real-grid">
-        <div class="real-card reveal">
+        <a href="ko-spa.html" target="_blank" class="real-card reveal" style="text-decoration:none;display:block;">
           <img class="real-card-img" src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=800&q=80" alt="Kō Spa — Head Spa japonais Lyon"/>
           <div class="real-card-overlay">
             <div class="real-card-tag">Head Spa · Lyon</div>
             <div class="real-card-name">Kō Spa</div>
             <div class="real-card-type">Site vitrine · Réservation en ligne · Rituels</div>
             <div class="real-card-desc">Site immersif pour un Head Spa japonais à Lyon. Ambiance zen et luxueuse, présentation des rituels, galerie et réservation intégrée via Planity.</div>
-            <a href="ko-spa.html" class="real-card-link" target="_blank">Voir la démo</a>
           </div>
-        </div>
-        <div class="real-card reveal" style="transition-delay:.1s">
+        </a>
+        <a href="studio-mova.html" target="_blank" class="real-card reveal" style="transition-delay:.1s;text-decoration:none;display:block;">
           <img class="real-card-img" src="https://images.unsplash.com/photo-1601422407692-ec4eeec1d9b3?w=800&q=80" alt="Studio Mova — Pilates Villeurbanne"/>
           <div class="real-card-overlay">
             <div class="real-card-tag">Pilates · Villeurbanne</div>
             <div class="real-card-name">Studio Mova</div>
             <div class="real-card-type">Site vitrine · Planning · Forfaits · Réservation</div>
             <div class="real-card-desc">Site punchy pour un studio de Pilates Réformateur. Planning de cours interactif, forfaits, portrait de la professeure et réservation Planity.</div>
-            <a href="studio-mova.html" class="real-card-link" target="_blank">Voir la démo</a>
           </div>
-        </div>
+        </a>
       </div>
       <div class="real-disclaimer reveal">Ces deux sites sont des <strong>exemples fictifs</strong> créés par N/ Studio Digital pour illustrer notre approche créative. Ils ne représentent pas de vrais établissements.</div>
     </div>
@@ -553,18 +511,18 @@
   <!-- CHIFFRES CLÉS -->
   <section style="background:var(--black);padding:56px 0;">
     <div class="container">
-      <div class="stats-grid">
-        <div class="stat-cell">
-          <div class="counter-num stat-num" data-target="3">0</div>
-          <div class="stat-label">Semaines de délai</div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.06);">
+        <div style="padding:32px 28px;text-align:center;">
+          <div class="counter-num" data-target="3" style="font-size:48px;font-weight:300;color:var(--white);letter-spacing:-2px;line-height:1;">0</div>
+          <div style="font-size:11px;text-transform:uppercase;letter-spacing:2px;color:rgba(255,255,255,.25);margin-top:8px;">Semaines de délai</div>
         </div>
-        <div class="stat-cell stat-cell-mid">
-          <div class="counter-num stat-num stat-num-sage" data-target="100">0</div>
-          <div class="stat-label">% sur-mesure</div>
+        <div style="padding:32px 28px;text-align:center;border-left:1px solid rgba(255,255,255,.06);border-right:1px solid rgba(255,255,255,.06);">
+          <div class="counter-num" data-target="100" style="font-size:48px;font-weight:300;color:var(--sage-lt);letter-spacing:-2px;line-height:1;">0</div>
+          <div style="font-size:11px;text-transform:uppercase;letter-spacing:2px;color:rgba(255,255,255,.25);margin-top:8px;">% sur-mesure</div>
         </div>
-        <div class="stat-cell">
-          <div class="counter-num stat-num" data-target="990">0</div>
-          <div class="stat-label">€ TTC tout inclus</div>
+        <div style="padding:32px 28px;text-align:center;">
+          <div class="counter-num" data-target="990" style="font-size:48px;font-weight:300;color:var(--white);letter-spacing:-2px;line-height:1;">0</div>
+          <div style="font-size:11px;text-transform:uppercase;letter-spacing:2px;color:rgba(255,255,255,.25);margin-top:8px;">€ TTC tout inclus</div>
         </div>
       </div>
     </div>
@@ -577,57 +535,25 @@
         <div class="s-label reveal">Pourquoi N/ Studio Digital ?</div>
         <h2 class="s-title reveal">Ce que vous obtenez,<br><strong>vs les alternatives.</strong></h2>
       </div>
-      <!-- Tableau desktop -->
-      <div class="comp-table-wrap reveal">
-        <table class="comp-table">
+      <div style="overflow-x:auto;" class="reveal">
+        <table style="width:100%;border-collapse:collapse;font-size:13px;">
           <thead>
             <tr>
-              <th class="comp-th comp-th-empty"></th>
-              <th class="comp-th comp-th-alt">Wix / DIY</th>
-              <th class="comp-th comp-th-alt">Template générique</th>
-              <th class="comp-th comp-th-main">N/ Studio Digital</th>
+              <th style="padding:14px 16px;text-align:left;font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:1.5px;color:var(--gray-mid);border-bottom:1px solid var(--gray-bd);"></th>
+              <th style="padding:14px 16px;text-align:center;font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:1.5px;color:var(--gray-mid);border-bottom:1px solid var(--gray-bd);">Wix / DIY</th>
+              <th style="padding:14px 16px;text-align:center;font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:1.5px;color:var(--gray-mid);border-bottom:1px solid var(--gray-bd);">Template générique</th>
+              <th style="padding:14px 16px;text-align:center;font-size:13px;font-weight:600;color:var(--black);border-bottom:2px solid var(--black);background:var(--white);">N/ Studio Digital</th>
             </tr>
           </thead>
           <tbody>
-            <tr><td class="comp-td comp-td-label">Prix</td><td class="comp-td comp-td-alt">0 à 30€/mois</td><td class="comp-td comp-td-alt">300 à 800€</td><td class="comp-td comp-td-main comp-td-bold">990€ TTC</td></tr>
-            <tr><td class="comp-td comp-td-label">Design sur-mesure</td><td class="comp-td comp-td-alt comp-no">✗</td><td class="comp-td comp-td-alt comp-no">✗</td><td class="comp-td comp-td-main comp-yes">✓</td></tr>
-            <tr><td class="comp-td comp-td-label">Spécialisé coiffure &amp; bien-être</td><td class="comp-td comp-td-alt comp-no">✗</td><td class="comp-td comp-td-alt comp-no">✗</td><td class="comp-td comp-td-main comp-yes">✓</td></tr>
-            <tr><td class="comp-td comp-td-label">SEO local inclus</td><td class="comp-td comp-td-alt comp-no">✗</td><td class="comp-td comp-td-alt">Partiel</td><td class="comp-td comp-td-main comp-yes">✓</td></tr>
-            <tr><td class="comp-td comp-td-label">Maintenance &amp; accompagnement</td><td class="comp-td comp-td-alt comp-no">✗</td><td class="comp-td comp-td-alt">Optionnel</td><td class="comp-td comp-td-main comp-yes">✓ Inclus</td></tr>
-            <tr><td class="comp-td comp-td-label">Livraison en 3 semaines</td><td class="comp-td comp-td-alt">Variable</td><td class="comp-td comp-td-alt">4 à 12 semaines</td><td class="comp-td comp-td-main comp-yes">✓ Garanti</td></tr>
+            <tr><td style="padding:14px 16px;border-bottom:1px solid var(--gray-bd);color:var(--gray-mid);">Prix</td><td style="padding:14px 16px;border-bottom:1px solid var(--gray-bd);text-align:center;color:var(--gray-mid);">0 à 30€/mois</td><td style="padding:14px 16px;border-bottom:1px solid var(--gray-bd);text-align:center;color:var(--gray-mid);">300 à 800€</td><td style="padding:14px 16px;border-bottom:1px solid var(--gray-bd);text-align:center;font-weight:600;color:var(--black);background:rgba(122,148,120,.06);">990€ TTC</td></tr>
+            <tr><td style="padding:14px 16px;border-bottom:1px solid var(--gray-bd);color:var(--gray-mid);">Design sur-mesure</td><td style="padding:14px 16px;border-bottom:1px solid var(--gray-bd);text-align:center;color:#ccc;">✗</td><td style="padding:14px 16px;border-bottom:1px solid var(--gray-bd);text-align:center;color:#ccc;">✗</td><td style="padding:14px 16px;border-bottom:1px solid var(--gray-bd);text-align:center;color:var(--sage);background:rgba(122,148,120,.06);">✓</td></tr>
+            <tr><td style="padding:14px 16px;border-bottom:1px solid var(--gray-bd);color:var(--gray-mid);">Spécialisé coiffure & bien-être</td><td style="padding:14px 16px;border-bottom:1px solid var(--gray-bd);text-align:center;color:#ccc;">✗</td><td style="padding:14px 16px;border-bottom:1px solid var(--gray-bd);text-align:center;color:#ccc;">✗</td><td style="padding:14px 16px;border-bottom:1px solid var(--gray-bd);text-align:center;color:var(--sage);background:rgba(122,148,120,.06);">✓</td></tr>
+            <tr><td style="padding:14px 16px;border-bottom:1px solid var(--gray-bd);color:var(--gray-mid);">SEO local inclus</td><td style="padding:14px 16px;border-bottom:1px solid var(--gray-bd);text-align:center;color:#ccc;">✗</td><td style="padding:14px 16px;border-bottom:1px solid var(--gray-bd);text-align:center;color:var(--gray-mid);">Partiel</td><td style="padding:14px 16px;border-bottom:1px solid var(--gray-bd);text-align:center;color:var(--sage);background:rgba(122,148,120,.06);">✓</td></tr>
+            <tr><td style="padding:14px 16px;border-bottom:1px solid var(--gray-bd);color:var(--gray-mid);">Maintenance & accompagnement</td><td style="padding:14px 16px;border-bottom:1px solid var(--gray-bd);text-align:center;color:#ccc;">✗</td><td style="padding:14px 16px;border-bottom:1px solid var(--gray-bd);text-align:center;color:var(--gray-mid);">Optionnel</td><td style="padding:14px 16px;border-bottom:1px solid var(--gray-bd);text-align:center;color:var(--sage);background:rgba(122,148,120,.06);">✓ Inclus</td></tr>
+            <tr><td style="padding:14px 16px;border-bottom:1px solid var(--gray-bd);color:var(--gray-mid);">Livraison en 3 semaines</td><td style="padding:14px 16px;border-bottom:1px solid var(--gray-bd);text-align:center;color:var(--gray-mid);">Variable</td><td style="padding:14px 16px;border-bottom:1px solid var(--gray-bd);text-align:center;color:var(--gray-mid);">4 à 12 semaines</td><td style="padding:14px 16px;border-bottom:1px solid var(--gray-bd);text-align:center;color:var(--sage);background:rgba(122,148,120,.06);">✓ Garanti</td></tr>
           </tbody>
         </table>
-      </div>
-
-      <!-- Cards mobile -->
-      <div class="comp-cards reveal">
-        <div class="comp-card comp-card-alt">
-          <div class="comp-card-title">Wix / DIY</div>
-          <div class="comp-card-row"><span>Prix</span><span>0 à 30€/mois</span></div>
-          <div class="comp-card-row"><span>Design sur-mesure</span><span class="comp-no">✗</span></div>
-          <div class="comp-card-row"><span>Spécialisé coiffure &amp; bien-être</span><span class="comp-no">✗</span></div>
-          <div class="comp-card-row"><span>SEO local inclus</span><span class="comp-no">✗</span></div>
-          <div class="comp-card-row"><span>Maintenance &amp; accompagnement</span><span class="comp-no">✗</span></div>
-          <div class="comp-card-row"><span>Livraison en 3 semaines</span><span>Variable</span></div>
-        </div>
-        <div class="comp-card comp-card-alt">
-          <div class="comp-card-title">Template générique</div>
-          <div class="comp-card-row"><span>Prix</span><span>300 à 800€</span></div>
-          <div class="comp-card-row"><span>Design sur-mesure</span><span class="comp-no">✗</span></div>
-          <div class="comp-card-row"><span>Spécialisé coiffure &amp; bien-être</span><span class="comp-no">✗</span></div>
-          <div class="comp-card-row"><span>SEO local inclus</span><span>Partiel</span></div>
-          <div class="comp-card-row"><span>Maintenance &amp; accompagnement</span><span>Optionnel</span></div>
-          <div class="comp-card-row"><span>Livraison en 3 semaines</span><span>4 à 12 semaines</span></div>
-        </div>
-        <div class="comp-card comp-card-main">
-          <div class="comp-card-title">N/ Studio Digital</div>
-          <div class="comp-card-row"><span>Prix</span><span class="comp-card-bold">990€ TTC</span></div>
-          <div class="comp-card-row"><span>Design sur-mesure</span><span class="comp-yes">✓</span></div>
-          <div class="comp-card-row"><span>Spécialisé coiffure &amp; bien-être</span><span class="comp-yes">✓</span></div>
-          <div class="comp-card-row"><span>SEO local inclus</span><span class="comp-yes">✓</span></div>
-          <div class="comp-card-row"><span>Maintenance &amp; accompagnement</span><span class="comp-yes">✓ Inclus</span></div>
-          <div class="comp-card-row"><span>Livraison en 3 semaines</span><span class="comp-yes">✓ Garanti</span></div>
-        </div>
       </div>
     </div>
   </section>
@@ -819,37 +745,37 @@
         <a href="#contact" class="btn-outline reveal">Parler de mon projet →</a>
       </div>
       <div class="secteurs-grid">
-        <div class="secteur-card reveal">
+        <a href="coiffeur-lyon.html" class="secteur-card reveal" style="text-decoration:none;display:block;cursor:pointer;">
           <img class="sc-photo" src="https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?w=400&q=60&auto=format" alt="Salon de coiffure" loading="lazy"/>
           <div class="sc-content"><div class="sc-icon"><svg viewBox="0 0 100 100"><use href="#ico-coiffure"/></svg></div><div class="sc-name">Salons de coiffure</div><div class="sc-desc">Artisans du cheveu qui veulent une présence digitale à la hauteur de leur savoir-faire. Galerie avant/après, tarifs, intégration RDV en ligne.</div></div>
-        </div>
-        <div class="secteur-card reveal">
+        </a>
+        <a href="head-spa-lyon.html" class="secteur-card reveal" style="text-decoration:none;display:block;cursor:pointer;">
           <img class="sc-photo" src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=400&q=60&auto=format" alt="Head Spa" loading="lazy"/>
           <div class="sc-content"><div class="sc-icon"><svg viewBox="0 0 512 512"><use href="#ico-headspa"/></svg></div><div class="sc-name">Head Spa</div><div class="sc-desc">Sites immersifs qui transmettent l'univers sensoriel de vos rituels. Présentation des protocoles, intégration RDV en ligne.</div></div>
-        </div>
-        <div class="secteur-card reveal">
+        </a>
+        <a href="institut-massage-lyon.html" class="secteur-card reveal" style="text-decoration:none;display:block;cursor:pointer;">
           <img class="sc-photo" src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=400&q=60&auto=format" alt="Institut de massage" loading="lazy"/>
           <div class="sc-content"><div class="sc-icon"><svg viewBox="0 0 64 64"><use href="#ico-massage"/></svg></div><div class="sc-name">Instituts de massage</div><div class="sc-desc">Présentation de vos protocoles, certifications et zones d'intervention. Intégration RDV en ligne multi-prestations.</div></div>
-        </div>
-        <div class="secteur-card reveal">
+        </a>
+        <a href="sophrologue-naturopathe-lyon.html" class="secteur-card reveal" style="text-decoration:none;display:block;cursor:pointer;">
           <img class="sc-photo" src="https://images.unsplash.com/photo-1600334129128-685c5582fd35?w=400&q=60&auto=format" alt="Praticien bien-être" loading="lazy"/>
           <div class="sc-content"><div class="sc-icon"><svg viewBox="0 0 512.002 512.002"><use href="#ico-bienetre"/></svg></div><div class="sc-name">Praticiens bien-être</div><div class="sc-desc">Sophrologues, naturopathes, réflexologues : un site qui inspire confiance et légitime votre expertise auprès de vos clients idéaux.</div></div>
-        </div>
-        <div class="secteur-card reveal">
+        </a>
+        <a href="yoga-pilates-lyon.html" class="secteur-card reveal" style="text-decoration:none;display:block;cursor:pointer;">
           <img class="sc-photo" src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=400&q=60&auto=format" alt="Yoga et Pilates" loading="lazy"/>
           <div class="sc-content"><div class="sc-icon"><svg viewBox="0 0 512.156 512.156"><use href="#ico-yoga"/></svg></div><div class="sc-name">Yoga & Pilates</div><div class="sc-desc">Planning de cours en ligne, intégration RDV. Professeurs indépendants qui se digitalisent simplement.</div></div>
-        </div>
-        <div class="secteur-card reveal">
+        </a>
+        <a href="spa-institut-lyon.html" class="secteur-card reveal" style="text-decoration:none;display:block;cursor:pointer;">
           <img class="sc-photo" src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=400&q=60&auto=format" alt="Spa et institut" loading="lazy"/>
           <div class="sc-content"><div class="sc-icon"><svg viewBox="0 0 24 24"><use href="#ico-spa"/></svg></div><div class="sc-name">Spas & instituts</div><div class="sc-desc">Identité visuelle haut de gamme, galerie, cartes cadeaux et intégration RDV en ligne adapté.</div></div>
-        </div>
-        <div class="secteur-card reveal">
+        </a>
+        <a href="esthetique-nail-art-lyon.html" class="secteur-card reveal" style="text-decoration:none;display:block;cursor:pointer;">
           <img class="sc-photo" src="https://images.unsplash.com/photo-1604654894610-df63bc536371?w=400&q=60&auto=format" alt="Esthétique et nail art" loading="lazy"/>
           <div class="sc-content"><div class="sc-icon"><svg viewBox="0 0 60 60"><use href="#ico-esthetique"/></svg></div><div class="sc-name">Esthétique & nail art</div><div class="sc-desc">Galerie de réalisations, tarifs clairs, intégration RDV en ligne et avis clients mis en valeur.</div></div>
-        </div>
-        <div class="secteur-card reveal">
+        </a>
+        <a href="#contact" class="secteur-card reveal" style="text-decoration:none;display:block;cursor:pointer;">
           <div class="sc-content"><div class="sc-icon"><svg viewBox="0 0 512 512"><use href="#ico-plus"/></svg></div><div class="sc-name">Votre secteur</div><div class="sc-desc">Vous ne vous retrouvez pas dans cette liste ? Parlons-en. On s'adapte à tous les univers du bien-être et de la beauté.</div></div>
-        </div>
+        </a>
       </div>
     </div>
   </section>
@@ -1023,10 +949,6 @@
       </div>
       <div class="f-bottom">
         <div class="f-copy" style="color:rgba(255,255,255,.6);">© 2026 N/ Studio Digital — Nadège Dufour · TVA non applicable, art. 293 B du CGI</div>
-        <div class="f-legal-links">
-          <a href="mentions-legales.html">Mentions légales</a>
-          <a href="cgv.html">CGV</a>
-        </div>
       </div>
     </div>
   </footer>
