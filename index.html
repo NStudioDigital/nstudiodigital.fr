@@ -78,6 +78,46 @@
     .btn-hero-ghost { display: inline-flex; align-items: center; gap: 8px; background: transparent; color: rgba(255,255,255,.7); padding: 13px 24px; border-radius: 100px; font-family: var(--font); font-size: 14px; font-weight: 400; text-decoration: none; border: 1px solid rgba(255,255,255,.2); transition: border-color .25s, color .25s; }
     .btn-hero-ghost:hover { border-color: rgba(255,255,255,.5); color: white; }
 
+    /* ── STATS ── */
+    .stats-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.06); }
+    .stat-cell { padding:32px 20px; text-align:center; }
+    .stat-cell-mid { border-left:1px solid rgba(255,255,255,.06); border-right:1px solid rgba(255,255,255,.06); }
+    .stat-num { font-size:clamp(28px,7vw,48px); font-weight:300; color:var(--white); letter-spacing:-2px; line-height:1; }
+    .stat-num-sage { color:var(--sage-lt); }
+    .stat-label { font-size:10px; text-transform:uppercase; letter-spacing:2px; color:rgba(255,255,255,.25); margin-top:8px; }
+
+    /* ── TABLEAU COMPARATIF ── */
+    .comp-table-wrap { overflow-x:auto; }
+    .comp-table { width:100%; border-collapse:collapse; font-size:13px; }
+    .comp-th { padding:14px 16px; font-size:11px; font-weight:500; text-transform:uppercase; letter-spacing:1.5px; color:var(--gray-mid); border-bottom:1px solid var(--gray-bd); text-align:center; }
+    .comp-th-empty { text-align:left; }
+    .comp-th-main { font-size:13px; font-weight:600; color:var(--black); border-bottom:2px solid var(--black); background:var(--white); }
+    .comp-td { padding:14px 16px; border-bottom:1px solid var(--gray-bd); text-align:center; color:var(--gray-mid); }
+    .comp-td-label { text-align:left; }
+    .comp-td-main { background:rgba(122,148,120,.06); }
+    .comp-td-bold { font-weight:600; color:var(--black); }
+    .comp-yes { color:var(--sage); }
+    .comp-no { color:#ccc; }
+    .comp-cards { display:none; flex-direction:column; gap:12px; }
+    .comp-card { border-radius:12px; padding:20px; }
+    .comp-card-alt { background:var(--white); border:1px solid var(--gray-bd); }
+    .comp-card-main { background:var(--black); border:2px solid var(--black); }
+    .comp-card-title { font-size:13px; font-weight:600; margin-bottom:14px; padding-bottom:12px; border-bottom:1px solid var(--gray-bd); }
+    .comp-card-main .comp-card-title { color:var(--white); border-bottom-color:rgba(255,255,255,.12); }
+    .comp-card-row { display:flex; justify-content:space-between; align-items:center; padding:8px 0; border-bottom:1px solid var(--gray-bg); font-size:12px; gap:8px; }
+    .comp-card-row:last-child { border-bottom:none; }
+    .comp-card-row span:first-child { color:var(--gray-mid); flex:1; }
+    .comp-card-row span:last-child { font-weight:500; text-align:right; }
+    .comp-card-main .comp-card-row { border-bottom-color:rgba(255,255,255,.06); }
+    .comp-card-main .comp-card-row span:first-child { color:rgba(255,255,255,.45); }
+    .comp-card-main .comp-card-row span:last-child { color:var(--white); }
+    .comp-card-main .comp-yes { color:var(--sage-lt); }
+    .comp-card-bold { font-weight:700 !important; }
+    @media(max-width:768px) {
+      .comp-table-wrap { display:none; }
+      .comp-cards { display:flex; }
+    }
+
     /* ── MARQUEE ── */
     .logos-band { background: var(--white); border-bottom: 1px solid var(--gray-bd); padding: 16px 0; overflow: hidden; }
     .logos-track { display: flex; animation: marqueeX 38s linear infinite; white-space: nowrap; }
@@ -513,18 +553,18 @@
   <!-- CHIFFRES CLÉS -->
   <section style="background:var(--black);padding:56px 0;">
     <div class="container">
-      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.06);">
-        <div style="padding:32px 28px;text-align:center;">
-          <div class="counter-num" data-target="3" style="font-size:48px;font-weight:300;color:var(--white);letter-spacing:-2px;line-height:1;">0</div>
-          <div style="font-size:11px;text-transform:uppercase;letter-spacing:2px;color:rgba(255,255,255,.25);margin-top:8px;">Semaines de délai</div>
+      <div class="stats-grid">
+        <div class="stat-cell">
+          <div class="counter-num stat-num" data-target="3">0</div>
+          <div class="stat-label">Semaines de délai</div>
         </div>
-        <div style="padding:32px 28px;text-align:center;border-left:1px solid rgba(255,255,255,.06);border-right:1px solid rgba(255,255,255,.06);">
-          <div class="counter-num" data-target="100" style="font-size:48px;font-weight:300;color:var(--sage-lt);letter-spacing:-2px;line-height:1;">0</div>
-          <div style="font-size:11px;text-transform:uppercase;letter-spacing:2px;color:rgba(255,255,255,.25);margin-top:8px;">% sur-mesure</div>
+        <div class="stat-cell stat-cell-mid">
+          <div class="counter-num stat-num stat-num-sage" data-target="100">0</div>
+          <div class="stat-label">% sur-mesure</div>
         </div>
-        <div style="padding:32px 28px;text-align:center;">
-          <div class="counter-num" data-target="990" style="font-size:48px;font-weight:300;color:var(--white);letter-spacing:-2px;line-height:1;">0</div>
-          <div style="font-size:11px;text-transform:uppercase;letter-spacing:2px;color:rgba(255,255,255,.25);margin-top:8px;">€ TTC tout inclus</div>
+        <div class="stat-cell">
+          <div class="counter-num stat-num" data-target="990">0</div>
+          <div class="stat-label">€ TTC tout inclus</div>
         </div>
       </div>
     </div>
@@ -537,25 +577,57 @@
         <div class="s-label reveal">Pourquoi N/ Studio Digital ?</div>
         <h2 class="s-title reveal">Ce que vous obtenez,<br><strong>vs les alternatives.</strong></h2>
       </div>
-      <div style="overflow-x:auto;" class="reveal">
-        <table style="width:100%;border-collapse:collapse;font-size:13px;">
+      <!-- Tableau desktop -->
+      <div class="comp-table-wrap reveal">
+        <table class="comp-table">
           <thead>
             <tr>
-              <th style="padding:14px 16px;text-align:left;font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:1.5px;color:var(--gray-mid);border-bottom:1px solid var(--gray-bd);"></th>
-              <th style="padding:14px 16px;text-align:center;font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:1.5px;color:var(--gray-mid);border-bottom:1px solid var(--gray-bd);">Wix / DIY</th>
-              <th style="padding:14px 16px;text-align:center;font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:1.5px;color:var(--gray-mid);border-bottom:1px solid var(--gray-bd);">Template générique</th>
-              <th style="padding:14px 16px;text-align:center;font-size:13px;font-weight:600;color:var(--black);border-bottom:2px solid var(--black);background:var(--white);">N/ Studio Digital</th>
+              <th class="comp-th comp-th-empty"></th>
+              <th class="comp-th comp-th-alt">Wix / DIY</th>
+              <th class="comp-th comp-th-alt">Template générique</th>
+              <th class="comp-th comp-th-main">N/ Studio Digital</th>
             </tr>
           </thead>
           <tbody>
-            <tr><td style="padding:14px 16px;border-bottom:1px solid var(--gray-bd);color:var(--gray-mid);">Prix</td><td style="padding:14px 16px;border-bottom:1px solid var(--gray-bd);text-align:center;color:var(--gray-mid);">0 à 30€/mois</td><td style="padding:14px 16px;border-bottom:1px solid var(--gray-bd);text-align:center;color:var(--gray-mid);">300 à 800€</td><td style="padding:14px 16px;border-bottom:1px solid var(--gray-bd);text-align:center;font-weight:600;color:var(--black);background:rgba(122,148,120,.06);">990€ TTC</td></tr>
-            <tr><td style="padding:14px 16px;border-bottom:1px solid var(--gray-bd);color:var(--gray-mid);">Design sur-mesure</td><td style="padding:14px 16px;border-bottom:1px solid var(--gray-bd);text-align:center;color:#ccc;">✗</td><td style="padding:14px 16px;border-bottom:1px solid var(--gray-bd);text-align:center;color:#ccc;">✗</td><td style="padding:14px 16px;border-bottom:1px solid var(--gray-bd);text-align:center;color:var(--sage);background:rgba(122,148,120,.06);">✓</td></tr>
-            <tr><td style="padding:14px 16px;border-bottom:1px solid var(--gray-bd);color:var(--gray-mid);">Spécialisé coiffure & bien-être</td><td style="padding:14px 16px;border-bottom:1px solid var(--gray-bd);text-align:center;color:#ccc;">✗</td><td style="padding:14px 16px;border-bottom:1px solid var(--gray-bd);text-align:center;color:#ccc;">✗</td><td style="padding:14px 16px;border-bottom:1px solid var(--gray-bd);text-align:center;color:var(--sage);background:rgba(122,148,120,.06);">✓</td></tr>
-            <tr><td style="padding:14px 16px;border-bottom:1px solid var(--gray-bd);color:var(--gray-mid);">SEO local inclus</td><td style="padding:14px 16px;border-bottom:1px solid var(--gray-bd);text-align:center;color:#ccc;">✗</td><td style="padding:14px 16px;border-bottom:1px solid var(--gray-bd);text-align:center;color:var(--gray-mid);">Partiel</td><td style="padding:14px 16px;border-bottom:1px solid var(--gray-bd);text-align:center;color:var(--sage);background:rgba(122,148,120,.06);">✓</td></tr>
-            <tr><td style="padding:14px 16px;border-bottom:1px solid var(--gray-bd);color:var(--gray-mid);">Maintenance & accompagnement</td><td style="padding:14px 16px;border-bottom:1px solid var(--gray-bd);text-align:center;color:#ccc;">✗</td><td style="padding:14px 16px;border-bottom:1px solid var(--gray-bd);text-align:center;color:var(--gray-mid);">Optionnel</td><td style="padding:14px 16px;border-bottom:1px solid var(--gray-bd);text-align:center;color:var(--sage);background:rgba(122,148,120,.06);">✓ Inclus</td></tr>
-            <tr><td style="padding:14px 16px;border-bottom:1px solid var(--gray-bd);color:var(--gray-mid);">Livraison en 3 semaines</td><td style="padding:14px 16px;border-bottom:1px solid var(--gray-bd);text-align:center;color:var(--gray-mid);">Variable</td><td style="padding:14px 16px;border-bottom:1px solid var(--gray-bd);text-align:center;color:var(--gray-mid);">4 à 12 semaines</td><td style="padding:14px 16px;border-bottom:1px solid var(--gray-bd);text-align:center;color:var(--sage);background:rgba(122,148,120,.06);">✓ Garanti</td></tr>
+            <tr><td class="comp-td comp-td-label">Prix</td><td class="comp-td comp-td-alt">0 à 30€/mois</td><td class="comp-td comp-td-alt">300 à 800€</td><td class="comp-td comp-td-main comp-td-bold">990€ TTC</td></tr>
+            <tr><td class="comp-td comp-td-label">Design sur-mesure</td><td class="comp-td comp-td-alt comp-no">✗</td><td class="comp-td comp-td-alt comp-no">✗</td><td class="comp-td comp-td-main comp-yes">✓</td></tr>
+            <tr><td class="comp-td comp-td-label">Spécialisé coiffure &amp; bien-être</td><td class="comp-td comp-td-alt comp-no">✗</td><td class="comp-td comp-td-alt comp-no">✗</td><td class="comp-td comp-td-main comp-yes">✓</td></tr>
+            <tr><td class="comp-td comp-td-label">SEO local inclus</td><td class="comp-td comp-td-alt comp-no">✗</td><td class="comp-td comp-td-alt">Partiel</td><td class="comp-td comp-td-main comp-yes">✓</td></tr>
+            <tr><td class="comp-td comp-td-label">Maintenance &amp; accompagnement</td><td class="comp-td comp-td-alt comp-no">✗</td><td class="comp-td comp-td-alt">Optionnel</td><td class="comp-td comp-td-main comp-yes">✓ Inclus</td></tr>
+            <tr><td class="comp-td comp-td-label">Livraison en 3 semaines</td><td class="comp-td comp-td-alt">Variable</td><td class="comp-td comp-td-alt">4 à 12 semaines</td><td class="comp-td comp-td-main comp-yes">✓ Garanti</td></tr>
           </tbody>
         </table>
+      </div>
+
+      <!-- Cards mobile -->
+      <div class="comp-cards reveal">
+        <div class="comp-card comp-card-alt">
+          <div class="comp-card-title">Wix / DIY</div>
+          <div class="comp-card-row"><span>Prix</span><span>0 à 30€/mois</span></div>
+          <div class="comp-card-row"><span>Design sur-mesure</span><span class="comp-no">✗</span></div>
+          <div class="comp-card-row"><span>Spécialisé coiffure &amp; bien-être</span><span class="comp-no">✗</span></div>
+          <div class="comp-card-row"><span>SEO local inclus</span><span class="comp-no">✗</span></div>
+          <div class="comp-card-row"><span>Maintenance &amp; accompagnement</span><span class="comp-no">✗</span></div>
+          <div class="comp-card-row"><span>Livraison en 3 semaines</span><span>Variable</span></div>
+        </div>
+        <div class="comp-card comp-card-alt">
+          <div class="comp-card-title">Template générique</div>
+          <div class="comp-card-row"><span>Prix</span><span>300 à 800€</span></div>
+          <div class="comp-card-row"><span>Design sur-mesure</span><span class="comp-no">✗</span></div>
+          <div class="comp-card-row"><span>Spécialisé coiffure &amp; bien-être</span><span class="comp-no">✗</span></div>
+          <div class="comp-card-row"><span>SEO local inclus</span><span>Partiel</span></div>
+          <div class="comp-card-row"><span>Maintenance &amp; accompagnement</span><span>Optionnel</span></div>
+          <div class="comp-card-row"><span>Livraison en 3 semaines</span><span>4 à 12 semaines</span></div>
+        </div>
+        <div class="comp-card comp-card-main">
+          <div class="comp-card-title">N/ Studio Digital</div>
+          <div class="comp-card-row"><span>Prix</span><span class="comp-card-bold">990€ TTC</span></div>
+          <div class="comp-card-row"><span>Design sur-mesure</span><span class="comp-yes">✓</span></div>
+          <div class="comp-card-row"><span>Spécialisé coiffure &amp; bien-être</span><span class="comp-yes">✓</span></div>
+          <div class="comp-card-row"><span>SEO local inclus</span><span class="comp-yes">✓</span></div>
+          <div class="comp-card-row"><span>Maintenance &amp; accompagnement</span><span class="comp-yes">✓ Inclus</span></div>
+          <div class="comp-card-row"><span>Livraison en 3 semaines</span><span class="comp-yes">✓ Garanti</span></div>
+        </div>
       </div>
     </div>
   </section>
