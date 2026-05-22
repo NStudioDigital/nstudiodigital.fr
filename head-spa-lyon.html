@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Création site internet Head Spa Lyon — Site vitrine head spa · N/ Studio Digital</title>
+  <meta name="description" content="Vous avez un Head Spa à Lyon ? N/ Studio Digital crée votre site vitrine sur-mesure : présentation des rituels, réservation en ligne, SEO local. Livraison en 3 semaines. 990€ TTC."/>
+  <meta name="keywords" content="création site internet head spa Lyon, site vitrine head spa Lyon, site web head spa Lyon, agence web head spa, site head spa Villeurbanne, site head spa Caluire, création site soin cuir chevelu Lyon, site internet spa capillaire Lyon, head spa japonais Lyon"/>
+  <link rel="canonical" href="https://nstudiodigital.fr/head-spa-lyon.html"/>
+  <meta property="og:title" content="Création site internet Head Spa Lyon — N/ Studio Digital"/>
+  <meta property="og:description" content="Site vitrine sur-mesure pour Head Spas à Lyon. Présentation des rituels, réservation en ligne, SEO local. Livraison 3 semaines · 990€ TTC."/>
+  <meta property="og:type" content="website"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --black:#0D0D0D; --white:#FFFFFF; --gray-mid:#888888; --gray-lt:#CCCCCC;
+      --gray-bg:#F4F4F4; --gray-bd:#E0E0E0; --sage:#7A9478; --sage-lt:#9AB098; --font:'Inter',sans-serif;
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;font-size:16px;}
+    body{font-family:var(--font);background:var(--white);color:var(--black);overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+    .container{max-width:1140px;margin:0 auto;padding:0 48px;}
+    @media(max-width:768px){.container{padding:0 20px;}}
+    .reveal{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease;}
+    .reveal.vis{opacity:1;transform:none;}
+
+    /* NAV */
+    nav{position:fixed;top:0;left:0;right:0;z-index:300;background:var(--white);border-bottom:1px solid var(--gray-bd);transition:box-shadow .3s;}
+    nav.scrolled{box-shadow:0 2px 16px rgba(0,0,0,.07);}
+    .nav-inner{display:flex;align-items:center;justify-content:space-between;height:64px;}
+    .nav-logo{font-size:18px;font-weight:400;letter-spacing:-.2px;color:var(--black);text-decoration:none;flex-shrink:0;}
+    .nav-logo .slash{font-weight:300;color:var(--sage);}
+    .nav-links{display:flex;align-items:center;gap:32px;list-style:none;}
+    .nav-links a{font-size:13px;color:var(--gray-mid);text-decoration:none;transition:color .2s;position:relative;}
+    .nav-links a:hover{color:var(--black);}
+    .nav-links a::after{content:'';position:absolute;bottom:-2px;left:0;width:0;height:1px;background:var(--sage);transition:width .25s;}
+    .nav-links a:hover::after{width:100%;}
+    .nav-hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;background:none;border:none;}
+    .nav-hamburger span{display:block;width:22px;height:2px;background:var(--black);border-radius:2px;transition:all .3s;}
+    .nav-hamburger.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px);}
+    .nav-hamburger.open span:nth-child(2){opacity:0;}
+    .nav-hamburger.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px);}
+    .nav-mobile{display:none;position:fixed;top:64px;left:0;right:0;background:var(--white);border-bottom:1px solid var(--gray-bd);padding:20px;flex-direction:column;z-index:299;box-shadow:0 8px 24px rgba(0,0,0,.08);}
+    .nav-mobile.open{display:flex;}
+    .nav-mobile a{font-size:15px;color:var(--black);text-decoration:none;padding:14px 0;border-bottom:1px solid var(--gray-bg);display:block;}
+    .nav-mobile .mobile-cta{margin-top:16px;background:var(--black);color:var(--white);padding:14px;border-radius:100px;text-align:center;font-weight:500;border-bottom:none!important;}
+    @media(max-width:768px){.nav-links{display:none;}.nav-hamburger{display:flex;}}
+
+    .btn-primary{display:inline-flex;align-items:center;gap:10px;background:var(--black);color:var(--white);padding:10px 22px;border-radius:100px;font-family:var(--font);font-size:13px;font-weight:500;text-decoration:none;border:none;cursor:pointer;transition:background .25s,transform .2s;white-space:nowrap;}
+    .btn-primary:hover{background:#222;transform:translateY(-1px);}
+    .btn-primary .arr{width:24px;height:24px;background:rgba(255,255,255,.15);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;}
+
+    /* HERO pleine photo */
+    .hero{position:relative;height:100vh;min-height:600px;display:flex;align-items:flex-end;padding-top:64px;overflow:hidden;}
+    .hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 40%;}
+    .hero-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(13,13,13,.95) 0%,rgba(13,13,13,.5) 50%,rgba(13,13,13,.1) 100%);}
+    .hero-content{position:relative;z-index:2;padding-bottom:72px;width:100%;}
+    .hero-eyebrow{display:inline-flex;align-items:center;gap:7px;border:1px solid rgba(255,255,255,.35);color:var(--white);padding:6px 14px;border-radius:100px;font-size:12px;font-weight:500;background:rgba(255,255,255,.15);backdrop-filter:blur(8px);margin-bottom:24px;}
+    .hero-eyebrow .dot{width:6px;height:6px;border-radius:50%;background:var(--sage-lt);box-shadow:0 0 8px rgba(154,176,152,.9);}
+    .hero-title{font-size:clamp(32px,5.5vw,76px);font-weight:300;color:var(--white);line-height:1.05;letter-spacing:-2px;max-width:780px;margin-bottom:20px;}
+    .hero-title strong{font-weight:700;font-style:italic;}
+    .hero-sub{font-size:15px;color:rgba(255,255,255,.6);line-height:1.7;max-width:480px;margin-bottom:36px;}
+    .hero-sub strong{color:rgba(255,255,255,.9);font-weight:500;}
+    .hero-cta{display:flex;align-items:center;gap:12px;flex-wrap:wrap;}
+    .btn-hero{display:inline-flex;align-items:center;gap:10px;background:var(--white);color:var(--black);padding:14px 26px;border-radius:100px;font-family:var(--font);font-size:14px;font-weight:600;text-decoration:none;transition:background .25s,transform .2s;animation:pulse-sage 2.4s ease infinite;}
+    .btn-hero:hover{background:var(--gray-bg);transform:translateY(-2px);}
+    .btn-hero-ghost{display:inline-flex;align-items:center;gap:8px;background:transparent;color:rgba(255,255,255,.7);padding:14px 26px;border-radius:100px;font-family:var(--font);font-size:14px;text-decoration:none;border:1px solid rgba(255,255,255,.25);transition:border-color .25s,color .25s;}
+    .btn-hero-ghost:hover{border-color:rgba(255,255,255,.6);color:white;}
+    .hero-scroll{position:absolute;bottom:28px;right:48px;z-index:3;display:flex;flex-direction:column;align-items:center;gap:8px;}
+    .hero-scroll span{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.3);}
+    .scroll-line{width:1px;height:40px;background:linear-gradient(to bottom,rgba(122,148,120,.6),transparent);animation:scrollDown 1.8s ease-in-out infinite;}
+    @keyframes scrollDown{0%{transform:scaleY(0);transform-origin:top;}50%{transform:scaleY(1);transform-origin:top;}51%{transform:scaleY(1);transform-origin:bottom;}100%{transform:scaleY(0);transform-origin:bottom;}}
+    @media(max-width:768px){.hero-scroll{display:none;}.hero-content{padding-bottom:48px;}}
+
+    /* BREADCRUMB */
+    .breadcrumb{background:var(--gray-bg);border-bottom:1px solid var(--gray-bd);padding:12px 0;}
+    .breadcrumb-inner{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--gray-mid);}
+    .breadcrumb-inner a{color:var(--gray-mid);text-decoration:none;transition:color .2s;}
+    .breadcrumb-inner a:hover{color:var(--black);}
+    .breadcrumb-inner .sep{color:var(--gray-lt);}
+
+    /* SECTIONS */
+    section{padding:80px 0;}
+    @media(max-width:768px){section{padding:56px 0;}}
+    .s-label{font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:2.5px;color:var(--gray-mid);margin-bottom:16px;display:flex;align-items:center;gap:12px;}
+    .s-label::before{content:'/';font-weight:300;color:var(--sage);font-size:16px;}
+    .s-title{font-size:clamp(24px,3.5vw,44px);font-weight:400;line-height:1.15;letter-spacing:-1px;color:var(--black);margin-bottom:20px;}
+    .s-title strong{font-weight:700;}
+    .s-sub{font-size:15px;color:var(--gray-mid);line-height:1.75;max-width:540px;}
+
+    /* INTRO ZEN — fond sombre avec photo en fond */
+    .intro-zen{position:relative;overflow:hidden;padding:100px 0;}
+    .intro-zen-bg{position:absolute;inset:0;background-image:url('headspa-zen.jpg');background-size:cover;background-position:center;opacity:.12;}
+    .intro-zen-overlay{position:absolute;inset:0;background:var(--black);}
+    .intro-zen .container{position:relative;z-index:2;}
+    .intro-zen .s-label{color:rgba(255,255,255,.3);}
+    .intro-zen .s-label::before{color:var(--sage);}
+    .intro-zen .s-title{color:var(--white);}
+    .intro-zen-text{font-size:15px;color:rgba(255,255,255,.5);line-height:1.85;max-width:600px;margin-bottom:0;}
+    .intro-zen-text strong{color:rgba(255,255,255,.85);font-weight:500;}
+    .intro-zen-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;}
+    @media(max-width:768px){.intro-zen-grid{grid-template-columns:1fr;gap:32px;}}
+    .intro-stat-grid{display:flex;flex-direction:column;gap:1px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.06);}
+    .intro-stat{padding:24px 28px;}
+    .intro-stat-num{font-size:40px;font-weight:300;color:var(--white);letter-spacing:-2px;line-height:1;}
+    .intro-stat-num span{color:var(--sage);font-size:28px;}
+    .intro-stat-label{font-size:11px;text-transform:uppercase;letter-spacing:1.5px;color:rgba(255,255,255,.3);margin-top:6px;}
+
+    /* SPLIT rituel */
+    .split-rituel{background:var(--white);}
+    .split-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;min-height:560px;}
+    @media(max-width:768px){.split-grid{grid-template-columns:1fr;}}
+    .split-img{position:relative;overflow:hidden;min-height:400px;}
+    .split-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+    .split-body{padding:72px 56px;display:flex;flex-direction:column;justify-content:center;background:var(--gray-bg);}
+    @media(max-width:768px){.split-body{padding:40px 24px;}}
+
+    /* CE QU'ON CONSTRUIT */
+    .besoins{background:var(--white);}
+    .besoins-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--gray-bd);border:1px solid var(--gray-bd);margin-top:40px;}
+    @media(max-width:768px){.besoins-grid{grid-template-columns:1fr;}}
+    .besoin-card{background:var(--white);padding:32px 28px;transition:background .25s,border-color .25s;border:1px solid var(--gray-bd);}
+    .besoin-card:hover{background:var(--black);border-color:var(--black);}
+    .besoin-card:hover .besoin-title{color:var(--white);}
+    .besoin-card:hover .besoin-text{color:rgba(255,255,255,.45);}
+    .besoin-card:hover .besoin-slash{opacity:1;}
+    .besoin-slash{font-size:28px;font-weight:700;color:var(--sage);line-height:1;margin-bottom:16px;display:block;opacity:.4;transition:opacity .25s;}
+    .besoin-title{font-size:15px;font-weight:500;color:var(--black);margin-bottom:10px;line-height:1.3;letter-spacing:-.2px;transition:color .25s;}
+    .besoin-text{font-size:13px;color:var(--gray-mid);line-height:1.7;transition:color .25s;}
+
+    /* PHOTO BANDE */
+    .photo-band{display:grid;grid-template-columns:2fr 3fr;gap:3px;height:400px;}
+    @media(max-width:768px){.photo-band{grid-template-columns:1fr;height:auto;}}
+    .photo-band-item{position:relative;overflow:hidden;}
+    .photo-band-item img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .6s ease;}
+    .photo-band-item:hover img{transform:scale(1.03);}
+    .photo-band-caption{position:absolute;bottom:0;left:0;right:0;padding:20px 24px;background:linear-gradient(to top,rgba(13,13,13,.75),transparent);font-size:11px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.6);}
+    @media(max-width:768px){.photo-band-item{height:260px;}}
+
+    /* ZONES */
+    .zones{background:var(--gray-bg);}
+    .zones-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--gray-bd);border:1px solid var(--gray-bd);margin-top:32px;}
+    @media(max-width:768px){.zones-grid{grid-template-columns:1fr 1fr;}}
+    .zone-item{background:var(--white);padding:20px 18px;}
+    .zone-name{font-size:14px;font-weight:500;color:var(--black);margin-bottom:6px;}
+    .zone-kw{font-size:11px;color:var(--gray-mid);line-height:1.6;font-style:italic;}
+
+    /* FAQ */
+    .faq{background:var(--white);}
+    .faq-layout{display:grid;grid-template-columns:1fr 1.5fr;gap:60px;align-items:start;}
+    @media(max-width:768px){.faq-layout{grid-template-columns:1fr;gap:32px;}}
+    .faq-items{display:flex;flex-direction:column;}
+    .faq-item{border-bottom:1px solid var(--gray-bd);}
+    .faq-q{display:flex;justify-content:space-between;align-items:center;padding:18px 0;cursor:pointer;gap:16px;font-size:14px;color:var(--black);transition:color .2s;user-select:none;}
+    .faq-q:hover{color:var(--gray-mid);}
+    .faq-icon{width:26px;height:26px;border-radius:50%;border:1px solid var(--gray-bd);display:flex;align-items:center;justify-content:center;font-size:16px;color:var(--black);flex-shrink:0;transition:transform .3s,background .3s,border-color .3s;font-weight:300;}
+    .faq-item.open .faq-icon{transform:rotate(45deg);background:var(--sage);color:var(--white);border-color:var(--sage);}
+    .faq-a{display:none;font-size:13px;color:var(--gray-mid);line-height:1.8;padding-bottom:18px;}
+    .faq-item.open .faq-a{display:block;}
+
+    /* CTA */
+    .cta-section{background:var(--black);padding:80px 0;position:relative;overflow:hidden;}
+    .cta-section::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 30% 50%,rgba(122,148,120,.12) 0%,transparent 70%);pointer-events:none;}
+    .cta-inner{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;position:relative;z-index:2;}
+    @media(max-width:768px){.cta-inner{grid-template-columns:1fr;gap:32px;}}
+    .cta-title{font-size:clamp(28px,4vw,52px);font-weight:400;color:var(--white);line-height:1.15;letter-spacing:-1.5px;}
+    .cta-title strong{font-weight:700;font-style:italic;}
+    .cta-perks{display:flex;flex-direction:column;gap:10px;margin-bottom:28px;}
+    .cta-perk{display:flex;gap:10px;align-items:flex-start;font-size:14px;color:rgba(255,255,255,.5);}
+    .cta-perk::before{content:'/';color:var(--sage);font-weight:300;flex-shrink:0;}
+
+    /* FOOTER */
+    footer{background:var(--black);border-top:1px solid rgba(255,255,255,.07);padding:56px 0 36px;}
+    .footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:40px;margin-bottom:48px;}
+    @media(max-width:768px){.footer-grid{grid-template-columns:1fr 1fr;gap:32px;}}
+    @media(max-width:480px){.footer-grid{grid-template-columns:1fr;}}
+    .f-logo-text{font-size:20px;font-weight:400;color:var(--white);letter-spacing:-.3px;margin-bottom:10px;}
+    .f-logo-text .slash{font-weight:300;color:var(--sage);}
+    .f-tagline{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.2);margin-bottom:16px;}
+    .f-desc{font-size:12px;color:rgba(255,255,255,.3);line-height:1.7;max-width:240px;}
+    .f-col-title{font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:1.5px;color:rgba(255,255,255,.25);margin-bottom:16px;}
+    .f-col-links{display:flex;flex-direction:column;gap:10px;}
+    .f-col-links a{font-size:13px;color:rgba(255,255,255,.4);text-decoration:none;transition:color .2s;}
+    .f-col-links a:hover{color:rgba(255,255,255,.75);}
+    .f-bottom{border-top:1px solid rgba(255,255,255,.06);padding-top:24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;}
+    .f-copy{font-size:11px;color:rgba(255,255,255,.15);}
+
+    .back-to-top{position:fixed;bottom:24px;right:24px;z-index:200;width:44px;height:44px;background:var(--white);border:1px solid var(--gray-bd);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;opacity:0;pointer-events:none;transition:opacity .3s,transform .3s,background .2s;box-shadow:0 4px 16px rgba(0,0,0,.1);}
+    .back-to-top.visible{opacity:1;pointer-events:all;}
+    .back-to-top:hover{background:var(--sage);border-color:var(--sage);transform:translateY(-2px);}
+    .back-to-top:hover svg{stroke:var(--white);}
+
+    @keyframes pulse-sage{0%,100%{box-shadow:0 0 0 0 rgba(122,148,120,.4);}60%{box-shadow:0 0 0 10px rgba(122,148,120,0);}}
+  </style>
+
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"ProfessionalService","name":"N/ Studio Digital","description":"Création de site internet pour Head Spas à Lyon. Sites vitrine sur-mesure, présentation des rituels, réservation en ligne, SEO local.","url":"https://nstudiodigital.fr/head-spa-lyon.html","email":"contact@nstudiodigital.fr","areaServed":{"@type":"City","name":"Lyon"},"serviceType":"Création de site internet head spa Lyon"}
+  </script>
+</head>
+<body>
+
+<button class="back-to-top" id="backToTop" aria-label="Retour en haut">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0D0D0D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
+</button>
+
+<nav id="nav">
+  <div class="container">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">N<span class="slash">/</span> Studio Digital</a>
+      <ul class="nav-links">
+        <li><a href="#votre-site">Votre site</a></li>
+        <li><a href="#zones">Zones</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="index.html#offres">L'offre</a></li>
+        <li><a href="#contact" style="color:var(--black);font-weight:500">Démarrer →</a></li>
+      </ul>
+      <button class="nav-hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+
+<div class="nav-mobile" id="navMobile">
+  <a href="#votre-site" onclick="closeMenu()">Votre site</a>
+  <a href="#zones" onclick="closeMenu()">Zones</a>
+  <a href="#faq" onclick="closeMenu()">FAQ</a>
+  <a href="index.html#offres" onclick="closeMenu()">L'offre</a>
+  <a href="#contact" class="mobile-cta" onclick="closeMenu()">Démarrer mon projet →</a>
+</div>
+
+<!-- HERO pleine photo -->
+<section class="hero">
+  <img class="hero-img" src="headspa-hero.jpg" alt="Soin Head Spa à Lyon — rituel vapeur au bac, ambiance zen"/>
+  <div class="hero-overlay"></div>
+  <div class="container hero-content">
+    <div class="hero-eyebrow"><span class="dot"></span>Head Spa · Soin capillaire · Grand Lyon</div>
+    <h1 class="hero-title">
+      Un univers sensoriel<br>qui mérite un site<br><strong>à sa hauteur.</strong>
+    </h1>
+    <p class="hero-sub">
+      <strong>Rituels présentés. Réservation intégrée. SEO local ciblé.</strong><br>
+      Un site vitrine sur-mesure pour votre Head Spa lyonnais — livré en 3 semaines.
+    </p>
+    <div class="hero-cta">
+      <a href="#contact" class="btn-hero">Je réserve mon appel gratuit →</a>
+      <a href="index.html#offres" class="btn-hero-ghost">Voir l'offre · 990€ TTC</a>
+    </div>
+  </div>
+  <div class="hero-scroll"><span>Scroll</span><div class="scroll-line"></div></div>
+</section>
+
+<!-- BREADCRUMB -->
+<div class="breadcrumb">
+  <div class="container">
+    <div class="breadcrumb-inner">
+      <a href="index.html">Accueil</a>
+      <span class="sep">/</span>
+      <span>Création site internet Head Spa Lyon</span>
+    </div>
+  </div>
+</div>
+
+<!-- INTRO ZEN fond sombre -->
+<section class="intro-zen" id="votre-site">
+  <div class="intro-zen-overlay"></div>
+  <div class="intro-zen-bg"></div>
+  <div class="container">
+    <div class="intro-zen-grid">
+      <div>
+        <div class="s-label reveal">Le constat</div>
+        <h2 class="s-title reveal">Le Head Spa est un soin<br><strong>que personne ne connaît<br>avant de le chercher.</strong></h2>
+        <p class="intro-zen-text reveal">
+          "Head spa Lyon", "soin cuir chevelu Lyon", "spa capillaire japonais Lyon" — ces recherches existent, elles augmentent chaque mois. <strong>Mais si votre site ne répond pas à ces requêtes, c'est un concurrent qui capte ces clients.</strong>
+        </p>
+        <p class="intro-zen-text reveal" style="margin-top:16px;">
+          Un Head Spa vend avant tout une expérience. Votre site doit la faire ressentir — avant même que le client ait pris rendez-vous.
+        </p>
+      </div>
+      <div class="intro-stat-grid reveal">
+        <div class="intro-stat">
+          <div class="intro-stat-num">3 semaines</div>
+          <div class="intro-stat-label">Délai de livraison garanti</div>
+        </div>
+        <div class="intro-stat">
+          <div class="intro-stat-num">990<span>€</span></div>
+          <div class="intro-stat-label">TTC tout inclus</div>
+        </div>
+        <div class="intro-stat">
+          <div class="intro-stat-num">100<span>%</span></div>
+          <div class="intro-stat-label">Sur-mesure · Aucun template</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SPLIT rituel + texte -->
+<section class="split-rituel">
+  <div class="split-grid">
+    <div class="split-img">
+      <img src="headspa-rituel.jpg" alt="Rituel Head Spa — application d'huile shirodhara, soin traditionnel"/>
+    </div>
+    <div class="split-body">
+      <div class="s-label reveal">L'enjeu pour votre activité</div>
+      <h2 class="s-title reveal" style="font-size:clamp(22px,3vw,36px);">Votre rituel<br><strong>doit être ressenti<br>avant d'être vécu.</strong></h2>
+      <p style="font-size:14px;color:var(--gray-mid);line-height:1.85;margin-bottom:16px;" class="reveal">
+        Un Head Spa ne se vend pas comme un salon de coiffure. C'est une expérience sensorielle, souvent inconnue du grand public. Votre site doit créer l'envie, lever les doutes et donner confiance — avant même le premier contact.
+      </p>
+      <p style="font-size:14px;color:var(--gray-mid);line-height:1.85;" class="reveal">
+        <strong style="color:var(--black);">Une page Instagram ne suffit pas.</strong> Il vous faut un espace en ligne qui explique vos rituels, rassure sur le déroulé et facilite la réservation — à toute heure.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- CE QU'ON CONSTRUIT -->
+<section class="besoins">
+  <div class="container">
+    <div class="s-label reveal">Ce qu'on construit pour vous</div>
+    <h2 class="s-title reveal">Un site pensé pour<br><strong>l'univers du Head Spa — pas pour tout le monde.</strong></h2>
+    <div class="besoins-grid reveal">
+      <div class="besoin-card">
+        <span class="besoin-slash">/</span>
+        <div class="besoin-title">Présentation immersive des rituels</div>
+        <div class="besoin-text">Chaque protocole détaillé — durée, bienfaits, déroulé. Le client comprend ce qui l'attend et arrive serein. Moins d'hésitation, plus de réservations.</div>
+      </div>
+      <div class="besoin-card">
+        <span class="besoin-slash">/</span>
+        <div class="besoin-title">Design sensoriel & épuré</div>
+        <div class="besoin-text">Typographie fine, espaces généreux, tons doux — le design de votre site reflète l'expérience que vous offrez. Un visiteur qui "ressent" le calme en naviguant est déjà à moitié convaincu.</div>
+      </div>
+      <div class="besoin-card">
+        <span class="besoin-slash">/</span>
+        <div class="besoin-title">Réservation en ligne intégrée</div>
+        <div class="besoin-text">Planity, Treatwell, Reservio — votre outil de RDV intégré directement. Vos clients réservent leur rituel sans vous appeler, 7j/7.</div>
+      </div>
+      <div class="besoin-card">
+        <span class="besoin-slash">/</span>
+        <div class="besoin-title">SEO ciblé "head spa Lyon"</div>
+        <div class="besoin-text">On travaille les requêtes spécifiques à votre marché : "head spa Lyon", "soin cuir chevelu Lyon", "spa capillaire Villeurbanne"... Des mots-clés peu concurrentiels, à fort potentiel de capture.</div>
+      </div>
+      <div class="besoin-card">
+        <span class="besoin-slash">/</span>
+        <div class="besoin-title">Section FAQ rassurante</div>
+        <div class="besoin-text">"C'est quoi un head spa ?", "Est-ce douloureux ?", "Pour qui ?" — les questions de vos futurs clients, anticipées et répondues sur votre site. Moins de frictions, plus de conversions.</div>
+      </div>
+      <div class="besoin-card">
+        <span class="besoin-slash">/</span>
+        <div class="besoin-title">Carte cadeau & forfaits mis en avant</div>
+        <div class="besoin-text">Le Head Spa est un cadeau idéal. On crée une section dédiée aux cartes cadeaux et forfaits pour maximiser vos ventes, notamment en période de fêtes.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PHOTO BANDE -->
+<div class="photo-band">
+  <div class="photo-band-item">
+    <img src="headspa-zen.jpg" alt="Ambiance zen Head Spa — diffuseur bambou, bougies, sable"/>
+    <div class="photo-band-caption">Univers · L'ambiance sensorielle</div>
+  </div>
+  <div class="photo-band-item">
+    <img src="headspa-produit.jpg" alt="Produits soin capillaire Head Spa — formules naturelles"/>
+    <div class="photo-band-caption">Rituels · Les formules naturelles</div>
+  </div>
+</div>
+
+<!-- ZONES GEO -->
+<section class="zones" id="zones">
+  <div class="container">
+    <div class="s-label reveal">Zone d'intervention</div>
+    <h2 class="s-title reveal">Visible dans tout<br><strong>le Grand Lyon.</strong></h2>
+    <p class="s-sub reveal" style="margin-top:12px">Le Head Spa est encore rare à Lyon — c'est une opportunité SEO réelle. On cible les requêtes de votre zone avant que la concurrence s'installe.</p>
+    <div class="zones-grid reveal">
+      <div class="zone-item"><div class="zone-name">Lyon Centre</div><div class="zone-kw">head spa Lyon 2, Lyon 6, Lyon 7</div></div>
+      <div class="zone-item"><div class="zone-name">Villeurbanne</div><div class="zone-kw">head spa Villeurbanne, soin capillaire</div></div>
+      <div class="zone-item"><div class="zone-name">Caluire-et-Cuire</div><div class="zone-kw">head spa Caluire, spa cheveux</div></div>
+      <div class="zone-item"><div class="zone-name">Bron · Décines</div><div class="zone-kw">head spa Bron, soin cuir chevelu Est Lyon</div></div>
+      <div class="zone-item"><div class="zone-name">Tassin · Écully</div><div class="zone-kw">head spa Tassin, spa capillaire Ouest Lyon</div></div>
+      <div class="zone-item"><div class="zone-name">Vénissieux · St-Priest</div><div class="zone-kw">head spa Vénissieux, soin cuir chevelu</div></div>
+      <div class="zone-item"><div class="zone-name">Rillieux · Miribel</div><div class="zone-kw">head spa Rillieux-la-Pape, spa cheveux Nord</div></div>
+      <div class="zone-item"><div class="zone-name">Métropole lyonnaise</div><div class="zone-kw">head spa japonais Grand Lyon, spa capillaire</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ HEAD SPA -->
+<section class="faq" id="faq">
+  <div class="container">
+    <div class="faq-layout">
+      <div>
+        <div class="s-label reveal">Questions fréquentes</div>
+        <h2 class="s-title reveal" style="font-size:clamp(22px,3vw,36px)">Ce que les<br>praticiens<br>head spa nous demandent.</h2>
+        <p style="font-size:14px;color:var(--gray-mid);line-height:1.7;margin:16px 0 28px;" class="reveal">Une question spécifique à votre situation ? Contactez-moi — je réponds sous 24h.</p>
+        <a href="#contact" class="btn-primary reveal">Démarrer mon projet <span class="arr">→</span></a>
+      </div>
+      <div class="faq-items reveal">
+        <div class="faq-item open">
+          <div class="faq-q">Mon head spa vient d'ouvrir. J'ai besoin d'un site rapidement.<div class="faq-icon">+</div></div>
+          <div class="faq-a">C'est exactement le bon moment. Un site mis en ligne dès l'ouverture vous permet de commencer à apparaître sur Google immédiatement — le SEO prend du temps, autant démarrer tôt. Livraison garantie en 3 semaines à compter de la réception de vos éléments.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">Le Head Spa est encore peu connu. Comment le site peut-il éduquer mes futurs clients ?<div class="faq-icon">+</div></div>
+          <div class="faq-a">C'est justement l'un des enjeux centraux qu'on traite. On crée une section "Qu'est-ce qu'un Head Spa ?" claire, rassurante, qui explique le déroulé d'une séance, les bienfaits et pour qui c'est fait. L'objectif : transformer un curieux en client convaincu avant même qu'il vous contacte.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">Je propose plusieurs rituels. Comment les présenter clairement ?<div class="faq-icon">+</div></div>
+          <div class="faq-a">On crée une page ou section dédiée à chaque rituel : nom, durée, bienfaits, tarif, photos. Le visiteur comprend immédiatement la différence entre un soin détox, un rituel nourrissant et un massage crânien japonais. La clarté génère la confiance — et la réservation.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">Est-ce qu'un head spa peut vendre des cartes cadeaux via son site ?<div class="faq-icon">+</div></div>
+          <div class="faq-a">Oui, et c'est un levier important à ne pas négliger. On crée une section carte cadeau mise en avant, avec un lien vers votre système de vente (Planity, Treatwell, ou un formulaire de commande simple). Le Head Spa est un cadeau premium — votre site doit le vendre comme tel.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">Comment se positionnent les recherches "head spa" sur Google à Lyon ?<div class="faq-icon">+</div></div>
+          <div class="faq-a">Le Head Spa est un marché encore peu saturé à Lyon — c'est une opportunité réelle. Les requêtes "head spa Lyon" ont un volume croissant et peu de concurrents bien référencés. En démarrant maintenant avec un site optimisé, vous avez une vraie fenêtre pour prendre la première place avant que le marché se densifie.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">Je travaille seule depuis un appartement. Puis-je quand même avoir un site professionnel ?<div class="faq-icon">+</div></div>
+          <div class="faq-a">Tout à fait. L'adresse n'est pas obligatoire sur le site si vous préférez la confidentialité — on peut indiquer la ville ou le quartier sans préciser l'adresse exacte, et orienter les clients par formulaire de contact ou téléphone. Le professionnalisme se lit dans le design et le contenu, pas dans la surface de votre espace.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section class="cta-section" id="contact">
+  <div class="container">
+    <div class="cta-inner">
+      <h2 class="cta-title reveal">Votre site Head Spa<br>à Lyon —<br><strong>en 3 semaines.</strong><br>1 appel offert.</h2>
+      <div class="reveal">
+        <div class="cta-perks">
+          <div class="cta-perk">30 minutes · 100% gratuit · sans engagement</div>
+          <div class="cta-perk">Analyse de votre présence en ligne actuelle</div>
+          <div class="cta-perk">Conseils SEO concrets à appliquer immédiatement</div>
+          <div class="cta-perk">Devis détaillé remis sous 24h</div>
+        </div>
+        <form id="contactForm" style="display:flex;flex-direction:column;gap:12px;">
+          <input type="text" id="cf-nom" placeholder="Votre prénom et nom" required style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);color:#fff;padding:12px 16px;border-radius:8px;font-family:var(--font);font-size:14px;outline:none;transition:border-color .2s;" onfocus="this.style.borderColor='rgba(122,148,120,.6)'" onblur="this.style.borderColor='rgba(255,255,255,.12)'"/>
+          <input type="email" id="cf-email" placeholder="Votre adresse email" required style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);color:#fff;padding:12px 16px;border-radius:8px;font-family:var(--font);font-size:14px;outline:none;transition:border-color .2s;" onfocus="this.style.borderColor='rgba(122,148,120,.6)'" onblur="this.style.borderColor='rgba(255,255,255,.12)'"/>
+          <input type="text" id="cf-spa" placeholder="Nom de votre établissement · Localisation" style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);color:#fff;padding:12px 16px;border-radius:8px;font-family:var(--font);font-size:14px;outline:none;transition:border-color .2s;" onfocus="this.style.borderColor='rgba(122,148,120,.6)'" onblur="this.style.borderColor='rgba(255,255,255,.12)'"/>
+          <textarea id="cf-message" placeholder="Dites-moi en quelques mots ce que vous recherchez (facultatif)" rows="3" style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);color:#fff;padding:12px 16px;border-radius:8px;font-family:var(--font);font-size:14px;outline:none;transition:border-color .2s;resize:vertical;" onfocus="this.style.borderColor='rgba(122,148,120,.6)'" onblur="this.style.borderColor='rgba(255,255,255,.12)'"></textarea>
+          <button type="submit" id="cf-submit" style="background:var(--white);color:var(--black);border:none;padding:14px 24px;border-radius:100px;font-family:var(--font);font-size:14px;font-weight:600;cursor:pointer;transition:background .2s;text-align:left;display:flex;align-items:center;justify-content:space-between;">
+            <span>Envoyer ma demande</span><span>→</span>
+          </button>
+          <div id="cf-success" style="display:none;font-size:13px;color:var(--sage-lt);padding:10px 0;">✓ Message envoyé ! Je vous réponds sous 24h.</div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="f-logo-text">N<span class="slash">/</span> Studio Digital</div>
+        <div style="font-size:11px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;color:var(--sage);margin-top:4px;margin-bottom:2px;">Site internet Head Spa Lyon</div>
+        <div class="f-tagline">Coiffure & Bien-être · Grand Lyon</div>
+        <p class="f-desc">Création de sites vitrine sur-mesure pour les Head Spas et praticiens du soin capillaire de la métropole lyonnaise.</p>
+      </div>
+      <div>
+        <div class="f-col-title">Navigation</div>
+        <div class="f-col-links">
+          <a href="#votre-site">Votre site</a>
+          <a href="#zones">Zones</a>
+          <a href="#faq">FAQ</a>
+          <a href="index.html#offres">L'offre</a>
+          <a href="#contact">Contact</a>
+        </div>
+      </div>
+      <div>
+        <div class="f-col-title">Autres pages</div>
+        <div class="f-col-links">
+          <a href="index.html">Accueil N/ Studio Digital</a>
+          <a href="coiffeur-lyon.html">Site coiffeur Lyon</a>
+          <a href="ko-spa.html">Exemple Head Spa</a>
+          <a href="mentions-legales.html">Mentions légales</a>
+          <a href="cgv.html">CGV</a>
+        </div>
+      </div>
+    </div>
+    <div class="f-bottom">
+      <div class="f-copy" style="color:rgba(255,255,255,.6);">© 2026 N/ Studio Digital — Nadège Dufour · TVA non applicable, art. 293 B du CGI</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 30); });
+  const hamburger = document.getElementById('hamburger');
+  const navMobile = document.getElementById('navMobile');
+  hamburger.addEventListener('click', () => { hamburger.classList.toggle('open'); navMobile.classList.toggle('open'); });
+  function closeMenu() { hamburger.classList.remove('open'); navMobile.classList.remove('open'); }
+  document.addEventListener('click', (e) => { if (!nav.contains(e.target) && !navMobile.contains(e.target)) closeMenu(); });
+  const obs = new IntersectionObserver(entries => { entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('vis'); obs.unobserve(e.target); } }); }, { threshold: 0.08 });
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+  document.querySelectorAll('.faq-q').forEach(q => {
+    q.addEventListener('click', () => {
+      const item = q.parentElement;
+      document.querySelectorAll('.faq-item.open').forEach(o => { if(o!==item) o.classList.remove('open'); });
+      item.classList.toggle('open');
+    });
+  });
+  const backBtn = document.getElementById('backToTop');
+  window.addEventListener('scroll', () => { backBtn.classList.toggle('visible', window.scrollY > 400); });
+  const form = document.getElementById('contactForm');
+  if (form) {
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const btn = document.getElementById('cf-submit');
+      btn.querySelector('span').textContent = 'Envoi en cours…';
+      const formData = new FormData();
+      formData.append('nom', document.getElementById('cf-nom').value);
+      formData.append('email', document.getElementById('cf-email').value);
+      formData.append('spa', document.getElementById('cf-spa').value);
+      formData.append('message', document.getElementById('cf-message').value);
+      formData.append('_subject', 'Demande devis head spa — ' + document.getElementById('cf-nom').value);
+      fetch('https://formspree.io/f/xgoqklzl', { method:'POST', body:formData, headers:{'Accept':'application/json'} })
+        .then(r => { if(r.ok) document.getElementById('cf-success').style.display='block'; })
+        .catch(() => {});
+      setTimeout(() => { document.getElementById('cf-success').style.display='block'; btn.querySelector('span').textContent='Envoyer ma demande'; }, 800);
+    });
+  }
+</script>
+</body>
+</html>
