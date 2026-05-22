@@ -38,6 +38,17 @@
     .nav-links a { font-size: 13px; font-weight: 400; color: var(--gray-mid); text-decoration: none; transition: color .2s; }
     .nav-links a:hover { color: var(--black); }
 
+    /* Dropdown */
+    .nav-dropdown { position: relative; }
+    .nav-dropdown > a { display: flex; align-items: center; gap: 5px; }
+    .nav-dropdown > a::after { content: ''; display: inline-block; width: 6px; height: 6px; border-right: 1.5px solid var(--gray-lt); border-bottom: 1.5px solid var(--gray-lt); transform: rotate(45deg); margin-top: -3px; transition: transform .2s; }
+    .nav-dropdown:hover > a::after { transform: rotate(-135deg); margin-top: 2px; }
+    .dropdown-menu { display: none; position: absolute; top: calc(100% + 12px); left: 50%; transform: translateX(-50%); background: var(--white); border: 1px solid var(--gray-bd); box-shadow: 0 8px 32px rgba(0,0,0,.1); min-width: 220px; z-index: 400; padding: 6px 0; }
+    .nav-dropdown:hover .dropdown-menu { display: block; }
+    .dropdown-menu a { display: block; padding: 10px 18px; font-size: 13px; color: var(--black); text-decoration: none; white-space: nowrap; transition: background .15s, color .15s; }
+    .dropdown-menu a:hover { background: var(--gray-bg); color: var(--sage); }
+    .dropdown-menu .dd-sep { height: 1px; background: var(--gray-bd); margin: 4px 0; }
+
     /* Hamburger */
     .nav-hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; background: none; border: none; }
     .nav-hamburger span { display: block; width: 22px; height: 2px; background: var(--black); border-radius: 2px; transition: all .3s; }
@@ -401,10 +412,27 @@
       <div class="nav-inner">
         <a href="#" class="nav-logo">N<span class="slash">/</span> Studio Digital</a>
         <ul class="nav-links">
-          <li><a href="#realisations">Réalisations</a></li>
+          <li class="nav-dropdown">
+            <a href="#realisations">Réalisations</a>
+            <div class="dropdown-menu">
+              <a href="ko-spa.html" target="_blank">Kō Spa — Head Spa japonais</a>
+              <a href="studio-mova.html" target="_blank">Studio Mova — Pilates</a>
+            </div>
+          </li>
+          <li class="nav-dropdown">
+            <a href="#secteurs">Secteurs</a>
+            <div class="dropdown-menu">
+              <a href="coiffeur-lyon.html">Coiffeurs & salons</a>
+              <a href="head-spa-lyon.html">Head Spa</a>
+              <a href="institut-massage-lyon.html">Instituts de massage</a>
+              <a href="sophrologue-naturopathe-lyon.html">Sophrologues & naturopathes</a>
+              <a href="yoga-pilates-lyon.html">Yoga & Pilates</a>
+              <a href="spa-institut-lyon.html">Spas & instituts</a>
+              <a href="esthetique-nail-art-lyon.html">Esthétique & nail art</a>
+            </div>
+          </li>
           <li><a href="#offres">Offres</a></li>
           <li><a href="#process">Méthode</a></li>
-          <li><a href="#apropos">À propos</a></li>
           <li><a href="#faq">FAQ</a></li>
         </ul>
         <a href="#contact" class="btn-primary nav-cta-desktop">Démarrer mon projet <span class="arr">→</span></a>
@@ -418,9 +446,22 @@
   <!-- MENU MOBILE -->
   <div class="nav-mobile" id="navMobile">
     <a href="#realisations" onclick="closeMenu()">Réalisations</a>
+    <div style="padding:4px 0 4px 12px;display:flex;flex-direction:column;gap:0;border-left:2px solid var(--gray-bd);margin:0 0 4px 0;">
+      <a href="ko-spa.html" target="_blank" onclick="closeMenu()" style="font-size:13px;color:var(--gray-mid);padding:7px 0;">↳ Kō Spa</a>
+      <a href="studio-mova.html" target="_blank" onclick="closeMenu()" style="font-size:13px;color:var(--gray-mid);padding:7px 0;">↳ Studio Mova</a>
+    </div>
+    <a href="#secteurs" onclick="closeMenu()">Secteurs</a>
+    <div style="padding:4px 0 4px 12px;display:flex;flex-direction:column;gap:0;border-left:2px solid var(--gray-bd);margin:0 0 4px 0;">
+      <a href="coiffeur-lyon.html" onclick="closeMenu()" style="font-size:13px;color:var(--gray-mid);padding:7px 0;">↳ Coiffeurs & salons</a>
+      <a href="head-spa-lyon.html" onclick="closeMenu()" style="font-size:13px;color:var(--gray-mid);padding:7px 0;">↳ Head Spa</a>
+      <a href="institut-massage-lyon.html" onclick="closeMenu()" style="font-size:13px;color:var(--gray-mid);padding:7px 0;">↳ Instituts de massage</a>
+      <a href="sophrologue-naturopathe-lyon.html" onclick="closeMenu()" style="font-size:13px;color:var(--gray-mid);padding:7px 0;">↳ Sophrologues & naturopathes</a>
+      <a href="yoga-pilates-lyon.html" onclick="closeMenu()" style="font-size:13px;color:var(--gray-mid);padding:7px 0;">↳ Yoga & Pilates</a>
+      <a href="spa-institut-lyon.html" onclick="closeMenu()" style="font-size:13px;color:var(--gray-mid);padding:7px 0;">↳ Spas & instituts</a>
+      <a href="esthetique-nail-art-lyon.html" onclick="closeMenu()" style="font-size:13px;color:var(--gray-mid);padding:7px 0;">↳ Esthétique & nail art</a>
+    </div>
     <a href="#offres" onclick="closeMenu()">Offres</a>
     <a href="#process" onclick="closeMenu()">Méthode</a>
-    <a href="#apropos" onclick="closeMenu()">À propos</a>
     <a href="#faq" onclick="closeMenu()">FAQ</a>
     <a href="#contact" class="mobile-cta" onclick="closeMenu()">Démarrer mon projet →</a>
   </div>
