@@ -207,12 +207,12 @@
 <div class="blog-filters">
   <div class="container">
     <div class="filters-inner">
-      <button class="filter-btn active">Tous les articles</button>
-      <button class="filter-btn">SEO &amp; Visibilité</button>
-      <button class="filter-btn">Conseils pratiques</button>
-      <button class="filter-btn">Tendances</button>
-      <button class="filter-btn">Coiffure</button>
-      <button class="filter-btn">Bien-être</button>
+      <button class="filter-btn active" data-filter="tous">Tous les articles</button>
+      <button class="filter-btn" data-filter="seo">SEO &amp; Visibilité</button>
+      <button class="filter-btn" data-filter="conseils">Conseils pratiques</button>
+      <button class="filter-btn" data-filter="tendances">Tendances</button>
+      <button class="filter-btn" data-filter="coiffure">Coiffure</button>
+      <button class="filter-btn" data-filter="bienetre">Bien-être</button>
     </div>
   </div>
 </div>
@@ -222,7 +222,7 @@
     <div class="blog-grid">
 
       <!-- Article featured -->
-      <a href="blog/pourquoi-coiffeur-lyon-site-internet.html" class="blog-featured reveal">
+      <a href="blog/pourquoi-coiffeur-lyon-site-internet.html" class="blog-featured reveal" data-cat="seo coiffure">
         <div class="blog-featured-img">
           <img src="BLOG_COIFFEUR.jpg" alt="Outils de coiffure" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.85;"/>
           <div class="blog-featured-img-bg" style="background:linear-gradient(135deg,rgba(13,13,13,.4) 0%,rgba(13,13,13,.2) 100%);"></div>
@@ -242,7 +242,7 @@
       </a>
 
       <!-- Article 2 -->
-      <a href="blog/combien-coute-site-vitrine-salon-coiffure-institut.html" class="blog-card reveal" style="transition-delay:.1s;">
+      <a href="blog/combien-coute-site-vitrine-salon-coiffure-institut.html" class="blog-card reveal" data-cat="conseils coiffure" style="transition-delay:.1s;">
         <div class="blog-card-img">
           <img src="COMBIEN_COUTE.jpg" alt="Coût site vitrine" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.85;"/>
           <div class="blog-card-img-bg" style="background:linear-gradient(135deg,rgba(13,13,13,.5) 0%,rgba(42,31,26,.4) 100%);"></div>
@@ -259,7 +259,7 @@
       </a>
 
       <!-- Article 3 -->
-      <a href="blog/head-spa-lyon-marche-essor.html" class="blog-card reveal" style="transition-delay:.2s;">
+      <a href="blog/head-spa-lyon-marche-essor.html" class="blog-card reveal" data-cat="tendances bienetre" style="transition-delay:.2s;">
         <div class="blog-card-img">
           <img src="HEAD_SPA.jpg" alt="Head spa soin cuir chevelu" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.85;"/>
           <div class="blog-card-img-bg" style="background:linear-gradient(135deg,rgba(10,15,13,.5) 0%,rgba(26,43,35,.3) 100%);"></div>
@@ -276,7 +276,7 @@
       </a>
 
       <!-- Article 4 -->
-      <a href="blog/planity-vs-treatwell-outil-reservation.html" class="blog-card reveal" style="transition-delay:.3s;">
+      <a href="blog/planity-vs-treatwell-outil-reservation.html" class="blog-card reveal" data-cat="conseils coiffure bienetre" style="transition-delay:.3s;">
         <div class="blog-card-img">
           <img src="RDV_EN_LIGNE.jpg" alt="Réservation en ligne agenda" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.85;"/>
           <div class="blog-card-img-bg" style="background:linear-gradient(135deg,rgba(17,17,17,.55) 0%,rgba(26,26,46,.4) 100%);"></div>
@@ -293,7 +293,7 @@
       </a>
 
       <!-- Article 5 -->
-      <a href="blog/seo-local-praticien-bien-etre-lyon.html" class="blog-card reveal" style="transition-delay:.4s;">
+      <a href="blog/seo-local-praticien-bien-etre-lyon.html" class="blog-card reveal" data-cat="seo bienetre" style="transition-delay:.4s;">
         <div class="blog-card-img">
           <img src="https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?w=600&q=75&auto=format" alt="SEO local Google recherche" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.6;"/>
           <div class="blog-card-img-bg" style="background:linear-gradient(135deg,rgba(10,15,10,.55) 0%,rgba(26,43,26,.4) 100%);"></div>
@@ -385,7 +385,24 @@
   document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
   const backBtn=document.getElementById('backToTop');
   window.addEventListener('scroll',()=>{backBtn.classList.toggle('visible',window.scrollY>400);});
-  document.querySelectorAll('.filter-btn').forEach(btn=>{btn.addEventListener('click',()=>{document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');});});
+  // Filtrage fonctionnel
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const articles = document.querySelectorAll('[data-cat]');
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const filter = btn.dataset.filter;
+      articles.forEach(card => {
+        if (filter === 'tous' || card.dataset.cat.includes(filter)) {
+          card.style.display = '';
+          card.style.opacity = '1';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    });
+  });
 </script>
 </body>
 </html>
