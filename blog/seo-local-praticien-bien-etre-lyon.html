@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SEO local pour praticien bien-être : par où commencer ? — N/ Studio Digital</title>
+  <meta name="description" content="Google Business, mots-clés de quartier, avis clients — le guide complet du SEO local pour les sophrologues, naturopathes, masseurs et praticiens bien-être à Lyon."/>
+  <meta name="keywords" content="SEO local praticien bien-être Lyon, référencement sophologue Lyon, Google Business praticien bien-être, visibilité locale naturopathe Lyon"/>
+  <meta property="og:title" content="SEO local pour praticien bien-être : par où commencer ?"/>
+  <meta property="og:url" content="https://www.nstudiodigital.fr/blog/seo-local-praticien-bien-etre-lyon.html"/>
+  <meta property="og:type" content="article"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    :root{--black:#0D0D0D;--white:#FFFFFF;--gray-mid:#888888;--gray-lt:#CCCCCC;--gray-bg:#F4F4F4;--gray-bd:#E0E0E0;--sage:#7A9478;--sage-lt:#9AB098;--font:'Inter',sans-serif;}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;}
+    body{font-family:var(--font);background:var(--white);color:var(--black);overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+    .container{max-width:1140px;margin:0 auto;padding:0 48px;}
+    @media(max-width:768px){.container{padding:0 20px;}}
+    .reveal{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease;}
+    .reveal.vis{opacity:1;transform:none;}
+    nav{position:fixed;top:0;left:0;right:0;z-index:300;background:var(--white);border-bottom:1px solid var(--gray-bd);transition:box-shadow .3s;}
+    nav.scrolled{box-shadow:0 2px 16px rgba(0,0,0,.07);}
+    .nav-inner{display:flex;align-items:center;justify-content:space-between;height:64px;}
+    .nav-logo{font-size:18px;font-weight:400;letter-spacing:-.2px;color:var(--black);text-decoration:none;}
+    .nav-logo .slash{font-weight:300;color:var(--sage);}
+    .nav-links{display:flex;align-items:center;gap:32px;list-style:none;}
+    .nav-links a{font-size:13px;color:var(--gray-mid);text-decoration:none;transition:color .2s;}
+    .nav-links a:hover{color:var(--black);}
+    .nav-dropdown{position:relative;}
+    .nav-dropdown>a{display:flex;align-items:center;gap:5px;}
+    .nav-dropdown>a::after{content:'';display:inline-block;width:6px;height:6px;border-right:1.5px solid var(--gray-lt);border-bottom:1.5px solid var(--gray-lt);transform:rotate(45deg);margin-top:-3px;transition:transform .2s;}
+    .nav-dropdown:hover>a::after{transform:rotate(-135deg);margin-top:2px;}
+    .dropdown-menu{display:none;position:absolute;top:calc(100% + 12px);left:50%;transform:translateX(-50%);background:var(--white);border:1px solid var(--gray-bd);box-shadow:0 8px 32px rgba(0,0,0,.1);min-width:220px;z-index:400;padding:6px 0;}
+    .nav-dropdown:hover .dropdown-menu{display:block;}
+    .dropdown-menu a{display:block;padding:10px 18px;font-size:13px;color:var(--black);text-decoration:none;white-space:nowrap;transition:background .15s;}
+    .dropdown-menu a:hover{background:var(--gray-bg);color:var(--sage);}
+    .nav-hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;background:none;border:none;}
+    .nav-hamburger span{display:block;width:22px;height:2px;background:var(--black);border-radius:2px;transition:all .3s;}
+    .nav-hamburger.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px);}
+    .nav-hamburger.open span:nth-child(2){opacity:0;}
+    .nav-hamburger.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px);}
+    .nav-mobile{display:none;position:fixed;top:64px;left:0;right:0;background:var(--white);border-bottom:1px solid var(--gray-bd);padding:20px;flex-direction:column;z-index:299;box-shadow:0 8px 24px rgba(0,0,0,.08);}
+    .nav-mobile.open{display:flex;}
+    .nav-mobile a{font-size:15px;color:var(--black);text-decoration:none;padding:14px 0;border-bottom:1px solid var(--gray-bg);display:block;}
+    .nav-mobile a:last-child{border-bottom:none;}
+    .nav-mobile .mobile-cta{margin-top:16px;background:var(--black);color:var(--white);padding:14px;border-radius:100px;text-align:center;font-weight:500;border-bottom:none!important;}
+    @media(max-width:900px){.nav-links{display:none;}.nav-hamburger{display:flex;}}
+    .btn-primary{display:inline-flex;align-items:center;gap:10px;background:var(--black);color:var(--white);padding:10px 22px;border-radius:100px;font-family:var(--font);font-size:13px;font-weight:500;text-decoration:none;border:none;cursor:pointer;transition:background .25s,transform .2s;white-space:nowrap;}
+    .btn-primary:hover{background:#222;transform:translateY(-1px);}
+    .btn-primary .arr{width:24px;height:24px;background:rgba(255,255,255,.15);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;}
+    .article-hero{padding-top:64px;background:var(--black);position:relative;overflow:hidden;}
+    .article-hero-grain{position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");opacity:.04;pointer-events:none;}
+    .article-hero-accent{position:absolute;right:-80px;bottom:-80px;width:500px;height:500px;background:radial-gradient(circle,rgba(122,148,120,.12) 0%,transparent 70%);pointer-events:none;}
+    .article-hero-inner{position:relative;z-index:2;padding-top:56px;padding-bottom:64px;}
+    .article-breadcrumb{display:flex;align-items:center;gap:8px;font-size:12px;color:rgba(255,255,255,.35);margin-bottom:24px;flex-wrap:wrap;}
+    .article-breadcrumb a{color:rgba(255,255,255,.35);text-decoration:none;}
+    .article-breadcrumb a:hover{color:var(--sage);}
+    .article-breadcrumb span{color:rgba(255,255,255,.2);}
+    .article-tag{display:inline-flex;align-items:center;gap:6px;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:var(--sage);margin-bottom:16px;}
+    .article-tag::before{content:'/';}
+    .article-title{font-size:clamp(24px,4vw,50px);font-weight:400;color:var(--white);line-height:1.1;letter-spacing:-1px;max-width:780px;margin-bottom:24px;}
+    .article-title strong{font-weight:700;font-style:italic;}
+    .article-meta{display:flex;align-items:center;gap:20px;flex-wrap:wrap;}
+    .article-meta-item{font-size:12px;color:rgba(255,255,255,.35);}
+    .article-meta-item strong{color:rgba(255,255,255,.6);font-weight:500;}
+    .article-meta-sep{width:3px;height:3px;border-radius:50%;background:rgba(255,255,255,.2);}
+    .article-layout{display:grid;grid-template-columns:1fr 320px;gap:64px;padding:64px 0 96px;align-items:start;}
+    @media(max-width:900px){.article-layout{grid-template-columns:1fr;gap:48px;}}
+    .article-body h2{font-size:clamp(18px,2.2vw,24px);font-weight:600;letter-spacing:-.4px;color:var(--black);margin:40px 0 14px;line-height:1.3;}
+    .article-body h2:first-child{margin-top:0;}
+    .article-body p{font-size:15px;color:#3a3a3a;line-height:1.85;margin-bottom:18px;}
+    .article-body ul{margin:0 0 18px;padding-left:0;list-style:none;display:flex;flex-direction:column;gap:10px;}
+    .article-body ul li{font-size:15px;color:#3a3a3a;line-height:1.7;padding-left:20px;position:relative;}
+    .article-body ul li::before{content:'/';position:absolute;left:0;color:var(--sage);font-weight:300;}
+    .article-body strong{font-weight:600;color:var(--black);}
+    .article-body a{color:var(--sage);text-decoration:underline;text-underline-offset:3px;}
+    .callout{background:var(--gray-bg);border-left:3px solid var(--sage);padding:20px 24px;margin:28px 0;}
+    .callout p{margin:0;font-size:14px;color:var(--black);line-height:1.7;}
+    /* ÉTAPES */
+    .steps{display:flex;flex-direction:column;gap:0;margin:28px 0;}
+    .step{display:grid;grid-template-columns:48px 1fr;gap:20px;padding:24px 0;border-bottom:1px solid var(--gray-bd);}
+    .step:last-child{border-bottom:none;}
+    .step-num{width:40px;height:40px;background:var(--black);color:var(--white);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:600;flex-shrink:0;}
+    .step-content{}
+    .step-title{font-size:15px;font-weight:600;color:var(--black);margin-bottom:8px;}
+    .step-text{font-size:14px;color:var(--gray-mid);line-height:1.7;}
+    /* KEYWORDS */
+    .kw-bloc{background:var(--black);padding:28px 32px;margin:28px 0;}
+    .kw-title{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:var(--sage);margin-bottom:16px;display:flex;align-items:center;gap:6px;}
+    .kw-title::before{content:'/';}
+    .kw-grid{display:flex;flex-wrap:wrap;gap:8px;}
+    .kw-tag{padding:6px 14px;background:rgba(122,148,120,.12);color:var(--sage-lt);font-size:12px;border:1px solid rgba(122,148,120,.2);}
+    .article-sidebar{position:sticky;top:88px;}
+    .sidebar-cta{background:var(--black);padding:28px 24px;margin-bottom:24px;}
+    .sidebar-cta-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:var(--sage);margin-bottom:10px;display:flex;align-items:center;gap:5px;}
+    .sidebar-cta-label::before{content:'/';}
+    .sidebar-cta-title{font-size:18px;font-weight:400;color:var(--white);line-height:1.3;margin-bottom:10px;}
+    .sidebar-cta-title strong{font-weight:700;}
+    .sidebar-cta-sub{font-size:13px;color:rgba(255,255,255,.45);line-height:1.6;margin-bottom:20px;}
+    .sidebar-cta-btn{display:flex;align-items:center;justify-content:space-between;background:var(--white);color:var(--black);padding:12px 16px;font-family:var(--font);font-size:13px;font-weight:600;text-decoration:none;transition:background .2s;}
+    .sidebar-cta-btn:hover{background:var(--gray-bg);}
+    .sidebar-sommaire{border:1px solid var(--gray-bd);padding:24px;}
+    .sidebar-sommaire-title{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:var(--gray-mid);margin-bottom:16px;display:flex;align-items:center;gap:5px;}
+    .sidebar-sommaire-title::before{content:'/';color:var(--sage);}
+    .sidebar-sommaire ul{list-style:none;padding:0;display:flex;flex-direction:column;gap:10px;}
+    .sidebar-sommaire ul li a{font-size:13px;color:var(--gray-mid);text-decoration:none;line-height:1.45;transition:color .2s;display:block;}
+    .sidebar-sommaire ul li a:hover{color:var(--black);}
+    .related{background:var(--gray-bg);padding:64px 0;}
+    .related-label{font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:2px;color:var(--gray-mid);margin-bottom:8px;display:flex;align-items:center;gap:8px;}
+    .related-label::before{content:'/';color:var(--sage);}
+    .related-h2{font-size:clamp(20px,2.5vw,30px);font-weight:400;letter-spacing:-.5px;margin-bottom:32px;}
+    .related-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;}
+    @media(max-width:600px){.related-grid{grid-template-columns:1fr;}}
+    .related-card{background:var(--white);border:1px solid var(--gray-bd);padding:28px;text-decoration:none;color:inherit;display:block;transition:box-shadow .25s,transform .2s;}
+    .related-card:hover{box-shadow:0 6px 24px rgba(0,0,0,.08);transform:translateY(-2px);}
+    .related-card-tag{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:var(--sage);margin-bottom:10px;display:flex;align-items:center;gap:4px;}
+    .related-card-tag::before{content:'/';}
+    .related-card-title{font-size:15px;font-weight:500;line-height:1.4;color:var(--black);}
+    .related-card-link{font-size:12px;font-weight:500;color:var(--sage);margin-top:12px;display:inline-block;}
+    footer{background:var(--black);padding:56px 0 32px;}
+    .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px;margin-bottom:48px;}
+    @media(max-width:768px){.footer-grid{grid-template-columns:1fr;gap:32px;}}
+    .f-logo-text{font-size:20px;font-weight:400;color:var(--white);margin-bottom:8px;}
+    .f-logo-text .slash{color:var(--sage);font-weight:300;}
+    .f-tagline{font-size:12px;color:rgba(255,255,255,.3);margin-bottom:14px;}
+    .f-desc{font-size:13px;color:rgba(255,255,255,.35);line-height:1.7;}
+    .f-col-title{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:1.5px;color:rgba(255,255,255,.3);margin-bottom:16px;}
+    .f-col-links{display:flex;flex-direction:column;gap:10px;}
+    .f-col-links a{font-size:13px;color:rgba(255,255,255,.55);text-decoration:none;transition:color .2s;}
+    .f-col-links a:hover{color:var(--white);}
+    .f-bottom{border-top:1px solid rgba(255,255,255,.07);padding-top:24px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;}
+    .f-copy{font-size:12px;color:rgba(255,255,255,.25);}
+    .f-legal-links{display:flex;gap:20px;}
+    .f-legal-links a{font-size:12px;color:rgba(255,255,255,.25);text-decoration:none;}
+    .f-legal-links a:hover{color:rgba(255,255,255,.6);}
+    .back-to-top{position:fixed;bottom:28px;right:28px;width:40px;height:40px;background:var(--black);color:var(--white);border:1px solid rgba(255,255,255,.15);border-radius:50%;font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .3s,transform .3s;z-index:200;}
+    .back-to-top.visible{opacity:1;pointer-events:all;}
+  </style>
+</head>
+<body>
+<nav id="nav">
+  <div class="container">
+    <div class="nav-inner">
+      <a href="../index.html" class="nav-logo">N<span class="slash">/</span> Studio Digital</a>
+      <ul class="nav-links">
+        <li><a href="../index.html#realisations">Réalisations</a></li>
+        <li><a href="../index.html#offres">Offres</a></li>
+        <li><a href="../index.html#process">Méthode</a></li>
+        <li class="nav-dropdown">
+          <a href="../index.html#secteurs">Pour qui</a>
+          <div class="dropdown-menu">
+            <a href="../coiffeur-lyon.html">Salons de coiffure</a>
+            <a href="../head-spa-lyon.html">Head Spa</a>
+            <a href="../institut-massage-lyon.html">Instituts de massage</a>
+            <a href="../sophrologue-naturopathe-lyon.html">Praticiens bien-être</a>
+            <a href="../yoga-pilates-lyon.html">Yoga & Pilates</a>
+            <a href="../spa-institut-lyon.html">Spas & instituts</a>
+            <a href="../esthetique-nail-art-lyon.html">Esthétique & nail art</a>
+          </div>
+        </li>
+        <li><a href="../blog.html">Blog</a></li>
+        <li><a href="../index.html#faq">FAQ</a></li>
+      </ul>
+      <a href="../index.html#contact" class="btn-primary">Démarrer mon projet <span class="arr">→</span></a>
+      <button class="nav-hamburger" id="hamburger"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+<div class="nav-mobile" id="navMobile">
+  <a href="../index.html#realisations">Réalisations</a>
+  <a href="../index.html#offres">Offres</a>
+  <a href="../index.html#process">Méthode</a>
+  <a href="../index.html#secteurs">Pour qui</a>
+  <a href="../blog.html">Blog</a>
+  <a href="../index.html#faq">FAQ</a>
+  <a href="../index.html#contact" class="mobile-cta">Démarrer mon projet →</a>
+</div>
+
+<section class="article-hero">
+  <div class="article-hero-grain"></div>
+  <div class="article-hero-accent"></div>
+  <div class="container">
+    <div class="article-hero-inner">
+      <div class="article-breadcrumb">
+        <a href="../index.html">Accueil</a><span>/</span>
+        <a href="../blog.html">Blog</a><span>/</span>
+        <span>SEO local praticien bien-être</span>
+      </div>
+      <div class="article-tag">SEO &amp; Visibilité</div>
+      <h1 class="article-title">SEO local pour praticien bien-être : <strong>par où commencer ?</strong></h1>
+      <div class="article-meta">
+        <div class="article-meta-item"><strong>Nadège Dufour</strong> · N/ Studio Digital</div>
+        <div class="article-meta-sep"></div>
+        <div class="article-meta-item">Mai 2026 · 8 min de lecture</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="container">
+  <div class="article-layout">
+    <article class="article-body">
+
+      <h2 id="intro">Le SEO local : votre meilleur outil de prospection gratuit</h2>
+      <p>Vous êtes sophrologue, naturopathe, masseur, réflexologue ou praticien bien-être à Lyon. Vos clients sont à quelques kilomètres de vous — ils cherchent exactement ce que vous proposez. La question, c'est : est-ce qu'ils vous trouvent sur Google ?</p>
+      <p>Le SEO local, c'est l'ensemble des techniques qui permettent à votre activité d'apparaître dans les résultats Google quand quelqu'un cherche un service près de chez lui. Contrairement à la publicité, <strong>c'est gratuit, durable, et ça travaille pour vous 24h/24.</strong></p>
+      <p>Voici les 5 étapes concrètes pour démarrer, même si vous partez de zéro.</p>
+
+      <h2 id="etapes">Les 5 étapes du SEO local pour bien-être</h2>
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">01</div>
+          <div class="step-content">
+            <div class="step-title">Créez et optimisez votre fiche Google Business</div>
+            <div class="step-text">C'est la base absolue. Une fiche Google Business complète et à jour vous permet d'apparaître dans le "Pack Local" — la carte Google avec les 3 établissements affichés en haut des résultats. Remplissez absolument tous les champs : nom exact, adresse, téléphone, horaires, catégorie principale, description avec vos mots-clés. Ajoutez des photos de qualité — de votre espace, de vous, de vos soins. Les fiches avec photos reçoivent nettement plus de clics.</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">02</div>
+          <div class="step-content">
+            <div class="step-title">Ciblez les bons mots-clés locaux</div>
+            <div class="step-text">Le mot-clé "sophrologue" seul est trop générique. Ce qui convertit, c'est "sophrologue Lyon 6", "sophrologue Villeurbanne", "sophrologue stress anxiété Lyon". Ces requêtes longue traîne ont moins de volume mais une intention d'achat très forte — la personne qui les tape cherche à prendre rendez-vous. Votre site doit utiliser ces formulations précises dans ses titres, descriptions et contenus.</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">03</div>
+          <div class="step-content">
+            <div class="step-title">Collectez des avis Google régulièrement</div>
+            <div class="step-text">Les avis sont un signal SEO majeur — et un outil de conversion redoutable. Google favorise les établissements avec de nombreux avis récents et bien notés. Après chaque séance, envoyez un SMS ou un email avec le lien direct vers votre fiche Google. Demandez-le avec le sourire en fin de séance. Visez 1 à 2 nouveaux avis par semaine. Répondez à tous les avis — positifs comme négatifs.</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">04</div>
+          <div class="step-content">
+            <div class="step-title">Ayez un site internet optimisé pour le SEO local</div>
+            <div class="step-text">Votre fiche Google Business et votre site internet fonctionnent en tandem. Un site bien structuré, avec des balises titre et description optimisées pour vos mots-clés locaux, renforce votre positionnement. Google vérifie la cohérence entre votre fiche et votre site — nom, adresse, téléphone doivent être identiques partout. Un site rapide, mobile-friendly, avec des pages dédiées à chaque spécialité est un atout SEO décisif.</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">05</div>
+          <div class="step-content">
+            <div class="step-title">Publiez du contenu régulièrement</div>
+            <div class="step-text">Google adore les sites actifs. Un article de blog par mois sur votre spécialité — "Sophrologie et gestion du stress à Lyon", "Bienfaits du massage ayurvédique", "Naturopathie : que se passe-t-il lors d'un premier rendez-vous ?" — renforce votre autorité thématique et génère du trafic qualifié sur des requêtes longue traîne. C'est exactement ce que nous construisons avec le blog de N/ Studio Digital pour nos clients.</div>
+          </div>
+        </div>
+      </div>
+
+      <h2 id="keywords">Les mots-clés à cibler selon votre activité à Lyon</h2>
+      <div class="kw-bloc">
+        <div class="kw-title">Exemples de requêtes locales à fort potentiel</div>
+        <div class="kw-grid">
+          <span class="kw-tag">sophrologue Lyon 6</span>
+          <span class="kw-tag">sophrologue Villeurbanne</span>
+          <span class="kw-tag">naturopathe Bron</span>
+          <span class="kw-tag">naturopathe Lyon fatigue chronique</span>
+          <span class="kw-tag">massage ayurvédique Lyon</span>
+          <span class="kw-tag">réflexologue Caluire</span>
+          <span class="kw-tag">ostéopathe Lyon 3</span>
+          <span class="kw-tag">yoga prénatal Lyon</span>
+          <span class="kw-tag">praticien EFT Lyon</span>
+          <span class="kw-tag">sophrologie enfant Lyon</span>
+          <span class="kw-tag">massage bien-être Tassin</span>
+          <span class="kw-tag">kinésiologie Lyon</span>
+        </div>
+      </div>
+
+      <h2 id="site">Pourquoi un site internet est indispensable pour le SEO local</h2>
+      <p>La fiche Google Business seule ne suffit pas à vous positionner sur toutes ces requêtes. Pour apparaître sur "sophrologue gestion du stress Lyon" ou "naturopathe accompagnement burnout Lyon", il faut un site internet avec des pages et du contenu qui répondent exactement à ces recherches.</p>
+      <p>C'est ce qu'on appelle l'<strong>optimisation on-page</strong> : des titres de pages bien construits, des descriptions méta pertinentes, du contenu qui utilise naturellement vos mots-clés locaux, une structure de pages logique. Tout ça, c'est intégré dès la conception dans les sites que je crée pour mes clients.</p>
+
+      <div class="callout">
+        <p><strong>Le combo gagnant :</strong> fiche Google Business complète + site internet optimisé SEO + avis clients réguliers. Ces trois éléments combinés vous permettent de dominer les résultats locaux sur votre spécialité à Lyon — sans dépenser un euro en publicité.</p>
+      </div>
+
+      <h2 id="conclusion">Par où commencer concrètement ?</h2>
+      <p>Si vous n'avez pas encore de fiche Google Business, créez-la aujourd'hui — c'est gratuit et prend 30 minutes. Si vous avez déjà une fiche mais pas de site, c'est votre prochaine priorité. Et si vous avez les deux mais peu de trafic, le contenu et les avis sont vos leviers à activer.</p>
+      <p>Vous voulez qu'on fasse le point sur votre situation et vos opportunités SEO à Lyon ? <a href="../index.html#contact">Prenez 30 minutes avec moi</a> — l'appel découverte est gratuit et je vous donne des conseils concrets à appliquer immédiatement.</p>
+
+    </article>
+
+    <aside class="article-sidebar">
+      <div class="sidebar-cta">
+        <div class="sidebar-cta-label">SEO local inclus</div>
+        <div class="sidebar-cta-title">Votre site<br><strong>optimisé dès le départ.</strong></div>
+        <div class="sidebar-cta-sub">Le SEO local est intégré dans chaque site que je crée. Vous n'avez pas à vous en préoccuper.</div>
+        <a href="../index.html#contact" class="sidebar-cta-btn">Appel gratuit de 30 min →</a>
+      </div>
+      <div class="sidebar-sommaire">
+        <div class="sidebar-sommaire-title">Dans cet article</div>
+        <ul>
+          <li><a href="#intro">Pourquoi le SEO local ?</a></li>
+          <li><a href="#etapes">Les 5 étapes concrètes</a></li>
+          <li><a href="#keywords">Mots-clés à cibler à Lyon</a></li>
+          <li><a href="#site">Pourquoi un site est indispensable</a></li>
+          <li><a href="#conclusion">Par où commencer ?</a></li>
+        </ul>
+      </div>
+    </aside>
+  </div>
+</div>
+
+<section class="related">
+  <div class="container">
+    <div class="related-label">Continuer la lecture</div>
+    <h2 class="related-h2">Articles qui pourraient vous intéresser</h2>
+    <div class="related-grid">
+      <a href="pourquoi-coiffeur-lyon-site-internet.html" class="related-card">
+        <div class="related-card-tag">SEO &amp; Visibilité</div>
+        <div class="related-card-title">Pourquoi un coiffeur à Lyon a besoin d'un site internet en 2026</div>
+        <div class="related-card-link">Lire l'article →</div>
+      </a>
+      <a href="planity-vs-treatwell-outil-reservation.html" class="related-card">
+        <div class="related-card-tag">Conseils pratiques</div>
+        <div class="related-card-title">Planity vs Treatwell : comment choisir son outil de réservation en ligne ?</div>
+        <div class="related-card-link">Lire l'article →</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="f-logo-text">N<span class="slash">/</span> Studio Digital</div>
+        <div style="font-size:11px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;color:var(--sage);margin-top:4px;margin-bottom:4px;">Votre site vitrine en 3 semaines</div>
+        <div class="f-tagline">Coiffure &amp; Bien-être · Grand Lyon</div>
+        <p class="f-desc">Agence web spécialisée en création de sites vitrine sur-mesure pour les coiffeurs, head spas, sophrologues et praticiens bien-être de la métropole lyonnaise.</p>
+      </div>
+      <div>
+        <div class="f-col-title">Navigation</div>
+        <div class="f-col-links">
+          <a href="../index.html#realisations">Réalisations</a>
+          <a href="../index.html#offres">Offres</a>
+          <a href="../blog.html">Blog</a>
+          <a href="../index.html#contact">Contact</a>
+        </div>
+      </div>
+      <div>
+        <div class="f-col-title">Légal</div>
+        <div class="f-col-links">
+          <a href="../mentions-legales.html">Mentions légales</a>
+          <a href="../cgv.html">CGV</a>
+        </div>
+      </div>
+    </div>
+    <div class="f-bottom">
+      <div class="f-copy">© 2026 N/ Studio Digital — Nadège Dufour · TVA non applicable, art. 293 B du CGI</div>
+      <div class="f-legal-links"><a href="../mentions-legales.html">Mentions légales</a><a href="../cgv.html">CGV</a></div>
+    </div>
+  </div>
+</footer>
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+<script>
+  const nav=document.getElementById('nav');
+  window.addEventListener('scroll',()=>{nav.classList.toggle('scrolled',window.scrollY>30);});
+  const hamburger=document.getElementById('hamburger');
+  const navMobile=document.getElementById('navMobile');
+  hamburger.addEventListener('click',()=>{hamburger.classList.toggle('open');navMobile.classList.toggle('open');});
+  document.addEventListener('click',(e)=>{if(!nav.contains(e.target)&&!navMobile.contains(e.target)){hamburger.classList.remove('open');navMobile.classList.remove('open');}});
+  const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('vis');obs.unobserve(e.target);}});},{threshold:0.08});
+  document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+  const backBtn=document.getElementById('backToTop');
+  window.addEventListener('scroll',()=>{backBtn.classList.toggle('visible',window.scrollY>400);});
+</script>
+</body>
+</html>
