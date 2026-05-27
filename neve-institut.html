@@ -1,0 +1,979 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Névé — Institut de soin · Lyon 6e</title>
+  <meta name="description" content="Névé, institut de soin à Lyon 6e. Soins du visage sur-mesure, épilation douce, maquillage. Réservez votre moment de grâce."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;0,900;1,400;1,700;1,900&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@200;300;400&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --iv: #FAF6F1;
+      --iv2: #F0E8DE;
+      --rose: #E8C4B8;
+      --rose2: #D4A090;
+      --or: #C9956A;
+      --or2: #E8C4A0;
+      --brun: #2C2320;
+      --brun2: #6B4F47;
+      --brun3: #A08070;
+      --pf: 'Playfair Display', serif;
+      --cg: 'Cormorant Garamond', serif;
+      --js: 'Jost', sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--js);
+      background: var(--iv);
+      color: var(--brun);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      mix-blend-mode: multiply;
+      padding: 32px 48px;
+      display: flex; justify-content: space-between; align-items: center;
+      transition: all .4s;
+    }
+    nav.solid {
+      mix-blend-mode: normal;
+      background: rgba(250,246,241,.94);
+      backdrop-filter: blur(10px);
+      padding: 18px 48px;
+      border-bottom: 1px solid rgba(201,149,106,.15);
+    }
+    .nav-logo {
+      font-family: var(--pf);
+      font-size: 20px; letter-spacing: 5px; text-transform: uppercase;
+      color: var(--brun); text-decoration: none;
+    }
+    .nav-links { display: flex; gap: 36px; list-style: none; }
+    .nav-links a {
+      font-size: 10px; letter-spacing: 2.5px; text-transform: uppercase;
+      color: var(--brun2); text-decoration: none; transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--or); }
+    .nav-rdv {
+      font-size: 10px; letter-spacing: 2px; text-transform: uppercase;
+      color: var(--brun); text-decoration: none;
+      border-bottom: 1px solid var(--or); padding-bottom: 2px;
+      transition: color .2s, border-color .2s;
+    }
+    .nav-rdv:hover { color: var(--or); }
+    .nav-burger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; }
+    .nav-burger span { display: block; width: 22px; height: 1px; background: var(--brun); }
+    @media(max-width:768px) {
+      nav { padding: 20px 24px; }
+      nav.solid { padding: 14px 24px; }
+      .nav-links, .nav-rdv { display: none; }
+      .nav-burger { display: flex; }
+    }
+
+    /* ── COVER ── */
+    .cover {
+      height: 100vh; min-height: 700px;
+      position: relative; overflow: hidden;
+      background: var(--brun);
+    }
+    .cover-img {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: center center;
+      opacity: 1;
+    }
+    .cover-folio {
+      position: absolute; left: 48px; bottom: 48px;
+      font-family: var(--js); font-size: 10px; letter-spacing: 3px;
+      text-transform: uppercase; color: rgba(250,246,241,.4);
+      writing-mode: vertical-rl;
+    }
+    .cover-content {
+      position: relative; z-index: 2;
+      height: 100%; display: flex; flex-direction: column;
+      justify-content: flex-end; padding: 0 0 0 0;
+    }
+    /* Titre géant qui déborde */
+    .cover-title {
+      font-family: var(--pf);
+      font-size: clamp(100px, 16vw, 220px);
+      font-weight: 900; font-style: italic;
+      line-height: .88; letter-spacing: -4px;
+      color: var(--iv);
+      padding-left: 40px;
+      margin-bottom: 20px;
+      /* espace avant le bandeau */
+      white-space: nowrap;
+    }
+    .cover-stripe {
+      background: var(--rose);
+      padding: 20px 48px;
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 16px;
+    }
+    .cover-stripe-text {
+      font-family: var(--cg);
+      font-size: 18px; font-style: italic; font-weight: 300;
+      color: var(--brun);
+    }
+    .cover-stripe-meta {
+      font-size: 10px; letter-spacing: 3px; text-transform: uppercase;
+      color: var(--brun2); display: flex; gap: 32px;
+    }
+    @media(max-width:600px) {
+      .cover-title { font-size: 72px; }
+      .cover-folio { display: none; }
+      .cover-stripe { padding: 20px 24px; }
+    }
+
+    /* ── PAGE NUMBER UTIL ── */
+    .pg { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--brun3); }
+
+    /* ── SPREAD 1 : INTRO ── */
+    .spread-intro {
+      display: grid;
+      grid-template-columns: 90px 1fr 1fr;
+      grid-template-rows: auto;
+      min-height: 80vh;
+      gap: 0;
+    }
+    .spread-intro-folio {
+      background: var(--iv2);
+      display: flex; flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      padding: 60px 0;
+      border-right: 1px solid rgba(201,149,106,.2);
+    }
+    .spread-intro-folio .pg { writing-mode: vertical-rl; }
+    .folio-num {
+      font-family: var(--pf); font-size: 48px; font-weight: 400;
+      color: rgba(201,149,106,.25); writing-mode: vertical-rl;
+    }
+    .spread-intro-left {
+      padding: 80px 60px 80px 48px;
+      display: flex; flex-direction: column; justify-content: center;
+      border-right: 1px solid rgba(201,149,106,.15);
+    }
+    .rubrique {
+      font-size: 9px; letter-spacing: 3px; text-transform: uppercase;
+      color: var(--or); margin-bottom: 20px;
+    }
+    .drop-cap-title {
+      font-family: var(--pf);
+      font-size: clamp(36px, 4vw, 56px);
+      font-weight: 400; line-height: 1.1;
+      color: var(--brun); margin-bottom: 32px;
+    }
+    .drop-cap-title em { font-style: italic; color: var(--or); }
+    /* Grande lettrine */
+    .body-text { font-size: 14px; font-weight: 300; color: var(--brun2); line-height: 2; }
+    .body-text p + p { margin-top: 16px; }
+    .body-text p:first-child::first-letter {
+      font-family: var(--pf); font-size: 64px; font-weight: 700;
+      float: left; line-height: .8; margin: 8px 12px -4px 0;
+      color: var(--or);
+    }
+    .spread-intro-right {
+      position: relative; overflow: hidden;
+    }
+    .spread-intro-right img {
+      width: 100%; height: 100%; object-fit: cover;
+      object-position: center top;
+      transition: transform 6s ease;
+    }
+    .spread-intro-right:hover img { transform: scale(1.04); }
+    /* Texte superposé sur photo */
+    .photo-overlay-text {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      background: linear-gradient(to top, rgba(44,35,32,.85) 0%, transparent 100%);
+      padding: 60px 40px 40px;
+    }
+    .photo-overlay-text blockquote {
+      font-family: var(--cg); font-size: 20px; font-style: italic;
+      font-weight: 300; color: var(--iv); line-height: 1.6;
+    }
+    .photo-overlay-text cite {
+      font-size: 10px; letter-spacing: 2px; text-transform: uppercase;
+      color: var(--or2); display: block; margin-top: 12px;
+      font-style: normal;
+    }
+    @media(max-width:900px) {
+      .spread-intro { grid-template-columns: 1fr; }
+      .spread-intro-folio { display: none; }
+      .spread-intro-right { height: 400px; }
+      .spread-intro-left { padding: 60px 24px; border-right: none; }
+    }
+
+    /* ── SPREAD 2 : PORTRAIT DÉCALÉ ── */
+    .spread-portrait {
+      position: relative;
+      min-height: 90vh;
+      overflow: hidden;
+      background: var(--rose);
+    }
+    /* Grosse typo en fond */
+    .spread-portrait-bg-text {
+      position: absolute;
+      font-family: var(--pf); font-size: clamp(120px, 18vw, 240px);
+      font-weight: 900; font-style: italic;
+      color: rgba(44,35,32,.06);
+      top: 50%; left: 0; transform: translateY(-50%);
+      white-space: nowrap; pointer-events: none;
+      letter-spacing: -6px;
+    }
+    /* Photo décalée à droite, rognée en bas */
+    .portrait-img-wrap {
+      position: absolute;
+      right: 0; top: 0; bottom: 0;
+      width: 45%;
+    }
+    .portrait-img-wrap img {
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: center top;
+    }
+    /* Contenu à gauche */
+    .portrait-content-mag {
+      position: relative; z-index: 2;
+      max-width: 55%; padding: 100px 80px;
+    }
+    .portrait-name-big {
+      font-family: var(--pf);
+      font-size: clamp(48px, 6vw, 80px);
+      font-weight: 400; line-height: 1;
+      color: var(--brun); margin-bottom: 8px;
+    }
+    .portrait-name-big em { font-style: italic; display: block; }
+    .portrait-job {
+      font-family: var(--cg); font-size: 16px; font-style: italic;
+      color: var(--brun2); margin-bottom: 40px; font-weight: 300;
+    }
+    .portrait-body { font-size: 14px; font-weight: 300; color: var(--brun); line-height: 2; margin-bottom: 16px; }
+    /* Ligne décorative chiffrée */
+    .portrait-stats {
+      display: flex; gap: 40px; margin-top: 48px;
+      padding-top: 32px; border-top: 1px solid rgba(44,35,32,.2);
+    }
+    .p-stat-num {
+      font-family: var(--pf); font-size: 40px; font-weight: 400; color: var(--brun); line-height: 1;
+    }
+    .p-stat-label { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--brun2); margin-top: 4px; }
+    /* Badge collé sur la photo */
+    .portrait-badge {
+      position: absolute; right: 45%; bottom: 60px;
+      transform: translateX(50%);
+      background: var(--brun);
+      padding: 16px 24px; z-index: 3;
+      font-family: var(--cg); font-size: 13px; font-style: italic;
+      color: var(--iv); text-align: center; line-height: 1.5;
+    }
+    @media(max-width:900px) {
+      .portrait-img-wrap { position: relative; width: 100%; height: 400px; }
+      .portrait-content-mag { max-width: 100%; padding: 60px 24px; }
+      .spread-portrait { display: flex; flex-direction: column; }
+      .portrait-badge { display: none; }
+    }
+
+    /* ── SPREAD 3 : SOINS ÉDITORIAL ── */
+    .spread-soins {
+      background: var(--iv);
+      padding: 0;
+    }
+    /* Header soins : titre géant décalé */
+    .soins-header {
+      padding: 100px 48px 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .soins-header-inner {
+      display: flex; align-items: flex-end; gap: 40px; margin-bottom: -1px;
+    }
+    .soins-issue {
+      font-family: var(--pf); font-size: clamp(80px, 14vw, 180px);
+      font-weight: 900; color: rgba(201,149,106,.15);
+      line-height: 1; flex-shrink: 0;
+    }
+    .soins-header-text {}
+    .soins-main-title {
+      font-family: var(--pf);
+      font-size: clamp(32px, 5vw, 64px);
+      font-weight: 700; line-height: 1;
+      color: var(--brun);
+    }
+    .soins-main-title em { font-style: italic; color: var(--or); }
+    .soins-intro {
+      font-family: var(--cg); font-size: 16px; font-style: italic;
+      font-weight: 300; color: var(--brun2); line-height: 1.8;
+      max-width: 420px; margin-top: 16px;
+    }
+    /* Ligne séparatrice */
+    .soins-rule {
+      height: 1px; background: linear-gradient(to right, var(--or), transparent);
+      margin: 0 48px;
+    }
+
+    /* Layout soins : asymétrique */
+    .soins-layout {
+      display: grid;
+      grid-template-columns: 1fr 1px 1fr 1px 1fr;
+      min-height: 600px;
+    }
+    .soins-sep { background: rgba(201,149,106,.2); }
+    .soin-col {
+      padding: 56px 48px;
+      position: relative;
+    }
+    .soin-col-featured {
+      background: var(--iv2);
+    }
+    .soin-num {
+      font-family: var(--pf); font-size: 80px; font-weight: 400;
+      color: rgba(201,149,106,.18); line-height: 1;
+      margin-bottom: -16px;
+    }
+    .soin-title {
+      font-family: var(--pf); font-size: 24px; font-weight: 400;
+      color: var(--brun); margin-bottom: 4px;
+    }
+    .soin-sub {
+      font-family: var(--cg); font-size: 13px; font-style: italic;
+      color: var(--or); margin-bottom: 28px; font-weight: 300;
+    }
+    .soin-items { list-style: none; display: flex; flex-direction: column; gap: 14px; }
+    .soin-items li {
+      display: grid; grid-template-columns: 1fr auto;
+      gap: 16px; align-items: baseline;
+      padding-bottom: 14px;
+      border-bottom: 1px solid rgba(201,149,106,.12);
+      font-size: 13px; font-weight: 300; color: var(--brun2);
+    }
+    .soin-items li:last-child { border-bottom: none; padding-bottom: 0; }
+    .soin-items li .soin-detail { font-size: 11px; color: var(--brun3); display: block; margin-top: 2px; font-style: italic; }
+    .soin-price { font-family: var(--pf); font-size: 15px; color: var(--or); white-space: nowrap; }
+    /* Photo insérée dans soins featured */
+    .soin-photo {
+      margin: 32px -48px 0;
+      height: 220px; overflow: hidden;
+    }
+    .soin-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    @media(max-width:900px) {
+      .soins-layout { grid-template-columns: 1fr; }
+      .soins-sep { height: 1px; background: rgba(201,149,106,.2); }
+      .soin-col { padding: 40px 24px; }
+      .soin-photo { margin: 32px -24px 0; }
+      .soins-header { padding: 60px 24px 0; }
+      .soins-rule { margin: 0 24px; }
+    }
+
+    /* ── FULL BLEED IMAGE ── */
+    .full-bleed {
+      height: 70vh; position: relative; overflow: hidden;
+    }
+    .full-bleed img {
+      width: 100%; height: 100%; object-fit: cover;
+      display: block;
+    }
+    /* Texte en overlay, aligné à droite */
+    .full-bleed-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to left, rgba(44,35,32,.7) 0%, transparent 60%);
+      display: flex; align-items: flex-end; justify-content: flex-end;
+      padding: 60px 80px;
+    }
+    .full-bleed-text {
+      max-width: 440px; text-align: right;
+    }
+    .full-bleed-quote {
+      font-family: var(--pf); font-size: clamp(22px, 3vw, 36px);
+      font-style: italic; font-weight: 400;
+      color: var(--iv); line-height: 1.4; margin-bottom: 20px;
+    }
+    .full-bleed-cta {
+      font-size: 10px; letter-spacing: 2.5px; text-transform: uppercase;
+      color: var(--or2); text-decoration: none;
+      border-bottom: 1px solid var(--or2); padding-bottom: 2px;
+      transition: color .2s;
+    }
+    .full-bleed-cta:hover { color: var(--iv); border-color: var(--iv); }
+    @media(max-width:600px) {
+      .full-bleed-overlay { padding: 40px 24px; background: linear-gradient(to top, rgba(44,35,32,.8), transparent 70%); align-items: flex-end; }
+      .full-bleed-text { text-align: left; }
+    }
+
+    /* ── SPREAD 4 : GALERIE MAGAZINE ── */
+    .spread-galerie {
+      padding: 0;
+      background: var(--brun);
+    }
+    .galerie-mag-header {
+      padding: 60px 48px 40px;
+      display: flex; align-items: baseline; justify-content: space-between;
+      border-bottom: 1px solid rgba(250,246,241,.08);
+    }
+    .galerie-mag-title {
+      font-family: var(--pf); font-size: 13px; letter-spacing: 4px;
+      text-transform: uppercase; color: rgba(250,246,241,.4); font-weight: 400;
+    }
+    .galerie-mag-pg { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: rgba(201,149,106,.5); }
+    /* Mosaïque cassée */
+    .galerie-mosaic {
+      display: grid;
+      grid-template-columns: 1.8fr 1fr 1fr;
+      grid-template-rows: 380px 280px;
+      gap: 3px;
+      padding: 3px;
+    }
+    .gal-item { overflow: hidden; position: relative; }
+    .gal-item img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .6s ease; filter: grayscale(20%); }
+    .gal-item:hover img { transform: scale(1.05); filter: grayscale(0%); }
+    .gal-item.tall { grid-row: span 2; }
+    .gal-item.wide { grid-column: span 2; }
+    .gal-caption {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      padding: 40px 20px 16px;
+      background: linear-gradient(to top, rgba(44,35,32,.7), transparent);
+      font-family: var(--cg); font-size: 12px; font-style: italic;
+      color: rgba(250,246,241,.7); opacity: 0; transition: opacity .3s;
+    }
+    .gal-item:hover .gal-caption { opacity: 1; }
+    @media(max-width:768px) {
+      .galerie-mosaic { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
+      .gal-item.tall { grid-row: span 1; height: 220px; }
+      .gal-item.wide { grid-column: span 2; height: 220px; }
+      .gal-item { height: 180px; }
+      .galerie-mag-header { padding: 40px 24px 30px; }
+    }
+
+    /* ── SPREAD 5 : TÉMOIGNAGES ── */
+    .spread-temo {
+      background: var(--iv);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 60vh;
+    }
+    .temo-left {
+      background: var(--rose);
+      padding: 80px 60px;
+      display: flex; flex-direction: column; justify-content: center;
+      position: relative; overflow: hidden;
+    }
+    /* Grande étoile déco */
+    .temo-left::before {
+      content: '★';
+      position: absolute; bottom: -40px; right: -20px;
+      font-size: 200px; color: rgba(44,35,32,.07);
+      line-height: 1; pointer-events: none;
+    }
+    .temo-main {
+      font-family: var(--cg); font-size: clamp(18px, 2.5vw, 26px);
+      font-style: italic; font-weight: 300;
+      color: var(--brun); line-height: 1.7;
+      margin-bottom: 24px; position: relative; z-index: 1;
+    }
+    .temo-author-main {
+      font-size: 10px; letter-spacing: 2px; text-transform: uppercase;
+      color: var(--brun2);
+    }
+    .temo-right {
+      padding: 80px 60px;
+      display: flex; flex-direction: column; gap: 40px;
+    }
+    .temo-small { border-bottom: 1px solid rgba(201,149,106,.2); padding-bottom: 40px; }
+    .temo-small:last-child { border-bottom: none; padding-bottom: 0; }
+    .temo-stars { color: var(--or); font-size: 11px; letter-spacing: 3px; margin-bottom: 10px; }
+    .temo-text-s {
+      font-family: var(--cg); font-size: 15px; font-style: italic;
+      font-weight: 300; color: var(--brun); line-height: 1.75; margin-bottom: 12px;
+    }
+    .temo-auth-s { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--or); }
+    @media(max-width:768px) {
+      .spread-temo { grid-template-columns: 1fr; }
+      .temo-left, .temo-right { padding: 60px 24px; }
+    }
+
+    /* ── SPREAD 6 : RÉSERVATION ── */
+    .spread-resa {
+      background: var(--brun);
+      position: relative; overflow: hidden;
+    }
+    /* Fond typographique */
+    .resa-bg-text {
+      position: absolute;
+      font-family: var(--pf); font-size: clamp(80px, 14vw, 200px);
+      font-weight: 900; font-style: italic;
+      color: rgba(250,246,241,.03);
+      top: 50%; left: 0; transform: translateY(-50%);
+      white-space: nowrap; pointer-events: none;
+      letter-spacing: -5px;
+    }
+    .spread-resa-inner {
+      position: relative; z-index: 2;
+      display: grid; grid-template-columns: 1fr 1fr;
+    }
+    .resa-left-mag {
+      padding: 100px 80px;
+      border-right: 1px solid rgba(250,246,241,.07);
+      display: flex; flex-direction: column; justify-content: center;
+    }
+    .resa-label { font-size: 9px; letter-spacing: 3px; text-transform: uppercase; color: rgba(201,149,106,.6); margin-bottom: 20px; }
+    .resa-title-mag {
+      font-family: var(--pf);
+      font-size: clamp(32px, 4.5vw, 60px);
+      font-weight: 400; font-style: italic;
+      color: var(--iv); line-height: 1.15; margin-bottom: 32px;
+    }
+    .resa-body { font-size: 14px; font-weight: 300; color: rgba(250,246,241,.5); line-height: 2; margin-bottom: 48px; }
+    .resa-contact-list { list-style: none; display: flex; flex-direction: column; gap: 16px; margin-bottom: 48px; }
+    .resa-contact-list li {
+      font-size: 13px; font-weight: 300; color: rgba(250,246,241,.6);
+      display: flex; align-items: center; gap: 16px;
+    }
+    .resa-contact-list li::before {
+      content: ''; display: block; width: 20px; height: 1px; background: var(--or);
+    }
+    .btn-planity {
+      font-size: 10px; letter-spacing: 2.5px; text-transform: uppercase;
+      color: var(--brun); background: var(--or2);
+      text-decoration: none; padding: 16px 36px;
+      display: inline-block; transition: background .3s;
+      align-self: flex-start;
+    }
+    .btn-planity:hover { background: var(--rose); }
+    .resa-right-mag {
+      padding: 100px 80px;
+      display: flex; flex-direction: column; justify-content: center;
+    }
+    .form-mag { display: flex; flex-direction: column; gap: 0; }
+    .form-field {
+      border-bottom: 1px solid rgba(201,149,106,.25);
+      padding: 16px 0;
+      position: relative;
+    }
+    .form-field input,
+    .form-field textarea {
+      background: transparent; border: none; outline: none;
+      width: 100%;
+      font-family: var(--js); font-size: 14px; font-weight: 300;
+      color: var(--iv);
+      caret-color: var(--or);
+    }
+    .form-field input::placeholder,
+    .form-field textarea::placeholder {
+      color: rgba(250,246,241,.25); font-size: 12px; letter-spacing: 1px;
+    }
+    .form-field textarea { resize: none; min-height: 80px; }
+    .form-field::after {
+      content: ''; position: absolute; bottom: -1px; left: 0;
+      width: 0; height: 1px; background: var(--or);
+      transition: width .4s;
+    }
+    .form-field:focus-within::after { width: 100%; }
+    .btn-send {
+      font-size: 10px; letter-spacing: 2.5px; text-transform: uppercase;
+      color: var(--brun); background: var(--or2);
+      border: none; padding: 16px 32px; cursor: pointer;
+      transition: background .3s; align-self: flex-start; margin-top: 32px;
+      font-family: var(--js);
+    }
+    .btn-send:hover { background: var(--rose); }
+    .form-ok { font-size: 12px; color: var(--or2); margin-top: 12px; display: none; letter-spacing: 1px; }
+    @media(max-width:768px) {
+      .spread-resa-inner { grid-template-columns: 1fr; }
+      .resa-left-mag, .resa-right-mag { padding: 60px 24px; border-right: none; }
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--iv2);
+      border-top: 1px solid rgba(201,149,106,.2);
+      padding: 56px 48px 36px;
+    }
+    .footer-inner {
+      display: grid; grid-template-columns: 2fr 1fr 1fr;
+      gap: 60px; margin-bottom: 40px;
+    }
+    .f-logo { font-family: var(--pf); font-size: 22px; letter-spacing: 5px; text-transform: uppercase; color: var(--brun); margin-bottom: 6px; }
+    .f-sub { font-family: var(--cg); font-size: 13px; font-style: italic; color: var(--or); margin-bottom: 18px; }
+    .f-desc { font-size: 12px; font-weight: 300; color: var(--brun3); line-height: 1.8; max-width: 240px; }
+    .f-col-title { font-size: 9px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--brun3); margin-bottom: 18px; }
+    .f-links { display: flex; flex-direction: column; gap: 10px; }
+    .f-links a { font-size: 13px; font-weight: 300; color: var(--brun2); text-decoration: none; transition: color .2s; }
+    .f-links a:hover { color: var(--or); }
+    .footer-bottom {
+      border-top: 1px solid rgba(201,149,106,.15); padding-top: 20px;
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 10px;
+    }
+    .footer-bottom p { font-size: 11px; color: var(--brun3); }
+    .footer-bottom a { font-size: 11px; color: var(--or); text-decoration: none; }
+    @media(max-width:768px) {
+      footer { padding: 48px 24px 28px; }
+      .footer-inner { grid-template-columns: 1fr 1fr; gap: 36px; }
+    }
+
+    /* ── REVEAL ── */
+    .rv { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s ease; }
+    .rv.v { opacity: 1; transform: none; }
+
+    /* ── BADGE DÉMO ── */
+    .demo-badge {
+      position: fixed; bottom: 18px; left: 18px; z-index: 500;
+      background: var(--brun); color: rgba(250,246,241,.5);
+      font-size: 9px; letter-spacing: 2px; text-transform: uppercase;
+      padding: 7px 14px; border: 1px solid rgba(201,149,106,.25);
+    }
+  </style>
+</head>
+<body>
+
+<div class="demo-badge">Site fictif · Démonstration</div>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="#" class="nav-logo">Névé</a>
+  <ul class="nav-links">
+    <li><a href="#soins">Soins</a></li>
+    <li><a href="#galerie">Galerie</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#contact" class="nav-rdv">Prendre rendez-vous</a>
+  <button class="nav-burger" id="burger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- ══ COVER ══ -->
+<section class="cover">
+  <img class="cover-img"
+    src="neve_institut.png"
+    alt="Névé Institut soin visage Lyon 6e" loading="eager"/>
+  <div class="cover-folio">Institut de soin · Lyon 69006 · Depuis 2021</div>
+  <div class="cover-content">
+    <h1 class="cover-title">Névé</h1>
+    <div class="cover-stripe">
+      <p class="cover-stripe-text">La peau comme un premier langage.</p>
+      <div class="cover-stripe-meta">
+        <span>Lyon 6<sup>e</sup></span>
+        <span>Sur rendez-vous</span>
+        <span>Institut privé</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ SPREAD 1 : PHILOSOPHIE ══ -->
+<section class="spread-intro" id="apropos">
+  <div class="spread-intro-folio">
+    <span class="pg">Philosophie</span>
+    <span class="folio-num">01</span>
+    <span class="pg">Névé</span>
+  </div>
+  <div class="spread-intro-left">
+    <div class="rubrique rv">Le manifeste</div>
+    <h2 class="drop-cap-title rv">Prendre soin<br>de soi est un<br>acte <em>politique.</em></h2>
+    <div class="body-text rv">
+      <p>Chez Névé, chaque soin est une invitation au ralentissement. Loin de l'agitation du quotidien, vous entrez dans un espace pensé pour que votre peau respire — et votre esprit se pose enfin.</p>
+      <p>Nous travaillons avec des protocoles personnalisés, adaptés à votre peau du moment. Pas à un diagnostic figé, pas à une routine industrielle. Parce que votre peau vous parle différemment chaque jour, et nous savons l'écouter.</p>
+      <p>Institut privé. Une seule cliente à la fois. Toujours.</p>
+    </div>
+  </div>
+  <div class="spread-intro-right">
+    <img
+      src="neve_soin_visage.png"
+      alt="Soin visage Névé Institut Lyon"/>
+    <div class="photo-overlay-text">
+      <blockquote>"Votre peau a une mémoire. Nos soins lui apprennent à se souvenir de sa propre beauté."</blockquote>
+      <cite>— Clara Moreau, fondatrice</cite>
+    </div>
+  </div>
+</section>
+
+<!-- ══ SPREAD 2 : PORTRAIT ══ -->
+<section class="spread-portrait">
+  <div class="spread-portrait-bg-text">Clara</div>
+  <div class="portrait-img-wrap">
+    <img src="neve_cabine.png"
+      alt="Clara Moreau esthéticienne Névé Lyon 6"/>
+  </div>
+  <div class="portrait-content-mag">
+    <div class="rubrique rv">Votre praticienne</div>
+    <h2 class="portrait-name-big rv">
+      Clara
+      <em>Moreau.</em>
+    </h2>
+    <p class="portrait-job rv">Esthéticienne · Fondatrice de Névé</p>
+    <p class="portrait-body rv">Formée aux techniques de massage japonais Kobido et aux soins Biologique Recherche, Clara a travaillé dix ans dans des instituts parisiens avant de créer Névé à Lyon — un espace à son image : exigeant, chaleureux, sans ostentation.</p>
+    <p class="portrait-body rv">Elle adapte chaque séance avec une précision et une écoute que ses clientes décrivent comme « transformatrices ».</p>
+    <div class="portrait-stats rv">
+      <div>
+        <div class="p-stat-num">10</div>
+        <div class="p-stat-label">ans d'expérience</div>
+      </div>
+      <div>
+        <div class="p-stat-num">1</div>
+        <div class="p-stat-label">cliente à la fois</div>
+      </div>
+      <div>
+        <div class="p-stat-num">2</div>
+        <div class="p-stat-label">certifications</div>
+      </div>
+    </div>
+  </div>
+  <div class="portrait-badge">Diplômée BTS Esthétique<br>Certifiée Kobido & Biologique Recherche</div>
+</section>
+
+<!-- ══ SPREAD 3 : SOINS ══ -->
+<section class="spread-soins" id="soins">
+  <div class="soins-header">
+    <div class="soins-header-inner">
+      <div class="soins-issue rv">03</div>
+      <div class="rv">
+        <div class="rubrique">Nos soins</div>
+        <h2 class="soins-main-title">Des soins pensés<br>pour <em>votre peau</em><br>d'aujourd'hui.</h2>
+        <p class="soins-intro">Chaque prestation débute par un diagnostic en temps réel. Pas de protocole figé — votre peau parle, nous adaptons.</p>
+      </div>
+    </div>
+  </div>
+  <div class="soins-rule"></div>
+  <div class="soins-layout">
+    <!-- SOINS VISAGE — featured -->
+    <div class="soin-col soin-col-featured rv">
+      <div class="soin-num">01</div>
+      <div class="soin-title">Soins du visage</div>
+      <div class="soin-sub">Le cœur de notre savoir-faire</div>
+      <ul class="soin-items">
+        <li>
+          <div>Soin éclat & hydratation<span class="soin-detail">45 min</span></div>
+          <div class="soin-price">65€</div>
+        </li>
+        <li>
+          <div>Soin anti-âge & fermeté<span class="soin-detail">75 min</span></div>
+          <div class="soin-price">95€</div>
+        </li>
+        <li>
+          <div>Soin purifiant pores nets<span class="soin-detail">60 min</span></div>
+          <div class="soin-price">75€</div>
+        </li>
+        <li>
+          <div>Massage Kobido<span class="soin-detail">90 min · lifting japonais</span></div>
+          <div class="soin-price">120€</div>
+        </li>
+        <li>
+          <div>Soin détox & anti-pollution<span class="soin-detail">90 min</span></div>
+          <div class="soin-price">110€</div>
+        </li>
+        <li>
+          <div>Drainage lymphatique visage<span class="soin-detail">60 min</span></div>
+          <div class="soin-price">85€</div>
+        </li>
+      </ul>
+    </div>
+    <div class="soins-sep"></div>
+    <!-- ÉPILATION -->
+    <div class="soin-col rv" style="transition-delay:.1s">
+      <div class="soin-num">02</div>
+      <div class="soin-title">Épilation douce</div>
+      <div class="soin-sub">Précision & douceur</div>
+      <ul class="soin-items">
+        <li>
+          <div>Sourcils (mise en forme)<span class="soin-detail">15 min</span></div>
+          <div class="soin-price">18€</div>
+        </li>
+        <li>
+          <div>Sourcils + teinture<span class="soin-detail">25 min</span></div>
+          <div class="soin-price">28€</div>
+        </li>
+        <li>
+          <div>Lèvre supérieure<span class="soin-detail">10 min</span></div>
+          <div class="soin-price">12€</div>
+        </li>
+        <li>
+          <div>Visage complet<span class="soin-detail">45 min</span></div>
+          <div class="soin-price">45€</div>
+        </li>
+        <li>
+          <div>Rehaussement de cils<span class="soin-detail">60 min · tient 6–8 sem.</span></div>
+          <div class="soin-price">65€</div>
+        </li>
+      </ul>
+    </div>
+    <div class="soins-sep"></div>
+    <!-- MAQUILLAGE -->
+    <div class="soin-col rv" style="transition-delay:.2s">
+      <div class="soin-num">03</div>
+      <div class="soin-title">Maquillage</div>
+      <div class="soin-sub">Mise en beauté & occasions</div>
+      <ul class="soin-items">
+        <li>
+          <div>Maquillage naturel<span class="soin-detail">45 min</span></div>
+          <div class="soin-price">55€</div>
+        </li>
+        <li>
+          <div>Maquillage soirée<span class="soin-detail">60 min</span></div>
+          <div class="soin-price">70€</div>
+        </li>
+        <li>
+          <div>Maquillage de mariée<span class="soin-detail">90 min</span></div>
+          <div class="soin-price">150€</div>
+        </li>
+        <li>
+          <div>Essai mariage<span class="soin-detail">75 min</span></div>
+          <div class="soin-price">95€</div>
+        </li>
+        <li>
+          <div>Cours personnalisé<span class="soin-detail">90 min · 1–2 pers.</span></div>
+          <div class="soin-price">110€</div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FULL BLEED ══ -->
+<div class="full-bleed">
+  <img src="neve_massage.png" alt="Massage Kobido Névé Lyon"/>
+  <div class="full-bleed-overlay">
+    <div class="full-bleed-text">
+      <p class="full-bleed-quote">"Un moment suspendu, rien qu'à vous."</p>
+      <a href="#contact" class="full-bleed-cta">Réserver mon soin →</a>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SPREAD 4 : GALERIE ══ -->
+<section class="spread-galerie" id="galerie">
+  <div class="galerie-mag-header">
+    <span class="galerie-mag-title">L'espace Névé · Galerie</span>
+    <span class="galerie-mag-pg">04 / Lyon 69006</span>
+  </div>
+  <div class="galerie-mosaic">
+    <div class="gal-item tall">
+      <img src="neve_cabine.png" alt="Institut Névé soin visage"/>
+      <div class="gal-caption">Cabine de soin</div>
+    </div>
+    <div class="gal-item">
+      <img src="neve_agrumes.png" alt="Produits soins Névé"/>
+      <div class="gal-caption">Produits Biologique Recherche</div>
+    </div>
+    <div class="gal-item">
+      <img src="neve_avocat.png" alt="Soin relaxant Névé"/>
+      <div class="gal-caption">Moment de détente</div>
+    </div>
+    <div class="gal-item wide">
+      <img src="neve_produits.png" alt="Ambiance Névé Lyon 6"/>
+      <div class="gal-caption">L'univers Névé · Lyon 6e</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ SPREAD 5 : TÉMOIGNAGES ══ -->
+<section class="spread-temo">
+  <div class="temo-left">
+    <div class="rubrique rv">Ce qu'elles disent</div>
+    <div class="temo-stars rv">★★★★★</div>
+    <p class="temo-main rv">"Un moment hors du temps. Clara a une façon de travailler qui fait qu'on se sent vraiment vues et comprises. Ma peau était lumineuse pendant une semaine entière."</p>
+    <div class="temo-author-main rv">Camille R. · Lyon 6e</div>
+  </div>
+  <div class="temo-right">
+    <div class="temo-small rv">
+      <div class="temo-stars">★★★★★</div>
+      <p class="temo-text-s">"J'ai fait le Kobido avant mon mariage. Je ne reconnaissais plus ma peau — dans le bon sens. L'effet est réel et dure longtemps."</p>
+      <div class="temo-auth-s">Sophie M. · Villeurbanne</div>
+    </div>
+    <div class="temo-small rv" style="transition-delay:.1s">
+      <div class="temo-stars">★★★★★</div>
+      <p class="temo-text-s">"Névé c'est un endroit rare à Lyon. On sent qu'on est la seule cliente qui compte. Les produits sont d'une qualité folle."</p>
+      <div class="temo-auth-s">Inès B. · Caluire</div>
+    </div>
+    <div class="temo-small rv" style="transition-delay:.2s">
+      <div class="temo-stars">★★★★★</div>
+      <p class="temo-text-s">"Le cours de maquillage m'a appris à valoriser mes traits en 90 minutes. Clara explique avec tellement de bienveillance."</p>
+      <div class="temo-auth-s">Lucie F. · Lyon 3e</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ SPREAD 6 : RÉSERVATION ══ -->
+<section class="spread-resa" id="contact">
+  <div class="resa-bg-text">Rendez-vous</div>
+  <div class="spread-resa-inner">
+    <div class="resa-left-mag">
+      <div class="resa-label">Prendre rendez-vous</div>
+      <h2 class="resa-title-mag rv">Votre prochain<br>moment<br>rien qu'à vous.</h2>
+      <p class="resa-body rv">Réservez directement via Planity, ou envoyez-moi un message — je vous réponds dans la journée.</p>
+      <ul class="resa-contact-list rv">
+        <li>12 rue Auguste Comte, Lyon 6e</li>
+        <li>Mardi au samedi · 9h–19h</li>
+        <li>06 XX XX XX XX</li>
+      </ul>
+      <a href="#" class="btn-planity rv">Réserver sur Planity →</a>
+    </div>
+    <div class="resa-right-mag">
+      <div class="resa-label" style="margin-bottom:32px;">Ou envoyez un message</div>
+      <form class="form-mag" onsubmit="handleForm(event)">
+        <div class="form-field"><input type="text" placeholder="Votre prénom"/></div>
+        <div class="form-field"><input type="email" placeholder="Votre adresse email"/></div>
+        <div class="form-field"><input type="tel" placeholder="Téléphone (facultatif)"/></div>
+        <div class="form-field"><input type="text" placeholder="Le soin qui vous intéresse"/></div>
+        <div class="form-field"><textarea placeholder="Un message ou une question ?"></textarea></div>
+        <button type="submit" class="btn-send">Envoyer →</button>
+        <div class="form-ok" id="formOk">✓ Message envoyé — réponse sous 24h.</div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="f-logo">Névé</div>
+      <div class="f-sub">Institut de soin · Lyon 6<sup>e</sup></div>
+      <p class="f-desc">Soins du visage sur-mesure, épilation douce et maquillage événementiel. Un espace privé — une seule cliente à la fois.</p>
+    </div>
+    <div>
+      <div class="f-col-title">Navigation</div>
+      <div class="f-links">
+        <a href="#apropos">À propos</a>
+        <a href="#soins">Soins & tarifs</a>
+        <a href="#galerie">Galerie</a>
+        <a href="#contact">Réserver</a>
+      </div>
+    </div>
+    <div>
+      <div class="f-col-title">Légal</div>
+      <div class="f-links">
+        <a href="#">Mentions légales</a>
+        <a href="#">Confidentialité</a>
+        <a href="#">Instagram</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 Névé Institut · 69006 Lyon · Site fictif de démonstration</p>
+    <a href="https://nstudiodigital.fr">Site réalisé par N/ Studio Digital →</a>
+  </div>
+</footer>
+
+<script>
+  // Nav
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => nav.classList.toggle('solid', scrollY > 80));
+
+  // Reveal
+  const obs = new IntersectionObserver(es => es.forEach(e => { if(e.isIntersecting) e.target.classList.add('v'); }), { threshold: 0.1 });
+  document.querySelectorAll('.rv').forEach(el => obs.observe(el));
+
+  // Form
+  function handleForm(e) {
+    e.preventDefault();
+    document.getElementById('formOk').style.display = 'block';
+    e.target.reset();
+  }
+</script>
+</body>
+</html>
