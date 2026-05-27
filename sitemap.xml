@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
-  <!-- Pages principales -->
+  <!-- Page d'accueil -->
   <url>
     <loc>https://www.nstudiodigital.fr/</loc>
     <lastmod>2026-05-27</lastmod>
@@ -69,35 +69,35 @@
 
   <!-- Articles de blog -->
   <url>
-    <loc>https://www.nstudiodigital.fr/pourquoi-coiffeur-lyon-site-internet.html</loc>
+    <loc>https://www.nstudiodigital.fr/blog/pourquoi-coiffeur-lyon-site-internet.html</loc>
     <lastmod>2026-05-27</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
-    <loc>https://www.nstudiodigital.fr/combien-coute-site-vitrine-salon-coiffure-institut.html</loc>
+    <loc>https://www.nstudiodigital.fr/blog/combien-coute-site-vitrine-salon-coiffure-institut.html</loc>
     <lastmod>2026-05-27</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
-    <loc>https://www.nstudiodigital.fr/head-spa-lyon-marche-essor.html</loc>
+    <loc>https://www.nstudiodigital.fr/blog/head-spa-lyon-marche-essor.html</loc>
     <lastmod>2026-05-27</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
-    <loc>https://www.nstudiodigital.fr/planity-vs-treatwell-outil-reservation.html</loc>
+    <loc>https://www.nstudiodigital.fr/blog/planity-vs-treatwell-outil-reservation.html</loc>
     <lastmod>2026-05-27</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
-    <loc>https://www.nstudiodigital.fr/seo-local-praticien-bien-etre-lyon.html</loc>
+    <loc>https://www.nstudiodigital.fr/blog/seo-local-praticien-bien-etre-lyon.html</loc>
     <lastmod>2026-05-27</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
