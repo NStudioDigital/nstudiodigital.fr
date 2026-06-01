@@ -101,7 +101,7 @@
     .feature-desc{font-size:13px;color:var(--gray-mid);line-height:1.7;}
     .galerie{background:var(--black);}
     .galerie-title{color:var(--white);}
-    .galerie-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:3px;margin-top:40px;}
+    .galerie-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:3px;margin-top:40px;}
     @media(max-width:768px){.galerie-grid{grid-template-columns:1fr 1fr;}}
     .galerie-item{overflow:hidden;}
     .galerie-item img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease;display:block;min-height:240px;}
@@ -284,9 +284,9 @@
     <div class="section-label" style="color:var(--sage-lt);">Ambiances spa</div>
     <h2 class="section-title galerie-title reveal">L'atmosphère de votre<br/><strong>établissement, en ligne.</strong></h2>
     <div class="galerie-grid reveal">
-      <div class="galerie-item"><img src="spa-hero.webp" alt="Espace spa luxueux" loading="lazy"/></div>
-      <div class="galerie-item"><img src="spa-soin.webp" alt="Soin spa" loading="lazy"/></div>
       <div class="galerie-item"><img src="spa-bassin.webp" alt="Bassin spa" loading="lazy"/></div>
+      <div class="galerie-item"><img src="spa-hammam.webp" alt="Hammam spa Lyon" loading="lazy"/></div>
+      <div class="galerie-item"><img src="spa-soin.webp" alt="Soin spa" loading="lazy"/></div>
     </div>
   </div>
 </section>
