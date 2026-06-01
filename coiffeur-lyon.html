@@ -115,8 +115,8 @@
     .feat-text{font-size:13px;color:var(--gray-mid);line-height:1.7;}
 
     /* GALERIE */
-    .galerie-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:2px;margin-top:32px;}
-    @media(max-width:600px){.galerie-grid{grid-template-columns:1fr;}}
+    .galerie-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:32px;}
+    @media(max-width:768px){.galerie-grid{grid-template-columns:1fr;}}
     .gal-item{aspect-ratio:1;overflow:hidden;background:var(--gray-bg);}
     .gal-item img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease;}
     .gal-item:hover img{transform:scale(1.05);}
@@ -214,7 +214,7 @@
 
 <!-- HERO -->
 <section class="hero">
-  <img class="hero-img" src="coiffeurcouleur.webp" alt="Salon de coiffure Lyon — N/ Studio Digital"/>
+  <img class="hero-img" src="salonmiroirs.webp" alt="Salon de coiffure Lyon — N/ Studio Digital"/>
   <div class="hero-overlay"></div>
   <div class="container hero-content">
     <div class="hero-eyebrow"><span class="dot"></span>Site internet · Coiffeurs & salons · Lyon</div>
@@ -285,10 +285,9 @@
     <div class="s-label reveal">Univers visuel</div>
     <h2 class="s-title reveal">Des visuels qui donnent<br><strong>envie de pousser la porte.</strong></h2>
     <div class="galerie-grid">
-      <div class="gal-item reveal"><img src="salonmiroirs.webp" alt="Salon de coiffure Lyon" loading="lazy"/></div>
+      <div class="gal-item reveal"><img src="coiffeurcouleur.webp" alt="Coloration salon coiffure Lyon" loading="lazy"/></div>
       <div class="gal-item reveal" style="transition-delay:.1s"><img src="coiffeurcoupe.webp" alt="Coupe coiffeur Lyon" loading="lazy"/></div>
-      <div class="gal-item reveal" style="transition-delay:.2s"><img src="coiffeurcouleur.webp" alt="Coloration salon coiffure Lyon" loading="lazy"/></div>
-      <div class="gal-item reveal" style="transition-delay:.3s"><img src="salonbacs.webp" alt="Bacs shampoing salon Lyon" loading="lazy"/></div>
+      <div class="gal-item reveal" style="transition-delay:.2s"><img src="salonbacs.webp" alt="Bacs shampoing salon Lyon" loading="lazy"/></div>
     </div>
   </div>
 </section>
