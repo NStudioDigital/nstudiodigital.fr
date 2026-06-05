@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Procédure — Créer un site vitrine · N/ Studio Digital</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --noir:#0D0D0D;
+  --blanc:#FFFFFF;
+  --sage:#7A9478;
+  --sage-light:#EBF0EB;
+  --sage-dark:#4E6B4C;
+  --gray-f:#F4F4F4;
+  --gray-e:#EBEBEB;
+  --gray-c:#CCCCCC;
+  --gray-8:#888888;
+  --gray-4:#444444;
+  --blue-bg:#E8F0FB;
+  --blue:#185FA5;
+  --amber-bg:#FBF0DC;
+  --amber:#8A5210;
+  --purple-bg:#EDE8FB;
+  --purple:#4B38A8;
+  --pink-bg:#FBE8F2;
+  --pink:#953558;
+  --red-bg:#FCEAEA;
+  --red:#A32D2D;
+}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Inter',sans-serif;
+  background:var(--gray-f);
+  color:var(--noir);
+  min-height:100vh;
+  font-size:15px;
+  line-height:1.6;
+}
+/* ── HEADER ── */
+.site-header{
+  background:var(--noir);color:var(--blanc);
+  padding:0 2rem;display:flex;align-items:center;
+  justify-content:space-between;height:60px;
+  position:sticky;top:0;z-index:100;
+}
+.logo{font-size:16px;font-weight:400;letter-spacing:.5px}
+.logo span{color:var(--sage)}
+.header-tag{font-size:11px;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:var(--gray-8)}
+/* ── HERO ── */
+.hero{
+  background:var(--noir);color:var(--blanc);
+  padding:4rem 2rem 3rem;text-align:center;
+  position:relative;overflow:hidden;
+}
+.hero::before{content:'';position:absolute;top:-60px;right:-60px;width:300px;height:300px;border-radius:50%;border:1px solid rgba(122,148,120,.15)}
+.hero::after{content:'';position:absolute;bottom:-80px;left:-40px;width:220px;height:220px;border-radius:50%;border:1px solid rgba(122,148,120,.1)}
+.hero-label{font-size:11px;font-weight:500;letter-spacing:2.5px;text-transform:uppercase;color:var(--sage);margin-bottom:1rem}
+.hero h1{font-size:clamp(26px,4vw,42px);font-weight:300;line-height:1.2;margin-bottom:1rem}
+.hero h1 strong{font-weight:600}
+.hero-sub{font-size:15px;color:var(--gray-8);max-width:480px;margin:0 auto 2.5rem}
+.hero-stats{display:flex;justify-content:center;gap:3rem;flex-wrap:wrap}
+.hero-stat{text-align:center}
+.hero-stat-num{font-size:28px;font-weight:300;color:var(--blanc);display:block}
+.hero-stat-num span{color:var(--sage);font-weight:500}
+.hero-stat-label{font-size:11px;color:var(--gray-8);text-transform:uppercase;letter-spacing:1.5px}
+/* ── PROGRESS ── */
+.progress-section{
+  background:var(--blanc);border-bottom:1px solid var(--gray-e);
+  padding:1.25rem 2rem;display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap;
+}
+.progress-label{font-size:12px;color:var(--gray-8);font-weight:500;text-transform:uppercase;letter-spacing:1px;white-space:nowrap}
+.progress-dots{display:flex;gap:6px;align-items:center;flex:1;flex-wrap:wrap}
+.progress-dot{width:10px;height:10px;border-radius:50%;background:var(--gray-e);transition:background .3s;cursor:pointer;flex-shrink:0}
+.progress-dot.active{background:var(--sage)}
+.progress-text{font-size:12px;color:var(--gray-8);white-space:nowrap}
+.btn-all{font-size:12px;font-weight:500;padding:6px 14px;border-radius:20px;border:1px solid var(--gray-c);background:transparent;color:var(--gray-4);cursor:pointer;transition:all .2s;white-space:nowrap}
+.btn-all:hover{background:var(--noir);color:var(--blanc);border-color:var(--noir)}
+/* ── LEGEND ── */
+.legend{display:flex;flex-wrap:wrap;gap:12px 24px;padding:1.25rem 2rem;background:var(--blanc);border-bottom:1px solid var(--gray-e)}
+.legend-item{display:flex;align-items:center;gap:7px;font-size:12px;color:var(--gray-8)}
+.legend-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
+/* ── MAIN ── */
+.main{max-width:860px;margin:0 auto;padding:2rem 1.5rem 4rem}
+/* ── PHASE ── */
+.phase{background:var(--blanc);border-radius:12px;border:1px solid var(--gray-e);margin-bottom:1.25rem;overflow:hidden;transition:box-shadow .2s}
+.phase:hover{box-shadow:0 2px 16px rgba(0,0,0,.06)}
+.phase-header{padding:1.125rem 1.5rem;display:flex;align-items:center;gap:1rem;cursor:pointer;user-select:none;transition:background .15s}
+.phase-header:hover{background:var(--gray-f)}
+.phase-num{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:600;flex-shrink:0}
+.phase-meta{flex:1}
+.phase-name{font-size:16px;font-weight:500;color:var(--noir);line-height:1.3}
+.phase-desc{font-size:13px;color:var(--gray-8);margin-top:2px}
+.phase-right{display:flex;align-items:center;gap:.75rem;flex-shrink:0}
+.phase-count{font-size:12px;color:var(--gray-8);background:var(--gray-f);border:1px solid var(--gray-e);padding:3px 10px;border-radius:20px}
+.chevron{width:20px;height:20px;display:flex;align-items:center;justify-content:center;color:var(--gray-8);transition:transform .25s}
+.phase.open .chevron{transform:rotate(180deg)}
+/* ── PHASE BODY ── */
+.phase-body{max-height:0;overflow:hidden;transition:max-height .4s ease}
+.phase.open .phase-body{max-height:3000px}
+.phase-inner{padding:0 1.5rem 1.5rem;border-top:1px solid var(--gray-e)}
+/* ── STEPS ── */
+.steps{padding-top:1.25rem;display:flex;flex-direction:column;gap:0}
+.step{display:flex;gap:1rem;padding-bottom:1.25rem;position:relative}
+.step:not(:last-child)::before{content:'';position:absolute;left:15px;top:32px;bottom:0;width:1px;background:var(--gray-e)}
+.step-icon{width:32px;height:32px;border-radius:50%;border:1px solid var(--gray-e);background:var(--blanc);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:12px;font-weight:600;color:var(--gray-8);z-index:1}
+.step-content{flex:1;padding-top:5px}
+.step-title{font-size:14px;font-weight:500;color:var(--noir);line-height:1.4;margin-bottom:4px}
+.step-detail{font-size:13px;color:var(--gray-4);line-height:1.6}
+.step-tools{display:flex;flex-wrap:wrap;gap:5px;margin-top:8px}
+.tool-pill{font-size:11px;font-weight:500;padding:3px 9px;border-radius:20px;background:var(--gray-f);border:1px solid var(--gray-e);color:var(--gray-4)}
+.done-badge{display:inline-flex;align-items:center;gap:4px;font-size:11px;font-weight:500;padding:3px 9px;border-radius:20px;background:var(--sage-light);color:var(--sage-dark);margin-top:6px}
+.done-badge::before{content:'✓ '}
+.warn-badge{display:inline-flex;align-items:center;gap:4px;font-size:11px;font-weight:500;padding:3px 9px;border-radius:20px;background:var(--red-bg);color:var(--red);margin-top:6px}
+.warn-badge::before{content:'⚠ '}
+.pending-badge{display:inline-flex;align-items:center;gap:4px;font-size:11px;font-weight:500;padding:3px 9px;border-radius:20px;background:var(--amber-bg);color:var(--amber);margin-top:6px}
+.pending-badge::before{content:'⏳ '}
+/* ── RÈGLE ENCADRÉE ── */
+.rule-box{background:var(--noir);color:var(--blanc);border-radius:8px;padding:.875rem 1rem;margin-top:1rem;font-size:13px;line-height:1.6}
+.rule-box strong{color:var(--sage)}
+/* ── TIP ── */
+.tip{background:var(--gray-f);border-left:3px solid var(--gray-c);border-radius:0 8px 8px 0;padding:.875rem 1rem;margin-top:1rem;font-size:13px;color:var(--gray-4);line-height:1.6}
+.tip strong{color:var(--noir)}
+/* ── SEPARATEUR ── */
+.steps-sep{font-size:11px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;color:var(--gray-8);padding:.5rem 0 .75rem;border-top:1px solid var(--gray-e);margin-top:.5rem}
+/* ── FOOTER ── */
+.site-footer{background:var(--noir);color:var(--gray-8);text-align:center;padding:2rem;font-size:12px;letter-spacing:.5px}
+.site-footer strong{color:var(--sage)}
+/* ── RESPONSIVE ── */
+@media(max-width:600px){
+  .hero{padding:3rem 1.25rem 2rem}
+  .hero-stats{gap:2rem}
+  .progress-section{padding:1rem 1.25rem;gap:1rem}
+  .legend{padding:1rem 1.25rem}
+  .main{padding:1.25rem 1rem 3rem}
+  .phase-header{padding:1rem 1.25rem}
+  .phase-inner{padding:0 1.25rem 1.25rem}
+  .site-header{padding:0 1.25rem}
+}
+/* ── PRINT ── */
+@media print{
+  .phase-body{max-height:none!important;overflow:visible!important}
+  .phase-header{break-inside:avoid}
+  .chevron{display:none}
+  body{background:white}
+  .site-header{position:static}
+}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="logo">N<span>/</span> Studio Digital</div>
+  <div class="header-tag">Procédure interne v2</div>
+</header>
+
+<section class="hero">
+  <div class="hero-label">N/ Studio Digital · Document de référence</div>
+  <h1>Créer un site vitrine<br><strong>de A à Z</strong></h1>
+  <p class="hero-sub">Procédure complète et chronologique — de la prospection à la livraison client</p>
+  <div class="hero-stats">
+    <div class="hero-stat">
+      <span class="hero-stat-num"><span>6</span></span>
+      <div class="hero-stat-label">Phases</div>
+    </div>
+    <div class="hero-stat">
+      <span class="hero-stat-num"><span>38</span></span>
+      <div class="hero-stat-label">Étapes</div>
+    </div>
+    <div class="hero-stat">
+      <span class="hero-stat-num"><span>3</span></span>
+      <div class="hero-stat-label">Semaines · délai garanti</div>
+    </div>
+  </div>
+</section>
+
+<div class="progress-section">
+  <span class="progress-label">Progression</span>
+  <div class="progress-dots" id="progressDots"></div>
+  <span class="progress-text" id="progressText">0 / 6 phases ouvertes</span>
+  <button class="btn-all" id="toggleAll">Tout ouvrir</button>
+</div>
+
+<div class="legend">
+  <div class="legend-item"><div class="legend-dot" style="background:#7A9478"></div>Fondations (une seule fois)</div>
+  <div class="legend-item"><div class="legend-dot" style="background:#185FA5"></div>Par projet client</div>
+  <div class="legend-item"><div class="legend-dot" style="background:#8A5210"></div>Contenu &amp; brief</div>
+  <div class="legend-item"><div class="legend-dot" style="background:#4B38A8"></div>Technique &amp; mise en ligne</div>
+  <div class="legend-item"><div class="legend-dot" style="background:#953558"></div>Marketing &amp; prospection</div>
+</div>
+
+<main class="main">
+
+<!-- ══════════════════════════════════════════
+     PHASE 01
+══════════════════════════════════════════ -->
+<div class="phase" data-phase="1">
+  <div class="phase-header" onclick="togglePhase(this)">
+    <div class="phase-num" style="background:var(--sage-light);color:var(--sage-dark)">01</div>
+    <div class="phase-meta">
+      <div class="phase-name">Poser les fondations de l'agence</div>
+      <div class="phase-desc">Identité · offre · outils · légal · portfolio fictif — à faire une seule fois</div>
+    </div>
+    <div class="phase-right">
+      <span class="phase-count">9 étapes</span>
+      <div class="chevron"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+    </div>
+  </div>
+  <div class="phase-body">
+    <div class="phase-inner">
+      <div class="steps">
+
+        <div class="step">
+          <div class="step-icon" style="background:var(--sage-light);color:var(--sage-dark);border-color:var(--sage-light)">1</div>
+          <div class="step-content">
+            <div class="step-title">Définir son positionnement et son offre</div>
+            <div class="step-detail">Secteur cible (coiffure, bien-être, beauté à Lyon), type de client (TPE sans site, 1–10 salariés), tarif unique (990 € TTC tout inclus), délai garanti (3 semaines), proposition de valeur : SEO local intégré, code source remis au client, GitHub au nom du client.</div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-icon" style="background:var(--sage-light);color:var(--sage-dark);border-color:var(--sage-light)">2</div>
+          <div class="step-content">
+            <div class="step-title">Créer l'identité visuelle complète (charte graphique)</div>
+            <div class="step-detail">Logo N/ Studio Digital (variantes fond clair / fond noir / fond transparent), palette de couleurs (noir #0D0D0D, vert sauge #7A9478), typographie Inter (Regular, Bold, Light), signature email, cartes de visite recto/verso, règles d'usage. Livrer en PNG, SVG et PDF.</div>
+            <div class="step-tools"><span class="tool-pill">Canva / Illustrator</span><span class="tool-pill">Google Fonts — Inter</span></div>
+            <div class="done-badge">Charte graphique v2 créée — 10 fichiers logo/signature</div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-icon" style="background:var(--sage-light);color:var(--sage-dark);border-color:var(--sage-light)">3</div>
+          <div class="step-content">
+            <div class="step-title">Enregistrer le nom de domaine et ouvrir les comptes techniques</div>
+            <div class="step-detail">Enregistrer nstudiodigital.fr à son propre nom (~15 €/an). Créer : compte Vercel (hébergement gratuit, HTTPS automatique), compte GitHub (versionnage du code), email pro contact@nstudiodigital.fr.</div>
+            <div class="step-tools"><span class="tool-pill">OVH / Gandi (domaine)</span><span class="tool-pill">Vercel (hébergement)</span><span class="tool-pill">GitHub (code)</span></div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-icon" style="background:var(--sage-light);color:var(--sage-dark);border-color:var(--sage-light)">4</div>
+          <div class="step-content">
+            <div class="step-title">Ouvrir les comptes administratifs et financiers</div>
+            <div class="step-detail">Immatriculation micro-entreprise (obtenir le SIRET) · compte bancaire pro Indy (lié au SIRET) · compte Stripe (paiement en ligne et abonnement maintenance 19 €/mois récurrent). Ces comptes se créent dans cet ordre précis : SIRET → Indy → Stripe.</div>
+            <div class="step-tools"><span class="tool-pill">URSSAF / INPI (SIRET)</span><span class="tool-pill">Indy (comptabilité)</span><span class="tool-pill">Stripe (paiements)</span></div>
+            <div class="pending-badge">En attente du SIRET pour finaliser Indy et Stripe</div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-icon" style="background:var(--sage-light);color:var(--sage-dark);border-color:var(--sage-light)">5</div>
+          <div class="step-content">
+            <div class="step-title">Rédiger les documents légaux</div>
+            <div class="step-detail">CGV : paiement en deux fois (50 % acompte / 50 % solde), délai 3 semaines, propriété du code source (GitHub au nom du client), hébergement Vercel, forfait maintenance 19 €/mois, clause de référence portfolio, recours en cas de litige. Mentions légales : identité, SIRET, responsable de publication, hébergeur Vercel.</div>
+            <div class="done-badge">CGV et mentions légales en ligne</div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-icon" style="background:var(--sage-light);color:var(--sage-dark);border-color:var(--sage-light)">6</div>
+          <div class="step-content">
+            <div class="step-title">Créer le site vitrine de l'agence (nstudiodigital.fr)</div>
+            <div class="step-detail">Page d'accueil · pages secteurs (coiffeur, head spa, massage, sophrologue/naturopathe, esthétique/nail art, yoga/pilates, spa) · blog · CGV · Mentions légales. SEO local intégré dès la conception : balises Open Graph pour chaque page (1200×630 px), sitemap.xml, schema.org LocalBusiness en JSON-LD.</div>
+            <div class="done-badge">19 pages HTML en ligne · 5 articles de blog · sitemap.xml</div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-icon" style="background:var(--sage-light);color:var(--sage-dark);border-color:var(--sage-light)">7</div>
+          <div class="step-content">
+            <div class="step-title">Créer les images du site avec une convention de nommage stricte</div>
+            <div class="step-detail">Toutes les images créées sur Canva sont exportées en <strong>.webp</strong> (format performant). Convention de nommage obligatoire : <strong>sans tirets ni espaces</strong> (ex : <code>coiffeurcouleur.webp</code> et non <code>coiffeur-couleur.webp</code>). Créer également les images Open Graph (format PNG, 1200×630 px, une par page) et les images de couverture blog (JPG ou PNG).</div>
+            <div class="step-tools"><span class="tool-pill">Canva (création)</span><span class="tool-pill">Squoosh (compression webp)</span></div>
+            <div class="done-badge">26 images webp · 8 OG images · 4 covers blog</div>
+            <div class="warn-badge">Supprimer les anciens fichiers avec tirets de GitHub après chaque remplacement</div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-icon" style="background:var(--sage-light);color:var(--sage-dark);border-color:var(--sage-light)">8</div>
+          <div class="step-content">
+            <div class="step-title">Créer le portfolio fictif (sites démo clients)</div>
+            <div class="step-detail">Sans vrais clients au démarrage, créer 3 sites fictifs complets pour démontrer la diversité stylistique. Chaque site doit être dans un univers visuel distinct : un por secteur, une palette différente, une typographie différente. Ces démos servent de preuves de compétence lors de la prospection.</div>
+            <div class="done-badge">Kō Spa (head spa japonais) · Studio Mova (pilates) · Névé (esthéticienne soins visage)</div>
+            <div class="step-tools"><span class="tool-pill">HTML/CSS sur-mesure</span><span class="tool-pill">Photos Canva dédiées par site</span></div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-icon" style="background:var(--sage-light);color:var(--sage-dark);border-color:var(--sage-light)">9</div>
+          <div class="step-content">
+            <div class="step-title">Préparer les outils de travail et de prospection</div>
+            <div class="step-detail">Questionnaire client Google Form (brief de démarrage) · modèle de devis · modèle de contrat · compte Vibe Prospecting configuré avec les filtres validés · modèles d'emails de prospection · guide Google Business (document PDF à remettre aux clients à la livraison).</div>
+            <div class="done-badge">Questionnaire Google Form créé</div>
+          </div>
+        </div>
+
+      </div>
+      <div class="tip"><strong>Important :</strong> ces étapes sont à réaliser une seule fois. Ne passez pas aux phases suivantes sans avoir au minimum le positionnement clair, la charte graphique, le site agence en ligne et au moins 2 sites démo dans le portfolio. Sans portfolio, pas de crédibilité lors de la prospection.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     PHASE 02
+══════════════════════════════════════════ -->
+<div class="phase" data-phase="2">
+  <div class="phase-header" onclick="togglePhase(this)">
+    <div class="phase-num" style="background:var(--blue-bg);color:var(--blue)">02</div>
+    <div class="phase-meta">
+      <div class="phase-name">Trouver et qualifier un prospect</div>
+      <div class="phase-desc">Prospection · premier contact · appel découverte — pour chaque nouveau client</div>
+    </div>
+    <div class="phase-right">
+      <span class="phase-count">4 étapes</span>
+      <div class="chevron"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+    </div>
+  </div>
+  <div class="phase-body">
+    <div class="phase-inner">
+      <div class="steps">
+
+        <div class="step">
+          <div class="step-icon" style="background:var(--blue-bg);color:var(--blue);border-color:var(--blue-bg)">1</div>
+          <div class="step-content">
+            <div class="step-title">Identifier les entreprises sans site web</div>
+            <div class="step-detail">Filtres Vibe Prospecting validés : <code>company_country_code: FR</code> · <code>company_size: 1–10</code> · <code>has_website: False</code> · catégories LinkedIn validées via autocomplete avant la recherche (wellness and fitness services, personal care services, health wellness & fitness, personal and laundry services). Toujours utiliser <code>estimate_cost: True</code> avant d'exporter.</div>
+            <div class="step-tools"><span class="tool-pill">Vibe Prospecting</span><span class="tool-pill">Pages Jaunes</span><span class="tool-pill">Google Maps</span><span class="tool-pill">Annuaires sectoriels</span></div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-icon" style="background:var(--blue-bg);color:var(--blue);border-color:var(--blue-bg)">2</div>
+          <div class="step-content">
+            <div class="step-title">Vérifier et qualifier le contact</div>
+            <div class="step-detail">Confirmer manuellement l'absence de site internet · s'assurer que l'entreprise est active · noter : nom du ou de la dirigeant(e), adresse, téléphone, réseaux sociaux existants (Instagram, Facebook, fiche Google Business). Évaluer si le secteur correspond au portfolio actuel.</div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-icon" style="background:var(--blue-bg);color:var(--blue);border-color:var(--blue-bg)">3</div>
+          <div class="step-content">
+            <div class="step-title">Premier contact (appel téléphonique ou message)</div>
+            <div class="step-detail">Se présenter brièvement · expliquer le service en 2 phrases · proposer un appel découverte gratuit de 30 minutes. L'objectif est uniquement de décrocher le rendez-vous, pas de vendre directement. Personnaliser le message en mentionnant leur secteur spécifique et leur ville.</div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-icon" style="background:var(--blue-bg);color:var(--blue);border-color:var(--blue-bg)">4</div>
+          <div class="step-content">
+            <div class="step-title">Appel découverte (30 min) + envoi du questionnaire</div>
+            <div class="step-detail">Comprendre : activité, clientèle cible, objectifs du site, contraintes (photos disponibles ? logo ? couleurs ?). Présenter la méthode, le tarif (990 € TTC), le délai (3 semaines), le fait que le code leur appartient via GitHub à leur nom. Envoyer le questionnaire Google Form à la fin de l'appel.</div>
+          </div>
+        </div>
+
+      </div>
+      <div class="tip"><strong>Conseil :</strong> ne jamais essayer de "vendre" lors du premier contact. L'appel découverte sert à qualifier le besoin et instaurer la confiance. Montrer les 3 sites démo du portfolio dès cet appel.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     PHASE 03
+══════════════════════════════════════════ -->
+<div class="phase" data-phase="3">
+  <div class="phase-header" onclick="togglePhase(this)">
+    <div class="phase-num" style="background:var(--amber-bg);color:var(--amber)">03</div>
+    <div class="phase-meta">
+      <div class="phase-name">Préparer le contenu et le brief</div>
+      <div class="phase-desc">Textes · images · mots-clés · validation du devis — avant de toucher au code</div>
+    </div>
+    <div class="phase-right">
+      <span class="phase-count">7 étapes</span>
+      <div class="chevron"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+    </div>
+  </div>
+  <div class="phase-body">
+    <div class="phase-inner">
+      <div class="steps">
+
+        <div class="step">
+          <div class="step-icon" style="background:var(--amber-bg);color:var(--amber);border-color:var(--amber-bg)">1</div>
+          <div class="step-content">
+            <div class="step-title">Récupérer le questionnaire rempli et le valider</div>
+            <div class="step-detail">Vérifier que tous les champs sont renseignés : nom de l'entreprise, description de l'activité, objectifs du site, type de site souhaité, présence en ligne actuelle, logo disponible, photos disponibles, couleurs souhaitées, outil de réservation (Planity, Treatwell, Calendly…), budget confirmé.</div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-icon" style="background:var(--amber-bg);color:var(--amber);border-color:var(--amber-bg)">2</div>
+          <div class="step-content">
+            <div class="step-title">Définir la structure des pages du site</div>
+            <div class="step-detail">Pages minimales : Accueil · Services · À propos · Contact. Options selon le client : galerie avant/après, page tarifs, page équipe, réservation en ligne intégrée, blog. Valider la liste des pages avec le client par écrit avant de commencer.</div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-icon" style="background:var(--amber-bg);color:var(--amber);border-color:var(--amber-bg)">3</div>
+          <div class="step-content">
+            <div class="step-title">Identifier les mots-clés SEO locaux cibles</div>
+            <div class="step-detail">Construire la liste de requêtes prioritaires : "[métier] Lyon [arrondissement]", "[métier] [commune]", "[spécialité] Lyon". Ces mots-clés guident toute la rédaction : titres H1/H2, méta-descriptions, corps du texte, balises title. L'arrondissement le plus recherché pour le secteur beauté/bien-être haut de gamme est généralement Lyon 6e.</div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-icon" style="background:var(--amber-bg);color:var(--amber);border-color:var(--amber-bg)">4</div>
+          <div class="step-content">
+            <div class="step-title">Rédiger les textes du site</div>
+            <div class="step-detail">Inclus dans l'offre de base (990 €) : présentation de l'activité, pages services, à propos, contact. Option +200 € : textes SEO élaborés, storytelling approfondi, refonte rédactionnelle complète. Intégrer les mots-clés cibles naturellement dans les H1, H2 et le corps du texte. Ton : professionnel, direct, orienté bénéfice client.</div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-icon" style="background:var(--amber-bg);color:var(--amber);border-color:var(--amber-bg)">5</div>
+          <div class="step-content">
+            <div class="step-title">Préparer et nommer les visuels selon la convention stricte</div>
+            <div class="step-detail">Priorité aux photos du client (authenticité). Si non disponibles : banque d'images libres de droits (Unsplash, Pexels) en attendant. Format <strong>webp obligatoire</strong> pour la performance. Convention de nommage : <strong>sans tirets, sans espaces, tout en minuscules</strong> (ex : <code>salonhero.webp</code>, jamais <code>salon-hero.webp</code>). Minimum requis : 1 image hero + 2 à 3 photos de l'espace ou des prestations.</div>
+            <div class="step-tools"><span class="tool-pill">Unsplash / Pexels</span><span class="tool-pill">Squoosh (compression webp)</span><span class="tool-pill">Canva</span></div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-icon" style="background:var(--amber-bg);color:var(--amber);border-color:var(--amber-bg)">6</div>
+          <div class="step-content">
+            <div class="step-title">Créer les images Open Graph (og:image) pour chaque page</div>
+            <div class="step-detail">Une image OG par page, format PNG, dimensions exactes <strong>1200 × 630 px</strong>. Ces images apparaissent quand le site est partagé sur les réseaux sociaux ou WhatsApp. Les créer sur Canva avec le nom du client et un visuel représentatif. Nommage : <code>ognom.png</code> (ex : <code>ogsalon.png</code>).</div>
+            <div class="step-tools"><span class="tool-pill">Canva (1200×630 px)</span></div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-icon" style="background:var(--amber-bg);color:var(--amber);border-color:var(--amber-bg)">7</div>
+          <div class="step-content">
+            <div class="step-title">Envoyer le devis, le faire signer et encaisser l'acompte (50 %)</div>
+            <div class="step-detail">Devis détaillé : description de la prestation, tarif (990 € TTC), délai (3 semaines à compter de la réception de tous les éléments), conditions de paiement (50/50), liste des éléments requis pour démarrer. Acceptation écrite du client (email ou signature). Le délai de 3 semaines démarre uniquement à réception de l'acompte ET de tous les éléments.</div>
+          </div>
+        </div>
+
+      </div>
+      <div class="rule-box"><strong>Règle absolue :</strong> ne jamais commencer le développement sans avoir reçu l'acompte et l'ensemble des éléments du client (textes, photos, logo, informations pratiques). Un projet bloqué en cours de route désorganise tout le planning.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     PHASE 04
+══════════════════════════════════════════ -->
+<div class="phase" data-phase="4">
+  <div class="phase-header" onclick="togglePhase(this)">
+    <div class="phase-num" style="background:var(--purple-bg);color:var(--purple)">04</div>
+    <div class="phase-meta">
+      <div class="phase-name">Développer le site</div>
+      <div class="phase-desc">Maquette · code · SEO on-page · GitHub · tests · validation client</div>
+    </div>
+    <div class="phase-right">
+      <span class="phase-count">8 étapes</span>
+      <div class="chevron"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+    </div>
+  </div>
+  <div class="phase-body">
+    <div class="phase-inner">
+      <div class="steps">
+
+        <div class="step">
+          <div class="step-icon" style="background:var(--purple-bg);color:var(--purple);border-color:var(--purple-bg)">1</div>
+          <div class="step-content">
+            <div class="step-title">Créer la maquette (wireframe) et la valider</div>
+            <div class="step-detail">Esquisse de la structure visuelle : ordre des sections (hero, services, à propos, témoignages, contact), position des photos, emplacement des CTA, navigation. Partager la maquette au client et obtenir sa validation écrite avant de commencer le développement. Évite les révisions coûteuses en cours de code.</div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-icon" style="background:var(--purple-bg);color:var(--purple);border-color:var(--purple-bg)">2</div>
+          <div class="step-content">
+            <div class="step-title">Créer le repo GitHub au nom du client</div>
+            <div class="step-detail">Créer le dépôt GitHub avec l'adresse email du client (le repo lui appartient dès le début). S'ajouter comme collaboratrice sur ce repo. Ne jamais créer le repo à son propre nom et transférer ensuite — cela crée une dépendance. Le client est propriétaire du code dès le premier jour.</div>
+            <div class="step-tools"><span class="tool-pill">GitHub</span></div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-icon" style="background:var(--purple-bg);color:var(--purple);border-color:var(--purple-bg)">3</div>
+          <div class="step-content">
+            <div class="step-title">Développer en HTML/CSS statique (mobile-first)</div>
+            <div class="step-detail">Site statique sur-mesure : HTML5 sémantique, CSS3, JavaScript vanilla. Pas de CMS, pas de plugins à maintenir. Mobile-first obligatoire. Balises sémantiques pour le SEO : nav, main, section, article, header, footer. Toutes les images en webp avec attribut alt renseigné. Charger les polices Google Fonts en asynchrone.</div>
+            <div class="step-tools"><span class="tool-pill">HTML / CSS / JS</span><span class="tool-pill">VS Code</span><span class="tool-pill">Claude (IA)</span><span class="tool-pill">GitHub</span></div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-icon" style="background:var(--purple-bg);color:var(--purple);border-color:var(--purple-bg)">4</div>
+          <div class="step-content">
+            <div class="step-title">Intégrer le SEO on-page sur chaque page</div>
+            <div class="step-detail">Pour chaque page : balise &lt;title&gt; unique (50–60 car.) · meta description (150–160 car.) · H1 unique avec mot-clé principal · balises Open Graph complètes (og:title, og:description, og:image 1200×630 px, og:url, og:type) · meta twitter:card · balise canonical · schema.org LocalBusiness en JSON-LD sur l'accueil.</div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-icon" style="background:var(--purple-bg);color:var(--purple);border-color:var(--purple-bg)">5</div>
+          <div class="step-content">
+            <div class="step-title">Mettre à jour le sitemap.xml</div>
+            <div class="step-detail">Ajouter chaque nouvelle page au fichier sitemap.xml avec sa &lt;loc&gt;, &lt;lastmod&gt; (date du jour), &lt;changefreq&gt; et &lt;priority&gt; appropriées. Le sitemap doit refléter exactement les pages en ligne. Ne pas oublier les pages de portfolio (ko-spa.html, studio-mova.html, neve-institut.html…).</div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-icon" style="background:var(--purple-bg);color:var(--purple);border-color:var(--purple-bg)">6</div>
+          <div class="step-content">
+            <div class="step-title">Intégrer les outils tiers</div>
+            <div class="step-detail">Outil de réservation en ligne (Planity, Treatwell ou Calendly selon le choix du client) · formulaire de contact fonctionnel avec confirmation d'envoi · lien vers la fiche Google Business · Google Analytics ou équivalent pour le suivi des visites.</div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-icon" style="background:var(--purple-bg);color:var(--purple);border-color:var(--purple-bg)">7</div>
+          <div class="step-content">
+            <div class="step-title">Tests complets avant toute livraison</div>
+            <div class="step-detail">Mobile iOS + Android · tablette · desktop · navigateurs Chrome, Safari, Firefox, Edge · vitesse de chargement sur PageSpeed Insights (viser 90+ sur mobile) · tous les liens vérifiés · formulaire de contact testé de bout en bout · outil de réservation testé · images qui se chargent correctement.</div>
+            <div class="step-tools"><span class="tool-pill">Google PageSpeed Insights</span><span class="tool-pill">GTmetrix</span></div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-icon" style="background:var(--purple-bg);color:var(--purple);border-color:var(--purple-bg)">8</div>
+          <div class="step-content">
+            <div class="step-title">Envoyer le lien de prévisualisation et collecter les retours</div>
+            <div class="step-detail">Déployer sur le sous-domaine Vercel temporaire (ex : mon-salon.vercel.app) et partager le lien au client. Collecter les retours par écrit. Effectuer les révisions incluses dans le brief initial. Obtenir la validation écrite du client avant de passer à la mise en ligne sur le domaine définitif.</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     PHASE 05
+══════════════════════════════════════════ -->
+<div class="phase" data-phase="5">
+  <div class="phase-header" onclick="togglePhase(this)">
+    <div class="phase-num" style="background:var(--purple-bg);color:var(--purple)">05</div>
+    <div class="phase-meta">
+      <div class="phase-name">Mettre en ligne et livrer</div>
+      <div class="phase-desc">Domaine · Vercel · Search Console · remise des accès · solde · maintenance</div>
+    </div>
+    <div class="phase-right">
+      <span class="phase-count">6 étapes</span>
+      <div class="chevron"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+    </div>
+  </div>
+  <div class="phase-body">
+    <div class="phase-inner">
+      <div class="steps">
+
+        <div class="step">
+          <div class="step-icon" style="background:var(--purple-bg);color:var(--purple);border-color:var(--purple-bg)">1</div>
+          <div class="step-content">
+            <div class="step-title">Configurer le nom de domaine</div>
+            <div class="step-detail">Client sans domaine : accompagner l'enregistrement directement à son nom (~15 €/an, OVH ou Gandi). Client avec domaine existant : récupérer les accès au gestionnaire DNS et configurer le pointage vers Vercel. Le HTTPS s'active automatiquement via Vercel (certificat SSL gratuit).</div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-icon" style="background:var(--purple-bg);color:var(--purple);border-color:var(--purple-bg)">2</div>
+          <div class="step-content">
+            <div class="step-title">Déployer en production et vérifier en conditions réelles</div>
+            <div class="step-detail">Push final sur GitHub → déploiement automatique sur Vercel (quelques secondes). Vérifier sur le domaine définitif : HTTPS actif, toutes les pages accessibles, images qui se chargent, formulaire fonctionnel, outil de réservation actif. Tester sur mobile en 4G (pas seulement en Wi-Fi).</div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-icon" style="background:var(--purple-bg);color:var(--purple);border-color:var(--purple-bg)">3</div>
+          <div class="step-content">
+            <div class="step-title">Soumettre à Google Search Console</div>
+            <div class="step-detail">Ajouter le site dans Google Search Console · vérifier la propriété du domaine · soumettre le sitemap.xml. Cette étape accélère significativement l'indexation par Google. Transmettre l'accès en lecture au client si souhaité.</div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-icon" style="background:var(--purple-bg);color:var(--purple);border-color:var(--purple-bg)">4</div>
+          <div class="step-content">
+            <div class="step-title">Encaisser le solde (50 % restant)</div>
+            <div class="step-detail">Envoyer la facture de solde via Stripe (lien de paiement) ou demander un virement. Le solde est dû avant la remise du code source complet. Le site peut rester en ligne — mais les accès administrateurs complets (GitHub, Vercel) sont remis uniquement après paiement intégral.</div>
+            <div class="step-tools"><span class="tool-pill">Stripe (lien de paiement)</span></div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-icon" style="background:var(--purple-bg);color:var(--purple);border-color:var(--purple-bg)">5</div>
+          <div class="step-content">
+            <div class="step-title">Livraison officielle — remise de tous les accès et documents</div>
+            <div class="step-detail">Email de livraison incluant : lien du site en production · accès complet au repo GitHub (le client en est déjà propriétaire) · accès Vercel · guide Google Business pas à pas (document PDF préparé à l'avance) · récapitulatif de ce qui est inclus dans la maintenance 19 €/mois.</div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-icon" style="background:var(--purple-bg);color:var(--purple);border-color:var(--purple-bg)">6</div>
+          <div class="step-content">
+            <div class="step-title">Proposer le forfait maintenance et activer le paiement récurrent</div>
+            <div class="step-detail">19 €/mois · 3 modifications incluses par mois (textes, photos, tarifs, horaires) · intervention sous 48h ouvrées · au-delà de 3 modifications, facturation au cas par cas. Si le client accepte : envoyer le lien Stripe d'abonnement récurrent (prélèvement automatique mensuel). À proposer systématiquement à la livraison.</div>
+            <div class="step-tools"><span class="tool-pill">Stripe (abonnement récurrent 19€/mois)</span></div>
+          </div>
+        </div>
+
+      </div>
+      <div class="rule-box"><strong>Ordre impératif :</strong> solde encaissé → remise des accès complets. Le site peut être mis en ligne avant le paiement du solde, mais les accès administrateurs GitHub et Vercel ne sont transmis qu'après paiement intégral.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     PHASE 06
+══════════════════════════════════════════ -->
+<div class="phase" data-phase="6">
+  <div class="phase-header" onclick="togglePhase(this)">
+    <div class="phase-num" style="background:var(--pink-bg);color:var(--pink)">06</div>
+    <div class="phase-meta">
+      <div class="phase-name">Développer la visibilité de l'agence</div>
+      <div class="phase-desc">Blog · pages secteur · Google Business · réalisations · prospection — en continu</div>
+    </div>
+    <div class="phase-right">
+      <span class="phase-count">6 étapes</span>
+      <div class="chevron"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+    </div>
+  </div>
+  <div class="phase-body">
+    <div class="phase-inner">
+      <div class="steps">
+
+        <div class="step">
+          <div class="step-icon" style="background:var(--pink-bg);color:var(--pink);border-color:var(--pink-bg)">1</div>
+          <div class="step-content">
+            <div class="step-title">Publier des articles de blog régulièrement</div>
+            <div class="step-detail">Objectif : 1 article par mois minimum. Articles publiés : "Pourquoi un coiffeur à Lyon a besoin d'un site internet en 2026", "Combien coûte un site vitrine pour salon de coiffure ou institut", "Head spa Lyon : le marché en essor", "Planity vs Treatwell : choisir son outil de réservation", "SEO local pour praticiens bien-être". Prochains : massage, esthétique, yoga, nail art, Google Business.</div>
+            <div class="done-badge">5 articles publiés</div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-icon" style="background:var(--pink-bg);color:var(--pink);border-color:var(--pink-bg)">2</div>
+          <div class="step-content">
+            <div class="step-title">Maintenir les pages vitrine par secteur à jour</div>
+            <div class="step-detail">Une page par secteur cible avec maquette fictive convaincante et texte SEO optimisé. Chaque page doit mentionner le site démo correspondant du portfolio. Mettre à jour le sitemap.xml à chaque nouvelle page ajoutée ou modifiée. Pages actuelles : coiffeur, head spa, massage, sophrologue/naturopathe, esthétique/nail art, yoga/pilates, spa.</div>
+            <div class="done-badge">8 pages secteur en ligne · sitemap.xml à jour</div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-icon" style="background:var(--pink-bg);color:var(--pink);border-color:var(--pink-bg)">3</div>
+          <div class="step-content">
+            <div class="step-title">Créer et optimiser la fiche Google Business de l'agence</div>
+            <div class="step-detail">Fiche complète : nom exact, adresse, téléphone, horaires, catégorie principale (Agence web ou Concepteur de sites web), description avec mots-clés ciblés. Ajouter des photos de qualité (logo, captures des sites réalisés). Demander un avis Google à chaque client livré. Répondre à tous les avis. Viser 1 à 2 nouveaux avis par mois.</div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-icon" style="background:var(--pink-bg);color:var(--pink);border-color:var(--pink-bg)">4</div>
+          <div class="step-content">
+            <div class="step-title">Alimenter la section Réalisations avec les vrais projets livrés</div>
+            <div class="step-detail">Remplacer progressivement les maquettes fictives par les vrais sites clients livrés dans la section Réalisations de l'index. Avec accord écrit du client (clause de référence dans les CGV) : publier une courte étude de cas. Mettre à jour le sitemap si une nouvelle page portfolio est créée.</div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-icon" style="background:var(--pink-bg);color:var(--pink);border-color:var(--pink-bg)">5</div>
+          <div class="step-content">
+            <div class="step-title">Activer les outils financiers dès réception du SIRET</div>
+            <div class="step-detail">Dès réception du SIRET : 1) Ouvrir le compte Indy et y connecter l'IBAN dédié à l'activité · 2) Créer le compte Stripe, y lier l'IBAN Indy, configurer le lien de paiement unique (990 €) et le lien d'abonnement récurrent (19 €/mois). Ces deux liens seront utilisés à chaque livraison client.</div>
+            <div class="step-tools"><span class="tool-pill">Indy (comptabilité micro-entreprise)</span><span class="tool-pill">Stripe (paiements en ligne)</span></div>
+            <div class="pending-badge">En attente du SIRET</div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-icon" style="background:var(--pink-bg);color:var(--pink);border-color:var(--pink-bg)">6</div>
+          <div class="step-content">
+            <div class="step-title">Prospecter en continu</div>
+            <div class="step-detail">Vibe Prospecting avec les filtres validés · prospection terrain avec les cartes de visite · réseaux sociaux (LinkedIn, Instagram) · recommandations de clients satisfaits. Objectif : maintenir un flux de 5 à 10 nouveaux contacts qualifiés par semaine. La phase 06 ne se termine jamais — elle tourne en parallèle de toutes les autres.</div>
+            <div class="step-tools"><span class="tool-pill">Vibe Prospecting</span><span class="tool-pill">Pages Jaunes</span><span class="tool-pill">Google Maps</span><span class="tool-pill">LinkedIn / Instagram</span></div>
+          </div>
+        </div>
+
+      </div>
+      <div class="tip">La phase 06 est permanente. Plus vous publiez et prospectez régulièrement, plus les clients arrivent naturellement. Chaque article de blog et chaque page secteur travaille pour vous 24h/24 sur Google, même quand vous dormez.</div>
+    </div>
+  </div>
+</div>
+
+</main>
+
+<footer class="site-footer">
+  <strong>N/ Studio Digital</strong> · Nadège Dufour · nstudiodigital.fr<br/>
+  <span style="margin-top:4px;display:block">Des sites qui travaillent. Des résultats qui comptent.</span>
+</footer>
+
+<script>
+function togglePhase(header){
+  var phase=header.closest('.phase');
+  phase.classList.toggle('open',!phase.classList.contains('open'));
+  updateProgress();
+}
+function updateProgress(){
+  var phases=document.querySelectorAll('.phase');
+  var dots=document.getElementById('progressDots');
+  var text=document.getElementById('progressText');
+  var openCount=0;
+  dots.innerHTML='';
+  phases.forEach(function(p,i){
+    var open=p.classList.contains('open');
+    if(open)openCount++;
+    var dot=document.createElement('div');
+    dot.className='progress-dot'+(open?' active':'');
+    dot.title='Phase 0'+(i+1);
+    dot.onclick=function(){togglePhase(p.querySelector('.phase-header'))};
+    dots.appendChild(dot);
+  });
+  text.textContent=openCount+' / '+phases.length+' phases ouvertes';
+  document.getElementById('toggleAll').textContent=openCount===phases.length?'Tout fermer':'Tout ouvrir';
+}
+document.getElementById('toggleAll').addEventListener('click',function(){
+  var phases=document.querySelectorAll('.phase');
+  var anyOpen=document.querySelectorAll('.phase.open').length>0;
+  phases.forEach(function(p){p.classList.toggle('open',!anyOpen)});
+  updateProgress();
+});
+updateProgress();
+</script>
+</body>
+</html>
