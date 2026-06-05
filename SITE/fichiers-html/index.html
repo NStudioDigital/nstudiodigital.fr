@@ -1,0 +1,1246 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <link rel="canonical" href="https://www.nstudiodigital.fr/"/>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Création site internet Lyon — Coiffeurs, Esthéticiennes & Bien-être — N/ Studio Digital</title>
+  <meta name="description" content="Agence web spécialisée coiffure, esthétique et bien-être à Lyon. Création de site vitrine sur-mesure pour salons de coiffure, esthéticiennes, head spas, sophrologues, naturopathes. Livraison en 3 semaines, 990€ TTC."/>
+  <meta name="keywords" content="création site internet coiffeur Lyon, site internet esthéticienne Lyon, site bien-être Lyon, agence web salon coiffure, site sophrologue Lyon, site naturopathe Lyon, site head spa Lyon, site soin visage Lyon, création site vitrine praticien Lyon, site esthétique Lyon"/>
+  <meta property="og:title" content="Création site internet coiffeurs, esthéticiennes & bien-être Lyon — N/ Studio Digital"/>
+  <meta property="og:description" content="Agence web spécialisée salons, instituts et praticiens bien-être à Lyon. Site vitrine sur-mesure, SEO local, livraison 3 semaines. 990€ TTC."/>
+  <meta property="og:image" content="https://www.nstudiodigital.fr/ogindex.png"/>
+  <meta property="og:image:width" content="1200"/>
+  <meta property="og:image:height" content="630"/>
+  <meta property="og:url" content="https://www.nstudiodigital.fr/"/>
+  <meta property="og:type" content="website"/>
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:image" content="https://www.nstudiodigital.fr/ogindex.png"/>
+  <link rel="icon" type="image/x-icon" href="/favicon.ico"/>
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"/>
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png"/>
+  <link rel="manifest" href="/site.webmanifest"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+
+  <!-- Schema.org LocalBusiness -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "N/ Studio Digital",
+    "description": "Agence web spécialisée en création de sites vitrine sur-mesure pour coiffeurs, esthéticiennes et praticiens bien-être à Lyon.",
+    "url": "https://www.nstudiodigital.fr",
+    "email": "contact@nstudiodigital.fr",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Rillieux-la-Pape",
+      "postalCode": "69140",
+      "addressCountry": "FR"
+    },
+    "areaServed": {
+      "@type": "GeoCircle",
+      "geoMidpoint": {
+        "@type": "GeoCoordinates",
+        "latitude": 45.7676,
+        "longitude": 4.8735
+      },
+      "geoRadius": "30000"
+    },
+    "priceRange": "990€ TTC",
+    "serviceType": ["Création site internet", "SEO local", "Site vitrine sur-mesure"],
+    "knowsAbout": ["Coiffure", "Esthétique", "Soins visage", "Head Spa", "Bien-être", "Sophrologie", "Naturopathie", "Yoga", "Pilates", "Massage"]
+  }
+  </script>
+
+  <style>
+    :root {
+      --black:   #0D0D0D;
+      --white:   #FFFFFF;
+      --gray-mid:#888888;
+      --gray-lt: #CCCCCC;
+      --gray-bg: #F4F4F4;
+      --gray-bd: #E0E0E0;
+      --sage:    #7A9478;
+      --sage-lt: #9AB098;
+      --font:    'Inter', sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body { font-family: var(--font); background: var(--white); color: var(--black); overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+    .container { max-width: 1140px; margin: 0 auto; padding: 0 48px; }
+    @media(max-width:768px){ .container{ padding: 0 20px; } }
+    .reveal { opacity: 0; transform: translateY(20px); transition: opacity .6s ease, transform .6s ease; }
+    .reveal.vis { opacity: 1; transform: none; }
+
+    /* ── NAV ── */
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 300; background: var(--white); border-bottom: 1px solid var(--gray-bd); transition: box-shadow .3s; }
+    nav.scrolled { box-shadow: 0 2px 16px rgba(0,0,0,.07); }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 64px; }
+    .nav-logo { font-size: 18px; font-weight: 400; letter-spacing: -.2px; color: var(--black); text-decoration: none; flex-shrink: 0; }
+    .nav-logo .slash { font-weight: 300; color: var(--sage); }
+    .nav-links { display: flex; align-items: center; gap: 32px; list-style: none; }
+    .nav-links a { font-size: 13px; font-weight: 400; color: var(--gray-mid); text-decoration: none; transition: color .2s; position: relative; }
+    .nav-links a::after { content: ''; position: absolute; bottom: -2px; left: 0; width: 0; height: 1px; background: var(--sage); transition: width .25s ease; }
+    .nav-links a:hover::after { width: 100%; }
+    .nav-links a:hover { color: var(--black); }
+    .nav-dropdown { position: relative; }
+    .nav-dropdown > a { display: flex; align-items: center; gap: 5px; }
+    .nav-dropdown > a::after { content: '' !important; display: inline-block !important; width: 6px !important; height: 6px !important; border-right: 1.5px solid var(--gray-lt) !important; border-bottom: 1.5px solid var(--gray-lt) !important; transform: rotate(45deg) !important; margin-top: -3px !important; transition: transform .2s !important; position: static !important; background: none !important; }
+    .nav-dropdown:hover > a::after { transform: rotate(-135deg) !important; margin-top: 2px !important; }
+    .dropdown-menu { display: none; position: absolute; top: 100%; left: 50%; transform: translateX(-50%); background: var(--white); border: 1px solid var(--gray-bd); box-shadow: 0 8px 32px rgba(0,0,0,.1); min-width: 230px; z-index: 400; padding: 8px 0; margin-top: 0; }
+    .nav-dropdown:hover .dropdown-menu { display: block; }
+    .dropdown-menu::before { content: ''; position: absolute; top: -12px; left: 0; right: 0; height: 12px; }
+    .dropdown-menu a { display: block; padding: 10px 18px; font-size: 13px; color: var(--black); text-decoration: none; white-space: nowrap; transition: background .15s, color .15s; position: static; }
+    .dropdown-menu a::after { display: none !important; }
+    .dropdown-menu a:hover { background: var(--gray-bg); color: var(--sage); }
+    .nav-hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; background: none; border: none; }
+    .nav-hamburger span { display: block; width: 22px; height: 2px; background: var(--black); border-radius: 2px; transition: all .3s; }
+    .nav-hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+    .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+    .nav-hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+    @media(max-width:900px){ .nav-links, .nav-cta-desktop { display: none !important; } .nav-hamburger { display: flex; } }
+
+    /* Menu mobile */
+    .nav-mobile { display: none; position: fixed; top: 64px; left: 0; right: 0; background: var(--white); border-bottom: 1px solid var(--gray-bd); padding: 20px; flex-direction: column; gap: 0; z-index: 299; box-shadow: 0 8px 24px rgba(0,0,0,.08); max-height: calc(100vh - 64px); overflow-y: auto; }
+    .nav-mobile.open { display: flex; }
+    .nav-mobile a { font-size: 15px; font-weight: 400; color: var(--black); text-decoration: none; padding: 14px 0; border-bottom: 1px solid var(--gray-bg); display: block; }
+    .nav-mobile a:last-child { border-bottom: none; }
+    .nav-mobile .mobile-cta { margin-top: 16px; background: var(--black); color: var(--white); padding: 14px; border-radius: 100px; text-align: center; font-weight: 500; border-bottom: none !important; }
+    .mobile-sub { padding: 4px 0 4px 12px; display: flex; flex-direction: column; border-left: 2px solid var(--gray-bd); margin: 0 0 4px 0; }
+    .mobile-sub a { font-size: 13px !important; color: var(--gray-mid) !important; padding: 7px 0 !important; border-bottom: none !important; }
+
+    .btn-primary { display: inline-flex; align-items: center; gap: 10px; background: var(--black); color: var(--white); padding: 10px 22px; border-radius: 100px; font-family: var(--font); font-size: 13px; font-weight: 500; text-decoration: none; border: none; cursor: pointer; transition: background .25s, transform .2s; white-space: nowrap; }
+    .btn-primary:hover { background: #222; transform: translateY(-1px); }
+    .btn-primary .arr { width: 24px; height: 24px; background: rgba(255,255,255,.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 13px; }
+    .btn-outline { display: inline-flex; align-items: center; gap: 8px; background: transparent; color: var(--black); padding: 10px 22px; border-radius: 100px; font-family: var(--font); font-size: 13px; font-weight: 400; text-decoration: none; border: 1px solid var(--black); transition: background .25s, color .25s; }
+    .btn-outline:hover { background: var(--black); color: var(--white); }
+
+    /* ── HERO ── */
+    .hero { padding-top: 64px; min-height: 100vh; background: var(--black); display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; position: relative; overflow: hidden; }
+    #hero-canvas { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1; }
+    .hero-grain { position: absolute; inset: 0; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E"); opacity: .04; pointer-events: none; z-index: 2; }
+    .hero-content { position: relative; z-index: 4; width: 100%; display: flex; flex-direction: column; align-items: center; padding: 0 20px; }
+    .hero-brand { font-size: clamp(52px, 9vw, 120px); font-weight: 300; color: var(--white); letter-spacing: -2px; line-height: 1; margin-bottom: 18px; animation: hero-in 1s ease both; }
+    .hero-brand .hb-n { font-weight: 700; }
+    .hero-brand .hb-slash { color: var(--sage); font-weight: 300; }
+    @keyframes hero-in { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+    .hero-title { font-size: clamp(15px, 1.7vw, 21px); font-weight: 300; color: rgba(255,255,255,.48); line-height: 1.55; letter-spacing: -.1px; margin-bottom: 28px; animation: hero-in 1s ease .2s both; }
+    .hero-title strong { font-weight: 600; color: rgba(255,255,255,.78); }
+    .hero-baseline { font-size: 11px; font-weight: 500; letter-spacing: 3.5px; text-transform: uppercase; color: rgba(255,255,255,.28); margin-bottom: 44px; animation: hero-in 1s ease .45s both; }
+    .hero-cta { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; animation: hero-in 1s ease .7s both; }
+    @media (prefers-reduced-motion: reduce) { #hero-canvas { display: none; } .hero-brand, .hero-title, .hero-baseline, .hero-cta { animation: none; opacity: 1; transform: none; } }
+    .btn-hero { display: inline-flex; align-items: center; gap: 10px; background: var(--white); color: var(--black); padding: 14px 28px; border-radius: 100px; font-family: var(--font); font-size: 14px; font-weight: 600; text-decoration: none; transition: background .25s, transform .2s; animation: pulse-sage 2.4s ease infinite; }
+    .btn-hero:hover { background: var(--gray-bg); transform: translateY(-1px); }
+    .btn-hero-ghost { display: inline-flex; align-items: center; gap: 8px; background: transparent; color: rgba(255,255,255,.5); padding: 14px 24px; border-radius: 100px; font-family: var(--font); font-size: 14px; font-weight: 400; text-decoration: none; border: 1px solid rgba(255,255,255,.15); transition: border-color .25s, color .25s; }
+    .btn-hero-ghost:hover { border-color: rgba(255,255,255,.4); color: var(--white); }
+
+    /* MARQUEE */
+    .logos-band { background: var(--black); border-top: 1px solid rgba(255,255,255,.06); overflow: hidden; padding: 20px 0; }
+    .logos-track { display: flex; gap: 0; white-space: nowrap; animation: marquee 28s linear infinite; }
+    @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    .logo-item { display: inline-flex; align-items: center; gap: 10px; font-size: 11px; font-weight: 400; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(255,255,255,.25); padding: 0 28px; }
+    .logo-item svg { width: 18px; height: 18px; fill: rgba(122,148,120,.4); flex-shrink: 0; }
+    .logo-sep { color: rgba(122,148,120,.3); font-weight: 300; font-size: 16px; margin-left: 28px; }
+
+    /* ── SECTIONS communes ── */
+    section { padding: 80px 0; }
+    .s-label { font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 2.5px; color: var(--sage); margin-bottom: 16px; display: flex; align-items: center; gap: 10px; }
+    .s-label::before { content: '/'; font-weight: 300; font-size: 16px; }
+    .s-title { font-size: clamp(26px, 4vw, 48px); font-weight: 300; color: var(--black); line-height: 1.15; letter-spacing: -1.5px; }
+    .s-title strong { font-weight: 700; }
+    .s-title em { font-style: italic; font-weight: 400; }
+    .s-sub { font-size: 15px; color: var(--gray-mid); line-height: 1.75; max-width: 540px; }
+
+    /* ── PROBLÈME ── */
+    .problem { background: var(--white); }
+    .problem-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--gray-bd); border: 1px solid var(--gray-bd); margin-bottom: 32px; }
+    @media(max-width:768px){ .problem-cards{ grid-template-columns: 1fr; } }
+    .pb-card { background: var(--black); padding: 28px 24px; }
+    .pb-icon { width: 40px; height: 40px; border: 1px solid rgba(122,148,120,.3); border-radius: 2px; display: flex; align-items: center; justify-content: center; margin-bottom: 18px; background: rgba(122,148,120,.08); }
+    .pb-icon svg { width: 22px; height: 22px; fill: var(--sage); }
+    .pb-card-title { font-size: 14px; font-weight: 600; color: var(--white); margin-bottom: 10px; line-height: 1.4; }
+    .pb-card-text { font-size: 13px; color: rgba(255,255,255,.45); line-height: 1.7; }
+    .pb-card-text strong { color: rgba(255,255,255,.7); font-weight: 500; }
+    .pb-card-note { margin-top: 14px; padding-top: 14px; border-top: 1px solid rgba(122,148,120,.12); font-size: 12px; color: rgba(122,148,120,.55); font-style: italic; }
+    .problem-cta-bar { background: var(--gray-bg); border: 1px solid var(--gray-bd); padding: 20px 24px; display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+    .problem-cta-text { font-size: 14px; color: var(--black); line-height: 1.5; }
+    .problem-cta-text strong { font-weight: 600; }
+
+    /* ── RÉALISATIONS ── */
+    .realisations { background: var(--gray-bg); }
+    .real-header { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: end; margin-bottom: 40px; }
+    @media(max-width:768px){ .real-header{ grid-template-columns: 1fr; gap: 16px; } }
+    .real-label-tag { display: inline-flex; align-items: center; gap: 8px; font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 2px; color: var(--sage); margin-bottom: 12px; }
+    .real-label-tag span { display: inline-block; width: 20px; height: 1px; background: var(--sage); }
+    .real-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--gray-bd); border: 1px solid var(--gray-bd); }
+    @media(max-width:768px){ .real-grid{ grid-template-columns: 1fr; } }
+    .real-card { position: relative; overflow: hidden; aspect-ratio: 4/3; background: var(--black); }
+    .real-card-img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s ease, opacity .4s; opacity: .6; }
+    .real-card:hover .real-card-img { transform: scale(1.05); opacity: .35; }
+    .real-card-overlay { position: absolute; inset: 0; padding: 24px; display: flex; flex-direction: column; justify-content: flex-end; background: linear-gradient(to top, rgba(13,13,13,.85) 0%, transparent 60%); }
+    .real-card-tag { font-size: 10px; font-weight: 500; text-transform: uppercase; letter-spacing: 2px; color: var(--sage-lt); margin-bottom: 8px; }
+    .real-card-name { font-size: 22px; font-weight: 400; color: var(--white); margin-bottom: 6px; letter-spacing: -.3px; }
+    .real-card-type { font-size: 11px; color: rgba(255,255,255,.4); margin-bottom: 10px; }
+    .real-card-desc { font-size: 12px; color: rgba(255,255,255,.5); line-height: 1.6; max-height: 0; overflow: hidden; transition: max-height .4s ease; }
+    .real-card:hover .real-card-desc { max-height: 80px; }
+    .real-disclaimer { margin-top: 20px; font-size: 12px; color: var(--gray-mid); text-align: center; padding: 14px; border: 1px solid var(--gray-bd); background: var(--white); }
+
+    /* ── OFFRES ── */
+    .offres { background: var(--gray-bg); }
+    .offre-solo { background: var(--white); border: 1px solid var(--gray-bd); max-width: 700px; margin: 0 auto; padding: 40px 40px 32px; }
+    @media(max-width:768px){ .offre-solo{ padding: 28px 20px; } }
+    .offre-badge { display: inline-flex; align-items: center; gap: 7px; border: 1px solid rgba(122,148,120,.35); color: var(--sage); padding: 5px 12px; border-radius: 100px; font-size: 11px; font-weight: 500; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 20px; background: rgba(122,148,120,.06); }
+    .offre-badge .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--sage); }
+    .offre-name { font-size: 22px; font-weight: 400; color: var(--black); margin-bottom: 8px; letter-spacing: -.3px; }
+    .offre-tagline { font-size: 13px; color: var(--gray-mid); line-height: 1.6; margin-bottom: 24px; }
+    .offre-price-row { display: flex; align-items: flex-end; gap: 14px; margin-bottom: 6px; }
+    .offre-price { font-size: 52px; font-weight: 300; color: var(--black); line-height: 1; letter-spacing: -2px; }
+    .offre-price-detail { font-size: 12px; color: var(--gray-mid); line-height: 1.6; padding-bottom: 6px; }
+    .offre-payment { font-size: 11px; color: var(--gray-lt); margin-bottom: 28px; }
+    .offre-cta-main { display: block; text-align: center; padding: 14px; border-radius: 100px; font-family: var(--font); font-size: 14px; font-weight: 600; text-decoration: none; background: var(--black); color: var(--white); margin-bottom: 28px; transition: background .25s, transform .2s; }
+    .offre-cta-main:hover { background: #222; transform: translateY(-1px); }
+    .offre-divider { height: 1px; background: var(--gray-bd); margin-bottom: 24px; }
+    .offre-blocks { display: flex; flex-direction: column; gap: 0; margin-bottom: 24px; }
+    .offre-block { padding: 18px 0; border-bottom: 1px solid var(--gray-bd); }
+    .offre-block:first-child { padding-top: 0; }
+    .offre-block-title { display: flex; align-items: center; gap: 9px; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; color: var(--black); margin-bottom: 12px; }
+    .offre-block-title::before { content: '/'; color: var(--sage); font-weight: 300; font-size: 15px; }
+    .offre-block-items { display: flex; flex-direction: column; gap: 7px; }
+    .offre-block-item { display: flex; gap: 9px; align-items: flex-start; font-size: 13px; color: var(--gray-mid); line-height: 1.6; }
+    .offre-block-item::before { content: '—'; color: var(--gray-lt); font-weight: 300; font-size: 12px; flex-shrink: 0; line-height: 1.8; }
+    .offre-block-item strong { color: var(--black); font-weight: 600; }
+    .offre-block-item span { display: inline; }
+    .offre-delai { font-size: 12px; color: var(--gray-mid); padding: 12px 16px; background: var(--gray-bg); border-left: 2px solid var(--sage); }
+    .options-block { max-width: 700px; margin: 2px auto 0; background: var(--black); padding: 28px 40px; }
+    @media(max-width:768px){ .options-block{ padding: 24px 20px; } }
+    .options-label { font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 2px; color: var(--sage-lt); opacity: .7; margin-bottom: 18px; }
+    .options-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    @media(max-width:600px){ .options-grid{ grid-template-columns: 1fr; } }
+    .option-item { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 12px 14px; border: 1px solid rgba(255,255,255,.07); }
+    .option-name { font-size: 13px; color: rgba(255,255,255,.5); line-height: 1.4; }
+    .option-price { font-size: 13px; font-weight: 500; color: var(--white); white-space: nowrap; flex-shrink: 0; }
+    .options-note { margin-top: 14px; font-size: 11px; color: rgba(255,255,255,.2); font-style: italic; }
+
+    /* ── PROCESSUS ── */
+    .process { background: var(--white); }
+    .process-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
+    @media(max-width:768px){ .process-layout{ grid-template-columns: 1fr; gap: 32px; } .process-right{ position: static !important; } }
+    .process-steps { display: flex; flex-direction: column; }
+    .p-step { display: grid; grid-template-columns: 48px 1fr; padding: 24px 0; border-bottom: 1px solid var(--gray-bd); transition: .25s; cursor: default; }
+    .p-step:first-child { padding-top: 0; }
+    .p-step:hover { padding-left: 4px; }
+    .p-num { font-size: 30px; font-weight: 300; color: var(--gray-lt); line-height: 1; padding-top: 3px; transition: color .25s; }
+    .p-step:hover .p-num { color: var(--sage); }
+    .p-title { font-size: 15px; font-weight: 500; color: var(--black); margin-bottom: 6px; letter-spacing: -.2px; }
+    .p-text { font-size: 13px; color: var(--gray-mid); line-height: 1.7; }
+    .process-right { position: sticky; top: 84px; display: flex; flex-direction: column; gap: 14px; }
+    .p-panel { border: 1px solid var(--gray-bd); padding: 24px; }
+    .p-panel-dark { background: var(--black); border-color: var(--black); }
+    .p-panel-label { font-size: 10px; font-weight: 500; text-transform: uppercase; letter-spacing: 2px; color: var(--sage); margin-bottom: 16px; }
+    .p-panel-dark .p-panel-label { color: var(--sage-lt); opacity: .7; }
+    .p-checks { display: flex; flex-direction: column; gap: 9px; }
+    .p-check { display: flex; gap: 10px; align-items: flex-start; font-size: 13px; color: var(--gray-mid); line-height: 1.4; }
+    .p-panel-dark .p-check { color: rgba(255,255,255,.5); }
+    .p-check::before { content: '/'; font-weight: 300; font-size: 14px; color: var(--sage); flex-shrink: 0; }
+    .p-timeline { display: flex; flex-direction: column; gap: 11px; }
+    .pt-item { display: grid; grid-template-columns: 90px 1fr 40px; align-items: center; gap: 10px; }
+    .pt-label { font-size: 12px; color: var(--gray-mid); }
+    .pt-bar-wrap { height: 3px; background: var(--gray-bg); border-radius: 2px; }
+    .pt-bar { height: 100%; background: var(--sage); border-radius: 2px; }
+    .pt-val { font-size: 11px; font-weight: 600; color: var(--black); text-align: right; }
+
+    /* ── SECTEURS ── */
+    .secteurs { background: var(--gray-bg); }
+    .secteurs-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 40px; flex-wrap: wrap; gap: 20px; }
+    .secteurs-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--gray-bd); border: 1px solid var(--gray-bd); }
+    @media(max-width:768px){ .secteurs-grid{ grid-template-columns: 1fr 1fr; } }
+    .secteur-card { background: var(--white); padding: 24px 20px; transition: transform .25s ease, box-shadow .25s ease, background .25s, border-color .25s; cursor: default; border: 1px solid var(--gray-bd); position: relative; overflow: hidden; }
+    .secteur-card:hover { background: var(--black); border-color: var(--black); transform: translateY(-6px); box-shadow: 0 16px 40px rgba(0,0,0,.08); }
+    .secteur-card:hover .sc-name { color: var(--white); }
+    .secteur-card:hover .sc-desc { color: rgba(255,255,255,.45); }
+    .secteur-card:hover .sc-icon svg { fill: var(--sage-lt); }
+    .sc-photo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity .4s ease; pointer-events: none; z-index: 0; }
+    .secteur-card:hover .sc-photo { opacity: .18; }
+    .sc-content { position: relative; z-index: 1; }
+    .sc-icon { width: 38px; height: 38px; margin-bottom: 16px; display: flex; align-items: center; justify-content: center; }
+    .sc-icon svg { width: 34px; height: 34px; fill: var(--sage); transition: fill .25s; display: block; }
+    .sc-name { font-size: 14px; font-weight: 500; color: var(--black); margin-bottom: 7px; letter-spacing: -.2px; transition: color .25s; }
+    .sc-desc { font-size: 11px; color: var(--gray-mid); line-height: 1.6; transition: color .25s; }
+
+    /* ── COMPARATIF MOBILE ── */
+    .comparatif { background: var(--gray-bg); }
+    .comp-desktop { display: block; }
+    .comp-mobile { display: none; }
+    @media(max-width:640px){ .comp-desktop { display: none; } .comp-mobile { display: flex; flex-direction: column; gap: 12px; } }
+    .comp-card { background: var(--white); border: 1px solid var(--gray-bd); padding: 20px; }
+    .comp-card.featured { background: var(--black); border-color: var(--black); }
+    .comp-card-label { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; color: var(--gray-mid); margin-bottom: 14px; padding-bottom: 12px; border-bottom: 1px solid var(--gray-bd); }
+    .comp-card.featured .comp-card-label { color: var(--sage-lt); border-color: rgba(255,255,255,.1); }
+    .comp-row { display: flex; justify-content: space-between; align-items: center; padding: 8px 0; border-bottom: 1px solid var(--gray-bg); font-size: 13px; }
+    .comp-row:last-child { border-bottom: none; }
+    .comp-row-label { color: var(--gray-mid); }
+    .comp-card.featured .comp-row-label { color: rgba(255,255,255,.45); }
+    .comp-row-val { font-weight: 500; color: var(--black); }
+    .comp-card.featured .comp-row-val { color: var(--sage-lt); }
+
+    /* ── POURQUOI ── */
+    .why { background: var(--white); }
+    .why-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--gray-bd); border: 1px solid var(--gray-bd); margin-top: 40px; }
+    @media(max-width:768px){ .why-grid{ grid-template-columns: 1fr; } }
+    .why-card { background: var(--white); padding: 32px 28px; position: relative; overflow: hidden; }
+    .why-slash-accent { display: block; font-size: 28px; font-weight: 700; color: var(--sage); line-height: 1; margin-bottom: 16px; letter-spacing: -1px; }
+    .why-title { font-size: 16px; font-weight: 600; color: var(--black); margin-bottom: 10px; letter-spacing: -.2px; }
+    .why-text { font-size: 13px; color: var(--gray-mid); line-height: 1.7; }
+
+    /* ── FAQ ── */
+    .faq { background: var(--gray-bg); }
+    .faq-layout { display: grid; grid-template-columns: 1fr 1.5fr; gap: 60px; align-items: start; }
+    @media(max-width:768px){ .faq-layout{ grid-template-columns: 1fr; gap: 32px; } }
+    .faq-left p { font-size: 14px; color: var(--gray-mid); line-height: 1.7; margin: 16px 0 28px; }
+    .faq-items { display: flex; flex-direction: column; }
+    .faq-item { border-bottom: 1px solid var(--gray-bd); }
+    .faq-q { display: flex; justify-content: space-between; align-items: center; padding: 18px 0; cursor: pointer; gap: 16px; font-size: 14px; font-weight: 400; color: var(--black); transition: color .2s; user-select: none; }
+    .faq-q:hover { color: var(--gray-mid); }
+    .faq-icon { width: 26px; height: 26px; border-radius: 50%; border: 1px solid var(--gray-bd); display: flex; align-items: center; justify-content: center; font-size: 16px; color: var(--black); flex-shrink: 0; transition: transform .3s, background .3s, border-color .3s; font-weight: 300; }
+    .faq-item.open .faq-icon { transform: rotate(45deg); background: var(--sage); color: var(--white); border-color: var(--sage); }
+    .faq-a { display: none; font-size: 13px; color: var(--gray-mid); line-height: 1.8; padding-bottom: 18px; }
+    .faq-item.open .faq-a { display: block; }
+
+    /* ── À PROPOS ── */
+    .apropos { background: var(--white); }
+    .apropos-inner { display: grid; grid-template-columns: 1fr; gap: 48px; }
+    .apropos-name { font-size: 20px; font-weight: 500; color: var(--black); letter-spacing: -.3px; margin-bottom: 4px; }
+    .apropos-role { font-size: 12px; font-weight: 400; text-transform: uppercase; letter-spacing: 2px; color: var(--sage); margin-bottom: 28px; }
+    .apropos-body { font-size: 15px; color: var(--gray-mid); line-height: 1.85; margin-bottom: 28px; }
+    .apropos-body strong { color: var(--black); font-weight: 500; }
+    .apropos-vals { display: flex; flex-wrap: wrap; gap: 8px; }
+    .apropos-val { font-size: 12px; font-weight: 400; color: var(--black); border: 1px solid var(--gray-bd); padding: 6px 14px; border-radius: 100px; }
+
+    /* ── CTA FINAL ── */
+    .cta-section { background: var(--black); padding: 80px 0; position: relative; overflow: hidden; }
+    .cta-section::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 70% 60% at 30% 50%, rgba(122,148,120,.12) 0%, transparent 70%); pointer-events: none; }
+    .cta-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; position: relative; z-index: 2; }
+    @media(max-width:768px){ .cta-inner{ grid-template-columns: 1fr; gap: 32px; } }
+    .cta-title { font-size: clamp(28px, 4vw, 52px); font-weight: 400; color: var(--white); line-height: 1.15; letter-spacing: -1.5px; }
+    .cta-title strong { font-weight: 700; font-style: italic; }
+    .cta-perks { display: flex; flex-direction: column; gap: 10px; margin-bottom: 28px; }
+    .cta-perk { display: flex; gap: 10px; align-items: flex-start; font-size: 14px; color: rgba(255,255,255,.5); }
+    .cta-perk::before { content: '/'; color: var(--sage); font-weight: 300; flex-shrink: 0; }
+    .btn-white { display: inline-flex; align-items: center; gap: 10px; background: var(--white); color: var(--black); padding: 13px 24px; border-radius: 100px; font-family: var(--font); font-size: 13px; font-weight: 600; text-decoration: none; transition: background .25s; }
+    .btn-white:hover { background: var(--gray-bg); }
+
+    /* ── FOOTER ── */
+    footer { background: var(--black); border-top: 1px solid rgba(255,255,255,.07); padding: 56px 0 36px; }
+    .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 40px; margin-bottom: 48px; }
+    @media(max-width:768px){ .footer-grid{ grid-template-columns: 1fr 1fr; gap: 32px; } }
+    @media(max-width:480px){ .footer-grid{ grid-template-columns: 1fr; } }
+    .f-logo-text { font-family: var(--font); font-size: 20px; font-weight: 400; color: var(--white); letter-spacing: -.3px; margin-bottom: 6px; }
+    .f-logo-text .slash { font-weight: 300; color: var(--sage); }
+    .f-baseline { font-size: 10px; font-weight: 500; letter-spacing: 1.5px; text-transform: uppercase; color: var(--sage); margin-bottom: 4px; }
+    .f-tagline { font-size: 10px; font-weight: 400; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,.2); margin-bottom: 16px; }
+    .f-desc { font-size: 12px; color: rgba(255,255,255,.3); line-height: 1.7; max-width: 240px; }
+    .f-col-title { font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 1.5px; color: rgba(255,255,255,.25); margin-bottom: 16px; }
+    .f-col-links { display: flex; flex-direction: column; gap: 10px; }
+    .f-col-links a { font-size: 13px; color: rgba(255,255,255,.4); text-decoration: none; transition: color .2s; }
+    .f-col-links a:hover { color: rgba(255,255,255,.75); }
+    .f-contact-item { display: flex; align-items: center; gap: 8px; font-size: 13px; color: rgba(255,255,255,.4); }
+    .f-contact-item svg { width: 14px; height: 14px; fill: var(--sage); flex-shrink: 0; }
+    .f-contact-item a { color: rgba(255,255,255,.4); text-decoration: none; transition: color .2s; }
+    .f-contact-item a:hover { color: rgba(255,255,255,.75); }
+    .f-bottom { border-top: 1px solid rgba(255,255,255,.06); padding-top: 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+    .f-copy { font-size: 11px; color: rgba(255,255,255,.25); }
+    .f-legal-links { display: flex; gap: 16px; }
+    .f-legal-links a { font-size: 11px; color: rgba(255,255,255,.2); text-decoration: none; transition: color .2s; }
+    .f-legal-links a:hover { color: rgba(255,255,255,.5); }
+
+    /* ── ANIMATIONS ── */
+    @keyframes pulse-sage { 0%,100% { box-shadow: 0 0 0 0 rgba(122,148,120,.4); } 60% { box-shadow: 0 0 0 10px rgba(122,148,120,0); } }
+
+    /* ── BACK TO TOP & COOKIE ── */
+    .back-to-top { position: fixed; bottom: 28px; right: 28px; width: 44px; height: 44px; background: var(--black); border: 1px solid rgba(255,255,255,.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--white); font-size: 18px; text-decoration: none; opacity: 0; pointer-events: none; transition: opacity .3s, transform .3s; z-index: 200; }
+    .back-to-top.visible { opacity: 1; pointer-events: auto; }
+    .back-to-top:hover { transform: translateY(-3px); }
+    .cookie-banner { position: fixed; bottom: 24px; left: 24px; max-width: 380px; background: var(--white); border: 1px solid var(--gray-bd); box-shadow: 0 8px 32px rgba(0,0,0,.12); padding: 20px 24px; z-index: 500; transition: opacity .3s, transform .3s; }
+    .cookie-banner.hidden { opacity: 0; pointer-events: none; transform: translateY(12px); }
+    .cookie-text { font-size: 13px; color: var(--gray-mid); line-height: 1.6; margin-bottom: 16px; }
+    .cookie-btns { display: flex; gap: 10px; }
+    .cookie-accept { background: var(--black); color: var(--white); border: none; padding: 9px 18px; font-family: var(--font); font-size: 12px; font-weight: 500; cursor: pointer; border-radius: 100px; transition: background .2s; }
+    .cookie-accept:hover { background: #333; }
+    .cookie-refuse { background: transparent; color: var(--gray-mid); border: 1px solid var(--gray-bd); padding: 9px 18px; font-family: var(--font); font-size: 12px; cursor: pointer; border-radius: 100px; transition: background .2s; }
+    .cookie-refuse:hover { background: var(--gray-bg); }
+
+    /* Formulaire contact */
+    .cf-input { background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.12); color: #fff; padding: 12px 16px; font-family: var(--font); font-size: 14px; outline: none; transition: border-color .2s; width: 100%; border-radius: 8px; }
+    .cf-input:focus { border-color: rgba(122,148,120,.6); }
+    .cf-input::placeholder { color: rgba(255,255,255,.3); }
+  </style>
+</head>
+<body>
+
+  <!-- SVG ICONS -->
+  <svg style="display:none" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <symbol id="ico-coiffure" viewBox="0 0 100 100"><path d="M35 20c0-8 10-15 18-10 6 3 8 10 5 16l-8 18c-2 4-1 9 2 12l20 22c3 3 3 8 0 11s-8 3-11 0L41 69c-3-3-8-4-12-2L12 74c-6 3-13 1-16-5s-1-13 5-16l18-8c4-2 6-6 6-11l-2-14h12z"/></symbol>
+      <symbol id="ico-headspa" viewBox="0 0 512 512"><path d="M256 48C141 48 48 141 48 256s93 208 208 208 208-93 208-208S371 48 256 48zm0 32c40 0 77 12 108 33l-30 30a144 144 0 10-156 0l-30-30C179 92 217 80 256 80zm0 352c-97 0-176-79-176-176 0-43 16-83 42-113l30 30a144 144 0 00200 0l30-30c26 30 42 70 42 113 0 97-79 176-176 176z"/><circle cx="256" cy="256" r="48"/></symbol>
+      <symbol id="ico-massage" viewBox="0 0 64 64"><path d="M48 8c-4 0-8 3-8 8v12l-8-4-8 4V16c0-5-4-8-8-8S8 11 8 16v36l16 8 8-4 8 4 16-8V16c0-5-4-8-8-8z"/></symbol>
+      <symbol id="ico-bienetre" viewBox="0 0 512 512"><path d="M256 32C132 32 32 132 32 256s100 224 224 224 224-100 224-224S380 32 256 32zm80 320H176c-8 0-16-6-16-16V208c0-8 6-16 16-16h160c8 0 16 6 16 16v128c0 10-8 16-16 16zm-16-144H192v112h128V208z"/></symbol>
+      <symbol id="ico-yoga" viewBox="0 0 512 512"><circle cx="256" cy="80" r="48"/><path d="M352 200c0-28-23-48-50-44l-46 8-46-8c-27-4-50 16-50 44v80h48v-64l20 4v216h48V296l16 40h48l-16-56v-80z"/></symbol>
+      <symbol id="ico-spa" viewBox="0 0 24 24"><path d="M12 2C8 2 4 5 4 9c0 5 8 13 8 13s8-8 8-13c0-4-4-7-8-7zm0 9c-1 0-2-1-2-2s1-2 2-2 2 1 2 2-1 2-2 2z"/></symbol>
+      <symbol id="ico-esthetique" viewBox="0 0 60 60"><path d="M30 5C16 5 5 16 5 30s11 25 25 25 25-11 25-25S44 5 30 5zm10 28h-8v8h-4v-8h-8v-4h8v-8h4v8h8v4z"/></symbol>
+      <symbol id="ico-plus" viewBox="0 0 512 512"><path d="M256 48C141 48 48 141 48 256s93 208 208 208 208-93 208-208S371 48 256 48zm96 224h-80v80h-32v-80h-80v-32h80v-80h32v80h80v32z"/></symbol>
+    </defs>
+  </svg>
+
+  <!-- BACK TO TOP -->
+  <a href="#" class="back-to-top" id="backToTop" aria-label="Retour en haut">↑</a>
+
+  <!-- COOKIE BANNER -->
+  <div class="cookie-banner" id="cookieBanner">
+    <p class="cookie-text">Ce site utilise des cookies pour mesurer l'audience et améliorer votre expérience. Aucune donnée n'est revendue à des tiers.</p>
+    <div class="cookie-btns">
+      <button class="cookie-accept" onclick="acceptCookies()">Accepter</button>
+      <button class="cookie-refuse" onclick="refuseCookies()">Refuser</button>
+    </div>
+  </div>
+
+  <!-- NAV -->
+  <nav id="nav">
+    <div class="container">
+      <div class="nav-inner">
+        <a href="#" class="nav-logo">N<span class="slash">/</span> Studio Digital</a>
+        <ul class="nav-links">
+          <li class="nav-dropdown">
+            <a href="#realisations">Réalisations</a>
+            <div class="dropdown-menu">
+              <a href="ko-spa.html" target="_blank">Kō Spa — Head Spa japonais</a>
+              <a href="studio-mova.html" target="_blank">Studio Mova — Pilates</a>
+              <a href="neve-institut.html" target="_blank">Névé — Institut de soin</a>
+            </div>
+          </li>
+          <li class="nav-dropdown">
+            <a href="#secteurs">Secteurs</a>
+            <div class="dropdown-menu">
+              <a href="coiffeur-lyon.html">Coiffeurs & salons</a>
+              <a href="head-spa-lyon.html">Head Spa</a>
+              <a href="institut-massage-lyon.html">Instituts de massage</a>
+              <a href="sophrologue-naturopathe-lyon.html">Sophrologues & naturopathes</a>
+              <a href="yoga-pilates-lyon.html">Yoga & Pilates</a>
+              <a href="spa-institut-lyon.html">Spas & instituts</a>
+              <a href="esthetique-nail-art-lyon.html">Esthétique & soins visage</a>
+            </div>
+          </li>
+          <li><a href="#offres">Offres</a></li>
+          <li><a href="#process">Méthode</a></li>
+          <li class="nav-dropdown">
+            <a href="blog.html">Blog</a>
+            <div class="dropdown-menu">
+              <a href="blog/pourquoi-coiffeur-lyon-site-internet.html">Pourquoi un coiffeur a besoin d'un site</a>
+              <a href="blog/combien-coute-site-vitrine-salon-coiffure-institut.html">Combien coûte un site vitrine ?</a>
+              <a href="blog/head-spa-lyon-marche-essor.html">Head spa Lyon : marché en essor</a>
+              <a href="blog/planity-vs-treatwell-outil-reservation.html">Planity vs Treatwell</a>
+              <a href="blog/seo-local-praticien-bien-etre-lyon.html">SEO local pour praticien bien-être</a>
+            </div>
+          </li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+        <a href="#contact" class="btn-primary nav-cta-desktop">Démarrer mon projet <span class="arr">→</span></a>
+        <button class="nav-hamburger" id="hamburger" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- MENU MOBILE -->
+  <div class="nav-mobile" id="navMobile">
+    <a href="#realisations" onclick="closeMenu()">Réalisations</a>
+    <div class="mobile-sub">
+      <a href="ko-spa.html" target="_blank" onclick="closeMenu()">↳ Kō Spa</a>
+      <a href="studio-mova.html" target="_blank" onclick="closeMenu()">↳ Studio Mova</a>
+      <a href="neve-institut.html" target="_blank" onclick="closeMenu()">↳ Névé Institut</a>
+    </div>
+    <a href="#secteurs" onclick="closeMenu()">Secteurs</a>
+    <div class="mobile-sub">
+      <a href="coiffeur-lyon.html" onclick="closeMenu()">↳ Coiffeurs & salons</a>
+      <a href="head-spa-lyon.html" onclick="closeMenu()">↳ Head Spa</a>
+      <a href="institut-massage-lyon.html" onclick="closeMenu()">↳ Instituts de massage</a>
+      <a href="sophrologue-naturopathe-lyon.html" onclick="closeMenu()">↳ Sophrologues & naturopathes</a>
+      <a href="yoga-pilates-lyon.html" onclick="closeMenu()">↳ Yoga & Pilates</a>
+      <a href="spa-institut-lyon.html" onclick="closeMenu()">↳ Spas & instituts</a>
+      <a href="esthetique-nail-art-lyon.html" onclick="closeMenu()">↳ Esthétique & soins visage</a>
+    </div>
+    <a href="#offres" onclick="closeMenu()">Offres</a>
+    <a href="#process" onclick="closeMenu()">Méthode</a>
+    <a href="blog.html" onclick="closeMenu()">Blog</a>
+    <div class="mobile-sub">
+      <a href="blog/pourquoi-coiffeur-lyon-site-internet.html" onclick="closeMenu()">↳ Coiffeur & site internet</a>
+      <a href="blog/combien-coute-site-vitrine-salon-coiffure-institut.html" onclick="closeMenu()">↳ Combien coûte un site ?</a>
+      <a href="blog/head-spa-lyon-marche-essor.html" onclick="closeMenu()">↳ Head spa Lyon</a>
+      <a href="blog/planity-vs-treatwell-outil-reservation.html" onclick="closeMenu()">↳ Planity vs Treatwell</a>
+      <a href="blog/seo-local-praticien-bien-etre-lyon.html" onclick="closeMenu()">↳ SEO local bien-être</a>
+    </div>
+    <a href="#faq" onclick="closeMenu()">FAQ</a>
+    <a href="#contact" class="mobile-cta" onclick="closeMenu()">Démarrer mon projet →</a>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <canvas id="hero-canvas"></canvas>
+    <div class="hero-grain" aria-hidden="true"></div>
+    <div class="container hero-content">
+      <div class="hero-brand" aria-hidden="true">
+        <span class="hb-n">N</span><span class="hb-slash">/</span> Studio Digital
+      </div>
+      <h1 class="hero-title">
+        Création de site internet pour<br>
+        <strong>coiffeurs, esthéticiennes<br>&amp; praticiens bien-être</strong> à Lyon.
+      </h1>
+      <p class="hero-baseline">DES SITES QUI TRAVAILLENT. DES RÉSULTATS QUI COMPTENT.</p>
+      <div class="hero-cta">
+        <a href="#contact" class="btn-hero">Je réserve mon appel gratuit →</a>
+        <a href="#offres" class="btn-hero-ghost">Voir l'offre · 990€ TTC</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- MARQUEE -->
+  <div class="logos-band">
+    <div class="logos-track">
+      <span class="logo-item"><svg viewBox="0 0 100 100"><use href="#ico-coiffure"/></svg>Salons de coiffure<span class="logo-sep">/</span></span>
+      <span class="logo-item"><svg viewBox="0 0 512 512"><use href="#ico-headspa"/></svg>Head Spa<span class="logo-sep">/</span></span>
+      <span class="logo-item"><svg viewBox="0 0 64 64"><use href="#ico-massage"/></svg>Instituts de massage<span class="logo-sep">/</span></span>
+      <span class="logo-item"><svg viewBox="0 0 60 60"><use href="#ico-esthetique"/></svg>Esthéticiennes<span class="logo-sep">/</span></span>
+      <span class="logo-item"><svg viewBox="0 0 512.002 512.002"><use href="#ico-bienetre"/></svg>Praticiens bien-être<span class="logo-sep">/</span></span>
+      <span class="logo-item"><svg viewBox="0 0 512.156 512.156"><use href="#ico-yoga"/></svg>Yoga & Pilates<span class="logo-sep">/</span></span>
+      <span class="logo-item"><svg viewBox="0 0 24 24"><use href="#ico-spa"/></svg>Spas & instituts<span class="logo-sep">/</span></span>
+      <span class="logo-item"><svg viewBox="0 0 512 512"><use href="#ico-plus"/></svg>Votre secteur<span class="logo-sep">/</span></span>
+      <span class="logo-item"><svg viewBox="0 0 100 100"><use href="#ico-coiffure"/></svg>Salons de coiffure<span class="logo-sep">/</span></span>
+      <span class="logo-item"><svg viewBox="0 0 512 512"><use href="#ico-headspa"/></svg>Head Spa<span class="logo-sep">/</span></span>
+      <span class="logo-item"><svg viewBox="0 0 64 64"><use href="#ico-massage"/></svg>Instituts de massage<span class="logo-sep">/</span></span>
+      <span class="logo-item"><svg viewBox="0 0 60 60"><use href="#ico-esthetique"/></svg>Esthéticiennes<span class="logo-sep">/</span></span>
+      <span class="logo-item"><svg viewBox="0 0 512.002 512.002"><use href="#ico-bienetre"/></svg>Praticiens bien-être<span class="logo-sep">/</span></span>
+      <span class="logo-item"><svg viewBox="0 0 512.156 512.156"><use href="#ico-yoga"/></svg>Yoga & Pilates<span class="logo-sep">/</span></span>
+      <span class="logo-item"><svg viewBox="0 0 24 24"><use href="#ico-spa"/></svg>Spas & instituts<span class="logo-sep">/</span></span>
+      <span class="logo-item"><svg viewBox="0 0 512 512"><use href="#ico-plus"/></svg>Votre secteur<span class="logo-sep">/</span></span>
+    </div>
+  </div>
+
+  <!-- RÉALISATIONS -->
+  <section class="realisations" id="realisations">
+    <div class="container">
+      <div class="real-header">
+        <div class="reveal">
+          <div class="real-label-tag"><span></span>Sites de démonstration</div>
+          <div class="s-label">Nos réalisations</div>
+          <h2 class="s-title">Trois exemples de ce qu'on<br>peut <strong>créer pour vous.</strong></h2>
+        </div>
+        <p class="s-sub reveal" style="transition-delay:.1s;align-self:end">Chaque site naît de l'univers de votre activité — identité visuelle, ton éditorial, SEO local. Aucun template. Voici trois exemples fictifs pour illustrer notre approche.</p>
+      </div>
+      <div class="real-grid">
+        <a href="ko-spa.html" target="_blank" class="real-card reveal" style="text-decoration:none;display:block;cursor:pointer;">
+          <img class="real-card-img" src="kospanav.webp" alt="Kō Spa — Head Spa japonais Lyon"/>
+          <div class="real-card-overlay">
+            <div class="real-card-tag">Head Spa · Lyon</div>
+            <div class="real-card-name">Kō Spa</div>
+            <div class="real-card-type">Site vitrine · Réservation en ligne · Rituels</div>
+            <div class="real-card-desc">Site immersif pour un Head Spa japonais à Lyon. Ambiance zen et luxueuse, présentation des rituels, galerie et réservation intégrée.</div>
+          </div>
+        </a>
+        <a href="studio-mova.html" target="_blank" class="real-card reveal" style="transition-delay:.1s;text-decoration:none;display:block;cursor:pointer;">
+          <img class="real-card-img" src="studiomovanav.webp" alt="Studio Mova — Pilates Villeurbanne"/>
+          <div class="real-card-overlay">
+            <div class="real-card-tag">Pilates · Villeurbanne</div>
+            <div class="real-card-name">Studio Mova</div>
+            <div class="real-card-type">Site vitrine · Planning · Forfaits · Réservation</div>
+            <div class="real-card-desc">Site punchy pour un studio de Pilates Réformateur. Planning interactif, forfaits, portrait de la professeure et réservation en ligne.</div>
+          </div>
+        </a>
+        <a href="neve-institut.html" target="_blank" class="real-card reveal" style="transition-delay:.2s;text-decoration:none;display:block;cursor:pointer;">
+          <img class="real-card-img" src="neve_soin_visage.png" alt="Névé — Institut de soin Lyon 6"/>
+          <div class="real-card-overlay">
+            <div class="real-card-tag">Institut de soin · Lyon 6e</div>
+            <div class="real-card-name">Névé</div>
+            <div class="real-card-type">Site vitrine · Soins visage · Réservation</div>
+            <div class="real-card-desc">Site élégant pour une esthéticienne indépendante spécialisée soins du visage. Univers chaleureux, tarifs clairs et réservation intégrée.</div>
+          </div>
+        </a>
+      </div>
+      <div class="real-disclaimer reveal">Ces trois sites sont des <strong>exemples fictifs</strong> créés par N/ Studio Digital pour illustrer notre approche créative. Ils ne représentent pas de vrais établissements.</div>
+    </div>
+  </section>
+
+  <!-- CHIFFRES CLÉS -->
+  <section style="background:var(--black);padding:56px 0;">
+    <div class="container">
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.06);">
+        <div style="padding:28px 16px;text-align:center;overflow:hidden;">
+          <div class="counter-num" data-target="3" style="font-size:clamp(32px,6vw,48px);font-weight:300;color:var(--white);letter-spacing:-2px;line-height:1;">0</div>
+          <div style="font-size:10px;text-transform:uppercase;letter-spacing:1.5px;color:rgba(255,255,255,.25);margin-top:8px;">Semaines de délai garanti</div>
+        </div>
+        <div style="padding:28px 16px;text-align:center;border-left:1px solid rgba(255,255,255,.06);border-right:1px solid rgba(255,255,255,.06);overflow:hidden;">
+          <div class="counter-num" data-target="100" style="font-size:clamp(32px,6vw,48px);font-weight:300;color:var(--sage-lt);letter-spacing:-2px;line-height:1;">0</div>
+          <div style="font-size:10px;text-transform:uppercase;letter-spacing:1.5px;color:rgba(255,255,255,.25);margin-top:8px;">% sur-mesure, zéro template</div>
+        </div>
+        <div style="padding:28px 16px;text-align:center;overflow:hidden;">
+          <div style="font-size:clamp(32px,6vw,48px);font-weight:300;color:var(--white);letter-spacing:-2px;line-height:1;"><span class="counter-num" data-target="990">0</span><span style="font-size:clamp(18px,3vw,28px);">€</span></div>
+          <div style="font-size:10px;text-transform:uppercase;letter-spacing:1.5px;color:rgba(255,255,255,.25);margin-top:8px;">TTC tout inclus, sans surprise</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROBLÈME -->
+  <section class="problem" id="probleme">
+    <div class="container">
+      <div style="margin-bottom:40px">
+        <div class="s-label reveal">Le constat</div>
+        <h2 class="s-title reveal">Votre salon ou cabinet mérite<br><strong>mieux qu'une page Instagram.</strong></h2>
+      </div>
+      <div class="problem-cards">
+        <div class="pb-card">
+          <div class="pb-icon"><svg viewBox="0 0 24 24"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg></div>
+          <div class="pb-card-title">Invisible sur Google</div>
+          <div class="pb-card-text">Vos futures clientes tapent <strong>"coiffeuse Lyon 6"</strong> ou <strong>"esthéticienne soin visage Lyon"</strong> — si vous n'avez pas de site, elles réservent chez votre concurrent.</div>
+          <div class="pb-card-note">→ Un site optimisé SEO local change la donne dès les premières semaines.</div>
+        </div>
+        <div class="pb-card">
+          <div class="pb-icon"><svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 3c1.93 0 3.5 1.57 3.5 3.5S13.93 13 12 13s-3.5-1.57-3.5-3.5S10.07 6 12 6zm7 13H5v-.23c0-.62.28-1.2.76-1.58C7.47 15.82 9.64 15 12 15s4.53.82 6.24 2.19c.48.38.76.97.76 1.58V19z"/></svg></div>
+          <div class="pb-card-title">Instagram ne suffit plus</div>
+          <div class="pb-card-text">Les réseaux sociaux créent de la notoriété, mais <strong>ne convertissent pas</strong>. Sans site, pas de tarifs clairs, pas de RDV direct, pas de confiance.</div>
+          <div class="pb-card-note">→ Un site professionnel double votre visibilité sans doubler votre travail.</div>
+        </div>
+        <div class="pb-card">
+          <div class="pb-icon"><svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"/></svg></div>
+          <div class="pb-card-title">Les plateformes vous enferment</div>
+          <div class="pb-card-text">Wix, Planity, Treatwell prennent leur commission et gardent la main sur vos données. <strong>Votre site vous appartient.</strong> Votre GitHub vous appartient.</div>
+          <div class="pb-card-note">→ Propriétaire à 100% dès la livraison. Aucune dépendance.</div>
+        </div>
+      </div>
+      <div class="problem-cta-bar">
+        <div class="problem-cta-text"><strong>La solution existe. Elle coûte 990€ TTC.</strong> Livrée en 3 semaines. Sans mauvaise surprise.</div>
+        <a href="#offres" class="btn-primary">Voir l'offre <span class="arr">→</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- OFFRES -->
+  <section class="offres" id="offres">
+    <div class="container">
+      <div style="margin-bottom:40px;">
+        <div class="s-label reveal">L'offre</div>
+        <h2 class="s-title reveal">Un seul forfait.<br><strong>Tout inclus. Zéro surprise.</strong></h2>
+      </div>
+      <div class="offre-solo reveal">
+        <div class="offre-badge"><span class="dot"></span>Site vitrine sur-mesure</div>
+        <div class="offre-name">L'Essentiel</div>
+        <div class="offre-tagline">Tout ce qu'il faut pour être trouvé, convaincre et faire réserver — sans superflu.</div>
+        <div class="offre-price-row">
+          <div class="offre-price">990<span style="font-size:28px;font-weight:300;">€</span></div>
+          <div class="offre-price-detail">TTC · TVA non applicable<br>Franchise en base art. 293 B CGI</div>
+        </div>
+        <div class="offre-payment">Paiement en 2 fois : 50% à la commande · 50% à la livraison</div>
+        <a href="#contact" class="offre-cta-main">Je démarre mon projet →</a>
+        <div class="offre-divider"></div>
+        <div class="offre-blocks">
+          <div class="offre-block">
+            <div class="offre-block-title">Design & Développement</div>
+            <div class="offre-block-items">
+              <div class="offre-block-item">Design 100% sur-mesure — aucun template, aucune ressemblance avec un autre site</div>
+              <div class="offre-block-item">Code HTML/CSS propre, rapide et sécurisé — pas de WordPress, pas de plugins à gérer</div>
+              <div class="offre-block-item">Responsive mobile-first — parfait sur smartphone, tablette et ordinateur</div>
+              <div class="offre-block-item">Formulaire de contact intégré et opérationnel dès la mise en ligne</div>
+            </div>
+          </div>
+          <div class="offre-block">
+            <div class="offre-block-title">Contenu & Rédaction</div>
+            <div class="offre-block-items">
+              <div class="offre-block-item">Rédaction des textes de base incluse — présentation, services, à propos, contact</div>
+              <div class="offre-block-item">Intégration de vos photos — ou visuels libres de droits en attendant les vôtres</div>
+              <div class="offre-block-item">Intégration de votre outil de réservation en ligne (Planity, Treatwell, Booksy…)</div>
+            </div>
+          </div>
+          <div class="offre-block">
+            <div class="offre-block-title">SEO Local & Mise en ligne</div>
+            <div class="offre-block-items">
+              <div class="offre-block-item">SEO local ciblé — votre métier + votre zone géographique réelle</div>
+              <div class="offre-block-item">Hébergement sur Vercel — CDN mondial, HTTPS automatique, disponibilité maximale</div>
+              <div class="offre-block-item">Votre site sur un GitHub à votre nom — vous en êtes l'unique propriétaire</div>
+              <div class="offre-block-item">Configuration de votre nom de domaine — accompagnement OVH si besoin</div>
+              <div class="offre-block-item">Soumission à Google Search Console pour une indexation rapide</div>
+            </div>
+          </div>
+        </div>
+        <div class="offre-delai">⏱ Délai garanti : <strong>3 semaines</strong> à compter de la réception de vos éléments.</div>
+      </div>
+      <div class="options-block reveal">
+        <div class="options-label">/ Options à la carte</div>
+        <div class="options-grid">
+          <div class="option-item"><span class="option-name">Rédaction SEO approfondie</span><span class="option-price">+200€</span></div>
+          <div class="option-item"><span class="option-name">Page supplémentaire</span><span class="option-price">+150€</span></div>
+          <div class="option-item"><span class="option-name">Galerie avant/après</span><span class="option-price">+100€</span></div>
+          <div class="option-item"><span class="option-name">Maintenance mensuelle</span><span class="option-price">19€/mois</span></div>
+        </div>
+        <div class="options-note">Toutes les options sont discutées et validées lors de l'appel de brief. Aucune surprise sur la facture.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESSUS -->
+  <section class="process" id="process">
+    <div class="container">
+      <div style="margin-bottom:48px;">
+        <div class="s-label reveal">La méthode</div>
+        <h2 class="s-title reveal">De l'appel à la mise en ligne —<br><strong>en 3 semaines chrono.</strong></h2>
+      </div>
+      <div class="process-layout">
+        <div class="process-steps reveal">
+          <div class="p-step">
+            <div class="p-num">01</div>
+            <div>
+              <div class="p-title">Appel de brief gratuit</div>
+              <div class="p-text">30 minutes pour comprendre votre activité, votre clientèle cible, vos objectifs et vos goûts. On repart avec une direction créative claire — et vous avec un devis précis sous 24h.</div>
+            </div>
+          </div>
+          <div class="p-step">
+            <div class="p-num">02</div>
+            <div>
+              <div class="p-title">Votre domaine & votre GitHub</div>
+              <div class="p-text">Je crée votre espace GitHub à votre nom et avec votre email — vous en êtes l'unique propriétaire. Pour le nom de domaine, je vous accompagne chez OVH si vous n'en avez pas encore, ou on configure celui que vous avez déjà.</div>
+            </div>
+          </div>
+          <div class="p-step">
+            <div class="p-num">03</div>
+            <div>
+              <div class="p-title">Maquette validée ensemble</div>
+              <div class="p-text">Je vous présente une proposition de design adaptée à votre univers. On ajuste jusqu'à ce que ce soit exactement ce que vous voulez — avant de coder une seule ligne.</div>
+            </div>
+          </div>
+          <div class="p-step">
+            <div class="p-num">04</div>
+            <div>
+              <div class="p-title">Développement & contenu</div>
+              <div class="p-text">Je développe votre site, intègre vos textes, photos et outil de réservation. Le SEO local est travaillé page par page — votre métier, votre ville, vos quartiers.</div>
+            </div>
+          </div>
+          <div class="p-step">
+            <div class="p-num">05</div>
+            <div>
+              <div class="p-title">Tests, validation & mise en ligne</div>
+              <div class="p-text">Tests complets sur mobile, tablette et ordinateur. Vous validez chaque détail. Mise en ligne sur Vercel — votre site est en production, indexé sur Google, opérationnel dès le premier jour.</div>
+            </div>
+          </div>
+        </div>
+        <div class="process-right reveal" style="transition-delay:.15s;">
+          <div class="p-panel">
+            <div class="p-panel-label">Ce que vous n'avez pas à gérer</div>
+            <div class="p-checks">
+              <div class="p-check">L'hébergement technique sur Vercel</div>
+              <div class="p-check">La configuration DNS de votre domaine</div>
+              <div class="p-check">La création de votre espace GitHub</div>
+              <div class="p-check">La soumission à Google Search Console</div>
+              <div class="p-check">Les mises à jour techniques du site</div>
+            </div>
+          </div>
+          <div class="p-panel p-panel-dark">
+            <div class="p-panel-label">Ce qui reste entre vos mains</div>
+            <div class="p-checks">
+              <div class="p-check">Votre nom de domaine — enregistré à votre nom</div>
+              <div class="p-check">Votre fiche Google Business — je vous guide pas à pas</div>
+              <div class="p-check">Vos réseaux sociaux et votre compte Google</div>
+              <div class="p-check">Votre identité : vous êtes propriétaire à 100%</div>
+            </div>
+          </div>
+          <div class="p-panel">
+            <div class="p-panel-label">Planning type</div>
+            <div class="p-timeline">
+              <div class="pt-item"><div class="pt-label">Appel & brief</div><div class="pt-bar-wrap"><div class="pt-bar" style="width:15%"></div></div><div class="pt-val">J+1</div></div>
+              <div class="pt-item"><div class="pt-label">Maquette</div><div class="pt-bar-wrap"><div class="pt-bar" style="width:35%"></div></div><div class="pt-val">J+5</div></div>
+              <div class="pt-item"><div class="pt-label">Développement</div><div class="pt-bar-wrap"><div class="pt-bar" style="width:75%"></div></div><div class="pt-val">J+15</div></div>
+              <div class="pt-item"><div class="pt-label">Mise en ligne</div><div class="pt-bar-wrap"><div class="pt-bar" style="width:100%"></div></div><div class="pt-val">J+21</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTEURS -->
+  <section class="secteurs" id="secteurs">
+    <div class="container">
+      <div class="secteurs-header">
+        <div>
+          <div class="s-label reveal">Pour qui ?</div>
+          <h2 class="s-title reveal">Coiffeurs, esthéticiennes,<br><strong>praticiens bien-être à Lyon</strong> — et bien plus.</h2>
+        </div>
+        <a href="#contact" class="btn-outline reveal">Parler de mon projet →</a>
+      </div>
+      <div class="secteurs-grid">
+        <a href="coiffeur-lyon.html" class="secteur-card reveal" style="text-decoration:none;display:block;cursor:pointer;">
+          <img class="sc-photo" src="coiffeur-coupe.webp" alt="Salon de coiffure" loading="lazy"/>
+          <div class="sc-content"><div class="sc-icon"><svg viewBox="0 0 100 100"><use href="#ico-coiffure"/></svg></div><div class="sc-name">Salons de coiffure</div><div class="sc-desc">Galerie avant/après, tarifs, réservation en ligne. Votre savoir-faire enfin visible sur Google.</div></div>
+        </a>
+        <a href="head-spa-lyon.html" class="secteur-card reveal" style="text-decoration:none;display:block;cursor:pointer;">
+          <img class="sc-photo" src="headspa-zen.webp" alt="Head Spa" loading="lazy"/>
+          <div class="sc-content"><div class="sc-icon"><svg viewBox="0 0 512 512"><use href="#ico-headspa"/></svg></div><div class="sc-name">Head Spa</div><div class="sc-desc">Sites immersifs qui retranscrivent l'univers sensoriel de vos rituels. Réservation intégrée.</div></div>
+        </a>
+        <a href="esthetique-nail-art-lyon.html" class="secteur-card reveal" style="text-decoration:none;display:block;cursor:pointer;">
+          <img class="sc-photo" src="neve_soin_visage.png" alt="Esthéticienne soins visage" loading="lazy"/>
+          <div class="sc-content"><div class="sc-icon"><svg viewBox="0 0 60 60"><use href="#ico-esthetique"/></svg></div><div class="sc-name">Esthétique & soins visage</div><div class="sc-desc">Galerie de soins, tarifs clairs, réservation en ligne. Captez les clientes qui cherchent sur Google.</div></div>
+        </a>
+        <a href="institut-massage-lyon.html" class="secteur-card reveal" style="text-decoration:none;display:block;cursor:pointer;">
+          <img class="sc-photo" src="massage-geste.webp" alt="Institut de massage" loading="lazy"/>
+          <div class="sc-content"><div class="sc-icon"><svg viewBox="0 0 64 64"><use href="#ico-massage"/></svg></div><div class="sc-name">Instituts de massage</div><div class="sc-desc">Présentation de vos protocoles, certifications et zones d'intervention. RDV en ligne multi-prestations.</div></div>
+        </a>
+        <a href="sophrologue-naturopathe-lyon.html" class="secteur-card reveal" style="text-decoration:none;display:block;cursor:pointer;">
+          <img class="sc-photo" src="sophro-cabinet.webp" alt="Praticien bien-être" loading="lazy"/>
+          <div class="sc-content"><div class="sc-icon"><svg viewBox="0 0 512.002 512.002"><use href="#ico-bienetre"/></svg></div><div class="sc-name">Praticiens bien-être</div><div class="sc-desc">Sophrologues, naturopathes, réflexologues : un site qui inspire confiance et légitime votre expertise.</div></div>
+        </a>
+        <a href="yoga-pilates-lyon.html" class="secteur-card reveal" style="text-decoration:none;display:block;cursor:pointer;">
+          <img class="sc-photo" src="yoga-pose.webp" alt="Yoga et Pilates" loading="lazy"/>
+          <div class="sc-content"><div class="sc-icon"><svg viewBox="0 0 512.156 512.156"><use href="#ico-yoga"/></svg></div><div class="sc-name">Yoga & Pilates</div><div class="sc-desc">Planning de cours en ligne, forfaits, RDV. Professeurs indépendants qui se digitalisent efficacement.</div></div>
+        </a>
+        <a href="spa-institut-lyon.html" class="secteur-card reveal" style="text-decoration:none;display:block;cursor:pointer;">
+          <img class="sc-photo" src="spa-hero.webp" alt="Spa et institut" loading="lazy"/>
+          <div class="sc-content"><div class="sc-icon"><svg viewBox="0 0 24 24"><use href="#ico-spa"/></svg></div><div class="sc-name">Spas & instituts</div><div class="sc-desc">Identité visuelle haut de gamme, galerie, cartes cadeaux et RDV en ligne adapté à votre positionnement.</div></div>
+        </a>
+        <a href="#contact" class="secteur-card reveal" style="text-decoration:none;display:block;cursor:pointer;">
+          <div class="sc-content"><div class="sc-icon"><svg viewBox="0 0 512 512"><use href="#ico-plus"/></svg></div><div class="sc-name">Votre secteur</div><div class="sc-desc">Vous ne vous retrouvez pas dans cette liste ? Parlons-en. On s'adapte à tous les univers de la beauté et du bien-être.</div></div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMPARATIF -->
+  <section class="comparatif" style="padding:80px 0;">
+    <div class="container">
+      <div style="margin-bottom:40px">
+        <div class="s-label reveal">Pourquoi N/ Studio Digital ?</div>
+        <h2 class="s-title reveal">Ce que vous obtenez,<br><strong>vs les alternatives.</strong></h2>
+      </div>
+
+      <!-- Desktop : tableau -->
+      <div class="comp-desktop reveal">
+        <table style="width:100%;border-collapse:collapse;font-size:13px;">
+          <thead>
+            <tr>
+              <th style="padding:14px 12px;text-align:left;font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:1.5px;color:var(--gray-mid);border-bottom:1px solid var(--gray-bd);"></th>
+              <th style="padding:14px 12px;text-align:center;font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:1px;color:var(--gray-mid);border-bottom:1px solid var(--gray-bd);">Wix / DIY</th>
+              <th style="padding:14px 12px;text-align:center;font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:1px;color:var(--gray-mid);border-bottom:1px solid var(--gray-bd);">Template agence</th>
+              <th style="padding:14px 12px;text-align:center;font-size:12px;font-weight:600;color:var(--black);border-bottom:2px solid var(--black);background:var(--white);">N/ Studio Digital</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td style="padding:12px;border-bottom:1px solid var(--gray-bd);color:var(--gray-mid);">Prix</td><td style="padding:12px;border-bottom:1px solid var(--gray-bd);text-align:center;color:var(--gray-mid);font-size:12px;">0-30€/mois</td><td style="padding:12px;border-bottom:1px solid var(--gray-bd);text-align:center;color:var(--gray-mid);font-size:12px;">300-800€</td><td style="padding:12px;border-bottom:1px solid var(--gray-bd);text-align:center;font-weight:600;color:var(--black);background:rgba(122,148,120,.06);">990€ TTC</td></tr>
+            <tr><td style="padding:12px;border-bottom:1px solid var(--gray-bd);color:var(--gray-mid);">Design sur-mesure</td><td style="padding:12px;border-bottom:1px solid var(--gray-bd);text-align:center;color:#ccc;">✗</td><td style="padding:12px;border-bottom:1px solid var(--gray-bd);text-align:center;color:#ccc;">✗</td><td style="padding:12px;border-bottom:1px solid var(--gray-bd);text-align:center;color:var(--sage);background:rgba(122,148,120,.06);">✓</td></tr>
+            <tr><td style="padding:12px;border-bottom:1px solid var(--gray-bd);color:var(--gray-mid);">Spécialisé beauté & bien-être</td><td style="padding:12px;border-bottom:1px solid var(--gray-bd);text-align:center;color:#ccc;">✗</td><td style="padding:12px;border-bottom:1px solid var(--gray-bd);text-align:center;color:#ccc;">✗</td><td style="padding:12px;border-bottom:1px solid var(--gray-bd);text-align:center;color:var(--sage);background:rgba(122,148,120,.06);">✓</td></tr>
+            <tr><td style="padding:12px;border-bottom:1px solid var(--gray-bd);color:var(--gray-mid);">SEO local inclus</td><td style="padding:12px;border-bottom:1px solid var(--gray-bd);text-align:center;color:#ccc;">✗</td><td style="padding:12px;border-bottom:1px solid var(--gray-bd);text-align:center;color:var(--gray-mid);font-size:12px;">Partiel</td><td style="padding:12px;border-bottom:1px solid var(--gray-bd);text-align:center;color:var(--sage);background:rgba(122,148,120,.06);">✓</td></tr>
+            <tr><td style="padding:12px;border-bottom:1px solid var(--gray-bd);color:var(--gray-mid);">Vous êtes propriétaire</td><td style="padding:12px;border-bottom:1px solid var(--gray-bd);text-align:center;color:#ccc;">✗</td><td style="padding:12px;border-bottom:1px solid var(--gray-bd);text-align:center;color:var(--gray-mid);font-size:12px;">Partiel</td><td style="padding:12px;border-bottom:1px solid var(--gray-bd);text-align:center;color:var(--sage);background:rgba(122,148,120,.06);">✓ 100%</td></tr>
+            <tr><td style="padding:12px;border-bottom:1px solid var(--gray-bd);color:var(--gray-mid);">Délai garanti</td><td style="padding:12px;border-bottom:1px solid var(--gray-bd);text-align:center;color:var(--gray-mid);font-size:12px;">Variable</td><td style="padding:12px;border-bottom:1px solid var(--gray-bd);text-align:center;color:var(--gray-mid);font-size:12px;">4-12 sem.</td><td style="padding:12px;border-bottom:1px solid var(--gray-bd);text-align:center;color:var(--sage);background:rgba(122,148,120,.06);">✓ 3 sem.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Mobile : cards empilées -->
+      <div class="comp-mobile">
+        <div class="comp-card">
+          <div class="comp-card-label">Wix / DIY</div>
+          <div class="comp-row"><span class="comp-row-label">Prix</span><span class="comp-row-val">0-30€/mois</span></div>
+          <div class="comp-row"><span class="comp-row-label">Design sur-mesure</span><span class="comp-row-val" style="color:#ccc;">✗</span></div>
+          <div class="comp-row"><span class="comp-row-label">Spécialisé bien-être</span><span class="comp-row-val" style="color:#ccc;">✗</span></div>
+          <div class="comp-row"><span class="comp-row-label">SEO local</span><span class="comp-row-val" style="color:#ccc;">✗</span></div>
+          <div class="comp-row"><span class="comp-row-label">Vous propriétaire</span><span class="comp-row-val" style="color:#ccc;">✗</span></div>
+          <div class="comp-row"><span class="comp-row-label">Délai garanti</span><span class="comp-row-val">Variable</span></div>
+        </div>
+        <div class="comp-card">
+          <div class="comp-card-label">Template agence</div>
+          <div class="comp-row"><span class="comp-row-label">Prix</span><span class="comp-row-val">300-800€</span></div>
+          <div class="comp-row"><span class="comp-row-label">Design sur-mesure</span><span class="comp-row-val" style="color:#ccc;">✗</span></div>
+          <div class="comp-row"><span class="comp-row-label">Spécialisé bien-être</span><span class="comp-row-val" style="color:#ccc;">✗</span></div>
+          <div class="comp-row"><span class="comp-row-label">SEO local</span><span class="comp-row-val">Partiel</span></div>
+          <div class="comp-row"><span class="comp-row-label">Vous propriétaire</span><span class="comp-row-val">Partiel</span></div>
+          <div class="comp-row"><span class="comp-row-label">Délai garanti</span><span class="comp-row-val">4-12 sem.</span></div>
+        </div>
+        <div class="comp-card featured">
+          <div class="comp-card-label">✦ N/ Studio Digital</div>
+          <div class="comp-row"><span class="comp-row-label">Prix</span><span class="comp-row-val">990€ TTC</span></div>
+          <div class="comp-row"><span class="comp-row-label">Design sur-mesure</span><span class="comp-row-val">✓</span></div>
+          <div class="comp-row"><span class="comp-row-label">Spécialisé bien-être</span><span class="comp-row-val">✓</span></div>
+          <div class="comp-row"><span class="comp-row-label">SEO local</span><span class="comp-row-val">✓ Inclus</span></div>
+          <div class="comp-row"><span class="comp-row-label">Vous propriétaire</span><span class="comp-row-val">✓ 100%</span></div>
+          <div class="comp-row"><span class="comp-row-label">Délai garanti</span><span class="comp-row-val">✓ 3 sem.</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- POURQUOI -->
+  <section class="why">
+    <div class="container">
+      <div class="s-label reveal">Pourquoi ça fonctionne</div>
+      <h2 class="s-title reveal">Ce qui nous rend<br><strong>différents.</strong></h2>
+      <div class="why-grid">
+        <div class="why-card reveal">
+          <span class="why-slash-accent">/</span>
+          <div class="why-title">Design pensé pour votre univers</div>
+          <div class="why-text">Pas de templates génériques. Chaque site naît d'une lecture précise de votre identité, de votre clientèle et de vos valeurs. Le résultat : un site reconnaissable entre mille, qui vous ressemble vraiment.</div>
+        </div>
+        <div class="why-card reveal" style="transition-delay:.1s">
+          <span class="why-slash-accent">/</span>
+          <div class="why-title">Stratégie avant le design</div>
+          <div class="why-text">On décrypte votre activité, votre clientèle cible et vos objectifs avant de créer quoi que ce soit. C'est ce qui transforme un beau site en véritable outil commercial qui travaille pour vous.</div>
+        </div>
+        <div class="why-card reveal" style="transition-delay:.2s">
+          <span class="why-slash-accent">/</span>
+          <div class="why-title">Accompagnement concret</div>
+          <div class="why-text">Je fais pour vous — pas à votre place dans un sens passif, mais activement : domaine, GitHub, configuration technique, guide Google Business. Vous gardez la main sur ce qui vous appartient, je gère le reste.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq" id="faq">
+    <div class="container">
+      <div class="faq-layout">
+        <div>
+          <div class="s-label reveal">Questions fréquentes</div>
+          <h2 class="s-title reveal" style="font-size:clamp(22px,3vw,36px)">Tout ce<br>qu'il faut savoir.</h2>
+          <p class="reveal">Une question qui n'est pas listée ? Contactez-moi directement — je réponds sous 24h.</p>
+          <br>
+          <a href="#contact" class="btn-primary reveal">Démarrer mon projet <span class="arr">→</span></a>
+        </div>
+        <div class="faq-items reveal">
+
+          <div class="faq-item open">
+            <div class="faq-q">N/ Studio Digital convient-il à mon activité ?<div class="faq-icon">+</div></div>
+            <div class="faq-a">Oui. Je travaille avec les salons de coiffure, esthéticiennes, spécialistes soins du visage, nail artists, head spas, instituts de massage, sophrologues, naturopathes, kinésithérapeutes, professeurs de yoga et pilates — et tout professionnel de l'univers beauté et bien-être. Si votre activité s'y prête, on crée votre site.</div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-q">À qui appartient mon site une fois livré ?<div class="faq-icon">+</div></div>
+            <div class="faq-a">Votre site vous appartient à 100%, dès réception du paiement intégral. Concrètement, je crée un espace GitHub <strong>à votre nom et avec votre adresse email</strong> — vous en êtes l'unique propriétaire. Je suis collaboratrice pour effectuer les modifications, mais je n'ai aucun droit de propriété sur votre code. Si vous changez de prestataire demain, vous retirez simplement mon accès et vous repartez avec tout. Aucune dépendance vis-à-vis de N/ Studio Digital.</div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-q">Et pour le nom de domaine ?<div class="faq-icon">+</div></div>
+            <div class="faq-a">Votre nom de domaine vous appartient — c'est non négociable. Je vous recommande de le prendre directement chez <strong>OVH</strong>, à votre nom, avec votre email. Si vous n'en avez pas encore, je vous accompagne pas à pas dans le choix et l'enregistrement. Si vous en avez déjà un, je prends en charge la configuration technique pour le faire pointer vers votre nouveau site — sans frais supplémentaires.</div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-q">Et la fiche Google Business ?<div class="faq-icon">+</div></div>
+            <div class="faq-a">La fiche Google Business est un outil gratuit que vous créez et gérez directement — il est important que vous en soyez l'unique propriétaire. Je vous fournis un guide pas à pas complet pour la créer et l'optimiser en autonomie. C'est environ 30 minutes de votre temps, et c'est l'un des leviers les plus puissants pour votre visibilité locale. Je suis disponible si vous avez des questions en cours de route.</div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-q">Sur quel système est développé mon site ?<div class="faq-icon">+</div></div>
+            <div class="faq-a">Votre site est un site statique sur-mesure — du code HTML/CSS propre, optimisé, ultra-rapide. Pas de CMS comme WordPress, pas de plugins à mettre à jour, pas de failles de sécurité exploitables. Il est hébergé sur <strong>Vercel</strong> : une infrastructure professionnelle utilisée par des milliers d'entreprises dans le monde, avec HTTPS automatique, CDN mondial (votre site chargé depuis des serveurs proches de vos visiteurs) et une disponibilité proche de 100%. Résultat : un site plus rapide, plus sûr et plus stable qu'un WordPress classique — pour une fraction du coût de maintenance.</div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-q">Vercel est-il vraiment sécurisé et fiable ?<div class="faq-icon">+</div></div>
+            <div class="faq-a">Oui, et voici pourquoi en termes simples. <strong>HTTPS automatique</strong> : toutes les connexions à votre site sont chiffrées, sans manipulation de votre part. <strong>CDN mondial</strong> : votre site est servi depuis le serveur le plus proche de votre visiteur — chargement quasi instantané. <strong>Site statique = surface d'attaque quasi nulle</strong> : sans base de données ni CMS, il n'y a rien à "hacker" côté serveur — contrairement à WordPress qui est la cible n°1 des attaques automatisées. <strong>Infrastructure de confiance</strong> : Vercel héberge des milliers d'entreprises, des startups aux grands groupes. Et si Vercel disparaissait demain ? Votre code est sur votre GitHub — vous pouvez migrer ailleurs en quelques heures.</div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-q">Pourquoi 3 semaines ? C'est vraiment garanti ?<div class="faq-icon">+</div></div>
+            <div class="faq-a">Le délai de 3 semaines est un engagement ferme, à compter de la réception de l'ensemble de vos éléments (textes, photos, informations pratiques). Le process est rodé : appel de brief, maquette validée, développement, tests et mise en ligne. La clé : votre réactivité dans les validations. C'est pourquoi je ne démarre qu'une fois tous les éléments réunis.</div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-q">Comment mettre à jour mon site après livraison ?<div class="faq-icon">+</div></div>
+            <div class="faq-a">La seule chose sur laquelle vous aurez directement la main, c'est votre outil de prise de RDV en ligne — Planity, Calendly, Doctolib ou autre. Vos disponibilités, vos prestations, vos tarifs dans l'outil : vous les gérez vous-même comme d'habitude. Pour toute modification du site en lui-même (textes, photos, structure), c'est moi qui interviens via le forfait de maintenance à <strong>19€/mois</strong>, sans engagement — j'interviens sous 48h ouvrées, directement sur votre GitHub, et votre site se met à jour automatiquement via Vercel. Vous n'avez jamais à toucher au code.</div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-q">Est-il possible de payer en plusieurs fois ?<div class="faq-icon">+</div></div>
+            <div class="faq-a">Oui. Paiement en deux fois : 50% à la commande pour démarrer le projet, 50% à la livraison une fois le site validé et mis en ligne. Par virement bancaire, sans frais supplémentaires.</div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-q">Je n'ai pas de textes ni de photos. Vous pouvez m'aider ?<div class="faq-icon">+</div></div>
+            <div class="faq-a">La rédaction des textes de base est incluse dans l'offre — présentation de votre activité, pages services, à propos et contact. Pour aller plus loin (textes SEO ciblés, storytelling élaboré), une option +200€ est disponible. Pour les photos, j'intègre des visuels libres de droits en attendant les vôtres — rien ne bloque la mise en ligne.</div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-q">Comment gérez-vous le référencement naturel (SEO) ?<div class="faq-icon">+</div></div>
+            <div class="faq-a">Le SEO local est intégré dès la conception : structure optimisée, balises meta personnalisées, mots-clés ciblés sur votre métier et votre zone. Par exemple : "coiffeuse Lyon 6", "esthéticienne soin visage Villeurbanne", "head spa Lyon", "sophrologue Caluire", "naturopathe Bron", "nail art Lyon 3", "institut massage Tassin". Votre site est conçu pour être trouvé par vos futures clientes sur Google — sans budget publicitaire.</div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-q">Quelle est la différence avec une agence classique ?<div class="faq-icon">+</div></div>
+            <div class="faq-a">N/ Studio Digital c'est une interlocutrice unique du début à la fin, spécialisée dans l'univers beauté et bien-être. Pas d'intermédiaire, pas de jargon, pas de surprise sur la facture. Et surtout : vous repartez propriétaire de tout — votre site, votre domaine, votre GitHub. Aucune dépendance.</div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- À PROPOS -->
+  <section class="apropos" id="apropos">
+    <div class="container">
+      <div class="apropos-inner reveal">
+        <div class="apropos-text">
+          <div>
+            <div class="apropos-name">Nadège Dufour</div>
+            <div class="apropos-role">Directrice Créative · N/ Studio Digital</div>
+          </div>
+          <p class="apropos-body">
+            <strong>Créer des sites qui convertissent, c'est ce qui me lève le matin.</strong> Pas des vitrines vides. Des outils qui travaillent pour vous, attirent vos clients idéaux et reflètent exactement ce que vous valez.<br><br>
+            J'ai construit N/ Studio Digital à l'intersection de deux mondes : celui du <strong>digital</strong> et celui du <strong>bien-être</strong>. Ma formation en massages holistiques et Head Spa, mes 8 ans dans le tourisme à construire des expériences client mémorables, mon CAP Photographe — tout converge vers un seul objectif : comprendre votre univers de l'intérieur pour le retranscrire en ligne avec précision.<br><br>
+            Mon Bac+2 en Gestion de projet n'est pas qu'une ligne sur un CV. C'est la garantie d'un process rigoureux, de délais tenus et d'une communication claire à chaque étape. <strong>Votre projet est entre de bonnes mains — et vous restez propriétaire de tout.</strong>
+          </p>
+          <div class="apropos-vals">
+            <div class="apropos-val">Massages holistiques &amp; Head Spa</div>
+            <div class="apropos-val">8 ans relation client tourisme</div>
+            <div class="apropos-val">CAP Photographe</div>
+            <div class="apropos-val">Bac+2 Gestion de projet</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA FINAL -->
+  <section class="cta-section" id="contact">
+    <div class="container">
+      <div class="cta-inner">
+        <div>
+          <h2 class="cta-title reveal">Votre site beauté<br>ou bien-être à Lyon —<br><strong>en 3 semaines.</strong></h2>
+          <div class="cta-perks reveal" style="margin-top:24px;">
+            <div class="cta-perk">30 minutes · 100% gratuit · sans engagement</div>
+            <div class="cta-perk">Analyse de votre présence en ligne actuelle</div>
+            <div class="cta-perk">Conseils concrets applicables immédiatement</div>
+            <div class="cta-perk">Devis détaillé remis sous 24h</div>
+          </div>
+        </div>
+        <div class="reveal" style="transition-delay:.1s;">
+          <form id="contactForm" style="display:flex;flex-direction:column;gap:12px;" action="https://formspree.io/f/xgoqklzl" method="POST">
+            <input type="text" name="nom" class="cf-input" placeholder="Votre prénom et nom" required/>
+            <input type="email" name="email" class="cf-input" placeholder="Votre adresse email" required/>
+            <input type="text" name="metier" class="cf-input" placeholder="Votre métier (ex : coiffeuse, esthéticienne…)"/>
+            <textarea name="message" class="cf-input" placeholder="Votre message (facultatif)" rows="3" style="resize:vertical;"></textarea>
+            <input type="hidden" name="_subject" value="Nouveau contact — N/ Studio Digital"/>
+            <button type="submit" id="cf-submit" style="background:var(--white);color:var(--black);border:none;padding:14px 24px;border-radius:100px;font-family:var(--font);font-size:14px;font-weight:600;cursor:pointer;transition:background .2s;text-align:left;display:flex;align-items:center;justify-content:space-between;">
+              <span>Envoyer ma demande</span><span>→</span>
+            </button>
+            <div id="cf-success" style="display:none;font-size:13px;color:var(--sage-lt);padding:10px 0;">✓ Message envoyé ! Je vous réponds sous 24h.</div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="f-logo-text">N<span class="slash">/</span> Studio Digital</div>
+          <div class="f-baseline">Votre site vitrine en 3 semaines</div>
+          <div class="f-tagline">Salons, Instituts &amp; Praticiens · Grand Lyon</div>
+          <p class="f-desc">Agence web spécialisée en création de sites vitrine sur-mesure pour coiffeurs, esthéticiennes, head spas, sophrologues et praticiens bien-être de la métropole lyonnaise.</p>
+          <div style="margin-top:16px;display:flex;flex-direction:column;gap:8px;">
+            <div class="f-contact-item">
+              <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+              <a href="mailto:contact@nstudiodigital.fr">contact@nstudiodigital.fr</a>
+            </div>
+            <div class="f-contact-item">
+              <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+              <span>Rillieux-la-Pape · Grand Lyon</span>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="f-col-title">Navigation</div>
+          <div class="f-col-links">
+            <a href="#realisations">Réalisations</a>
+            <a href="#offres">Offres</a>
+            <a href="#process">Méthode</a>
+            <a href="#secteurs">Pour qui</a>
+            <a href="#faq">FAQ</a>
+            <a href="#contact">Contact</a>
+            <a href="blog.html">Blog</a>
+          </div>
+        </div>
+        <div>
+          <div class="f-col-title">Secteurs</div>
+          <div class="f-col-links">
+            <a href="coiffeur-lyon.html">Coiffeurs & salons</a>
+            <a href="esthetique-nail-art-lyon.html">Esthétique & soins visage</a>
+            <a href="head-spa-lyon.html">Head Spa</a>
+            <a href="institut-massage-lyon.html">Massage</a>
+            <a href="sophrologue-naturopathe-lyon.html">Sophrologues</a>
+            <a href="yoga-pilates-lyon.html">Yoga & Pilates</a>
+            <a href="spa-institut-lyon.html">Spas & instituts</a>
+          </div>
+          <div class="f-col-title" style="margin-top:24px;">Légal</div>
+          <div class="f-col-links">
+            <a href="mentions-legales.html">Mentions légales</a>
+            <a href="cgv.html">CGV</a>
+          </div>
+        </div>
+      </div>
+      <div class="f-bottom">
+        <div class="f-copy">© 2026 N/ Studio Digital — Nadège Dufour · TVA non applicable, art. 293 B du CGI · SIRET en cours d'immatriculation</div>
+        <div class="f-legal-links">
+          <a href="mentions-legales.html">Mentions légales</a>
+          <a href="cgv.html">CGV</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Compteurs animés
+    function animateCounter(el, target, duration) {
+      let start = null;
+      function step(ts) {
+        if (!start) start = ts;
+        const progress = Math.min((ts - start) / duration, 1);
+        const ease = 1 - Math.pow(1 - progress, 3);
+        el.textContent = Math.round(ease * target);
+        if (progress < 1) requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+    }
+    const counterObs = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          animateCounter(e.target, parseInt(e.target.dataset.target), 1400);
+          counterObs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.5 });
+    document.querySelectorAll('.counter-num[data-target]').forEach(el => counterObs.observe(el));
+
+    // NAV scroll
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 30); });
+
+    // Hamburger
+    const hamburger = document.getElementById('hamburger');
+    const navMobile = document.getElementById('navMobile');
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('open');
+      navMobile.classList.toggle('open');
+    });
+    function closeMenu() {
+      hamburger.classList.remove('open');
+      navMobile.classList.remove('open');
+    }
+    document.addEventListener('click', (e) => {
+      if (!nav.contains(e.target) && !navMobile.contains(e.target)) closeMenu();
+    });
+
+    // Scroll reveal
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('vis'); obs.unobserve(e.target); } });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+    // FAQ
+    document.querySelectorAll('.faq-q').forEach(q => {
+      q.addEventListener('click', () => {
+        const item = q.parentElement;
+        document.querySelectorAll('.faq-item.open').forEach(o => { if(o!==item) o.classList.remove('open'); });
+        item.classList.toggle('open');
+      });
+    });
+
+    // Back to top
+    const backBtn = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => { backBtn.classList.toggle('visible', window.scrollY > 400); });
+
+    // Cookies
+    function acceptCookies() { localStorage.setItem('cookies', 'accepted'); document.getElementById('cookieBanner').classList.add('hidden'); }
+    function refuseCookies() { localStorage.setItem('cookies', 'refused'); document.getElementById('cookieBanner').classList.add('hidden'); }
+    if (localStorage.getItem('cookies')) document.getElementById('cookieBanner').classList.add('hidden');
+
+    // Formulaire
+    const form = document.getElementById('contactForm');
+    if (form) {
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const btn = document.getElementById('cf-submit');
+        btn.querySelector('span').textContent = 'Envoi en cours…';
+        const formData = new FormData(form);
+        fetch('https://formspree.io/f/xgoqklzl', {
+          method: 'POST', body: formData, headers: { 'Accept': 'application/json' }
+        }).then(r => {
+          if (r.ok) {
+            document.getElementById('cf-success').style.display = 'block';
+            form.reset();
+            btn.querySelector('span').textContent = 'Envoyer ma demande';
+          }
+        }).catch(() => {
+          document.getElementById('cf-success').style.display = 'block';
+          btn.querySelector('span').textContent = 'Envoyer ma demande';
+        });
+      });
+    }
+
+
+    // HERO CANVAS — flux de lumière
+    (function() {
+      const canvas = document.getElementById('hero-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      function resize() { canvas.width = canvas.offsetWidth; canvas.height = canvas.offsetHeight; }
+      resize();
+      window.addEventListener('resize', resize);
+      const SR = 122, SG = 148, SB = 120;
+
+      // Blobs de lumière ambiante
+      const blobs = [
+        { ox:.5, oy:.44, ax:.22, ay:.13, fx:.00028, fy:.00021, ph:0,   r:.75, a:.50, c:[SR,SG,SB] },
+        { ox:.5, oy:.56, ax:.16, ay:.18, fx:.00022, fy:.00035, ph:2.1, r:.55, a:.22, c:[255,255,255] },
+        { ox:.5, oy:.36, ax:.26, ay:.10, fx:.00038, fy:.00028, ph:4.3, r:.50, a:.38, c:[SR,SG,SB] },
+        { ox:.5, oy:.65, ax:.12, ay:.21, fx:.00018, fy:.00042, ph:1.5, r:.42, a:.18, c:[200,220,205] },
+      ];
+
+      function draw(ts) {
+        const t = ts * .001;
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+
+        // Rendu des blobs
+        blobs.forEach(function(b) {
+          const cx = W * (b.ox + b.ax * Math.sin(t * b.fx * 1000 + b.ph));
+          const cy = H * (b.oy + b.ay * Math.cos(t * b.fy * 1000 + b.ph * 1.4));
+          const r  = Math.min(W, H) * b.r;
+          const g  = ctx.createRadialGradient(cx, cy, 0, cx, cy, r);
+          g.addColorStop(0,   'rgba(' + b.c[0] + ',' + b.c[1] + ',' + b.c[2] + ',' + b.a + ')');
+          g.addColorStop(.40, 'rgba(' + b.c[0] + ',' + b.c[1] + ',' + b.c[2] + ',' + (b.a * .45).toFixed(3) + ')');
+          g.addColorStop(1,   'rgba(' + b.c[0] + ',' + b.c[1] + ',' + b.c[2] + ',0)');
+          ctx.beginPath();
+          ctx.arc(cx, cy, r, 0, Math.PI * 2);
+          ctx.fillStyle = g;
+          ctx.fill();
+        });
+
+        // Vagues lumineuses (5 lignes ondulantes)
+        for (var i = 0; i < 5; i++) {
+          var baseY = ((H * (i + .5) / 5) + t * 14) % H;
+          var op    = .18 + .07 * Math.sin(t * .22 + i * 1.1);
+          ctx.beginPath();
+          for (var x = 0; x <= W; x += 4) {
+            var wy = baseY
+              + Math.sin(x * .007  + t * .32 + i * .85) * 30
+              + Math.sin(x * .0023 + t * .17 + i)       * 14;
+            x === 0 ? ctx.moveTo(x, wy) : ctx.lineTo(x, wy);
+          }
+          ctx.strokeStyle = 'rgba(' + SR + ',' + SG + ',' + SB + ',' + op + ')';
+          ctx.lineWidth = 1.5;
+          ctx.stroke();
+        }
+
+        requestAnimationFrame(draw);
+      }
+      requestAnimationFrame(draw);
+    })();
+
+  </script>
+</body>
+</html>
