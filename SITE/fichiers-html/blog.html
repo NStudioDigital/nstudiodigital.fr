@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Blog — Conseils web & SEO pour coiffeurs, esthéticiennes et praticiens bien-être à Lyon — N/ Studio Digital</title>
+  <meta name="description" content="Conseils, tendances et ressources pour les coiffeurs, esthéticiennes, head spas, sophrologues et praticiens bien-être qui veulent développer leur visibilité en ligne à Lyon."/>
+  <meta property="og:title" content="Blog — N/ Studio Digital"/>
+  <meta property="og:description" content="Conseils web & SEO pour coiffeurs, esthéticiennes et praticiens bien-être à Lyon."/>
+  <meta property="og:url" content="https://www.nstudiodigital.fr/blog.html"/>
+  <meta property="og:type" content="website"/>
+  <link rel="canonical" href="https://www.nstudiodigital.fr/blog.html"/>
+  <link rel="icon" type="image/x-icon" href="/favicon.ico"/>
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"/>
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png"/>
+  <link rel="manifest" href="/site.webmanifest"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    :root{--black:#0D0D0D;--white:#FFFFFF;--gray-mid:#888888;--gray-lt:#CCCCCC;--gray-bg:#F4F4F4;--gray-bd:#E0E0E0;--sage:#7A9478;--sage-lt:#9AB098;--font:'Inter',sans-serif;}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;font-size:16px;}
+    body{font-family:var(--font);background:var(--white);color:var(--black);overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+    .container{max-width:1140px;margin:0 auto;padding:0 48px;}
+    @media(max-width:768px){.container{padding:0 20px;}}
+    .reveal{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease;}
+    .reveal.vis{opacity:1;transform:none;}
+
+    /* NAV */
+    nav{position:fixed;top:0;left:0;right:0;z-index:300;background:var(--white);border-bottom:1px solid var(--gray-bd);transition:box-shadow .3s;}
+    nav.scrolled{box-shadow:0 2px 16px rgba(0,0,0,.07);}
+    .nav-inner{display:flex;align-items:center;justify-content:space-between;height:64px;}
+    .nav-logo{font-size:18px;font-weight:400;letter-spacing:-.2px;color:var(--black);text-decoration:none;flex-shrink:0;}
+    .nav-logo .slash{font-weight:300;color:var(--sage);}
+    .nav-links{display:flex;align-items:center;gap:32px;list-style:none;}
+    .nav-links a{font-size:13px;font-weight:400;color:var(--gray-mid);text-decoration:none;transition:color .2s;position:relative;}
+    .nav-links a:hover{color:var(--black);}
+    .nav-links a::after{content:'';position:absolute;bottom:-2px;left:0;width:0;height:1px;background:var(--sage);transition:width .25s ease;}
+    .nav-links a:hover::after,.nav-links a.active::after{width:100%;}
+    .nav-links a.active{color:var(--black);font-weight:500;}
+    .nav-dropdown{position:relative;}
+    .nav-dropdown>a{display:flex;align-items:center;gap:5px;}
+    .nav-dropdown>a::after{content:''!important;display:inline-block!important;width:6px!important;height:6px!important;border-right:1.5px solid var(--gray-lt)!important;border-bottom:1.5px solid var(--gray-lt)!important;transform:rotate(45deg)!important;margin-top:-3px!important;transition:transform .2s!important;position:static!important;background:none!important;}
+    .nav-dropdown:hover>a::after{transform:rotate(-135deg)!important;margin-top:2px!important;}
+    .dropdown-menu{display:none;position:absolute;top:calc(100% + 12px);left:50%;transform:translateX(-50%);background:var(--white);border:1px solid var(--gray-bd);box-shadow:0 8px 32px rgba(0,0,0,.1);min-width:240px;z-index:400;padding:6px 0;}
+    .nav-dropdown:hover .dropdown-menu{display:block;}
+    .dropdown-menu a{display:block;padding:10px 18px;font-size:13px;color:var(--black);text-decoration:none;white-space:nowrap;transition:background .15s,color .15s;position:static;}
+    .dropdown-menu a::after{display:none!important;}
+    .dropdown-menu a:hover{background:var(--gray-bg);color:var(--sage);}
+    .nav-cta-desktop{display:inline-flex;}
+    .nav-hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;background:none;border:none;}
+    .nav-hamburger span{display:block;width:22px;height:2px;background:var(--black);border-radius:2px;transition:all .3s;}
+    .nav-hamburger.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px);}
+    .nav-hamburger.open span:nth-child(2){opacity:0;}
+    .nav-hamburger.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px);}
+    .nav-mobile{display:none;position:fixed;top:64px;left:0;right:0;background:var(--white);border-bottom:1px solid var(--gray-bd);padding:20px;flex-direction:column;gap:0;z-index:299;box-shadow:0 8px 24px rgba(0,0,0,.08);max-height:calc(100vh - 64px);overflow-y:auto;}
+    .nav-mobile.open{display:flex;}
+    .nav-mobile a{font-size:15px;font-weight:400;color:var(--black);text-decoration:none;padding:14px 0;border-bottom:1px solid var(--gray-bg);display:block;}
+    .nav-mobile a:last-child{border-bottom:none;}
+    .nav-mobile .mobile-cta{margin-top:16px;background:var(--black);color:var(--white);padding:14px;border-radius:100px;text-align:center;font-weight:500;border-bottom:none!important;}
+    .mobile-sub{padding:4px 0 4px 12px;display:flex;flex-direction:column;border-left:2px solid var(--gray-bd);margin:0 0 4px 0;}
+    .mobile-sub a{font-size:13px!important;color:var(--gray-mid)!important;padding:7px 0!important;border-bottom:none!important;}
+    @media(max-width:900px){.nav-links,.nav-cta-desktop{display:none!important;}.nav-hamburger{display:flex;}}
+
+    .btn-primary{display:inline-flex;align-items:center;gap:10px;background:var(--black);color:var(--white);padding:10px 22px;border-radius:100px;font-family:var(--font);font-size:13px;font-weight:500;text-decoration:none;border:none;cursor:pointer;transition:background .25s,transform .2s;white-space:nowrap;}
+    .btn-primary:hover{background:#222;transform:translateY(-1px);}
+    .btn-primary .arr{width:24px;height:24px;background:rgba(255,255,255,.15);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;}
+
+    /* BLOG HERO */
+    .blog-hero{padding-top:64px;background:var(--black);padding-bottom:80px;position:relative;overflow:hidden;}
+    .blog-hero-grain{position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");opacity:.04;pointer-events:none;}
+    .blog-hero-accent{position:absolute;right:-80px;top:-80px;width:500px;height:500px;background:radial-gradient(circle,rgba(122,148,120,.15) 0%,transparent 70%);pointer-events:none;}
+    .blog-hero-inner{position:relative;z-index:2;padding-top:64px;}
+    .blog-hero-label{font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:2.5px;color:var(--sage);margin-bottom:20px;display:flex;align-items:center;gap:10px;}
+    .blog-hero-label::before{content:'/';font-weight:300;font-size:16px;}
+    .blog-hero-title{font-size:clamp(28px,4.5vw,56px);font-weight:400;color:var(--white);line-height:1.1;letter-spacing:-1.2px;max-width:700px;margin-bottom:20px;}
+    .blog-hero-title strong{font-weight:700;font-style:italic;}
+    .blog-hero-sub{font-size:15px;color:rgba(255,255,255,.5);line-height:1.7;max-width:540px;}
+
+    /* FILTRES */
+    .blog-filters{background:var(--white);border-bottom:1px solid var(--gray-bd);padding:20px 0;}
+    .filters-inner{display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
+    .filter-btn{padding:7px 16px;border-radius:100px;font-size:12px;font-weight:500;cursor:pointer;border:1px solid var(--gray-bd);background:var(--white);color:var(--gray-mid);transition:all .2s;text-decoration:none;display:inline-block;font-family:var(--font);}
+    .filter-btn:hover,.filter-btn.active{background:var(--black);color:var(--white);border-color:var(--black);}
+
+    /* GRILLE */
+    .blog-section{padding:56px 0 96px;}
+    .blog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;}
+    @media(max-width:900px){.blog-grid{grid-template-columns:repeat(2,1fr);}}
+    @media(max-width:600px){.blog-grid{grid-template-columns:1fr;}}
+
+    /* ARTICLE FEATURED */
+    .blog-featured{grid-column:1/-1;display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--gray-bd);overflow:hidden;background:var(--white);transition:box-shadow .25s;text-decoration:none;color:inherit;}
+    .blog-featured:hover{box-shadow:0 10px 48px rgba(0,0,0,.12);}
+    @media(max-width:768px){.blog-featured{grid-template-columns:1fr;}}
+    .blog-featured-img{min-height:300px;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;}
+    .blog-featured-img-bg{position:absolute;inset:0;background:linear-gradient(135deg,rgba(13,13,13,.4) 0%,rgba(13,13,13,.2) 100%);}
+    .blog-featured-badge{position:absolute;top:20px;left:20px;background:var(--white);padding:5px 14px;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--black);z-index:2;}
+    .blog-featured-content{padding:44px;display:flex;flex-direction:column;justify-content:space-between;gap:24px;}
+    @media(max-width:600px){.blog-featured-content{padding:24px;}}
+    .blog-featured-tag{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:var(--sage);display:flex;align-items:center;gap:5px;}
+    .blog-featured-tag::before{content:'/';}
+    .blog-featured-title{font-size:clamp(18px,2.2vw,26px);font-weight:400;line-height:1.25;letter-spacing:-.4px;color:var(--black);margin-top:12px;margin-bottom:14px;}
+    .blog-featured-title strong{font-weight:700;}
+    .blog-featured-excerpt{font-size:14px;color:var(--gray-mid);line-height:1.75;}
+    .blog-featured-meta{display:flex;align-items:center;justify-content:space-between;padding-top:20px;border-top:1px solid var(--gray-bd);}
+    .blog-featured-date{font-size:12px;color:var(--gray-lt);}
+    .blog-featured-cta{font-size:13px;font-weight:500;color:var(--black);}
+
+    /* ARTICLE CARD */
+    .blog-card{border:1px solid var(--gray-bd);background:var(--white);display:flex;flex-direction:column;overflow:hidden;transition:box-shadow .25s,transform .2s;text-decoration:none;color:inherit;}
+    .blog-card:hover{box-shadow:0 6px 28px rgba(0,0,0,.09);transform:translateY(-3px);}
+    .blog-card-img{height:180px;position:relative;overflow:hidden;}
+    .blog-card-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.85;transition:transform .5s ease;}
+    .blog-card:hover .blog-card-img img{transform:scale(1.04);}
+    .blog-card-img-bg{position:absolute;inset:0;}
+    .blog-card-content{padding:24px;display:flex;flex-direction:column;gap:10px;flex:1;}
+    .blog-card-tag{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:var(--sage);display:flex;align-items:center;gap:5px;}
+    .blog-card-tag::before{content:'/';}
+    .blog-card-title{font-size:16px;font-weight:500;line-height:1.4;letter-spacing:-.2px;color:var(--black);flex:1;}
+    .blog-card-excerpt{font-size:13px;color:var(--gray-mid);line-height:1.65;}
+    .blog-card-footer{padding:14px 24px;border-top:1px solid var(--gray-bd);display:flex;align-items:center;justify-content:space-between;}
+    .blog-card-date{font-size:11px;color:var(--gray-lt);}
+    .blog-card-link{font-size:12px;font-weight:500;color:var(--black);}
+
+    /* CTA */
+    .blog-cta{background:var(--black);padding:72px 0;}
+    .blog-cta-inner{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;}
+    @media(max-width:768px){.blog-cta-inner{grid-template-columns:1fr;gap:24px;}}
+    .blog-cta-label{font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:2px;color:var(--sage);margin-bottom:12px;display:flex;align-items:center;gap:8px;}
+    .blog-cta-label::before{content:'/';}
+    .blog-cta-title{font-size:clamp(22px,3vw,38px);font-weight:400;color:var(--white);line-height:1.15;letter-spacing:-.6px;}
+    .blog-cta-title strong{font-weight:700;font-style:italic;}
+    .blog-cta-sub{font-size:14px;color:rgba(255,255,255,.4);margin-top:12px;line-height:1.65;}
+    .blog-cta-perks{display:flex;flex-direction:column;gap:10px;margin-bottom:24px;}
+    .blog-cta-perk{font-size:13px;color:rgba(255,255,255,.6);display:flex;align-items:center;gap:8px;}
+    .blog-cta-perk::before{content:'✓';color:var(--sage);flex-shrink:0;}
+
+    /* FOOTER */
+    footer{background:var(--black);padding:48px 0 32px;}
+    .footer-inner{display:grid;grid-template-columns:1fr 1fr 1fr;gap:40px;margin-bottom:40px;}
+    @media(max-width:768px){.footer-inner{grid-template-columns:1fr;gap:28px;}}
+    .footer-brand{font-size:20px;font-weight:400;color:var(--white);margin-bottom:10px;}
+    .footer-brand .slash{color:var(--sage);}
+    .footer-tagline{font-size:13px;color:rgba(255,255,255,.35);line-height:1.6;}
+    .footer-col h4{font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:14px;}
+    .footer-col a{display:block;font-size:13px;color:rgba(255,255,255,.45);text-decoration:none;margin-bottom:9px;transition:color .2s;}
+    .footer-col a:hover{color:var(--white);}
+    .footer-contact a{display:flex;align-items:center;gap:8px;font-size:13px;color:rgba(255,255,255,.45);text-decoration:none;margin-bottom:9px;transition:color .2s;}
+    .footer-contact a:hover{color:var(--white);}
+    .footer-bottom{border-top:1px solid rgba(255,255,255,.07);padding-top:24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;}
+    .footer-bottom p{font-size:12px;color:rgba(255,255,255,.25);}
+    .footer-bottom-links{display:flex;gap:20px;}
+    .footer-bottom-links a{font-size:12px;color:rgba(255,255,255,.35);text-decoration:none;transition:color .2s;}
+    .footer-bottom-links a:hover{color:var(--white);}
+
+    .back-to-top{position:fixed;bottom:28px;right:28px;width:40px;height:40px;background:var(--black);color:var(--white);border:1px solid rgba(255,255,255,.15);border-radius:50%;font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .3s,transform .3s;z-index:200;}
+    .back-to-top.visible{opacity:1;pointer-events:all;}
+    .back-to-top:hover{transform:translateY(-2px);}
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="main-nav">
+  <div class="container">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">N<span class="slash">/</span> Studio Digital</a>
+      <ul class="nav-links">
+        <li><a href="index.html#offre">Offre</a></li>
+        <li><a href="index.html#realisations">Réalisations</a></li>
+        <li><a href="index.html#process">Process</a></li>
+        <li class="nav-dropdown">
+          <a href="#">Secteurs</a>
+          <div class="dropdown-menu">
+            <a href="coiffeur-lyon.html">Coiffeurs</a>
+            <a href="esthetique-nail-art-lyon.html">Esthéticiennes</a>
+            <a href="head-spa-lyon.html">Head Spa</a>
+            <a href="institut-massage-lyon.html">Massage</a>
+            <a href="sophrologue-naturopathe-lyon.html">Sophrologue &amp; Naturopathe</a>
+            <a href="yoga-pilates-lyon.html">Yoga &amp; Pilates</a>
+            <a href="spa-institut-lyon.html">Spa &amp; Institut</a>
+          </div>
+        </li>
+        <li><a href="blog.html" class="active">Blog</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+      </ul>
+      <a href="index.html#contact" class="btn-primary nav-cta-desktop"><span>Démarrer mon projet</span><span class="arr">→</span></a>
+      <button class="nav-hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+<div class="nav-mobile" id="nav-mobile">
+  <a href="index.html#offre">Offre</a>
+  <a href="index.html#realisations">Réalisations</a>
+  <a href="index.html#process">Process</a>
+  <a href="#">Secteurs</a>
+  <div class="mobile-sub">
+    <a href="coiffeur-lyon.html">Coiffeurs</a>
+    <a href="esthetique-nail-art-lyon.html">Esthéticiennes</a>
+    <a href="head-spa-lyon.html">Head Spa</a>
+    <a href="institut-massage-lyon.html">Massage</a>
+    <a href="sophrologue-naturopathe-lyon.html">Sophrologue &amp; Naturopathe</a>
+    <a href="yoga-pilates-lyon.html">Yoga &amp; Pilates</a>
+    <a href="spa-institut-lyon.html">Spa &amp; Institut</a>
+  </div>
+  <a href="blog.html">Blog</a>
+  <a href="index.html#contact" class="mobile-cta">Démarrer mon projet →</a>
+</div>
+
+<!-- HERO -->
+<section class="blog-hero">
+  <div class="blog-hero-grain"></div>
+  <div class="blog-hero-accent"></div>
+  <div class="container">
+    <div class="blog-hero-inner">
+      <div class="blog-hero-label reveal">Le blog</div>
+      <h1 class="blog-hero-title reveal">Ressources &amp; conseils pour<br><strong>votre présence en ligne.</strong></h1>
+      <p class="blog-hero-sub reveal">Stratégie web, SEO local, outils de réservation — tout ce que vous devez savoir pour développer votre activité en ligne. Pensé pour les coiffeurs, esthéticiennes, head spas et praticiens bien-être à Lyon.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FILTRES -->
+<div class="blog-filters">
+  <div class="container">
+    <div class="filters-inner">
+      <button class="filter-btn active" data-filter="tous">Tous les articles</button>
+      <button class="filter-btn" data-filter="seo">SEO &amp; Visibilité</button>
+      <button class="filter-btn" data-filter="conseils">Conseils pratiques</button>
+      <button class="filter-btn" data-filter="tendances">Tendances</button>
+      <button class="filter-btn" data-filter="coiffure">Coiffure</button>
+      <button class="filter-btn" data-filter="bienetre">Bien-être</button>
+    </div>
+  </div>
+</div>
+
+<!-- GRILLE ARTICLES -->
+<section class="blog-section">
+  <div class="container">
+    <div class="blog-grid">
+
+      <!-- Article featured -->
+      <a href="blog/pourquoi-coiffeur-lyon-site-internet.html" class="blog-featured reveal" data-cat="seo coiffure">
+        <div class="blog-featured-img">
+          <img src="blogcoiffeur.webp" alt="Salon de coiffure Lyon" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.85;"/>
+          <div class="blog-featured-img-bg"></div>
+          <div class="blog-featured-badge">À la une</div>
+        </div>
+        <div class="blog-featured-content">
+          <div>
+            <div class="blog-featured-tag">SEO &amp; Visibilité</div>
+            <h2 class="blog-featured-title">Pourquoi un coiffeur à Lyon a <strong>besoin d'un site internet</strong> en 2026</h2>
+            <p class="blog-featured-excerpt">Vos clients vous cherchent sur Google avant de pousser votre porte. Sans site, vous êtes invisible face à vos concurrents. Voici pourquoi un site vitrine n'est plus un luxe — c'est un outil indispensable pour votre salon.</p>
+          </div>
+          <div class="blog-featured-meta">
+            <span class="blog-featured-date">Mai 2026 · 8 min de lecture</span>
+            <span class="blog-featured-cta">Lire l'article →</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Article 2 -->
+      <a href="blog/combien-coute-site-vitrine-salon-coiffure-institut.html" class="blog-card reveal" data-cat="conseils coiffure" style="transition-delay:.1s;">
+        <div class="blog-card-img">
+          <img src="COMBIEN_COUTE.jpg" alt="Coût site vitrine salon"/>
+          <div class="blog-card-img-bg" style="background:linear-gradient(135deg,rgba(13,13,13,.5) 0%,rgba(42,31,26,.4) 100%);"></div>
+        </div>
+        <div class="blog-card-content">
+          <div class="blog-card-tag">Conseils pratiques</div>
+          <h2 class="blog-card-title">Combien coûte un site vitrine pour un salon de coiffure ou un institut ?</h2>
+          <p class="blog-card-excerpt">Wix à 30€/mois, template générique ou site sur-mesure : ce que cachent vraiment les prix et comment choisir selon votre budget.</p>
+        </div>
+        <div class="blog-card-footer">
+          <span class="blog-card-date">Mai 2026 · 6 min</span>
+          <span class="blog-card-link">Lire →</span>
+        </div>
+      </a>
+
+      <!-- Article 3 -->
+      <a href="blog/head-spa-lyon-marche-essor.html" class="blog-card reveal" data-cat="tendances bienetre" style="transition-delay:.2s;">
+        <div class="blog-card-img">
+          <img src="HEAD_SPA.jpg" alt="Head spa soin cuir chevelu Lyon"/>
+          <div class="blog-card-img-bg" style="background:linear-gradient(135deg,rgba(10,15,13,.5) 0%,rgba(26,43,35,.3) 100%);"></div>
+        </div>
+        <div class="blog-card-content">
+          <div class="blog-card-tag">Tendances</div>
+          <h2 class="blog-card-title">Head spa à Lyon : un marché en plein essor (et comment s'y faire une place en ligne)</h2>
+          <p class="blog-card-excerpt">Le head spa explose en France. À Lyon, la demande ne cesse de croître — mais la plupart des praticiens n'ont pas de site pour capter ces nouveaux clients.</p>
+        </div>
+        <div class="blog-card-footer">
+          <span class="blog-card-date">Mai 2026 · 7 min</span>
+          <span class="blog-card-link">Lire →</span>
+        </div>
+      </a>
+
+      <!-- Article 4 -->
+      <a href="blog/planity-vs-treatwell-outil-reservation.html" class="blog-card reveal" data-cat="conseils coiffure bienetre" style="transition-delay:.3s;">
+        <div class="blog-card-img">
+          <img src="blogrdv.webp" alt="Réservation en ligne agenda coiffeur"/>
+          <div class="blog-card-img-bg" style="background:linear-gradient(135deg,rgba(17,17,17,.55) 0%,rgba(26,26,46,.4) 100%);"></div>
+        </div>
+        <div class="blog-card-content">
+          <div class="blog-card-tag">Conseils pratiques</div>
+          <h2 class="blog-card-title">Planity vs Treatwell : comment choisir son outil de réservation en ligne ?</h2>
+          <p class="blog-card-excerpt">Comparatif complet pour coiffeurs et praticiens bien-être. Tarifs, fonctionnalités, intégration site — tout ce qu'il faut savoir avant de choisir.</p>
+        </div>
+        <div class="blog-card-footer">
+          <span class="blog-card-date">Mai 2026 · 7 min</span>
+          <span class="blog-card-link">Lire →</span>
+        </div>
+      </a>
+
+      <!-- Article 5 -->
+      <a href="blog/seo-local-praticien-bien-etre-lyon.html" class="blog-card reveal" data-cat="seo bienetre" style="transition-delay:.4s;">
+        <div class="blog-card-img">
+          <img src="sophro-nature.webp" alt="SEO local praticien bien-être Lyon"/>
+          <div class="blog-card-img-bg" style="background:linear-gradient(135deg,rgba(10,15,10,.55) 0%,rgba(26,43,26,.4) 100%);"></div>
+        </div>
+        <div class="blog-card-content">
+          <div class="blog-card-tag">SEO &amp; Visibilité</div>
+          <h2 class="blog-card-title">SEO local pour praticien bien-être : par où commencer ?</h2>
+          <p class="blog-card-excerpt">Google Business, mots-clés de quartier, avis clients — le guide complet pour apparaître en premier sur Google à Lyon, sans budget pub.</p>
+        </div>
+        <div class="blog-card-footer">
+          <span class="blog-card-date">Mai 2026 · 8 min</span>
+          <span class="blog-card-link">Lire →</span>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="blog-cta">
+  <div class="container">
+    <div class="blog-cta-inner">
+      <div>
+        <div class="blog-cta-label">Passons à l'action</div>
+        <h2 class="blog-cta-title">Votre site internet<br><strong>en 3 semaines.</strong></h2>
+        <p class="blog-cta-sub">Un échange de 30 minutes suffit pour définir ensemble ce dont vous avez besoin. Gratuit, sans engagement.</p>
+      </div>
+      <div>
+        <div class="blog-cta-perks">
+          <div class="blog-cta-perk">Échange découverte offert — 30 min</div>
+          <div class="blog-cta-perk">Devis personnalisé sous 24h</div>
+          <div class="blog-cta-perk">Site livré en 3 semaines — 990€ TTC</div>
+        </div>
+        <a href="index.html#contact" class="btn-primary">Démarrer mon projet <span class="arr">→</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-brand">N<span class="slash">/</span> Studio Digital</div>
+        <div class="footer-tagline">Création de sites internet pour salons, instituts et praticiens · Grand Lyon</div>
+      </div>
+      <div class="footer-col">
+        <h4>Secteurs</h4>
+        <a href="coiffeur-lyon.html">Coiffeurs</a>
+        <a href="esthetique-nail-art-lyon.html">Esthéticiennes</a>
+        <a href="institut-massage-lyon.html">Massage</a>
+        <a href="head-spa-lyon.html">Head Spa</a>
+        <a href="yoga-pilates-lyon.html">Yoga &amp; Pilates</a>
+        <a href="spa-institut-lyon.html">Spa &amp; Institut</a>
+        <a href="sophrologue-naturopathe-lyon.html">Sophrologue &amp; Naturopathe</a>
+      </div>
+      <div class="footer-col footer-contact">
+        <h4>Contact</h4>
+        <a href="mailto:contact@nstudiodigital.fr">✉️ contact@nstudiodigital.fr</a>
+        <a href="#">📍 Lyon, Grand Lyon</a>
+        <a href="mentions-legales.html">Mentions légales</a>
+        <a href="cgv.html">CGV</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 N/ Studio Digital · SIRET en cours d'immatriculation</p>
+      <div class="footer-bottom-links">
+        <a href="mentions-legales.html">Mentions légales</a>
+        <a href="cgv.html">CGV</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+  const nav = document.getElementById('main-nav');
+  const hamburger = document.getElementById('hamburger');
+  const navMobile = document.getElementById('nav-mobile');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 30);
+    document.getElementById('backToTop').classList.toggle('visible', window.scrollY > 400);
+  });
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('open');
+    navMobile.classList.toggle('open');
+  });
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('vis'); obs.unobserve(e.target); }});
+  }, {threshold:0.08});
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+  // Filtrage
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const articles = document.querySelectorAll('[data-cat]');
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const filter = btn.dataset.filter;
+      articles.forEach(card => {
+        if(filter === 'tous' || card.dataset.cat.includes(filter)){
+          card.style.display = '';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    });
+  });
+</script>
+</body>
+</html>
