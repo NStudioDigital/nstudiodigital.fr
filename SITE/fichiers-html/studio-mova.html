@@ -264,7 +264,8 @@
     .f-credits a:hover { color: rgba(255,255,255,.4); }
     @keyframes wordUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
     @keyframes ctaPulse { 0%, 100% { transform: translate(-50%,-50%) scale(1); } 50% { transform: translate(-50%,-50%) scale(1.08); } }
-    .cta-word { display: block; opacity: 0; }
+    .cta-line { display: block; }
+    .cta-word { display: inline-block; opacity: 0; }
     .cta-word.visible { animation: wordUp 0.6s ease forwards; }
   </style>
 <script type="application/ld+json">
@@ -594,11 +595,8 @@
   <section class="cta-final">
     <div class="container">
       <h2 class="cta-big" id="cta-words">
-        <span class="cta-word">VOTRE</span>
-        <span class="cta-word">PREMIÈRE</span>
-        <span class="cta-word">SÉANCE</span>
-        <span class="cta-word">EST</span>
-        <span class="cta-word">OFFERTE.</span>
+        <span class="cta-line"><span class="cta-word">VOTRE</span> <span class="cta-word">PREMIÈRE</span></span>
+        <span class="cta-line"><span class="cta-word">SÉANCE</span> <span class="cta-word">OFFERTE.</span></span>
       </h2>
       <p class="cta-sub reveal">Sans engagement · Tous niveaux · Villeurbanne</p>
       <div class="cta-btns reveal">
