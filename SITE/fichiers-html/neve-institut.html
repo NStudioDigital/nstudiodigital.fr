@@ -85,7 +85,7 @@
     .cover-img {
       position: absolute; inset: 0;
       width: 100%; height: 100%;
-      object-fit: cover; object-position: center center;
+      object-fit: cover; object-position: 40% 25%;
       opacity: 1;
     }
     .cover-folio {
@@ -101,12 +101,13 @@
     }
     .cover-title {
       font-family: var(--js);
-      font-size: 60px; font-weight: 700;
+      font-size: 13px; font-weight: 300;
       letter-spacing: 3px; text-transform: uppercase;
       color: rgba(250,246,241,.65);
-      padding: 0 48px 0 88px;
+      padding: 0 48px;
       margin-bottom: 16px;
       white-space: nowrap;
+      text-align: right;
     }
     .cover-stripe {
       background: var(--rose);
@@ -124,7 +125,7 @@
       color: var(--brun2); display: flex; gap: 32px;
     }
     @media(max-width:600px) {
-      .cover-title { padding: 0 24px; white-space: normal; }
+      .cover-title { padding: 0 24px; white-space: nowrap; }
       .cover-folio { display: none; }
       .cover-stripe { padding: 20px 24px; }
     }
