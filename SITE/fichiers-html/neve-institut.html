@@ -99,16 +99,14 @@
       height: 100%; display: flex; flex-direction: column;
       justify-content: flex-end; padding: 0 0 0 0;
     }
-    /* Titre géant qui déborde */
     .cover-title {
-      font-family: var(--pf);
-      font-size: clamp(100px, 16vw, 220px);
-      font-weight: 900; font-style: italic;
-      line-height: .88; letter-spacing: -4px;
-      color: var(--iv);
-      padding-left: 40px;
-      margin-bottom: 20px;
-      /* espace avant le bandeau */
+      font-family: var(--js);
+      font-size: 11px; font-weight: 300;
+      letter-spacing: 3px; text-transform: uppercase;
+      color: rgba(250,246,241,.65);
+      padding: 0 48px;
+      margin-bottom: 16px;
+      white-space: nowrap;
     }
     .cover-stripe {
       background: var(--rose);
@@ -126,7 +124,7 @@
       color: var(--brun2); display: flex; gap: 32px;
     }
     @media(max-width:600px) {
-      .cover-title { font-size: 72px; }
+      .cover-title { padding: 0 24px; white-space: normal; }
       .cover-folio { display: none; }
       .cover-stripe { padding: 20px 24px; }
     }
