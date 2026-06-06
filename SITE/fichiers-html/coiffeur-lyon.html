@@ -178,6 +178,7 @@
     .back-to-top{position:fixed;bottom:28px;right:28px;width:44px;height:44px;background:var(--black);border:1px solid rgba(255,255,255,.1);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--white);font-size:18px;text-decoration:none;opacity:0;pointer-events:none;transition:opacity .3s,transform .3s;z-index:200;}
     .back-to-top.visible{opacity:1;pointer-events:auto;}
     .back-to-top:hover{transform:translateY(-3px);}
+    @media(max-width:768px){.constat-grid{grid-template-columns:1fr!important;gap:40px!important;}}
   </style>
 <script type="application/ld+json">
 {
@@ -390,7 +391,7 @@
 <!-- POURQUOI UN SITE -->
 <section style="background:var(--gray-bg);">
   <div class="container">
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;">
+    <div class="constat-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;">
       <div class="reveal">
         <div class="s-label">Le constat</div>
         <h2 class="s-title">Instagram ne remplace pas<br><strong>un site professionnel.</strong></h2>
@@ -410,7 +411,6 @@
         </div>
       </div>
     </div>
-    @media(max-width:768px){.constat-grid{grid-template-columns:1fr!important;}}
   </div>
 </section>
 
