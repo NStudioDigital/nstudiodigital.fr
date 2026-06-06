@@ -63,6 +63,7 @@
     .hero-eyebrow{display:inline-flex;align-items:center;gap:7px;border:1px solid rgba(255,255,255,.35);color:var(--white);padding:6px 14px;border-radius:100px;font-size:12px;font-weight:500;background:rgba(255,255,255,.15);backdrop-filter:blur(8px);margin-bottom:24px;}
     .hero-eyebrow .dot{width:6px;height:6px;border-radius:50%;background:var(--sage-lt);box-shadow:0 0 8px rgba(154,176,152,.9);}
     .hero-title{font-size:clamp(32px,5.5vw,76px);font-weight:300;color:var(--white);line-height:1.05;letter-spacing:-2px;max-width:820px;margin-bottom:20px;}
+    @media(max-width:768px){.hero-title{font-size:22px;}}
     .hero-title strong{font-weight:700;font-style:italic;}
     .hero-sub{font-size:15px;color:rgba(255,255,255,.6);line-height:1.7;max-width:480px;margin-bottom:36px;}
     .hero-cta{display:flex;align-items:center;gap:12px;flex-wrap:wrap;}
@@ -102,9 +103,9 @@
     .galerie{background:var(--black);}
     .galerie-title{color:var(--white);}
     .galerie-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:3px;margin-top:40px;}
-    @media(max-width:768px){.galerie-grid{grid-template-columns:1fr 1fr;}}
+    @media(max-width:768px){.galerie-grid{grid-template-columns:1fr 1fr;}.galerie-item{aspect-ratio:2/3;}.galerie-item:last-child{grid-column:span 2;aspect-ratio:3/2;}}
     .galerie-item{overflow:hidden;aspect-ratio:4/3;}
-    .galerie-item img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease;display:block;min-height:240px;}
+    .galerie-item img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease;display:block;}
     .galerie-item:hover img{transform:scale(1.04);}
     .zones{border-top:1px solid var(--gray-bd);}
     .zones-list{display:flex;flex-wrap:wrap;gap:10px;margin-top:32px;}
@@ -283,7 +284,7 @@
   <div class="container">
     <div class="hero-content">
       <div class="hero-eyebrow"><span class="dot"></span> Spas · Instituts de beauté · Hammams · Grand Lyon</div>
-      <h1 class="hero-title">Votre spa ou institut de beauté à Lyon mérite un site<br/>à la hauteur de <strong>l'expérience</strong> que vous offrez.</h1>
+      <h1 class="hero-title">Votre spa ou institut de beauté à Lyon mérite un site à la hauteur de <strong>l'expérience</strong> que vous offrez.</h1>
       <p class="hero-sub">Vos clients sont prêts à investir dans leur bien-être. Encore faut-il qu'ils vous trouvent — et que votre site les convainque que votre établissement vaut le déplacement.</p>
       <div class="hero-cta">
         <a href="index.html#contact" class="btn-hero">Créer mon site →</a>
