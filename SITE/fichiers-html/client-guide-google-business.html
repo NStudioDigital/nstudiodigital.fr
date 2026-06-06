@@ -4,6 +4,7 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Guide Google Business — N/ Studio Digital</title>
+  <link rel="canonical" href="https://www.nstudiodigital.fr/client-guide-google-business.html"/>
   <meta name="robots" content="noindex, nofollow"/>
   <link rel="icon" type="image/x-icon" href="/favicon.ico"/>
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"/>
@@ -104,9 +105,26 @@
     .f-links{display:flex;gap:20px;}
     .f-links a{font-size:12px;color:rgba(255,255,255,.3);text-decoration:none;transition:color .2s;}
     .f-links a:hover{color:rgba(255,255,255,.7);}
+  
+    .cookie-banner{position:fixed;bottom:24px;left:24px;max-width:380px;background:#fff;border:1px solid #e0e0e0;box-shadow:0 8px 32px rgba(0,0,0,.12);padding:20px 24px;z-index:500;transition:opacity .3s,transform .3s;font-family:'Inter',sans-serif;}
+    .cookie-banner.hidden{opacity:0;pointer-events:none;transform:translateY(12px);}
+    .cookie-text{font-size:13px;color:#888888;line-height:1.6;margin-bottom:16px;}
+    .cookie-btns{display:flex;gap:10px;}
+    .cookie-accept{background:#0D0D0D;color:#fff;border:none;padding:9px 18px;font-family:inherit;font-size:12px;font-weight:500;cursor:pointer;border-radius:100px;transition:background .2s;}
+    .cookie-accept:hover{background:#333;}
+    .cookie-refuse{background:transparent;color:#888888;border:1px solid #e0e0e0;padding:9px 18px;font-family:inherit;font-size:12px;cursor:pointer;border-radius:100px;transition:background .2s;}
+    .cookie-refuse:hover{background:#f4f4f4;}
   </style>
 </head>
 <body>
+
+  <div class="cookie-banner" id="cookieBanner">
+    <p class="cookie-text">Ce site utilise des cookies pour mesurer l'audience et améliorer votre expérience. Aucune donnée n'est revendue à des tiers.</p>
+    <div class="cookie-btns">
+      <button class="cookie-accept" onclick="acceptCookies()">Accepter</button>
+      <button class="cookie-refuse" onclick="refuseCookies()">Refuser</button>
+    </div>
+  </div>
 
 <!-- NAV -->
 <nav>
@@ -414,5 +432,10 @@
   </div>
 </footer>
 
+  <script>
+    function acceptCookies(){localStorage.setItem('cookies','accepted');document.getElementById('cookieBanner').classList.add('hidden');}
+    function refuseCookies(){localStorage.setItem('cookies','refused');document.getElementById('cookieBanner').classList.add('hidden');}
+    if(localStorage.getItem('cookies'))document.getElementById('cookieBanner').classList.add('hidden');
+  </script>
 </body>
 </html>
