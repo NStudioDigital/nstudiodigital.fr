@@ -89,7 +89,7 @@
     .cover-img {
       position: absolute; inset: 0;
       width: 100%; height: 100%;
-      object-fit: cover; object-position: 40% 70%;
+      object-fit: cover; object-position: 40% 50%;
       opacity: 1;
     }
     .cover-folio {
@@ -105,34 +105,35 @@
     }
     .cover-title {
       font-family: var(--js);
-      font-size: 18px; font-weight: 300;
+      font-size: clamp(24px, 2.8vw, 40px); font-weight: 300;
       letter-spacing: 3px; text-transform: uppercase;
-      color: rgba(250,246,241,.65);
+      color: rgba(250,246,241,.95);
       padding: 0 48px;
-      margin-bottom: 16px;
+      margin-bottom: 20px;
       white-space: nowrap;
       text-align: right;
+      text-shadow: 0 2px 16px rgba(30,20,15,.4);
     }
     .cover-stripe {
       background: var(--rose);
-      padding: 20px 48px;
+      padding: 24px 48px;
       display: flex; align-items: center; justify-content: space-between;
       flex-wrap: wrap; gap: 16px;
     }
     .cover-stripe-text {
       font-family: var(--cg);
-      font-size: 18px; font-style: italic; font-weight: 300;
+      font-size: clamp(18px, 2vw, 24px); font-style: italic; font-weight: 300;
       color: var(--brun);
     }
     .cover-stripe-meta {
-      font-size: 10px; letter-spacing: 3px; text-transform: uppercase;
+      font-size: 12px; letter-spacing: 2.5px; text-transform: uppercase;
       color: var(--brun2); display: flex; gap: 32px;
     }
     @media(max-width:600px) {
-      .cover-title { padding: 0 24px; white-space: nowrap; }
+      .cover-title { padding: 0 24px; white-space: normal; font-size: 22px; text-align: left; }
       .cover-folio { display: none; }
       .cover-stripe { padding: 20px 24px; }
-      .cover-img { object-position: left 70%; }
+      .cover-img { object-position: left 50%; }
     }
 
     /* ── PAGE NUMBER UTIL ── */
@@ -727,7 +728,7 @@
   <img class="cover-img"
     src="PHOTOS/SITE NÉVÉ/nevénav.webp"
     alt="Névé Institut soin visage Lyon 6e" loading="eager" fetchpriority="high"/>
-  <div style="position:absolute;inset:0;background:linear-gradient(to bottom,transparent 40%,rgba(30,20,15,.6) 100%);z-index:1;pointer-events:none;"></div>
+  <div style="position:absolute;inset:0;background:linear-gradient(to bottom,rgba(30,20,15,.1) 0%,transparent 35%,rgba(30,20,15,.85) 75%,rgba(30,20,15,.9) 100%);z-index:1;pointer-events:none;"></div>
   <div class="cover-folio">Institut de soin · Lyon 69006 · Depuis 2021</div>
   <div class="cover-content">
     <h1 class="cover-title">Névé — Institut de soin à Lyon 6e</h1>
