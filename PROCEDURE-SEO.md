@@ -422,6 +422,8 @@ Format recommandé pour le footer :
 - [ ] Schema JSON-LD LocalBusiness présent (accueil)
 - [ ] Schema FAQPage si FAQ présente
 - [ ] Schema BreadcrumbList (toutes pages sauf accueil)
+- [ ] Meta description : accroche émotionnelle + argument clé + CTA ("Devis gratuit", "Sur rendez-vous")
+- [ ] Prix en description : utiliser "À partir de [prix]" plutôt qu'un tarif fixe
 
 ### Pour le site entier :
 
@@ -433,6 +435,7 @@ Format recommandé pour le footer :
 - [ ] Images OG présentes sur toutes les pages (PNG 1200×630)
 - [ ] Site testé mobile (Chrome DevTools, vrai smartphone)
 - [ ] Temps de chargement < 3s (tester sur PageSpeed Insights)
+- [ ] `lastmod` du sitemap.xml mis à jour après chaque modification de page
 
 ---
 
@@ -443,8 +446,10 @@ Format recommandé pour le footer :
 1. Ajouter la propriété (type "Préfixe d'URL" ou "Domaine")
 2. Vérifier via le fichier HTML ou le DNS
 3. Soumettre le sitemap : Indexation > Sitemaps > coller l'URL du sitemap
-4. Demander l'indexation manuelle des pages principales (quota : ~10/jour)
+4. Demander l'indexation manuelle des pages principales
    - Inspection d'URL > Demander l'indexation
+   - **Quota : 10 demandes maximum par jour**, renouvelé chaque matin
+   - **Ordre de priorité :** accueil → pages secteurs → blog → portfolio
 
 ### J+7 — Vérifications
 
@@ -453,6 +458,8 @@ Format recommandé pour le footer :
 - [ ] Aucune erreur de couverture bloquante
 
 ### J+14 à J+30 — Vérifications rich snippets
+
+⚠️ Attendre **2 à 4 semaines** après indexation avant de vérifier l'apparition des rich snippets FAQ — Google prend du temps pour les traiter même si le schema est valide.
 
 - [ ] Tester les schemas sur [search.google.com/test/rich-results](https://search.google.com/test/rich-results)
 - [ ] Vérifier l'apparition des FAQ enrichies dans les SERP
@@ -508,5 +515,43 @@ Format recommandé pour le footer :
 
 ---
 
-*Procédure N/ Studio Digital — Version 1.0 — Juin 2026*
+---
+
+## 11. FICHE GOOGLE BUSINESS PROFILE
+
+### Vérification du compte
+
+- La vérification est **obligatoire** avant toute visibilité sur Google Maps
+- Deux méthodes : **courrier postal** (carte avec code, délai 1-2 semaines) ou **vidéo** (vérification en direct via l'appli Google Maps)
+- Si le courrier n'arrive pas au bout de 2 semaines : **basculer immédiatement sur la vérification vidéo** (disponible dans les paramètres du profil)
+
+### NAP — Cohérence obligatoire
+
+Le nom, l'adresse et le téléphone doivent être **exactement identiques** sur :
+- Le site web (footer, page contact, schema LocalBusiness)
+- La fiche Google Business
+- Les réseaux sociaux (Instagram, Facebook…)
+
+Toute divergence nuit au SEO local et peut bloquer la vérification.
+
+### Photos à ajouter sur la fiche
+
+- Logo de l'établissement
+- Photo de couverture (même visuel que le hero du site si possible)
+- Photos de l'intérieur (ambiance, espace de soin)
+- Photos des prestations / résultats (avec accord client)
+- Photo de façade / extérieur (aide les clients à trouver l'adresse)
+
+### Avis Google — Actions à donner au client
+
+> À donner au client dès la mise en ligne :
+> 1. Générer son **lien direct d'avis** : fiche Google Business > Obtenir plus d'avis > copier le lien
+> 2. Envoyer ce lien à ses premiers clients par SMS ou message direct
+> 3. L'ajouter dans sa signature email et en story Instagram
+>
+> Les premiers avis sont déterminants pour la confiance et le classement local — ne pas attendre.
+
+---
+
+*Procédure N/ Studio Digital — Version 1.1 — Juin 2026*
 *À mettre à jour au fil des retours terrain et des évolutions Google*
