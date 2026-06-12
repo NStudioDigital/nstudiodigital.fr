@@ -553,5 +553,31 @@ Toute divergence nuit au SEO local et peut bloquer la vérification.
 
 ---
 
-*Procédure N/ Studio Digital — Version 1.1 — Juin 2026*
+---
+
+## 12. JOURNAL DES MISES À JOUR — NSTUDIODIGITAL.FR
+
+### 12 juin 2026 — Nettoyage tarifaire et cohérence globale du site
+
+**Tarification — suppression du tarif lancement**
+- Suppression complète des mentions 891€, badges "Tarif lancement — jusqu'au 31 juillet 2026", prix barrés 990€ et notes associées sur tous les fichiers HTML visuels (index.html, blog.html, cgv.html, pages secteurs, articles de blog)
+- Rétablissement du prix standard **990€ TTC** partout
+- Note : JSON-LD, balises meta/og: et sitemap.xml non modifiés (conformément aux règles de la procédure)
+
+**Offre & maintenance**
+- Ajout de "5 pages sur-mesure incluses" dans la section offre de index.html
+- Description du forfait maintenance ("3 modifications/mois, non cumulables, sans engagement") ajoutée et uniformisée sur index.html, cgv.html, articles de blog et pages secteurs
+- Uniformisation du prix de maintenance **19€/mois** dans les FAQ de sophrologue-naturopathe-lyon.html, spa-institut-lyon.html et yoga-pilates-lyon.html (remplaçait "forfait maintenance à la demande" sans prix)
+
+**Cohérence légale et footers**
+- Correction des footers incomplets sur sophrologue-naturopathe-lyon.html, yoga-pilates-lyon.html, spa-institut-lyon.html et blog.html — ajout de "Nadège Dufour" et mention TVA manquantes
+- Unification du SIRET sans espaces (`10536540700011`) sur toutes les pages — cgv.html utilisait `105 365 407 00011`
+- Unification du statut juridique **Micro-entreprise** entre mentions-legales.html et cgv.html (qui affichait "Entrepreneur individuel")
+- Correction de l'ordre footer cgv.html : `TVA non applicable · SIRET` aligné sur toutes les autres pages
+- Mise à jour des dates "Dernière mise à jour" à **juin 2026** dans cgv.html et mentions-legales.html
+- Correction copyright **2025 → 2026** sur 5 pages : blog.html, sophrologue-naturopathe-lyon.html, yoga-pilates-lyon.html, spa-institut-lyon.html, client-guide-google-business.html
+
+---
+
+*Procédure N/ Studio Digital — Version 1.2 — Juin 2026*
 *À mettre à jour au fil des retours terrain et des évolutions Google*
