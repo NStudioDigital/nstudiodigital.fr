@@ -287,13 +287,14 @@
     </div>
   </div>
 </nav>
-<div class="nav-mobile" id="nav-mobile">
-  <a href="index.html#offres">Offre</a>
-  <a href="index.html#realisations">Réalisations</a>
-  <a href="index.html#process">Process</a>
-  <a href="blog.html">Blog</a>
-  <a href="index.html#contact">Contact</a>
-  <a href="index.html#contact" class="mobile-cta">Démarrer mon projet →</a>
+<div class="nav-mobile" id="navMobile">
+  <a href="index.html" onclick="closeMenu()">Accueil</a>
+  <a href="index.html#offres" onclick="closeMenu()">Offres</a>
+  <a href="index.html#process" onclick="closeMenu()">Méthode</a>
+  <a href="index.html#secteurs" onclick="closeMenu()">Secteurs</a>
+  <a href="blog.html" onclick="closeMenu()">Blog</a>
+  <a href="index.html#faq" onclick="closeMenu()">FAQ</a>
+  <a href="#contact" class="mobile-cta" onclick="closeMenu()">Démarrer mon projet →</a>
 </div>
 
 <section class="hero">
@@ -531,12 +532,11 @@
 <script>
   const nav = document.getElementById('main-nav');
   const hamburger = document.getElementById('hamburger');
-  const navMobile = document.getElementById('nav-mobile');
+  const navMobile = document.getElementById('navMobile');
   window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 20); });
-  hamburger.addEventListener('click', () => {
-    hamburger.classList.toggle('open');
-    navMobile.classList.toggle('open');
-  });
+  hamburger.addEventListener('click', () => { hamburger.classList.toggle('open'); navMobile.classList.toggle('open'); });
+  function closeMenu() { hamburger.classList.remove('open'); navMobile.classList.remove('open'); }
+  document.addEventListener('click', (e) => { if (!nav.contains(e.target) && !navMobile.contains(e.target)) closeMenu(); });
   const reveals = document.querySelectorAll('.reveal');
   const obs = new IntersectionObserver((entries) => {
     entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('vis'); obs.unobserve(e.target); }});
