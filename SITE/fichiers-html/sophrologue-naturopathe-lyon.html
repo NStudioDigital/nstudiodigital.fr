@@ -180,6 +180,12 @@
     .cookie-accept:hover{background:#333;}
     .cookie-refuse{background:transparent;color:#888888;border:1px solid #e0e0e0;padding:9px 18px;font-family:inherit;font-size:12px;cursor:pointer;border-radius:100px;transition:background .2s;}
     .cookie-refuse:hover{background:#f4f4f4;}
+    .back-to-top{position:fixed;bottom:28px;right:28px;width:44px;height:44px;background:var(--black);border:1px solid rgba(255,255,255,.1);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--white);font-size:18px;text-decoration:none;opacity:0;pointer-events:none;transition:opacity .3s,transform .3s;z-index:200;}
+    .back-to-top.visible{opacity:1;pointer-events:auto;}
+    .back-to-top:hover{transform:translateY(-3px);}
+    .cta-perks{display:flex;flex-direction:column;gap:10px;margin-bottom:16px;}
+    .cta-perk{display:flex;gap:10px;align-items:flex-start;font-size:14px;color:rgba(255,255,255,.5);}
+    .cta-perk::before{content:'/';color:var(--sage);font-weight:300;flex-shrink:0;}
   </style>
 <script type="application/ld+json">
 {
@@ -492,6 +498,12 @@
     <div class="section-label" style="color:var(--sage-lt);">Démarrer</div>
     <h2 class="cta-title reveal">Votre site vitrine,<br/><strong>livré en 3 semaines.</strong></h2>
     <p class="cta-sub reveal">Parlez-moi de votre activité — je vous réponds sous 48h.</p>
+    <div class="cta-perks reveal" style="margin-top:24px;text-align:left;max-width:360px;margin-left:auto;margin-right:auto;">
+      <div class="cta-perk">30 minutes · 100% gratuit · sans engagement</div>
+      <div class="cta-perk">Analyse de votre présence en ligne actuelle</div>
+      <div class="cta-perk">Conseils concrets applicables immédiatement</div>
+      <div class="cta-perk">Devis détaillé remis sous 24h</div>
+    </div>
     <form class="contact-form reveal" action="https://formspree.io/f/xgoqklzl" method="POST">
       <input type="hidden" name="_subject" value="Demande devis sophrologue — N/ Studio Digital"/>
       <div class="form-row">
@@ -528,6 +540,8 @@
     </div>
   </div>
 </div>
+
+<a href="#" class="back-to-top" id="backToTop">↑</a>
 
 <!-- FOOTER -->
 <footer>
@@ -570,6 +584,8 @@
   const hamburger = document.getElementById('hamburger');
   const navMobile = document.getElementById('navMobile');
   window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 20); });
+  const backBtn = document.getElementById('backToTop');
+  window.addEventListener('scroll', () => { backBtn.classList.toggle('visible', window.scrollY > 400); });
   hamburger.addEventListener('click', () => { hamburger.classList.toggle('open'); navMobile.classList.toggle('open'); });
   function closeMenu() { hamburger.classList.remove('open'); navMobile.classList.remove('open'); }
   document.addEventListener('click', (e) => { if (!nav.contains(e.target) && !navMobile.contains(e.target)) closeMenu(); });
