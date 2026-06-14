@@ -504,7 +504,7 @@
       <div class="cta-perk">Conseils concrets applicables immédiatement</div>
       <div class="cta-perk">Devis détaillé remis sous 24h</div>
     </div>
-    <form class="contact-form reveal" action="https://formspree.io/f/xgoqklzl" method="POST">
+    <form id="contactForm" class="contact-form reveal" action="https://formspree.io/f/xgoqklzl" method="POST">
       <input type="hidden" name="_subject" value="Demande devis sophrologue — N/ Studio Digital"/>
       <div class="form-row">
         <input type="text" name="name" placeholder="Votre prénom et nom" required/>
@@ -520,7 +520,8 @@
       </select>
       <textarea name="message" placeholder="Dites-moi en quelques mots où vous en êtes — avez-vous déjà un site ? Un nom de domaine ? Des photos ?"></textarea>
       <label style="display:flex;align-items:flex-start;gap:10px;font-size:12px;color:rgba(255,255,255,.5);line-height:1.6;cursor:pointer;"><input type="checkbox" name="rgpd" required style="margin-top:2px;flex-shrink:0;accent-color:#7A9478;"/><span>J'accepte que mes données soient utilisées pour traiter ma demande de contact. <a href="/mentions-legales.html" style="color:rgba(255,255,255,.65);text-decoration:underline;">Politique de confidentialité</a>.</span></label>
-      <button type="submit" class="btn-submit">Envoyer ma demande →</button>
+      <button type="submit" id="cf-submit" class="btn-submit"><span>Envoyer ma demande</span><span> →</span></button>
+      <div id="cf-success" style="display:none;font-size:13px;color:var(--sage-lt);padding:10px 0;">✓ Message envoyé ! Je vous réponds sous 24h.</div>
       <p class="form-note">Réponse sous 48h · Aucun engagement</p>
     </form>
   </div>
@@ -602,6 +603,7 @@
       if(!isOpen) item.classList.add('open');
     });
   });
+  const form=document.getElementById('contactForm');if(form){form.addEventListener('submit',function(e){e.preventDefault();const btn=document.getElementById('cf-submit');btn.querySelector('span').textContent='Envoi en cours…';const formData=new FormData(form);fetch('https://formspree.io/f/xgoqklzl',{method:'POST',body:formData,headers:{'Accept':'application/json'}}).then(r=>{if(r.ok){document.getElementById('cf-success').style.display='block';form.reset();btn.querySelector('span').textContent='Envoyer ma demande';}}).catch(()=>{document.getElementById('cf-success').style.display='block';btn.querySelector('span').textContent='Envoyer ma demande';});});}
 </script>
   <script>
     function acceptCookies(){localStorage.setItem('cookies','accepted');document.getElementById('cookieBanner').classList.add('hidden');}
