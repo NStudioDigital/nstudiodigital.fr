@@ -159,7 +159,7 @@
     @media(max-width:768px){ .problem-cards{ grid-template-columns: 1fr; } }
     .pb-card { background: var(--black); padding: 28px 24px; }
     .pb-icon { width: 40px; height: 40px; border: 1px solid rgba(122,148,120,.3); border-radius: 2px; display: flex; align-items: center; justify-content: center; margin-bottom: 18px; background: rgba(122,148,120,.08); }
-    .pb-icon svg { width: 22px; height: 22px; fill: var(--sage); }
+    .pb-icon svg { width: 22px; height: 22px; fill: none; stroke: var(--sage); stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
     .pb-card-title { font-size: 14px; font-weight: 600; color: var(--white); margin-bottom: 10px; line-height: 1.4; }
     .pb-card-text { font-size: 13px; color: rgba(255,255,255,.45); line-height: 1.7; }
     .pb-card-text strong { color: rgba(255,255,255,.7); font-weight: 500; }
@@ -347,7 +347,7 @@
     .f-col-links a { font-size: 13px; color: rgba(255,255,255,.4); text-decoration: none; transition: color .2s; }
     .f-col-links a:hover { color: rgba(255,255,255,.75); }
     .f-contact-item { display: flex; align-items: center; gap: 8px; font-size: 13px; color: rgba(255,255,255,.4); }
-    .f-contact-item svg { width: 14px; height: 14px; fill: var(--sage); flex-shrink: 0; }
+    .f-contact-item svg { width: 14px; height: 14px; fill: none; stroke: var(--sage); stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0; }
     .f-contact-item a { color: rgba(255,255,255,.4); text-decoration: none; transition: color .2s; }
     .f-contact-item a:hover { color: rgba(255,255,255,.75); }
     .f-bottom { border-top: 1px solid rgba(255,255,255,.06); padding-top: 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
@@ -609,19 +609,19 @@
       </div>
       <div class="problem-cards">
         <div class="pb-card">
-          <div class="pb-icon"><svg viewBox="0 0 24 24"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg></div>
+          <div class="pb-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
           <div class="pb-card-title">Invisible sur Google</div>
           <div class="pb-card-text">Vos futures clientes tapent <strong>"coiffeuse Lyon 6"</strong> ou <strong>"esthéticienne soin visage Lyon"</strong> — si vous n'avez pas de site, elles réservent chez votre concurrent.</div>
           <div class="pb-card-note">→ Un site optimisé SEO local change la donne dès les premières semaines.</div>
         </div>
         <div class="pb-card">
-          <div class="pb-icon"><svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 3c1.93 0 3.5 1.57 3.5 3.5S13.93 13 12 13s-3.5-1.57-3.5-3.5S10.07 6 12 6zm7 13H5v-.23c0-.62.28-1.2.76-1.58C7.47 15.82 9.64 15 12 15s4.53.82 6.24 2.19c.48.38.76.97.76 1.58V19z"/></svg></div>
+          <div class="pb-icon"><svg viewBox="0 0 24 24"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></div>
           <div class="pb-card-title">Instagram ne suffit plus</div>
           <div class="pb-card-text">Les réseaux sociaux créent de la notoriété, mais <strong>ne convertissent pas</strong>. Sans site, pas de tarifs clairs, pas de RDV direct, pas de confiance.</div>
           <div class="pb-card-note">→ Un site professionnel double votre visibilité sans doubler votre travail.</div>
         </div>
         <div class="pb-card">
-          <div class="pb-icon"><svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"/></svg></div>
+          <div class="pb-icon"><svg viewBox="0 0 24 24"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
           <div class="pb-card-title">Les plateformes vous enferment</div>
           <div class="pb-card-text">Wix, Planity, Treatwell prennent leur commission et gardent la main sur vos données. <strong>Votre site vous appartient.</strong> Votre GitHub vous appartient.</div>
           <div class="pb-card-note">→ Propriétaire à 100% dès la livraison. Aucune dépendance.</div>
@@ -1058,11 +1058,11 @@
           <p class="f-desc">Agence web spécialisée en création de sites vitrine sur-mesure pour coiffeurs, esthéticiennes, head spas, sophrologues et praticiens bien-être de la métropole lyonnaise.</p>
           <div style="margin-top:16px;display:flex;flex-direction:column;gap:8px;">
             <div class="f-contact-item">
-              <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+              <svg viewBox="0 0 24 24"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
               <a href="mailto:contact@nstudiodigital.fr">contact@nstudiodigital.fr</a>
             </div>
             <div class="f-contact-item">
-              <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
               <span>Rillieux-la-Pape · Grand Lyon</span>
             </div>
           </div>
