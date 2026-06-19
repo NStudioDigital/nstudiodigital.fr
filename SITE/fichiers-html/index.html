@@ -141,7 +141,7 @@
     .logos-track { display: flex; gap: 0; white-space: nowrap; animation: marquee 28s linear infinite; }
     @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
     .logo-item { display: inline-flex; align-items: center; gap: 10px; font-size: 11px; font-weight: 400; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(255,255,255,.25); padding: 0 28px; }
-    .logo-item svg { width: 18px; height: 18px; fill: rgba(122,148,120,.4); flex-shrink: 0; }
+    .logo-item svg { width: 18px; height: 18px; fill: none; stroke: rgba(122,148,120,.4); stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0; }
     .logo-sep { color: rgba(122,148,120,.3); font-weight: 300; font-size: 16px; margin-left: 28px; }
 
     /* ── SECTIONS communes ── */
@@ -263,12 +263,12 @@
     .sc-photo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: .6; transition: opacity .4s ease, transform .4s ease; pointer-events: none; z-index: 0; }
     .sc-content { position: relative; z-index: 2; }
     .sc-icon { width: 38px; height: 38px; margin-bottom: 16px; display: flex; align-items: center; justify-content: center; }
-    .sc-icon svg { width: 34px; height: 34px; fill: var(--sage-lt); display: block; }
+    .sc-icon svg { width: 34px; height: 34px; fill: none; stroke: var(--sage-lt); stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; display: block; }
     .sc-name { font-size: 14px; font-weight: 500; color: var(--white); margin-bottom: 7px; letter-spacing: -.2px; }
     .sc-desc { font-size: 11px; color: rgba(255,255,255,.62); line-height: 1.6; }
     .secteur-card.sc-nophoto { background: #111; border-color: rgba(122,148,120,.18); }
     .secteur-card.sc-nophoto::before { background: none; }
-    .secteur-card.sc-nophoto .sc-icon svg { fill: var(--sage); }
+    .secteur-card.sc-nophoto .sc-icon svg { stroke: var(--sage); }
 
     /* ── COMPARATIF MOBILE ── */
     .comparatif { background: var(--gray-bg); }
@@ -383,14 +383,22 @@
   <!-- SVG ICONS -->
   <svg style="display:none" xmlns="http://www.w3.org/2000/svg">
     <defs>
-      <symbol id="ico-coiffure" viewBox="0 0 100 100"><path d="M35 20c0-8 10-15 18-10 6 3 8 10 5 16l-8 18c-2 4-1 9 2 12l20 22c3 3 3 8 0 11s-8 3-11 0L41 69c-3-3-8-4-12-2L12 74c-6 3-13 1-16-5s-1-13 5-16l18-8c4-2 6-6 6-11l-2-14h12z"/></symbol>
-      <symbol id="ico-headspa" viewBox="0 0 512 512"><path d="M256 48C141 48 48 141 48 256s93 208 208 208 208-93 208-208S371 48 256 48zm0 32c40 0 77 12 108 33l-30 30a144 144 0 10-156 0l-30-30C179 92 217 80 256 80zm0 352c-97 0-176-79-176-176 0-43 16-83 42-113l30 30a144 144 0 00200 0l30-30c26 30 42 70 42 113 0 97-79 176-176 176z"/><circle cx="256" cy="256" r="48"/></symbol>
-      <symbol id="ico-massage" viewBox="0 0 64 64"><path d="M48 8c-4 0-8 3-8 8v12l-8-4-8 4V16c0-5-4-8-8-8S8 11 8 16v36l16 8 8-4 8 4 16-8V16c0-5-4-8-8-8z"/></symbol>
-      <symbol id="ico-bienetre" viewBox="0 0 512 512"><path d="M256 32C132 32 32 132 32 256s100 224 224 224 224-100 224-224S380 32 256 32zm80 320H176c-8 0-16-6-16-16V208c0-8 6-16 16-16h160c8 0 16 6 16 16v128c0 10-8 16-16 16zm-16-144H192v112h128V208z"/></symbol>
-      <symbol id="ico-yoga" viewBox="0 0 512 512"><circle cx="256" cy="80" r="48"/><path d="M352 200c0-28-23-48-50-44l-46 8-46-8c-27-4-50 16-50 44v80h48v-64l20 4v216h48V296l16 40h48l-16-56v-80z"/></symbol>
-      <symbol id="ico-spa" viewBox="0 0 24 24"><path d="M12 2C8 2 4 5 4 9c0 5 8 13 8 13s8-8 8-13c0-4-4-7-8-7zm0 9c-1 0-2-1-2-2s1-2 2-2 2 1 2 2-1 2-2 2z"/></symbol>
-      <symbol id="ico-esthetique" viewBox="0 0 60 60"><path d="M30 5C16 5 5 16 5 30s11 25 25 25 25-11 25-25S44 5 30 5zm10 28h-8v8h-4v-8h-8v-4h8v-8h4v8h8v4z"/></symbol>
-      <symbol id="ico-plus" viewBox="0 0 512 512"><path d="M256 48C141 48 48 141 48 256s93 208 208 208 208-93 208-208S371 48 256 48zm96 224h-80v80h-32v-80h-80v-32h80v-80h32v80h80v32z"/></symbol>
+      <!-- Ciseaux de coiffeur — Lucide scissors -->
+      <symbol id="ico-coiffure" viewBox="0 0 24 24"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><line x1="20" y1="4" x2="8.12" y2="15.88"/><line x1="14.47" y1="14.48" x2="20" y2="20"/><line x1="8.12" y1="8.12" x2="12" y2="12"/></symbol>
+      <!-- Goutte d'eau — Lucide droplet -->
+      <symbol id="ico-headspa" viewBox="0 0 24 24"><path d="M12 2c-3 5-6 8-6 12a6 6 0 0 0 12 0c0-4-3-7-6-12z"/></symbol>
+      <!-- Main ouverte — Lucide hand -->
+      <symbol id="ico-massage" viewBox="0 0 24 24"><path d="M18 11V6a2 2 0 0 0-2-2a2 2 0 0 0-2 2"/><path d="M14 10V4a2 2 0 0 0-2-2a2 2 0 0 0-2 2v2"/><path d="M10 10.5V6a2 2 0 0 0-2-2a2 2 0 0 0-2 2v8"/><path d="M18 8a2 2 0 1 1 4 0v6a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.86-5.99-2.34l-3.6-3.6a2 2 0 0 1 2.83-2.82L7 15"/></symbol>
+      <!-- Feuille — Lucide leaf -->
+      <symbol id="ico-bienetre" viewBox="0 0 24 24"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></symbol>
+      <!-- Silhouette debout — Lucide person-standing -->
+      <symbol id="ico-yoga" viewBox="0 0 24 24"><circle cx="12" cy="5" r="1"/><path d="m9 20 3-6 3 6"/><path d="m6 8 6 2 6-2"/><path d="M12 10v4"/></symbol>
+      <!-- Vagues — Lucide waves -->
+      <symbol id="ico-spa" viewBox="0 0 24 24"><path d="M2 6c.6.5 1.2 1 2.5 1C7 7 7 5 9.5 5c2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/><path d="M2 12c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/><path d="M2 18c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/></symbol>
+      <!-- Sparkles — Lucide sparkles -->
+      <symbol id="ico-esthetique" viewBox="0 0 24 24"><path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.937A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .963L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/><path d="M20 3v4"/><path d="M22 5h-4"/><path d="M4 17v2"/><path d="M5 18H3"/></symbol>
+      <!-- Cercle + croix — Lucide circle-plus -->
+      <symbol id="ico-plus" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8 12h8"/><path d="M12 8v8"/></symbol>
     </defs>
   </svg>
 
