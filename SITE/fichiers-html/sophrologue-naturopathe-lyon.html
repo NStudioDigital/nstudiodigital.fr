@@ -336,7 +336,7 @@
       <h1 class="hero-title">Sophrologue ou naturopathe à Lyon —<br/><strong>un site qui pose le calme avant même la première séance.</strong></h1>
       <p class="hero-sub">Vos futurs clients cherchent un praticien en qui avoir confiance. Votre site doit transmettre cette sérénité — et les convaincre de prendre rendez-vous.</p>
       <div class="hero-cta">
-        <a href="#contact" class="btn-hero">Je réserve mon appel gratuit →</a>
+        <a href="#" class="btn-hero" data-cal-link="nadege-dufour/appel-decouverte" data-cal-namespace="appel-decouverte" data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'>Je réserve mon appel gratuit →</a>
         <a href="index.html#offres" class="btn-hero-ghost">Voir l'offre · 990€ TTC</a>
       </div>
     </div>
@@ -610,5 +610,14 @@
     function refuseCookies(){localStorage.setItem('cookies','refused');document.getElementById('cookieBanner').classList.add('hidden');}
     if(localStorage.getItem('cookies'))document.getElementById('cookieBanner').classList.add('hidden');
   </script>
+<!-- Cal element-click embed code begins -->
+<script type="text/javascript">
+  (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://app.cal.eu/embed/embed.js", "init");
+Cal("init", "appel-decouverte", {origin:"https://app.cal.eu"});
+Cal.config = Cal.config || {};
+Cal.config.forwardQueryParams = true;
+  Cal.ns["appel-decouverte"]("ui", {"cssVarsPerTheme":{"light":{"cal-brand":"#7A9478"}},"hideEventTypeDetails":false,"layout":"month_view"});
+</script>
+<!-- Cal element-click embed code ends -->
 </body>
 </html>
