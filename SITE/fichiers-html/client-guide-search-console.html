@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Guide Google Search Console — N/ Studio Digital</title>
+  <link rel="canonical" href="https://www.nstudiodigital.fr/client-guide-search-console.html"/>
+  <link rel="icon" type="image/x-icon" href="/favicon.ico"/>
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png"/>
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"/>
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png"/>
+  <meta name="robots" content="noindex, nofollow"/>
+  <link rel="manifest" href="/site.webmanifest"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    :root{--black:#0D0D0D;--white:#FFFFFF;--gray-mid:#888888;--gray-lt:#CCCCCC;--gray-bg:#F4F4F4;--gray-bd:#E0E0E0;--sage:#7A9478;--sage-lt:#9AB098;--font:'Inter',sans-serif;}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;font-size:16px;}
+    body{font-family:var(--font);background:var(--white);color:var(--black);-webkit-font-smoothing:antialiased;}
+    .container{max-width:800px;margin:0 auto;padding:0 40px;}
+    @media(max-width:600px){.container{padding:0 20px;}}
+
+    /* NAV */
+    nav{background:var(--white);border-bottom:1px solid var(--gray-bd);position:sticky;top:0;z-index:100;}
+    .nav-inner{display:flex;align-items:center;justify-content:space-between;height:60px;}
+    .nav-logo{font-size:17px;font-weight:400;color:var(--black);text-decoration:none;}
+    .nav-logo .slash{font-weight:300;color:var(--sage);}
+    .nav-badge{display:inline-flex;align-items:center;gap:6px;padding:5px 12px;background:var(--gray-bg);border:1px solid var(--gray-bd);border-radius:100px;font-size:11px;font-weight:500;color:var(--gray-mid);}
+    .nav-badge::before{content:'🔒';font-size:10px;}
+
+    /* HEADER */
+    .page-header{padding:56px 0 40px;border-bottom:1px solid var(--gray-bd);margin-bottom:48px;}
+    .page-label{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:2.5px;color:var(--sage);margin-bottom:16px;display:flex;align-items:center;gap:8px;}
+    .page-label::before{content:'/';font-weight:300;font-size:16px;}
+    .page-title{font-size:clamp(26px,4vw,40px);font-weight:300;line-height:1.15;letter-spacing:-1px;margin-bottom:16px;}
+    .page-title strong{font-weight:700;}
+    .page-intro{font-size:15px;color:var(--gray-mid);line-height:1.8;margin-bottom:24px;}
+    .page-intro strong{color:var(--black);}
+    .time-badge{display:inline-flex;align-items:center;gap:8px;padding:10px 18px;background:var(--gray-bg);border:1px solid var(--gray-bd);border-left:3px solid var(--sage);font-size:13px;color:var(--gray-mid);}
+    .time-badge strong{color:var(--black);}
+
+    /* CONTENU */
+    .guide-content{padding-bottom:80px;}
+    .guide-step{margin-bottom:56px;padding-bottom:56px;border-bottom:1px solid var(--gray-bd);}
+    .guide-step:last-child{border-bottom:none;}
+    .step-header{display:flex;align-items:flex-start;gap:20px;margin-bottom:24px;}
+    .step-number{width:40px;height:40px;border-radius:50%;background:var(--black);color:var(--white);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;flex-shrink:0;}
+    .step-number.done{background:var(--sage);}
+    .step-title-wrap{}
+    .step-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:var(--sage);margin-bottom:4px;}
+    .step-title{font-size:20px;font-weight:600;color:var(--black);line-height:1.2;}
+    .step-duration{display:inline-flex;align-items:center;gap:5px;margin-top:6px;font-size:11px;color:var(--gray-mid);background:var(--gray-bg);padding:3px 10px;border-radius:100px;}
+
+    .step-body p{font-size:14px;color:var(--gray-mid);line-height:1.8;margin-bottom:14px;}
+    .step-body p:last-child{margin-bottom:0;}
+    .step-body strong{color:var(--black);font-weight:600;}
+    .step-body a{color:var(--sage);text-decoration:none;}
+    .step-body a:hover{text-decoration:underline;}
+
+    /* ACTIONS */
+    .action-list{display:flex;flex-direction:column;gap:12px;margin:20px 0;}
+    .action-item{display:flex;align-items:flex-start;gap:14px;padding:16px;background:var(--gray-bg);border:1px solid var(--gray-bd);}
+    .action-check{width:20px;height:20px;border:1.5px solid var(--gray-lt);border-radius:3px;flex-shrink:0;margin-top:1px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s,border-color .2s;}
+    .action-check.checked{background:var(--sage);border-color:var(--sage);}
+    .action-check.checked::after{content:'✓';color:var(--white);font-size:11px;font-weight:700;}
+    .action-text{font-size:14px;color:var(--black);line-height:1.6;flex:1;}
+    .action-text em{font-style:normal;font-size:12px;color:var(--gray-mid);display:block;margin-top:3px;}
+
+    /* TIPS */
+    .tip-box{background:var(--white);border:1px solid var(--gray-bd);border-left:3px solid var(--sage);padding:16px 20px;margin:20px 0;}
+    .tip-box-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:var(--sage);margin-bottom:8px;}
+    .tip-box p{font-size:13px;color:var(--gray-mid);line-height:1.7;margin:0;}
+    .tip-box strong{color:var(--black);}
+
+    .warning-box{background:#FFF9F0;border:1px solid #F0D9B0;border-left:3px solid #C49A3C;padding:16px 20px;margin:20px 0;}
+    .warning-box-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:#C49A3C;margin-bottom:8px;}
+    .warning-box p{font-size:13px;color:#7A6030;line-height:1.7;margin:0;}
+    .warning-box strong{color:#5A4010;}
+
+    /* CTA FINAL */
+    .guide-success{background:var(--black);padding:40px;margin-top:48px;text-align:center;}
+    .guide-success-title{font-size:22px;font-weight:300;color:var(--white);letter-spacing:-.5px;margin-bottom:12px;}
+    .guide-success-title strong{font-weight:700;font-style:italic;}
+    .guide-success-sub{font-size:14px;color:rgba(255,255,255,.5);line-height:1.7;margin-bottom:24px;}
+    .btn-success{display:inline-flex;align-items:center;gap:8px;background:var(--white);color:var(--black);padding:12px 24px;border-radius:100px;font-family:var(--font);font-size:13px;font-weight:600;text-decoration:none;transition:background .2s;}
+    .btn-success:hover{background:var(--gray-bg);}
+
+    /* FOOTER */
+    footer{background:var(--black);padding:32px 0;}
+    .footer-inner{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;}
+    .f-copy{font-size:12px;color:rgba(255,255,255,.3);}
+    .f-links{display:flex;gap:20px;}
+    .f-links a{font-size:12px;color:rgba(255,255,255,.3);text-decoration:none;transition:color .2s;}
+    .f-links a:hover{color:rgba(255,255,255,.7);}
+
+    .cookie-banner{position:fixed;bottom:24px;left:24px;max-width:380px;background:#fff;border:1px solid #e0e0e0;box-shadow:0 8px 32px rgba(0,0,0,.12);padding:20px 24px;z-index:500;transition:opacity .3s,transform .3s;font-family:'Inter',sans-serif;}
+    .cookie-banner.hidden{opacity:0;pointer-events:none;transform:translateY(12px);}
+    .cookie-text{font-size:13px;color:#888888;line-height:1.6;margin-bottom:16px;}
+    .cookie-btns{display:flex;gap:10px;}
+    .cookie-accept{background:#0D0D0D;color:#fff;border:none;padding:9px 18px;font-family:inherit;font-size:12px;font-weight:500;cursor:pointer;border-radius:100px;transition:background .2s;}
+    .cookie-accept:hover{background:#333;}
+    .cookie-refuse{background:transparent;color:#888888;border:1px solid #e0e0e0;padding:9px 18px;font-family:inherit;font-size:12px;cursor:pointer;border-radius:100px;transition:background .2s;}
+    .cookie-refuse:hover{background:#f4f4f4;}
+  </style>
+</head>
+<body>
+
+  <div class="cookie-banner" id="cookieBanner">
+    <p class="cookie-text">Ce site utilise des cookies pour mesurer l'audience et améliorer votre expérience. Aucune donnée n'est revendue à des tiers.</p>
+    <div class="cookie-btns">
+      <button class="cookie-accept" onclick="acceptCookies()">Accepter</button>
+      <button class="cookie-refuse" onclick="refuseCookies()">Refuser</button>
+    </div>
+  </div>
+
+<!-- NAV -->
+<nav>
+  <div class="container">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">N<span class="slash">/</span> Studio Digital</a>
+      <span class="nav-badge">Espace client</span>
+    </div>
+  </div>
+</nav>
+
+<div class="container">
+
+  <!-- HEADER -->
+  <div class="page-header">
+    <div class="page-label">Guide client</div>
+    <h1 class="page-title">Suivre les performances<br>de votre site avec<br><strong>Google Search Console</strong></h1>
+    <p class="page-intro">
+      Google Search Console est l'outil gratuit de Google qui vous permet de voir comment votre site apparaît dans les résultats de recherche. Pas besoin d'y aller tous les jours — <strong>une vérification par mois suffit pour un salon ou un cabinet.</strong>
+    </p>
+    <p class="page-intro">
+      Ce guide vous explique comment y accéder, quoi regarder, et surtout : comment savoir si quelque chose ne va pas et qu'il faut nous contacter.
+    </p>
+    <div class="time-badge">⏱ Durée estimée : <strong>15 minutes</strong> pour lire et prendre en main l'outil</div>
+  </div>
+
+  <!-- GUIDE -->
+  <div class="guide-content">
+
+    <!-- ÉTAPE 1 -->
+    <div class="guide-step">
+      <div class="step-header">
+        <div class="step-number">1</div>
+        <div class="step-title-wrap">
+          <div class="step-label">Accès</div>
+          <div class="step-title">Ouvrir Google Search Console</div>
+          <div class="step-duration">⏱ 2 min</div>
+        </div>
+      </div>
+      <div class="step-body">
+        <p>Rendez-vous sur <a href="https://search.google.com/search-console" target="_blank" rel="noopener"><strong>search.google.com/search-console</strong></a> et connectez-vous avec le compte Google associé à votre site. Si vous avez reçu une invitation de notre part, c'est ce même compte.</p>
+        <p>Une fois connecté(e), vous verrez votre site dans la liste. Cliquez dessus pour accéder à votre tableau de bord.</p>
+
+        <div class="action-list">
+          <div class="action-item">
+            <div class="action-check" onclick="this.classList.toggle('checked')"></div>
+            <div class="action-text">Je me rends sur search.google.com/search-console
+              <em>Mettez cette page en favori pour y revenir facilement chaque mois</em>
+            </div>
+          </div>
+          <div class="action-item">
+            <div class="action-check" onclick="this.classList.toggle('checked')"></div>
+            <div class="action-text">Je me connecte avec mon compte Google
+              <em>C'est le même compte que celui utilisé lors de la mise en ligne de votre site</em>
+            </div>
+          </div>
+          <div class="action-item">
+            <div class="action-check" onclick="this.classList.toggle('checked')"></div>
+            <div class="action-text">Je vois mon site dans la liste et je clique dessus pour y entrer</div>
+          </div>
+        </div>
+
+        <div class="tip-box">
+          <div class="tip-box-label">💡 Vous ne voyez pas votre site ?</div>
+          <p>Si votre site n'apparaît pas dans la liste, contactez-nous — il se peut que l'accès n'ait pas encore été configuré sur votre compte. C'est une manipulation simple de notre côté, réglée en quelques minutes.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ÉTAPE 2 -->
+    <div class="guide-step">
+      <div class="step-header">
+        <div class="step-number">2</div>
+        <div class="step-title-wrap">
+          <div class="step-label">Performances</div>
+          <div class="step-title">Lire le rapport de performances</div>
+          <div class="step-duration">⏱ 5 min</div>
+        </div>
+      </div>
+      <div class="step-body">
+        <p>Dans le menu à gauche, cliquez sur <strong>« Performances »</strong> (ou « Performances de la recherche »). C'est la section la plus utile : elle vous montre combien de personnes voient et visitent votre site via Google.</p>
+        <p>Quatre chiffres apparaissent en haut — voici ce qu'ils veulent dire en clair :</p>
+
+        <div class="action-list">
+          <div class="action-item">
+            <div class="action-check" onclick="this.classList.toggle('checked')"></div>
+            <div class="action-text"><strong>Clics</strong> — le nombre de personnes qui ont visité votre site depuis Google
+              <em>C'est le chiffre le plus concret : chaque clic = une personne qui est arrivée sur votre site</em>
+            </div>
+          </div>
+          <div class="action-item">
+            <div class="action-check" onclick="this.classList.toggle('checked')"></div>
+            <div class="action-text"><strong>Impressions</strong> — le nombre de fois où votre site est apparu dans les résultats Google
+              <em>Même si personne n'a cliqué, votre site a été vu. Plus les impressions sont élevées, plus Google vous affiche</em>
+            </div>
+          </div>
+          <div class="action-item">
+            <div class="action-check" onclick="this.classList.toggle('checked')"></div>
+            <div class="action-text"><strong>Position moyenne</strong> — votre classement moyen dans les résultats Google
+              <em>Position 1 = premier résultat, position 10 = dernier de la première page. Plus ce chiffre est bas, mieux c'est</em>
+            </div>
+          </div>
+        </div>
+
+        <p>Pour voir l'évolution dans le temps, réglez la période sur <strong>les 3 derniers mois</strong> via le menu en haut du graphique. Regardez si les clics et les impressions ont tendance à monter, rester stables, ou baisser.</p>
+
+        <div class="tip-box">
+          <div class="tip-box-label">💡 Ce qui est normal</div>
+          <p>Les chiffres varient naturellement d'une semaine à l'autre — c'est normal. Ce qui doit vous alerter, c'est <strong>une chute soudaine et durable</strong> (plus de 30% sur deux semaines consécutives), pas une simple légère baisse ponctuelle.</p>
+        </div>
+
+        <div class="tip-box">
+          <div class="tip-box-label">💡 Allez plus loin : les pages et les requêtes</div>
+          <p>En bas du rapport Performances, deux onglets sont utiles : <strong>Pages</strong> (quelles pages de votre site reçoivent le plus de clics) et <strong>Requêtes</strong> (quels mots les gens tapent dans Google pour trouver votre site). C'est très instructif — et souvent rassurant !</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ÉTAPE 3 -->
+    <div class="guide-step">
+      <div class="step-header">
+        <div class="step-number">3</div>
+        <div class="step-title-wrap">
+          <div class="step-label">Indexation</div>
+          <div class="step-title">Vérifier que vos pages sont bien référencées</div>
+          <div class="step-duration">⏱ 3 min</div>
+        </div>
+      </div>
+      <div class="step-body">
+        <p>Dans le menu à gauche, cliquez sur <strong>« Indexation »</strong> puis sur <strong>« Pages »</strong>. Cette section vous indique si Google a bien enregistré vos pages dans sa base de données.</p>
+        <p><strong>Une page indexée = une page que Google peut afficher dans ses résultats.</strong> Si une page n'est pas indexée, elle est invisible pour quelqu'un qui cherche vos services sur Google.</p>
+
+        <div class="action-list">
+          <div class="action-item">
+            <div class="action-check" onclick="this.classList.toggle('checked')"></div>
+            <div class="action-text">Je clique sur « Indexation » puis « Pages » dans le menu gauche</div>
+          </div>
+          <div class="action-item">
+            <div class="action-check" onclick="this.classList.toggle('checked')"></div>
+            <div class="action-text">Je regarde le nombre de pages indexées
+              <em>Pour un site vitrine classique, ce chiffre est généralement entre 5 et 20 pages</em>
+            </div>
+          </div>
+          <div class="action-item">
+            <div class="action-check" onclick="this.classList.toggle('checked')"></div>
+            <div class="action-text">Je vérifie que mes pages principales sont bien présentes
+              <em>Page d'accueil, pages de services, page contact, articles de blog — les pages importantes doivent apparaître</em>
+            </div>
+          </div>
+        </div>
+
+        <div class="tip-box">
+          <div class="tip-box-label">💡 Les pages non indexées, c'est souvent normal</div>
+          <p>Google classe aussi les pages qu'il a trouvées mais décidé de ne pas indexer. Ne vous inquiétez pas si vous en voyez quelques-unes — certaines pages techniques (pages de confirmation, redirections) sont volontairement exclues. Ce qui compte, c'est que vos pages principales soient bien dans la colonne « Pages indexées ».</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ÉTAPE 4 -->
+    <div class="guide-step">
+      <div class="step-header">
+        <div class="step-number">4</div>
+        <div class="step-title-wrap">
+          <div class="step-label">Alertes</div>
+          <div class="step-title">Savoir quand nous contacter</div>
+          <div class="step-duration">⏱ 2 min</div>
+        </div>
+      </div>
+      <div class="step-body">
+        <p>La plupart du temps, vous n'avez rien à faire — votre site tourne bien. Mais voici les situations qui méritent un message ou un appel :</p>
+
+        <div class="action-list">
+          <div class="action-item">
+            <div class="action-check" onclick="this.classList.toggle('checked')"></div>
+            <div class="action-text">Une page importante a disparu de la liste des pages indexées
+              <em>Ex. : votre page d'accueil ou une page de service n'est plus visible dans la section Indexation > Pages</em>
+            </div>
+          </div>
+          <div class="action-item">
+            <div class="action-check" onclick="this.classList.toggle('checked')"></div>
+            <div class="action-text">Les clics ou impressions ont fortement chuté en peu de temps
+              <em>Une baisse de plus de 30% sur deux semaines consécutives sans raison évidente (saison, fermeture…)</em>
+            </div>
+          </div>
+          <div class="action-item">
+            <div class="action-check" onclick="this.classList.toggle('checked')"></div>
+            <div class="action-text">Votre position moyenne a fortement augmenté (le chiffre monte = vous reculez)
+              <em>Ex. : vous étiez à la position 5 et vous passez à la position 20 en quelques semaines</em>
+            </div>
+          </div>
+          <div class="action-item">
+            <div class="action-check" onclick="this.classList.toggle('checked')"></div>
+            <div class="action-text">Des messages d'erreur en rouge ou en orange apparaissent dans la section Indexation
+              <em>Google signale un problème qu'il n'arrive pas à résoudre seul — prenez une capture d'écran et envoyez-la nous</em>
+            </div>
+          </div>
+          <div class="action-item">
+            <div class="action-check" onclick="this.classList.toggle('checked')"></div>
+            <div class="action-text">Google Search Console vous envoie un email d'alerte automatique
+              <em>Google envoie des emails en cas de problème sérieux (pénalité, erreurs critiques) — transférez-le nous dès réception</em>
+            </div>
+          </div>
+        </div>
+
+        <div class="tip-box">
+          <div class="tip-box-label">💡 Une fois par mois suffit</div>
+          <p>Pour un salon ou un cabinet, une vérification mensuelle de 5 à 10 minutes est largement suffisante. Notez simplement les chiffres clés (clics, impressions, position) d'un mois sur l'autre — si quelque chose change brutalement, vous le verrez immédiatement.</p>
+        </div>
+
+        <div class="warning-box">
+          <div class="warning-box-label">⚠️ En cas de doute, contactez-nous</div>
+          <p>Si vous voyez quelque chose d'inhabituel et que vous n'êtes pas sûr(e) de ce que ça signifie, <strong>ne touchez à rien</strong> et envoyez-nous une capture d'écran. Certaines manipulations dans Google Search Console peuvent avoir des conséquences sur votre référencement — mieux vaut vérifier avec nous avant d'agir.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- SUCCÈS -->
+    <div class="guide-success">
+      <div class="guide-success-title">Votre site est suivi —<br><strong>vous savez lire les signaux essentiels.</strong></div>
+      <p class="guide-success-sub">Si vous avez une question sur ce que vous voyez dans Search Console, ou si quelque chose vous semble anormal, envoyez-moi une capture d'écran — je regarde ça avec vous.</p>
+      <a href="mailto:contact@nstudiodigital.fr" class="btn-success">✉️ Contacter Nadège</a>
+    </div>
+
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="f-copy">© 2026 N/ Studio Digital — Nadège Dufour · Document réservé aux clients</div>
+      <div class="f-links">
+        <a href="index.html">Retour au site</a>
+        <a href="mailto:contact@nstudiodigital.fr">Contact</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+  <script>
+    function acceptCookies(){localStorage.setItem('cookies','accepted');document.getElementById('cookieBanner').classList.add('hidden');}
+    function refuseCookies(){localStorage.setItem('cookies','refused');document.getElementById('cookieBanner').classList.add('hidden');}
+    if(localStorage.getItem('cookies'))document.getElementById('cookieBanner').classList.add('hidden');
+  </script>
+</body>
+</html>
