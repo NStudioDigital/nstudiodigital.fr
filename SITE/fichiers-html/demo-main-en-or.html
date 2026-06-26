@@ -29,6 +29,7 @@
     footer{background:var(--black);border-top:1px solid rgba(201,168,76,.12);padding:44px 0;}.footer-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:24px;margin-bottom:28px;}.footer-brand{font-family:var(--font-serif);font-size:22px;font-weight:400;color:var(--white);letter-spacing:.3px;}.footer-tagline{font-family:var(--font);font-size:11px;font-weight:300;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.3);margin-top:4px;}.footer-socials{display:flex;gap:16px;align-items:center;}.social-link{display:flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:50%;border:1px solid rgba(201,168,76,.25);transition:border-color .2s,background .2s;}.social-link:hover{border-color:var(--gold);background:rgba(201,168,76,.1);}.social-link svg{width:15px;height:15px;stroke:rgba(255,255,255,.45);fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;transition:stroke .2s;}.social-link:hover svg{stroke:var(--gold-lt);}.footer-bottom{border-top:1px solid rgba(255,255,255,.05);padding-top:24px;}.footer-demo{font-family:var(--font);font-size:11px;color:rgba(255,255,255,.2);}.footer-demo a{color:rgba(255,255,255,.3);text-decoration:none;transition:color .2s;}.footer-demo a:hover{color:rgba(255,255,255,.6);}
 
     @keyframes wordFadeUp{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:translateY(0);}}.hero-title .word{display:inline-block;opacity:0;animation:wordFadeUp 0.6s ease forwards;}.btn-hero::after{content:'';position:absolute;top:0;left:-100%;width:60%;height:100%;background:linear-gradient(120deg,transparent 0%,rgba(201,168,76,0.35) 50%,transparent 100%);animation:shimmerGold 2.8s ease-in-out infinite;}@keyframes shimmerGold{0%{left:-100%;}60%{left:150%;}100%{left:150%;}}
+    .ticker-wrap{background:var(--cream);border-top:1px solid var(--gray-bd);border-bottom:1px solid var(--gray-bd);padding:14px 0;overflow:hidden;white-space:nowrap;}.ticker-track{display:inline-flex;align-items:center;gap:24px;animation:tickerScroll 28s linear infinite;will-change:transform;}.ticker-wrap:hover .ticker-track{animation-play-state:paused;}.ticker-item{font-family:var(--font-serif);font-size:15px;font-weight:300;font-style:italic;color:var(--warm);letter-spacing:.3px;white-space:nowrap;}.ticker-sep{color:var(--gold);font-size:14px;opacity:.7;flex-shrink:0;}@keyframes tickerScroll{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
     .back-to-top{position:fixed;bottom:28px;right:28px;width:44px;height:44px;background:var(--black);border:1px solid rgba(201,168,76,.25);border-radius:50%;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.6);font-size:16px;text-decoration:none;opacity:0;pointer-events:none;transition:opacity .3s,transform .3s;z-index:200;}.back-to-top.visible{opacity:1;pointer-events:auto;}.back-to-top:hover{transform:translateY(-3px);border-color:var(--gold);color:var(--gold-lt);}
   </style>
 </head>
@@ -77,6 +78,43 @@
   </div>
   <div class="hero-scroll">Défiler</div>
 </section>
+
+<div class="ticker-wrap">
+  <div class="ticker-track">
+    <span class="ticker-item">Drainage lymphatique</span>
+    <span class="ticker-sep">·</span>
+    <span class="ticker-item">Madérothérapie</span>
+    <span class="ticker-sep">·</span>
+    <span class="ticker-item">Cupping thérapie</span>
+    <span class="ticker-sep">·</span>
+    <span class="ticker-item">Réflexologie plantaire</span>
+    <span class="ticker-sep">·</span>
+    <span class="ticker-item">Shirotchampi</span>
+    <span class="ticker-sep">·</span>
+    <span class="ticker-item">Massage pierres chaudes</span>
+    <span class="ticker-sep">·</span>
+    <span class="ticker-item">Massage facial Shinzu</span>
+    <span class="ticker-sep">·</span>
+    <span class="ticker-item">Soins à domicile</span>
+    <span class="ticker-sep">·</span>
+    <span class="ticker-item">Drainage lymphatique</span>
+    <span class="ticker-sep">·</span>
+    <span class="ticker-item">Madérothérapie</span>
+    <span class="ticker-sep">·</span>
+    <span class="ticker-item">Cupping thérapie</span>
+    <span class="ticker-sep">·</span>
+    <span class="ticker-item">Réflexologie plantaire</span>
+    <span class="ticker-sep">·</span>
+    <span class="ticker-item">Shirotchampi</span>
+    <span class="ticker-sep">·</span>
+    <span class="ticker-item">Massage pierres chaudes</span>
+    <span class="ticker-sep">·</span>
+    <span class="ticker-item">Massage facial Shinzu</span>
+    <span class="ticker-sep">·</span>
+    <span class="ticker-item">Soins à domicile</span>
+    <span class="ticker-sep">·</span>
+  </div>
+</div>
 
 <!-- QUI SUIS-JE -->
 <section id="apropos" style="background:var(--white);">
