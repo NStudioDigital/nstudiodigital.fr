@@ -182,8 +182,8 @@
     @media(max-width:768px){ .real-header{ grid-template-columns: 1fr; gap: 16px; } }
     .real-label-tag { display: inline-flex; align-items: center; gap: 8px; font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 2px; color: var(--sage); margin-bottom: 12px; }
     .real-label-tag span { display: inline-block; width: 20px; height: 1px; background: var(--sage); }
-    .real-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--gray-bd); border: 1px solid var(--gray-bd); }
-    @media(max-width:768px){ .real-grid{ grid-template-columns: 1fr; } }
+    .real-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--gray-bd); border: 1px solid var(--gray-bd); }
+    @media(max-width:600px){ .real-grid{ grid-template-columns: 1fr; } }
     .real-card { position: relative; overflow: hidden; aspect-ratio: 4/3; background: var(--black); }
     .real-card-img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s ease, opacity .4s; opacity: .6; }
     .real-card:hover .real-card-img { transform: scale(1.05); opacity: .35; }
@@ -464,6 +464,7 @@ Cal.config.forwardQueryParams = true;
               <a href="ko-spa.html" target="_blank">Kō Spa — Head Spa japonais</a>
               <a href="studio-mova.html" target="_blank">Studio Mova — Pilates</a>
               <a href="neve-institut.html" target="_blank">Névé — Institut de soin</a>
+              <a href="demo-naturopathe-brut.html" target="_blank">Le Sentier Vert — Naturopathe</a>
             </div>
           </li>
           <li class="nav-dropdown">
@@ -508,6 +509,7 @@ Cal.config.forwardQueryParams = true;
       <a href="ko-spa.html" target="_blank" onclick="closeMenu()">↳ Kō Spa</a>
       <a href="studio-mova.html" target="_blank" onclick="closeMenu()">↳ Studio Mova</a>
       <a href="neve-institut.html" target="_blank" onclick="closeMenu()">↳ Névé Institut</a>
+      <a href="demo-naturopathe-brut.html" target="_blank" onclick="closeMenu()">↳ Le Sentier Vert</a>
     </div>
     <a href="#secteurs" onclick="closeMenu()">Secteurs</a>
     <div class="mobile-sub">
@@ -583,7 +585,7 @@ Cal.config.forwardQueryParams = true;
         <div class="reveal">
           <div class="real-label-tag"><span></span>Sites de démonstration</div>
           <div class="s-label">Nos réalisations</div>
-          <h2 class="s-title">Trois exemples de ce qu'on<br>peut <strong>créer pour vous.</strong></h2>
+          <h2 class="s-title">Quatre exemples de ce qu'on<br>peut <strong>créer pour vous.</strong></h2>
         </div>
         <p class="s-sub reveal" style="transition-delay:.1s;align-self:end">Chaque site naît de l'univers de votre activité — identité visuelle, ton éditorial, SEO local. Aucun template. Voici trois exemples fictifs pour illustrer notre approche.</p>
       </div>
@@ -615,8 +617,17 @@ Cal.config.forwardQueryParams = true;
             <div class="real-card-desc">Site élégant pour une esthéticienne indépendante spécialisée soins du visage. Univers chaleureux, tarifs clairs et réservation intégrée.</div>
           </div>
         </a>
+        <a href="demo-naturopathe-brut.html" target="_blank" class="real-card reveal" style="transition-delay:.3s;text-decoration:none;display:block;cursor:pointer;">
+          <img class="real-card-img" src="sentiervert-hero.jpg" alt="Le Sentier Vert — Naturopathe Lyon 6e" loading="lazy"/>
+          <div class="real-card-overlay">
+            <div class="real-card-tag">Naturopathe · Lyon 6e</div>
+            <div class="real-card-name">Le Sentier Vert</div>
+            <div class="real-card-type">Site vitrine · Consultations · Prise de RDV</div>
+            <div class="real-card-desc">Site premium pour une naturopathe indépendante. Identité sombre et végétale, section méthode, témoignages et calendrier de RDV intégré.</div>
+          </div>
+        </a>
       </div>
-      <div class="real-disclaimer reveal">Ces trois sites sont des <strong>exemples fictifs</strong> créés par N/ Studio Digital pour illustrer notre approche créative. Ils ne représentent pas de vrais établissements.</div>
+      <div class="real-disclaimer reveal">Ces quatre sites sont des <strong>exemples fictifs</strong> créés par N/ Studio Digital pour illustrer notre approche créative. Ils ne représentent pas de vrais établissements.</div>
     </div>
   </section>
 
