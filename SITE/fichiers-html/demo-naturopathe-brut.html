@@ -66,14 +66,19 @@
     .bilan-title.vis::after,
     .avis-title.vis::after,
     .pratique-title.vis::after { width: 100%; }
-    /* Contact — underline + pulse infini après reveal */
-    @keyframes pulse-underline {
-      0%, 100% { opacity: 1; }
-      50%       { opacity: 0.4; }
+    /* Contact — underline + pulse infini après reveal (scaleY + glow) */
+    @keyframes wordDecoIn {
+      from { transform: translateY(-54%) translateX(-100px); opacity: 0; }
+      to   { transform: translateY(-54%) translateX(0);      opacity: 1; }
     }
+    @keyframes pulse-underline {
+      0%, 100% { opacity: 1; transform: scaleY(1); box-shadow: none; }
+      50%       { opacity: 0.3; transform: scaleY(2.5); box-shadow: 0 0 12px rgba(200,255,77,0.6); }
+    }
+    .contact-giant::after { transform-origin: left center; }
     .contact-giant.vis::after {
       width: 100%;
-      animation: pulse-underline 2s ease-in-out infinite 0.8s;
+      animation: pulse-underline 1.5s ease-in-out infinite 0.8s;
     }
 
     /* NAV */
@@ -146,7 +151,6 @@
     /* Mot décoratif en outline derrière le titre */
     .hero-word-deco {
       position: absolute; left: -0.12em; top: 50%;
-      transform: translateY(-54%);
       font-family: var(--font-display); font-weight: 700;
       font-size: clamp(150px, 20vw, 400px);
       color: transparent;
@@ -155,6 +159,8 @@
       line-height: 1; text-transform: uppercase;
       z-index: 0; pointer-events: none; user-select: none;
       white-space: nowrap;
+      opacity: 0;
+      animation: wordDecoIn 1.2s ease-out 0.3s forwards;
     }
     .hero-content { position: relative; z-index: 2; }
     .hero-eyebrow {
@@ -190,7 +196,7 @@
     .hero-img-wrap {
       position: absolute; right: 48px; top: 50%;
       transform: translateY(-40%); /* initial; JS overrides for parallax */
-      width: 260px; border: 3px solid var(--acid); z-index: 1;
+      width: 300px; border: 3px solid var(--acid); z-index: 1;
       overflow: hidden;
     }
     .hero-img-wrap img {
@@ -202,7 +208,8 @@
       .hero-img-wrap:hover img { transform: scale(1.04); }
     }
     .hero-counter {
-      position: absolute; right: 48px; bottom: 88px; z-index: 2;
+      position: absolute; right: 12px; top: 50%; transform: translateY(-50%);
+      z-index: 2;
       font-family: var(--font-display); font-size: 11px; font-weight: 600;
       letter-spacing: 0.2em; text-transform: uppercase; color: var(--gray);
       writing-mode: vertical-rl; text-orientation: mixed;
@@ -330,7 +337,7 @@
       color: var(--ink); letter-spacing: 0.04em; margin-bottom: 48px;
       line-height: 1;
     }
-    .bilan-grid { display: grid; grid-template-columns: 6fr 4fr; }
+    .bilan-grid { display: grid; grid-template-columns: 45% 55%; }
     @media (max-width: 768px) { .bilan-grid { grid-template-columns: 1fr; } }
     .bilan-left { background: var(--ink); padding: 52px; }
     .bilan-left-label {
@@ -355,15 +362,18 @@
       color: var(--gray); text-transform: uppercase; letter-spacing: 0.12em;
       margin-top: 6px;
     }
-    /* Bilan image — parallax via JS on .bilan-right, zoom via CSS on img */
-    .bilan-right { position: relative; overflow: hidden; }
+    /* Bilan image — parallax via JS on .bilan-right, reveal zoom-out + hover zoom */
+    .bilan-right { position: relative; overflow: hidden; border: 2px solid var(--acid); }
     .bilan-right img {
       width: 100%; height: 100%; min-height: 420px; object-fit: cover;
       display: block; filter: grayscale(1) contrast(1.3);
-      transition: transform 0.5s ease;
+      opacity: 0; transform: scale(1.15);
+      transition: opacity 0.9s ease 0.2s, transform 0.5s ease;
     }
+    .bilan-grid.vis .bilan-right img { opacity: 1; transform: scale(1); }
     @media (hover: hover) {
-      .bilan-right:hover img { transform: scale(1.04); }
+      /* Spécificité 0-4-1 > 0-3-1 → override reveal sans !important */
+      .bilan-grid.vis .bilan-right:hover img { transform: scale(1.04); transition: transform 0.4s ease; }
     }
     .bilan-right-frame {
       position: absolute; bottom: -16px; right: -16px;
@@ -375,15 +385,21 @@
       .bilan-right-frame { display: none; }
     }
 
-    /* AVIS — fond --ink + image arrière-plan assombrie */
+    /* AVIS — fond --ink + image arrière-plan + overlay gradient */
     .avis { background: var(--ink); padding: 96px 0; position: relative; overflow: hidden; }
     .avis-bg-img {
       position: absolute; inset: 0; width: 100%; height: 100%;
       object-fit: cover; object-position: center 20%;
-      opacity: 0.12; filter: grayscale(1) contrast(1.4);
+      opacity: 0.22; filter: grayscale(1) contrast(1.4);
       z-index: 0; pointer-events: none;
     }
-    .avis .container { position: relative; z-index: 1; }
+    .avis::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(rgba(10,10,10,0.55), rgba(10,10,10,0.7));
+      z-index: 1; pointer-events: none;
+    }
+    .avis .container { position: relative; z-index: 2; }
     .avis-label {
       font-family: var(--font); font-size: 11px; font-weight: 600;
       letter-spacing: 0.2em; text-transform: uppercase;
@@ -540,6 +556,69 @@
     }
     .footer-demo a { color: rgba(245,243,238,0.35); text-decoration: none; transition: color 0.15s; }
     .footer-demo a:hover { color: var(--acid); }
+
+    /* CALENDRIER RDV */
+    .contact-body { display: grid; grid-template-columns: 1fr 360px; gap: 64px; align-items: start; }
+    @media (max-width: 960px) { .contact-body { grid-template-columns: 1fr; } }
+    .contact-col-form .cf-form { max-width: 100%; }
+    .rdv-widget { background: #111; border: 1px solid var(--line); padding: 28px; }
+    .rdv-widget-title {
+      font-family: var(--font-display); font-weight: 700; font-size: 11px;
+      letter-spacing: 0.2em; text-transform: uppercase; color: var(--acid);
+      margin-bottom: 20px; display: block;
+    }
+    .cal-header {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-bottom: 16px;
+    }
+    .cal-month-label {
+      font-family: var(--font-display); font-weight: 700; font-size: 14px;
+      text-transform: uppercase; letter-spacing: 0.08em; color: var(--paper);
+    }
+    .cal-nav {
+      background: none; border: 1px solid var(--line); color: var(--paper);
+      width: 30px; height: 30px; cursor: pointer; font-size: 14px;
+      display: flex; align-items: center; justify-content: center;
+      transition: border-color 0.15s, color 0.15s;
+    }
+    .cal-nav:hover { border-color: var(--acid); color: var(--acid); }
+    .cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 2px; }
+    .cal-day-name {
+      font-family: var(--font); font-size: 9px; font-weight: 600;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--gray); text-align: center; padding: 6px 0 8px;
+    }
+    .cal-cell {
+      aspect-ratio: 1; display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-display); font-size: 13px; font-weight: 500;
+      color: rgba(245,243,238,0.2); cursor: default;
+      position: relative; transition: background 0.1s;
+    }
+    .cal-cell.available { color: var(--paper); cursor: pointer; }
+    .cal-cell.available::after {
+      content: ''; position: absolute; bottom: 3px; left: 50%;
+      transform: translateX(-50%);
+      width: 4px; height: 4px; border-radius: 50%; background: var(--acid);
+    }
+    .cal-cell.available:hover { background: var(--line); }
+    .cal-cell.selected { background: var(--acid); color: var(--ink); }
+    .cal-cell.selected::after { background: var(--ink); }
+    .cal-cell.today { outline: 1px solid rgba(200,255,77,0.35); }
+    .cal-slots { margin-top: 20px; min-height: 44px; }
+    .slots-label {
+      font-family: var(--font); font-size: 10px; font-weight: 600;
+      letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--gray); margin-bottom: 12px; display: block;
+    }
+    .slot-btn {
+      font-family: var(--font-display); font-weight: 600; font-size: 13px;
+      letter-spacing: 0.06em; background: transparent;
+      border: 1px solid var(--line); color: var(--paper);
+      padding: 9px 16px; cursor: pointer; margin: 0 6px 6px 0;
+      transition: border-color 0.15s, background 0.15s, color 0.15s;
+    }
+    .slot-btn:hover { border-color: var(--acid); color: var(--acid); }
+    .slot-btn.selected { background: var(--acid); color: var(--ink); border-color: var(--acid); }
   </style>
 </head>
 <body>
@@ -572,7 +651,7 @@
 <section class="hero">
   <div class="hero-word-deco" aria-hidden="true">RACINES</div>
   <div class="hero-img-wrap" id="heroImgWrap">
-    <img src="naturo-portrait.jpg" alt="Léa Vasseur — naturopathe Lyon"/>
+    <img src="sentiervert-hero.jpg" alt="Léa Vasseur — naturopathe Lyon"/>
   </div>
   <div class="container hero-content">
     <span class="hero-eyebrow">Naturopathe · Lyon 6e</span>
@@ -599,7 +678,7 @@
         </blockquote>
       </div>
       <div class="approche-header-img reveal">
-        <img src="naturo-mains-alt.jpg" alt="Naturopathie — Le Sentier Vert" loading="lazy"/>
+        <img src="sentiervert-consultations.jpg" alt="Naturopathie — Le Sentier Vert" loading="lazy"/>
       </div>
     </div>
     <div class="approche-steps">
@@ -657,7 +736,7 @@
         </li>
       </ul>
       <div class="services-img-wrap">
-        <img class="services-img-preview" src="naturo-mains.jpg" alt="Naturopathie — Le Sentier Vert" loading="lazy"/>
+        <img class="services-img-preview" src="sentiervert-consultations.jpg" alt="Naturopathie — Le Sentier Vert" loading="lazy"/>
       </div>
     </div>
   </div>
@@ -685,7 +764,7 @@
         </div>
       </div>
       <div class="bilan-right" id="bilanRight">
-        <img src="naturo-mains.jpg" alt="Bilan naturopathique — Le Sentier Vert" loading="lazy"/>
+        <img src="sentiervert-bilan.jpg" alt="Bilan naturopathique — Le Sentier Vert" loading="lazy"/>
         <div class="bilan-right-frame"></div>
       </div>
     </div>
@@ -694,7 +773,7 @@
 
 <!-- TÉMOIGNAGES -->
 <section class="avis" id="avis">
-  <img class="avis-bg-img" src="naturo-portrait.jpg" alt="" aria-hidden="true" loading="lazy"/>
+  <img class="avis-bg-img" src="sentiervert-temoignages.jpg" alt="" aria-hidden="true" loading="lazy"/>
   <div class="container">
     <span class="avis-label reveal">Ce qu'elles disent</span>
     <h2 class="avis-title reveal">Retours patients</h2>
@@ -755,42 +834,58 @@
 <section class="contact-section" id="contact">
   <div class="container">
     <h2 class="contact-giant reveal">Parlons-en.</h2>
-    <p class="contact-sub reveal">Je réponds personnellement à chaque demande. Aucun formulaire automatique, aucun délai artificiel.</p>
-    <form class="cf-form reveal" action="#" method="post">
-      <div class="cf-row">
-        <input class="cf-input" type="text" name="prenom" placeholder="Prénom" required/>
-        <input class="cf-input" type="text" name="nom" placeholder="Nom" required/>
+    <div class="contact-body">
+      <div class="contact-col-form">
+        <p class="contact-sub reveal">Je réponds personnellement à chaque demande. Aucun formulaire automatique, aucun délai artificiel.</p>
+        <form class="cf-form reveal" action="#" method="post">
+          <div class="cf-row">
+            <input class="cf-input" type="text" name="prenom" placeholder="Prénom" required/>
+            <input class="cf-input" type="text" name="nom" placeholder="Nom" required/>
+          </div>
+          <input class="cf-input" type="email" name="email" placeholder="Adresse e-mail" required/>
+          <input class="cf-input" type="tel" name="tel" placeholder="Téléphone (optionnel)"/>
+          <select class="cf-input" name="motif">
+            <option value="" disabled selected>Motif de consultation</option>
+            <option>Bilan de vitalité (première consultation)</option>
+            <option>Stress &amp; fatigue chronique</option>
+            <option>Troubles digestifs</option>
+            <option>Déséquilibres hormonaux</option>
+            <option>Sommeil &amp; récupération</option>
+            <option>Immunité &amp; terrain</option>
+            <option>Accompagnement sportif</option>
+            <option>Autre</option>
+          </select>
+          <select class="cf-input" name="format">
+            <option value="" disabled selected>Format souhaité</option>
+            <option>Cabinet — Lyon 6e</option>
+            <option>Visioconférence</option>
+            <option>Indifférent</option>
+          </select>
+          <textarea class="cf-input" name="message" rows="3" placeholder="Quelques mots sur votre situation (optionnel)"></textarea>
+          <div class="cf-submit-row">
+            <button type="submit" class="cf-submit">Envoyer →</button>
+          </div>
+        </form>
       </div>
-      <input class="cf-input" type="email" name="email" placeholder="Adresse e-mail" required/>
-      <input class="cf-input" type="tel" name="tel" placeholder="Téléphone (optionnel)"/>
-      <select class="cf-input" name="motif">
-        <option value="" disabled selected>Motif de consultation</option>
-        <option>Bilan de vitalité (première consultation)</option>
-        <option>Stress &amp; fatigue chronique</option>
-        <option>Troubles digestifs</option>
-        <option>Déséquilibres hormonaux</option>
-        <option>Sommeil &amp; récupération</option>
-        <option>Immunité &amp; terrain</option>
-        <option>Accompagnement sportif</option>
-        <option>Autre</option>
-      </select>
-      <select class="cf-input" name="format">
-        <option value="" disabled selected>Format souhaité</option>
-        <option>Cabinet — Lyon 6e</option>
-        <option>Visioconférence</option>
-        <option>Indifférent</option>
-      </select>
-      <textarea class="cf-input" name="message" rows="3" placeholder="Quelques mots sur votre situation (optionnel)"></textarea>
-      <div class="cf-submit-row">
-        <button type="submit" class="cf-submit">Envoyer →</button>
+      <div class="contact-col-cal reveal">
+        <div class="rdv-widget" id="rdvWidget">
+          <span class="rdv-widget-title">Choisissez votre créneau</span>
+          <div class="cal-header">
+            <button class="cal-nav cal-prev" type="button" aria-label="Mois précédent">←</button>
+            <span class="cal-month-label"></span>
+            <button class="cal-nav cal-next" type="button" aria-label="Mois suivant">→</button>
+          </div>
+          <div class="cal-grid" id="calGrid"></div>
+          <div class="cal-slots" id="calSlots"></div>
+        </div>
       </div>
-    </form>
+    </div>
   </div>
 </section>
 
 <!-- FOOTER -->
 <footer>
-  <img class="footer-bg-img" src="naturo-portrait.jpg" alt="" aria-hidden="true" loading="lazy"/>
+  <img class="footer-bg-img" src="sentiervert-footer.jpg" alt="" aria-hidden="true" loading="lazy"/>
   <div class="container">
     <div class="footer-inner">
       <div>
@@ -889,6 +984,93 @@
   }, { passive: true });
 
   updateParallax(); // état initial
+
+  // ─── WIDGET CALENDRIER RDV ──────────────────────────────────────────────────
+  (function () {
+    const AVAILABLE = [3, 6, 10, 13, 17, 21];
+    const SLOTS     = ['9h00', '11h00', '14h30', '16h00'];
+    const MONTHS_FR = ['Janvier','Février','Mars','Avril','Mai','Juin',
+                       'Juillet','Août','Septembre','Octobre','Novembre','Décembre'];
+    const DAYS_FR   = ['L','M','M','J','V','S','D'];
+
+    const widget  = document.getElementById('rdvWidget');
+    if (!widget) return;
+    const gridEl  = document.getElementById('calGrid');
+    const slotsEl = document.getElementById('calSlots');
+    const monthEl = widget.querySelector('.cal-month-label');
+
+    const now = new Date();
+    let curYear  = now.getFullYear();
+    let curMonth = now.getMonth();
+    let selDay   = null;
+    let selSlot  = null;
+
+    function renderCal() {
+      monthEl.textContent = MONTHS_FR[curMonth] + ' ' + curYear;
+      gridEl.innerHTML = '';
+
+      DAYS_FR.forEach(d => {
+        const dn = document.createElement('div');
+        dn.className = 'cal-day-name'; dn.textContent = d;
+        gridEl.appendChild(dn);
+      });
+
+      const firstWd = (new Date(curYear, curMonth, 1).getDay() + 6) % 7; // 0=lun
+      const nbDays  = new Date(curYear, curMonth + 1, 0).getDate();
+      const todayD  = (curYear === now.getFullYear() && curMonth === now.getMonth()) ? now.getDate() : -1;
+
+      for (let i = 0; i < firstWd; i++) {
+        gridEl.appendChild(Object.assign(document.createElement('div'), { className: 'cal-cell' }));
+      }
+      for (let d = 1; d <= nbDays; d++) {
+        const cell  = document.createElement('div');
+        const avail = AVAILABLE.includes(d);
+        const sel   = selDay === d;
+        const today = d === todayD;
+        cell.className = ['cal-cell', avail && 'available', sel && 'selected', today && 'today']
+          .filter(Boolean).join(' ');
+        cell.textContent = d;
+        if (avail) {
+          cell.addEventListener('click', () => {
+            selDay = d; selSlot = null; renderCal(); renderSlots();
+          });
+        }
+        gridEl.appendChild(cell);
+      }
+    }
+
+    function renderSlots() {
+      slotsEl.innerHTML = '';
+      if (!selDay) return;
+      const lbl = document.createElement('span');
+      lbl.className = 'slots-label';
+      lbl.textContent = 'Disponible le ' + selDay + ' ' + MONTHS_FR[curMonth].toLowerCase();
+      slotsEl.appendChild(lbl);
+      SLOTS.forEach(s => {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'slot-btn' + (selSlot === s ? ' selected' : '');
+        btn.textContent = s;
+        btn.addEventListener('click', () => {
+          selSlot = s;
+          slotsEl.querySelectorAll('.slot-btn').forEach(b => b.classList.remove('selected'));
+          btn.classList.add('selected');
+        });
+        slotsEl.appendChild(btn);
+      });
+    }
+
+    widget.querySelector('.cal-prev').addEventListener('click', () => {
+      if (--curMonth < 0) { curMonth = 11; curYear--; }
+      selDay = null; selSlot = null; renderCal(); renderSlots();
+    });
+    widget.querySelector('.cal-next').addEventListener('click', () => {
+      if (++curMonth > 11) { curMonth = 0; curYear++; }
+      selDay = null; selSlot = null; renderCal(); renderSlots();
+    });
+
+    renderCal();
+  })();
 </script>
 </body>
 </html>
