@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="robots" content="noindex, nofollow"/>
+  <title>Main en Or — Nor, massage bien-être · Oullins</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --clay: #B8714F;
+      --clay-dark: #8A5238;
+      --sand: #E8DCC8;
+      --paper: #FBF7F0;
+      --ink: #2B2018;
+      --bronze: #9C7A4A;
+      --line: #D9CCB8;
+      --font-serif: 'Fraunces', Georgia, serif;
+      --font: 'Inter', sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body { font-family: var(--font); background: var(--paper); color: var(--ink); overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+    .container { max-width: 1160px; margin: 0 auto; padding: 0 52px; }
+    @media (max-width: 768px) { .container { padding: 0 22px; } }
+
+    /* Reveal */
+    .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.9s ease, transform 0.9s ease; }
+    .reveal.vis { opacity: 1; transform: none; }
+
+    /* Underline link animation */
+    .ul-link {
+      position: relative;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .ul-link::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background: currentColor;
+      transition: width 0.3s ease;
+    }
+    .ul-link:hover::after { width: 100%; }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 300;
+      background: var(--paper);
+      border-bottom: 1px solid var(--line);
+      transition: box-shadow 0.3s;
+    }
+    nav.scrolled { box-shadow: 0 2px 18px rgba(43,32,24,0.07); }
+    .nav-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      height: 70px;
+    }
+    .nav-logo {
+      font-family: var(--font-serif);
+      font-size: 22px; font-weight: 400; font-style: italic;
+      color: var(--ink); text-decoration: none; letter-spacing: 0.2px;
+    }
+    .nav-links { display: flex; align-items: center; gap: 38px; list-style: none; }
+    .nav-links a {
+      font-family: var(--font); font-size: 13px; font-weight: 300;
+      color: var(--ink); text-decoration: none;
+      position: relative;
+    }
+    .nav-links a::after {
+      content: ''; position: absolute; bottom: -2px; left: 0;
+      width: 0; height: 1px; background: var(--ink);
+      transition: width 0.3s ease;
+    }
+    .nav-links a:hover::after { width: 100%; }
+    .nav-cta-text {
+      font-family: var(--font); font-size: 13px; font-weight: 400;
+      color: var(--ink); text-decoration: none;
+      display: inline-flex; align-items: center; gap: 5px;
+      position: relative;
+    }
+    .nav-cta-text::after {
+      content: ''; position: absolute; bottom: -2px; left: 0;
+      width: 0; height: 1px; background: var(--ink);
+      transition: width 0.3s ease;
+    }
+    .nav-cta-text:hover::after { width: 100%; }
+    .nav-hamburger {
+      display: none; flex-direction: column; gap: 5px;
+      cursor: pointer; padding: 4px; background: none; border: none;
+    }
+    .nav-hamburger span {
+      display: block; width: 22px; height: 1.5px;
+      background: var(--ink); border-radius: 2px; transition: all 0.3s;
+    }
+    .nav-hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(5px,5px); }
+    .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+    .nav-hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px,-5px); }
+    .nav-mobile {
+      display: none; position: fixed; top: 70px; left: 0; right: 0;
+      background: var(--paper); border-bottom: 1px solid var(--line);
+      padding: 20px; flex-direction: column; z-index: 299;
+      box-shadow: 0 8px 24px rgba(43,32,24,0.06);
+    }
+    .nav-mobile.open { display: flex; }
+    .nav-mobile a {
+      font-family: var(--font); font-size: 15px; font-weight: 300;
+      color: var(--ink); text-decoration: none;
+      padding: 14px 0; border-bottom: 1px solid var(--line); display: block;
+    }
+    .nav-mobile .mob-cta { margin-top: 16px; border-bottom: none !important; font-weight: 400; }
+    @media (max-width: 900px) {
+      .nav-links, .nav-cta-desktop { display: none !important; }
+      .nav-hamburger { display: flex; }
+    }
+
+    /* HERO split-screen */
+    .hero {
+      display: grid; grid-template-columns: 1fr 1fr;
+      height: 100vh; min-height: 620px; padding-top: 70px;
+    }
+    .hero-left {
+      background: var(--paper);
+      display: flex; flex-direction: column; justify-content: center;
+      padding: 64px 64px 64px 52px;
+    }
+    .hero-eyebrow {
+      display: flex; align-items: center; gap: 14px;
+      font-family: var(--font); font-size: 12px; font-weight: 300;
+      color: var(--clay); letter-spacing: 1px;
+      margin-bottom: 32px;
+    }
+    .hero-eyebrow::before {
+      content: ''; display: block; width: 28px; height: 1px; background: var(--clay); flex-shrink: 0;
+    }
+    .hero-title {
+      font-family: var(--font-serif);
+      font-size: clamp(38px, 4.5vw, 64px);
+      font-weight: 300; line-height: 1.1; letter-spacing: -0.5px;
+      color: var(--ink); margin-bottom: 26px;
+    }
+    .hero-title em { font-style: italic; color: var(--clay); font-weight: 300; }
+    .hero-sub {
+      font-family: var(--font); font-size: 15px; font-weight: 300;
+      color: rgba(43,32,24,0.65); line-height: 1.85; max-width: 420px;
+      margin-bottom: 44px;
+    }
+    .hero-ctas { display: flex; flex-direction: column; gap: 18px; }
+    .hero-cta-primary {
+      font-family: var(--font); font-size: 15px; font-weight: 400;
+      color: var(--ink); text-decoration: none;
+      display: inline-flex; align-items: center; gap: 7px;
+      position: relative; width: fit-content;
+    }
+    .hero-cta-primary::after {
+      content: ''; position: absolute; bottom: -2px; left: 0;
+      width: 0; height: 1.5px; background: var(--clay);
+      transition: width 0.3s ease;
+    }
+    .hero-cta-primary:hover::after { width: 100%; }
+    .hero-cta-primary:hover { color: var(--clay-dark); }
+    .hero-cta-secondary {
+      font-family: var(--font); font-size: 13px; font-weight: 300;
+      color: rgba(43,32,24,0.55); text-decoration: none;
+      display: inline-flex; align-items: center; gap: 6px;
+      position: relative; width: fit-content;
+    }
+    .hero-cta-secondary::after {
+      content: ''; position: absolute; bottom: -2px; left: 0;
+      width: 0; height: 1px; background: var(--bronze);
+      transition: width 0.3s ease;
+    }
+    .hero-cta-secondary:hover::after { width: 100%; }
+    .hero-cta-secondary:hover { color: var(--clay); }
+    .hero-right { position: relative; overflow: hidden; }
+    .hero-img {
+      width: 100%; height: 100%; object-fit: cover; object-position: center 30%;
+      filter: sepia(0.15) saturate(0.9);
+      clip-path: polygon(6% 0%, 100% 0%, 100% 100%, 0% 100%, 2% 72%, 4% 44%, 1% 18%);
+    }
+    @media (max-width: 768px) {
+      .hero {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto 1fr;
+        height: auto; min-height: auto;
+      }
+      .hero-right { height: 55vw; min-height: 240px; order: -1; }
+      .hero-img { clip-path: none; }
+      .hero-left { padding: 44px 22px; }
+    }
+
+    /* SECTION communs */
+    section { padding: 96px 0; }
+    @media (max-width: 768px) { section { padding: 64px 0; } }
+
+    .s-label-line {
+      display: flex; align-items: center; gap: 14px;
+      font-family: var(--font); font-size: 11px; font-weight: 300;
+      color: var(--clay); letter-spacing: 1.5px;
+      margin-bottom: 22px;
+    }
+    .s-label-line::before {
+      content: ''; width: 3px; height: 28px;
+      background: var(--clay); flex-shrink: 0; border-radius: 2px;
+    }
+    .s-title-serif {
+      font-family: var(--font-serif); font-style: italic; font-weight: 300;
+      font-size: clamp(28px, 3.5vw, 50px); line-height: 1.15;
+      letter-spacing: -0.3px; color: var(--ink); margin-bottom: 22px;
+    }
+
+    /* APROPOS */
+    .apropos { background: var(--sand); }
+    .apropos-inner { max-width: 800px; margin: 0 auto; }
+    .apropos-body {
+      display: grid; grid-template-columns: 2fr 1fr; gap: 52px; align-items: start;
+      margin-top: 16px;
+    }
+    @media (max-width: 680px) { .apropos-body { grid-template-columns: 1fr; gap: 32px; } }
+    .apropos-text {
+      font-family: var(--font); font-size: 15px; font-weight: 300;
+      color: var(--ink); line-height: 1.9;
+    }
+    .apropos-photo {
+      width: 100%; aspect-ratio: 3/4; object-fit: cover;
+      border: 1px solid var(--line); border-radius: 2px;
+      transform: rotate(-2deg);
+      filter: sepia(0.08) saturate(0.95);
+      flex-shrink: 0;
+    }
+    .apropos-pictos {
+      display: flex; align-items: center; gap: 0;
+      margin-top: 36px; flex-wrap: wrap;
+    }
+    .picto-item {
+      display: flex; align-items: center; gap: 8px;
+      font-family: var(--font); font-size: 12px; font-weight: 300;
+      color: var(--clay-dark);
+    }
+    .picto-item svg { width: 16px; height: 16px; stroke: var(--bronze); fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0; }
+    .picto-sep { margin: 0 16px; color: var(--line); font-size: 14px; }
+
+    /* SOINS liste verticale */
+    .soins { background: var(--paper); }
+    .soins-header { display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 24px; margin-bottom: 0; }
+    .soins-list { margin-top: 48px; }
+    .soin-row {
+      display: grid; grid-template-columns: 56px 1fr 1fr auto;
+      gap: 24px; align-items: center;
+      padding: 26px 0; border-bottom: 1px solid var(--line);
+      transition: background 0.25s;
+      cursor: default;
+    }
+    .soin-row:first-child { border-top: 1px solid var(--line); }
+    .soin-row:hover { background: rgba(232,220,200,0.25); padding-left: 12px; padding-right: 12px; margin: 0 -12px; }
+    .soin-num {
+      font-family: var(--font-serif); font-style: italic; font-weight: 300;
+      font-size: 32px; color: var(--clay); opacity: 0.35;
+      line-height: 1; transition: opacity 0.25s;
+    }
+    .soin-row:hover .soin-num { opacity: 1; }
+    .soin-name {
+      font-family: var(--font-serif); font-weight: 400; font-size: 22px;
+      color: var(--ink); line-height: 1.2;
+    }
+    .soin-desc {
+      font-family: var(--font); font-size: 13px; font-weight: 300;
+      color: rgba(43,32,24,0.55); line-height: 1.7; max-width: 400px;
+    }
+    .soin-arrow { font-size: 16px; color: var(--clay); opacity: 0.5; transition: opacity 0.25s, transform 0.25s; }
+    .soin-row:hover .soin-arrow { opacity: 1; transform: translateX(4px); }
+    @media (max-width: 768px) {
+      .soin-row { grid-template-columns: 44px 1fr auto; }
+      .soin-desc { display: none; }
+    }
+    @media (max-width: 480px) {
+      .soin-row { grid-template-columns: 1fr auto; }
+      .soin-num { display: none; }
+    }
+
+    /* TEMOIGNAGES */
+    .temoignages { background: var(--sand); }
+    .temo-stage { max-width: 600px; margin: 52px auto 0; position: relative; min-height: 200px; }
+    .temo-slide { display: none; text-align: center; }
+    .temo-slide.active { display: block; }
+    .temo-quote-mark {
+      font-family: var(--font-serif); font-size: 72px; line-height: 1;
+      color: var(--clay); opacity: 0.35; display: block; margin-bottom: -16px;
+      font-style: italic;
+    }
+    .temo-text {
+      font-family: var(--font-serif); font-style: italic; font-weight: 300;
+      font-size: 24px; color: var(--ink); line-height: 1.7;
+      margin-bottom: 28px;
+    }
+    .temo-author-name {
+      font-family: var(--font); font-size: 13px; font-weight: 400;
+      color: var(--clay-dark); text-transform: uppercase; letter-spacing: 2px;
+    }
+    .temo-author-soin {
+      font-family: var(--font); font-size: 12px; font-weight: 300;
+      color: rgba(43,32,24,0.45); margin-top: 4px;
+    }
+    .temo-dots {
+      display: flex; justify-content: center; gap: 10px; margin-top: 36px;
+    }
+    .temo-dot {
+      width: 7px; height: 7px; border-radius: 50%;
+      background: var(--line); border: none; cursor: pointer;
+      transition: background 0.3s; padding: 0;
+    }
+    .temo-dot.active { background: var(--clay); }
+
+    /* PRATIQUE */
+    .pratique { background: var(--paper); }
+    .pratique-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
+      margin-bottom: 52px;
+    }
+    @media (max-width: 768px) { .pratique-grid { grid-template-columns: 1fr; gap: 44px; } }
+    .info-list { margin-top: 32px; display: flex; flex-direction: column; gap: 18px; }
+    .info-item {
+      display: flex; gap: 16px; align-items: flex-start;
+    }
+    .info-item::before {
+      content: ''; display: block; width: 16px; height: 1px;
+      background: var(--clay); margin-top: 10px; flex-shrink: 0;
+    }
+    .info-label {
+      font-family: var(--font); font-size: 10px; font-weight: 500;
+      text-transform: uppercase; letter-spacing: 2px; color: var(--clay);
+      display: block; margin-bottom: 3px;
+    }
+    .info-val {
+      font-family: var(--font); font-size: 14px; font-weight: 300;
+      color: var(--ink); line-height: 1.65;
+    }
+    .info-val a { color: var(--ink); text-decoration: none; }
+    .pratique-photo {
+      width: 100%; aspect-ratio: 4/3; object-fit: cover;
+      filter: sepia(0.12) saturate(0.9);
+      clip-path: polygon(0% 0%, 100% 2%, 98% 100%, 4% 98%, 0% 62%);
+    }
+    .map-wrap {
+      border: 1px solid var(--line); overflow: hidden;
+    }
+    .map-wrap iframe { filter: sepia(0.25) saturate(0.8); display: block; }
+
+    /* CONTACT */
+    .contact-section { background: var(--ink); padding: 96px 0; }
+    .contact-inner { max-width: 560px; margin: 0 auto; text-align: center; padding: 0 24px; }
+    .contact-title {
+      font-family: var(--font-serif); font-style: italic; font-weight: 300;
+      font-size: clamp(28px, 4vw, 52px); line-height: 1.15; letter-spacing: -0.3px;
+      color: var(--paper); margin-bottom: 14px;
+    }
+    .contact-sub {
+      font-family: var(--font); font-size: 14px; font-weight: 300;
+      color: rgba(251,247,240,0.45); margin-bottom: 48px; line-height: 1.7;
+    }
+    .cf-form { display: flex; flex-direction: column; gap: 10px; text-align: left; }
+    .cf-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    @media (max-width: 540px) { .cf-row { grid-template-columns: 1fr; } }
+    .cf-input {
+      background: transparent;
+      border: none; border-bottom: 1px solid rgba(251,247,240,0.18);
+      color: var(--paper); padding: 13px 0;
+      font-family: var(--font); font-size: 14px; font-weight: 300;
+      outline: none; transition: border-color 0.25s; width: 100%;
+    }
+    .cf-input:focus { border-bottom-color: var(--clay); }
+    .cf-input::placeholder { color: rgba(251,247,240,0.28); }
+    select.cf-input option { background: #2B2018; color: var(--paper); }
+    .cf-submit-wrap { text-align: center; margin-top: 28px; }
+    .cf-submit {
+      background: none; border: none; cursor: pointer;
+      font-family: var(--font); font-size: 14px; font-weight: 400;
+      color: var(--paper);
+      display: inline-flex; align-items: center; gap: 7px;
+      position: relative; padding: 0; letter-spacing: 0.3px;
+    }
+    .cf-submit::after {
+      content: ''; position: absolute; bottom: -3px; left: 0;
+      width: 0; height: 1px; background: var(--clay);
+      transition: width 0.3s ease;
+    }
+    .cf-submit:hover::after { width: 100%; }
+    .cf-submit:hover { color: var(--sand); }
+    .contact-tel {
+      font-family: var(--font); font-size: 12px; font-weight: 300;
+      color: rgba(251,247,240,0.25); margin-top: 24px;
+    }
+    .contact-tel a { color: rgba(251,247,240,0.45); text-decoration: none; }
+    .contact-tel a:hover { color: var(--clay); }
+
+    /* FOOTER */
+    footer { background: var(--ink); border-top: 1px solid rgba(217,204,184,0.08); padding: 40px 0; }
+    .footer-inner {
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 16px;
+    }
+    .footer-brand {
+      font-family: var(--font-serif); font-style: italic; font-weight: 300;
+      font-size: 18px; color: var(--paper); letter-spacing: 0.3px;
+    }
+    .footer-loc {
+      font-family: var(--font); font-size: 12px; font-weight: 300;
+      color: rgba(251,247,240,0.3); margin-top: 4px; letter-spacing: 0.5px;
+    }
+    .footer-demo {
+      font-family: var(--font); font-size: 11px; font-weight: 300;
+      color: rgba(251,247,240,0.2); text-align: right;
+    }
+    .footer-demo a { color: rgba(251,247,240,0.3); text-decoration: none; }
+    .footer-demo a:hover { color: rgba(251,247,240,0.6); }
+  </style>
+</head>
+<body>
+
+<nav id="nav">
+  <div class="container">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo">Main en Or</a>
+      <ul class="nav-links">
+        <li><a href="#apropos">À propos</a></li>
+        <li><a href="#soins">Soins</a></li>
+        <li><a href="#pratique">Pratique</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <a href="#contact" class="nav-cta-text nav-cta-desktop">Prendre RDV →</a>
+      <button class="nav-hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+<div class="nav-mobile" id="navMobile">
+  <a href="#apropos" onclick="closeMenu()">À propos</a>
+  <a href="#soins" onclick="closeMenu()">Soins</a>
+  <a href="#pratique" onclick="closeMenu()">Pratique</a>
+  <a href="#contact" onclick="closeMenu()">Contact</a>
+  <a href="#contact" class="mob-cta" onclick="closeMenu()">Prendre RDV →</a>
+</div>
+
+<!-- HERO split-screen -->
+<div class="hero">
+  <div class="hero-left reveal">
+    <div class="hero-eyebrow">Institut de massage · Oullins</div>
+    <h1 class="hero-title">
+      Des mains expertes,<br>
+      <em>une présence rare.</em>
+    </h1>
+    <p class="hero-sub">Drainage lymphatique, madérothérapie, cupping et réflexologie — en cabinet à Oullins ou à domicile. Depuis 9 ans.</p>
+    <div class="hero-ctas">
+      <a href="#contact" class="hero-cta-primary">Prendre rendez-vous →</a>
+      <a href="#soins" class="hero-cta-secondary">Découvrir les soins</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <img class="hero-img" src="https://www.nstudiodigital.fr/massagehero.webp" loading="eager" fetchpriority="high" alt="Massage bien-être — Main en Or, Oullins"/>
+  </div>
+</div>
+
+<!-- APROPOS -->
+<section class="apropos" id="apropos">
+  <div class="container">
+    <div class="apropos-inner">
+      <div class="s-label-line reveal">Praticienne certifiée · 9 ans d'expérience</div>
+      <h2 class="s-title-serif reveal">Un toucher juste, au service<br>de votre équilibre.</h2>
+      <div class="apropos-body reveal">
+        <div>
+          <p class="apropos-text">
+            Je suis Nor, praticienne en massages bien-être installée à Oullins depuis 9 ans.
+            Formée aux techniques manuelles les plus respectueuses du corps, j'accompagne chaque
+            personne dans une démarche de soin personnalisée — qu'il s'agisse de libérer des tensions
+            profondes, de drainer, de rééquilibrer ou simplement de se reconnecter à son corps.
+          </p>
+          <p class="apropos-text" style="margin-top: 20px;">
+            Mon cabinet se trouve au 24 Bd Émile Zola, Oullins. Je me déplace également à domicile
+            pour celles et ceux qui le souhaitent. Chaque soin est adapté à votre morphologie,
+            vos besoins du moment et votre rythme.
+          </p>
+          <div class="apropos-pictos">
+            <span class="picto-item">
+              <svg viewBox="0 0 24 24"><path d="M12 22s8-4.5 8-11.5a8 8 0 1 0-16 0C4 17.5 12 22 12 22z"/><circle cx="12" cy="10.5" r="2.5"/></svg>
+              Cabinet &amp; domicile
+            </span>
+            <span class="picto-sep">·</span>
+            <span class="picto-item">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              Sur RDV uniquement
+            </span>
+            <span class="picto-sep">·</span>
+            <span class="picto-item">
+              <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+              7 soins spécialisés
+            </span>
+          </div>
+        </div>
+        <img class="apropos-photo reveal" src="https://www.nstudiodigital.fr/massagegeste.webp" alt="Nor, praticienne en massage bien-être à Oullins"/>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOINS liste numérotée -->
+<section class="soins" id="soins">
+  <div class="container">
+    <div class="soins-header">
+      <div>
+        <div class="s-label-line reveal">Techniques &amp; spécialités</div>
+        <h2 class="s-title-serif reveal">Les soins proposés</h2>
+      </div>
+    </div>
+    <div class="soins-list reveal">
+      <div class="soin-row">
+        <span class="soin-num">01</span>
+        <span class="soin-name">Drainage lymphatique</span>
+        <span class="soin-desc">Technique douce qui stimule la circulation lymphatique pour réduire les gonflements et favoriser l'élimination des toxines.</span>
+        <span class="soin-arrow">→</span>
+      </div>
+      <div class="soin-row">
+        <span class="soin-num">02</span>
+        <span class="soin-name">Madérothérapie</span>
+        <span class="soin-desc">Massage modelant aux rouleaux de bois pour affiner les contours, activer la circulation et lisser la peau.</span>
+        <span class="soin-arrow">→</span>
+      </div>
+      <div class="soin-row">
+        <span class="soin-num">03</span>
+        <span class="soin-name">Cupping thérapie</span>
+        <span class="soin-desc">Ventouses positionnées sur les zones de tension pour libérer les fascias et améliorer la circulation sanguine en profondeur.</span>
+        <span class="soin-arrow">→</span>
+      </div>
+      <div class="soin-row">
+        <span class="soin-num">04</span>
+        <span class="soin-name">Réflexologie plantaire</span>
+        <span class="soin-desc">Pression sur les zones réflexes des pieds pour rééquilibrer les organes correspondants et induire un état de relaxation profonde.</span>
+        <span class="soin-arrow">→</span>
+      </div>
+      <div class="soin-row">
+        <span class="soin-num">05</span>
+        <span class="soin-name">Shirotchampi</span>
+        <span class="soin-desc">Massage ayurvédique du cuir chevelu, de la nuque et des épaules qui soulage les tensions cérébrales et favorise la clarté mentale.</span>
+        <span class="soin-arrow">→</span>
+      </div>
+      <div class="soin-row">
+        <span class="soin-num">06</span>
+        <span class="soin-name">Massage pierres chaudes</span>
+        <span class="soin-desc">Pierres volcaniques chauffées posées et glissées sur le corps pour une détente musculaire profonde et un ancrage immédiat.</span>
+        <span class="soin-arrow">→</span>
+      </div>
+      <div class="soin-row">
+        <span class="soin-num">07</span>
+        <span class="soin-name">Massage facial Shinzu</span>
+        <span class="soin-desc">Protocole japonais de relâchement des tensions faciales, pour une peau plus lumineuse et un visage profondément reposé.</span>
+        <span class="soin-arrow">→</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TEMOIGNAGES carousel -->
+<section class="temoignages" id="temoignages">
+  <div class="container">
+    <div class="s-label-line reveal" style="justify-content:center;">Ce qu'elles disent</div>
+    <h2 class="s-title-serif reveal" style="text-align:center;">Vécus &amp; ressentis</h2>
+    <div class="temo-stage reveal">
+      <div class="temo-slide active">
+        <span class="temo-quote-mark">&ldquo;</span>
+        <p class="temo-text">Un drainage lymphatique d'une précision rare. Nor a un toucher incroyablement juste — elle sent exactement là où le corps a besoin qu'on intervienne. Je repars à chaque fois avec l'impression d'un corps neuf.</p>
+        <p class="temo-author-name">Sophie M.</p>
+        <p class="temo-author-soin">Drainage lymphatique</p>
+      </div>
+      <div class="temo-slide">
+        <span class="temo-quote-mark">&ldquo;</span>
+        <p class="temo-text">Je venais avec des douleurs chroniques dans le dos. Après trois séances de cupping, les tensions ont littéralement fondu. Je n'aurais jamais cru un résultat aussi concret avec une approche aussi douce.</p>
+        <p class="temo-author-name">Marc T.</p>
+        <p class="temo-author-soin">Cupping thérapie</p>
+      </div>
+      <div class="temo-slide">
+        <span class="temo-quote-mark">&ldquo;</span>
+        <p class="temo-text">La madérothérapie avec Nor, c'est un rituel que j'attends chaque mois. En plus des résultats sur ma silhouette, chaque séance est un vrai moment de présence à soi. Un cadeau.</p>
+        <p class="temo-author-name">Leïla B.</p>
+        <p class="temo-author-soin">Madérothérapie</p>
+      </div>
+      <div class="temo-dots">
+        <button class="temo-dot active" data-index="0" aria-label="Témoignage 1"></button>
+        <button class="temo-dot" data-index="1" aria-label="Témoignage 2"></button>
+        <button class="temo-dot" data-index="2" aria-label="Témoignage 3"></button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRATIQUE -->
+<section class="pratique" id="pratique">
+  <div class="container">
+    <div class="s-label-line reveal">Infos pratiques</div>
+    <h2 class="s-title-serif reveal">Venir me voir</h2>
+    <div class="pratique-grid">
+      <div class="reveal">
+        <div class="info-list">
+          <div class="info-item">
+            <div>
+              <span class="info-label">Cabinet</span>
+              <span class="info-val">24 Bd Émile Zola, 69600 Oullins<br>À 5 min du métro A — arrêt Oullins</span>
+            </div>
+          </div>
+          <div class="info-item">
+            <div>
+              <span class="info-label">Déplacements</span>
+              <span class="info-val">Disponible à domicile sur Oullins et communes limitrophes</span>
+            </div>
+          </div>
+          <div class="info-item">
+            <div>
+              <span class="info-label">Horaires</span>
+              <span class="info-val">Lundi – Vendredi : 9h – 19h<br>Samedi : 9h – 17h</span>
+            </div>
+          </div>
+          <div class="info-item">
+            <div>
+              <span class="info-label">Réservation</span>
+              <span class="info-val">
+                <a href="tel:+33600000000">06 00 00 00 00</a><br>
+                Sur rendez-vous uniquement
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="reveal">
+        <img class="pratique-photo" src="https://www.nstudiodigital.fr/massageambiance.webp" alt="Cabinet de massage bien-être à Oullins"/>
+      </div>
+    </div>
+    <div class="map-wrap reveal">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2785.7!2d4.812!3d45.713!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47f4ea6b37b0e4f1%3A0x7c4d62a1c6e80b20!2s24%20Bd%20%C3%89mile%20Zola%2C%2069600%20Oullins!5e0!3m2!1sfr!2sfr!4v1700000000000!5m2!1sfr!2sfr"
+        width="100%" height="320" style="border:0;" allowfullscreen="" loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade" title="Localisation cabinet Main en Or">
+      </iframe>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-section" id="contact">
+  <div class="contact-inner">
+    <h2 class="contact-title reveal">Réserver une séance</h2>
+    <p class="contact-sub reveal">Je vous réponds sous 24h et confirme votre créneau par message.</p>
+    <form class="cf-form reveal" action="#" method="post">
+      <div class="cf-row">
+        <input class="cf-input" type="text" name="prenom" placeholder="Prénom" required/>
+        <input class="cf-input" type="text" name="nom" placeholder="Nom" required/>
+      </div>
+      <input class="cf-input" type="email" name="email" placeholder="Adresse e-mail" required/>
+      <input class="cf-input" type="tel" name="tel" placeholder="Téléphone"/>
+      <select class="cf-input" name="soin">
+        <option value="" disabled selected>Soin souhaité</option>
+        <option>Drainage lymphatique</option>
+        <option>Madérothérapie</option>
+        <option>Cupping thérapie</option>
+        <option>Réflexologie plantaire</option>
+        <option>Shirotchampi</option>
+        <option>Massage pierres chaudes</option>
+        <option>Massage facial Shinzu</option>
+        <option>Je ne sais pas encore</option>
+      </select>
+      <textarea class="cf-input" name="message" rows="3" placeholder="Un mot sur vos attentes ou votre disponibilité (optionnel)"></textarea>
+      <div class="cf-submit-wrap">
+        <button type="submit" class="cf-submit">Envoyer ma demande →</button>
+      </div>
+    </form>
+    <p class="contact-tel">Ou par téléphone : <a href="tel:+33600000000">06 00 00 00 00</a></p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-brand">Main en Or</div>
+        <div class="footer-loc">Massages bien-être · Oullins (69)</div>
+      </div>
+      <div class="footer-demo">
+        Site démo réalisé par <a href="https://nstudiodigital.fr" target="_blank" rel="noopener">N/ Studio Digital</a> · nstudiodigital.fr
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Nav scroll shadow
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 40);
+  }, { passive: true });
+
+  // Hamburger
+  const hamburger = document.getElementById('hamburger');
+  const navMobile = document.getElementById('navMobile');
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('open');
+    navMobile.classList.toggle('open');
+  });
+  function closeMenu() {
+    hamburger.classList.remove('open');
+    navMobile.classList.remove('open');
+  }
+
+  // Reveal on scroll
+  const revealEls = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('vis'); observer.unobserve(e.target); } });
+  }, { threshold: 0.1 });
+  revealEls.forEach(el => observer.observe(el));
+
+  // Témoignages carousel
+  const slides = document.querySelectorAll('.temo-slide');
+  const dots = document.querySelectorAll('.temo-dot');
+  let currentSlide = 0;
+
+  function goToSlide(index) {
+    slides[currentSlide].classList.remove('active');
+    dots[currentSlide].classList.remove('active');
+    currentSlide = index;
+    slides[currentSlide].classList.add('active');
+    dots[currentSlide].classList.add('active');
+  }
+
+  dots.forEach(dot => {
+    dot.addEventListener('click', () => goToSlide(parseInt(dot.dataset.index)));
+  });
+
+  // Auto-advance témoignages toutes les 6s
+  setInterval(() => goToSlide((currentSlide + 1) % slides.length), 6000);
+</script>
+</body>
+</html>

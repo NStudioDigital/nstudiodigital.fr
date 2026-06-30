@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>N/ Studio Digital — 20 Emails prospection v5 — Sans site</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: Arial, sans-serif; background: #F4F4F4; color: #0D0D0D; padding: 32px 20px; }
+  h1 { font-size: 22px; font-weight: 700; margin-bottom: 4px; }
+  .subtitle { color: #555; font-size: 13px; margin-bottom: 32px; }
+  .slash { color: #7A9478; font-weight: 700; }
+  .badge { display: inline-block; background: #7A9478; color: #fff; font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 20px; letter-spacing: 0.5px; margin-left: 8px; vertical-align: middle; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(520px, 1fr)); gap: 20px; }
+  .card { background: #fff; border-radius: 8px; border: 1px solid #E0E0E0; overflow: hidden; }
+  .card-header { background: #0D0D0D; color: #fff; padding: 12px 16px; display: flex; gap: 12px; align-items: flex-start; }
+  .card-num { color: #7A9478; font-size: 11px; font-weight: 700; letter-spacing: 1px; flex-shrink: 0; margin-top: 2px; }
+  .card-title { font-size: 14px; font-weight: 700; line-height: 1.3; }
+  .card-meta { font-size: 11px; color: #aaa; margin-top: 2px; }
+  .card-body { padding: 16px; }
+  .label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: #7A9478; margin-bottom: 4px; }
+  .field { font-size: 13px; background: #F4F4F4; padding: 7px 10px; border-radius: 4px; margin-bottom: 14px; }
+  .field.email-field { color: #0D0D0D; font-weight: 600; }
+  .field.objet-field { font-style: italic; }
+  .corps { font-size: 13px; line-height: 1.65; white-space: pre-wrap; color: #222; }
+  .rdv { color: #555; font-size: 12px; margin-top: 12px; }
+  .ps { color: #888; font-size: 12px; margin-top: 6px; font-style: italic; }
+  .btn-copy { margin-top: 14px; background: #0D0D0D; color: #fff; border: none; padding: 7px 14px; border-radius: 4px; cursor: pointer; font-size: 12px; font-weight: 700; letter-spacing: 0.5px; transition: background .15s; }
+  .btn-copy:hover { background: #7A9478; }
+  .btn-copy.copied { background: #7A9478; }
+</style>
+</head>
+<body>
+
+<h1>N<span class="slash">/</span> Studio Digital — 20 emails prospection <span class="badge">Sans site internet</span></h1>
+<p class="subtitle">Version 5 — Prospects sans site · Jamais contactés · Email CRM vérifié</p>
+
+<div class="grid" id="emails"></div>
+
+<script>
+const RDV = "Si vous souhaitez en savoir plus, vous pouvez prendre directement un rendez-vous de 30 minutes sur mon site : nstudiodigital.fr/#contact";
+const PS = "P.S. N'hesitez pas a me signaler si le moment n'est pas opportun.";
+
+const emails = [
+  {
+    nom: "AnnAnge Zen",
+    type: "Institut de spa et bien-etre",
+    email: "annangezen@gmail.com",
+    objet: "Votre activite bien-etre est invisible en ligne",
+    corps: "Bonjour,\n\nJ'ai recherche votre activite bien-etre en ligne — AnnAnge Zen n'a pas de site internet. Pour une nouvelle cliente qui vous cherche sur Google, vous n'existez pas encore numeriquement, quelles que soient la qualite de vos soins ou la satisfaction de votre clientele actuelle.\n\nJe concois des sites vitrines sur-mesure pour les praticiens bien-etre du Grand Lyon — 990 EUR, livraison en 3 semaines, domaine et code 100% a vous.\n\nSouhaiteriez-vous qu'on en discute ?"
+  },
+  {
+    nom: "Tchip Coiffure Meyzieu",
+    type: "Salon de coiffure",
+    email: "leoncini.gros12@gmail.com",
+    objet: "Tchip Meyzieu n'a pas de site propre",
+    corps: "Bonjour,\n\nJ'ai cherche Tchip Coiffure a Meyzieu en ligne — le reseau Tchip dispose d'un site national, mais vous n'avez pas de page locale propre. Une cliente qui cherche un coiffeur a Meyzieu ne vous trouve pas directement et ne voit pas ce qui vous distingue de la concurrence.\n\nJe concois des sites vitrines sur-mesure pour les salons de coiffure du Grand Lyon — 990 EUR, livraison en 3 semaines, une vitrine locale qui vous appartient.\n\nEst-ce une situation que vous souhaiteriez corriger ?"
+  },
+  {
+    nom: "Massage bien-etre — Marie Gonkiewicz",
+    type: "Massotherapeute / Yourte therapeutique",
+    email: "marie.gonkiewicz@gmail.com",
+    objet: "Votre yourte therapeutique n'a pas de vitrine en ligne",
+    corps: "Bonjour,\n\nJ'ai recherche votre activite en ligne — votre approche en yourte therapeutique a Charly est distinctive, mais sans site internet, elle reste invisible pour toute personne qui vous cherche via Google. Vous dependez uniquement du bouche-a-oreille pour attirer de nouveaux clients.\n\nJe concois des sites vitrines sur-mesure pour les praticiens bien-etre du Grand Lyon — 990 EUR, 3 semaines, un espace qui raconte votre approche et donne envie de vous contacter.\n\nSouhaiteriez-vous qu'on en parle ?"
+  },
+  {
+    nom: "Quintessence La voie du coeur",
+    type: "Institut de massages",
+    email: "quintessencevdc@gmail.com",
+    objet: "Votre pratique n'est pas visible en ligne",
+    corps: "Bonjour,\n\nJ'ai cherche Quintessence La voie du coeur en ligne — votre activite n'a pas de site internet. Pour une clientele sensible a l'authenticite de l'approche, l'absence de vitrine en ligne les prive de la possibilite de vous decouvrir avant meme de vous contacter.\n\nJe concois des sites vitrines sur-mesure pour les praticiens bien-etre du Grand Lyon — 990 EUR, livraison en 3 semaines, une presentation qui donne confiance avant la premiere seance.\n\nEst-ce un sujet sur lequel vous souhaiteriez avancer ?"
+  },
+  {
+    nom: "Soins energetiques — Pascale Chaudier",
+    type: "Institut de massages / Magnetiseur / EFT",
+    email: "soins.energetiques.massages@gmail.com",
+    objet: "Vos soins energetiques sont absents du web",
+    corps: "Bonjour,\n\nJ'ai recherche votre activite en ligne — votre pratique en soins energetiques, massages et EFT n'a pas de site internet. Pour quelqu'un qui cherche ce type d'accompagnement sur le Grand Lyon, vous etes introuvable, independamment de la qualite de votre travail.\n\nJe concois des sites vitrines sur-mesure pour les praticiens bien-etre du Grand Lyon — 990 EUR, 3 semaines, un espace qui explique votre approche et rassure avant le premier rendez-vous.\n\nSouhaiteriez-vous qu'on en discute ?"
+  },
+  {
+    nom: "Des Mains Pour Grandir",
+    type: "Institut de massages",
+    email: "isabelle@desmainspourgrandir.fr",
+    objet: "Votre site est introuvable en ligne",
+    corps: "Bonjour,\n\nJ'ai recherche Des Mains Pour Grandir en ligne — votre activite n'a pas de site internet. Pour un parent qui cherche un praticien massage pour son enfant sur le Grand Lyon, vous n'apparaissez pas dans les resultats. C'est une opportunite manquee a chaque recherche.\n\nJe concois des sites vitrines sur-mesure pour les praticiens massage du Grand Lyon — 990 EUR, livraison en 3 semaines, un espace clair qui convertit une visite en prise de contact.\n\nEst-ce une situation que vous souhaiteriez changer ?"
+  },
+  {
+    nom: "Beauty Moon",
+    type: "Institut de beaute",
+    email: "contact@beautymoon.fr",
+    objet: "Beauty Moon n'a pas de site internet",
+    corps: "Bonjour,\n\nJ'ai recherche Beauty Moon en ligne — votre institut n'a pas de site internet. Pour une nouvelle cliente qui vous cherche, l'aventure s'arrete a votre fiche Google. Elle ne peut pas decouvrir vos prestations, votre univers, ni etre convaincue de vous appeler.\n\nJe concois des sites vitrines sur-mesure pour les instituts de beaute du Grand Lyon — 990 EUR, 3 semaines, un design qui donne envie de pousser la porte.\n\nSeriez-vous disponible pour en discuter ?"
+  },
+  {
+    nom: "Bee — Massages et Relaxation",
+    type: "Massotherapeute",
+    email: "muriel2bee@gmail.com",
+    objet: "Votre activite massage n'existe pas en ligne",
+    corps: "Bonjour,\n\nJ'ai recherche Bee Massages et Relaxation en ligne — vous n'avez pas de site internet. Toute personne qui cherche un massage bien-etre dans votre secteur et qui ne vous connait pas deja ne vous trouvera pas. Vous perdez des clients sans en avoir connaissance.\n\nJe concois des sites vitrines sur-mesure pour les praticiens massage du Grand Lyon — 990 EUR, livraison en 3 semaines, un site qui travaille pour vous en permanence.\n\nSouhaiteriez-vous qu'on en parle ?"
+  },
+  {
+    nom: "Cabinet Loubiere Laurence",
+    type: "Institut de massages",
+    email: "laurenceloubiere69@gmail.com",
+    objet: "Votre cabinet n'a pas de presence en ligne",
+    corps: "Bonjour,\n\nJ'ai recherche votre cabinet en ligne — Laurence Loubiere n'a pas de site internet. Pour un nouveau patient qui cherche un praticien massage sur le Grand Lyon, vous restez invisible, quelle que soit la qualite de votre accompagnement.\n\nJe concois des sites vitrines sur-mesure pour les praticiens bien-etre du Grand Lyon — 990 EUR, 3 semaines, un espace professionnel qui rassure et genere des prises de contact.\n\nEst-ce un sujet sur lequel vous souhaiteriez avancer ?"
+  },
+  {
+    nom: "ShiatsuK — Massages Vaulx en Velin",
+    type: "Institut de massages / Shiatsu",
+    email: "contact@shiatsuk.com",
+    objet: "Votre pratique shiatsu est absente du web",
+    corps: "Bonjour,\n\nJ'ai recherche ShiatsuK en ligne — votre activite de shiatsu a Vaulx en Velin n'a pas de site internet. Pour une personne qui decouvre le shiatsu et cherche un praticien serieux sur le Grand Lyon, l'absence de site est souvent synonyme d'inexistence en ligne.\n\nJe concois des sites vitrines sur-mesure pour les praticiens bien-etre du Grand Lyon — 990 EUR, livraison en 3 semaines, une vitrine qui vous donne la credibilite que votre pratique merite.\n\nSouhaiteriez-vous qu'on en discute ?"
+  },
+  {
+    nom: "Namaste Massage Meyzieu",
+    type: "Massotherapeute",
+    email: "namastemassage.be@gmail.com",
+    objet: "Votre massage bien-etre n'est pas visible en ligne",
+    corps: "Bonjour,\n\nJ'ai cherche Namaste Massage a Meyzieu — vous n'avez pas de site internet. Pour une cliente qui recherche un massage a Meyzieu et qui ne vous connait pas encore, vous n'existez pas en dehors de votre fiche Google. C'est une limitation concrete a votre developpement.\n\nJe concois des sites vitrines sur-mesure pour les praticiens massage du Grand Lyon — 990 EUR, 3 semaines, un espace en ligne qui donne envie de reserver.\n\nEst-ce quelque chose que vous souhaiteriez corriger ?"
+  },
+  {
+    nom: "Au Coeur Du Bien-Etre",
+    type: "Energeticienne / Drainage lymphatique",
+    email: "aucoeurdubienetre69@gmail.com",
+    objet: "Votre activite bien-etre est introuvable en ligne",
+    corps: "Bonjour,\n\nJ'ai recherche votre activite en ligne — Au Coeur Du Bien-Etre n'a pas de site internet. Pour une cliente qui cherche un drainage lymphatique ou un soin energetique sur le Grand Lyon, vous etes absente des resultats Google, independamment de la qualite de vos soins.\n\nJe concois des sites vitrines sur-mesure pour les praticiens bien-etre du Grand Lyon — 990 EUR, livraison en 3 semaines, un espace qui explique votre approche et convertit les visites en prises de rendez-vous.\n\nSeriez-vous disponible pour en discuter ?"
+  },
+  {
+    nom: "Theodore Dhenain — Massages bien-etre",
+    type: "Massage bien-etre",
+    email: "theodore.dhenain.pro@gmail.com",
+    objet: "Votre activite massage n'a pas de site internet",
+    corps: "Bonjour,\n\nJ'ai recherche Theodore Dhenain en ligne — votre activite de massage bien-etre n'a pas de site internet. Sans vitrine propre, vous dependez uniquement du bouche-a-oreille et des avis Google pour attirer de nouveaux clients. C'est une contrainte que vous n'avez pas a accepter.\n\nJe concois des sites vitrines sur-mesure pour les praticiens massage du Grand Lyon — 990 EUR, 3 semaines, code et domaine entierement a vous.\n\nSouhaiteriez-vous qu'on en parle ?"
+  },
+  {
+    nom: "Salon de Coiffure Alange",
+    type: "Salon de coiffure",
+    email: "dumonceaug.alan@yahoo.fr",
+    objet: "Votre salon de coiffure est absent du web",
+    corps: "Bonjour,\n\nJ'ai recherche le Salon Alange en ligne — vous n'avez pas de site internet. Une cliente qui cherche un coiffeur dans votre secteur et qui ne vous connait pas encore ne vous trouvera pas. Vos concurrents avec un site captent ce trafic a votre place.\n\nJe concois des sites vitrines sur-mesure pour les salons de coiffure du Grand Lyon — 990 EUR, livraison en 3 semaines, domaine et code 100% a vous.\n\nEst-ce une situation que vous souhaiteriez changer ?"
+  },
+  {
+    nom: "BEAUTYTANLYON",
+    type: "Centre de bien-etre",
+    email: "assiya168@gmail.com",
+    objet: "Votre centre bien-etre n'a pas de vitrine en ligne",
+    corps: "Bonjour,\n\nJ'ai recherche BEAUTYTANLYON en ligne — votre centre n'a pas de site internet. Pour une nouvelle cliente qui vous cherche sur Google, l'experience s'arrete a votre fiche. Elle ne peut pas decouvrir vos prestations ni etre convaincue de vous contacter.\n\nJe concois des sites vitrines sur-mesure pour les centres bien-etre du Grand Lyon — 990 EUR, 3 semaines, un espace qui donne envie de prendre rendez-vous.\n\nSouhaiteriez-vous qu'on en discute ?"
+  },
+  {
+    nom: "Studio Be You, Be Well",
+    type: "Institut de beaute",
+    email: "studiobeyoubewell@gmail.com",
+    objet: "Studio Be You, Be Well n'est pas visible en ligne",
+    corps: "Bonjour,\n\nJ'ai recherche Studio Be You, Be Well en ligne — vous n'avez pas de site internet. Votre nom porte une vraie promesse, mais sans vitrine en ligne, cette promesse reste inaccessible pour toute personne qui ne vous connait pas encore.\n\nJe concois des sites vitrines sur-mesure pour les instituts du Grand Lyon — 990 EUR, livraison en 3 semaines, un design qui traduit votre identite et donne envie de venir.\n\nEst-ce un sujet sur lequel vous souhaiteriez avancer ?"
+  },
+  {
+    nom: "Sublim' Et Vous",
+    type: "Institut de beaute",
+    email: "contact@sublim-et-vous.fr",
+    objet: "Votre institut de beaute n'a pas de site internet",
+    corps: "Bonjour,\n\nJ'ai recherche Sublim' Et Vous en ligne — votre institut n'a pas de site internet. Pour une nouvelle cliente qui vous cherche, il n'existe aucun espace ou decouvrir vos soins, vos tarifs ou votre approche avant de vous appeler.\n\nJe concois des sites vitrines sur-mesure pour les instituts de beaute du Grand Lyon — 990 EUR, 3 semaines, un espace professionnel qui convertit les visites en prises de rendez-vous.\n\nSeriez-vous disponible pour en parler ?"
+  },
+  {
+    nom: "L'harmonie du corps",
+    type: "Drainage lymphatique",
+    email: "harmonieducorps69@gmail.com",
+    objet: "Votre activite n'a pas de presence sur internet",
+    corps: "Bonjour,\n\nJ'ai recherche L'harmonie du corps en ligne — votre activite de drainage lymphatique n'a pas de site internet. C'est une specialite qui demande confiance et credibilite avant le premier rendez-vous : sans site, vous etes absent du parcours de decision de vos futurs clients.\n\nJe concois des sites vitrines sur-mesure pour les praticiens bien-etre du Grand Lyon — 990 EUR, livraison en 3 semaines, un espace qui rassure et incite a prendre contact.\n\nSouhaiteriez-vous qu'on en discute ?"
+  },
+  {
+    nom: "Institut Aux Petits Soins",
+    type: "Institut de beaute",
+    email: "aux.petits.soins@laposte.net",
+    objet: "Votre institut n'a pas de site internet",
+    corps: "Bonjour,\n\nJ'ai cherche Institut Aux Petits Soins en ligne — vous n'avez pas de site internet. Toute cliente qui vous cherche sans vous connaitre ne trouve qu'une fiche Google : pas de galerie, pas de details sur vos soins, pas de possibilite de reserver directement.\n\nJe concois des sites vitrines sur-mesure pour les instituts de beaute du Grand Lyon — 990 EUR, 3 semaines, un espace en ligne qui valorise vraiment votre travail.\n\nEst-ce quelque chose que vous envisagez de corriger ?"
+  },
+  {
+    nom: "Skin Expert et Bien Etre",
+    type: "Institut de soins du visage",
+    email: "skinexpertetbienetre@gmail.com",
+    objet: "Votre expertise visage n'a pas de vitrine en ligne",
+    corps: "Bonjour,\n\nJ'ai recherche Skin Expert et Bien Etre en ligne — votre activite de soins du visage n'a pas de site internet. Pour une cliente qui cherche un soin visage specialise sur le Grand Lyon, vous etes absent des resultats. Votre expertise merite d'etre visible.\n\nJe concois des sites vitrines sur-mesure pour les instituts de beaute du Grand Lyon — 990 EUR, livraison en 3 semaines, un espace qui met en valeur votre savoir-faire et genere des prises de rendez-vous.\n\nSouhaiteriez-vous qu'on en parle ?"
+  }
+];
+
+const container = document.getElementById('emails');
+
+emails.forEach((e, i) => {
+  const card = document.createElement('div');
+  card.className = 'card';
+  card.innerHTML =
+    '<div class="card-header">' +
+      '<div class="card-num">' + String(i+1).padStart(2,'0') + '</div>' +
+      '<div style="flex:1">' +
+        '<div class="card-title">' + e.nom + '</div>' +
+        '<div class="card-meta">' + e.type + '</div>' +
+      '</div>' +
+    '</div>' +
+    '<div class="card-body">' +
+      '<div class="label">Email prospect</div>' +
+      '<div class="field email-field">' + e.email + '</div>' +
+      '<div class="label">Objet</div>' +
+      '<div class="field objet-field">' + e.objet + '</div>' +
+      '<div class="label">Corps</div>' +
+      '<div class="corps">' + e.corps + '</div>' +
+      '<div class="rdv">' + RDV + '</div>' +
+      '<div class="ps">' + PS + '</div>' +
+      '<button class="btn-copy" onclick="copyEmail(this,' + i + ')">Copier l\'email complet</button>' +
+    '</div>';
+  container.appendChild(card);
+});
+
+function copyEmail(btn, i) {
+  var e = emails[i];
+  var full = 'Objet : ' + e.objet + '\n\n' + e.corps + '\n\n' + RDV + '\n\n' + PS;
+  navigator.clipboard.writeText(full).then(function() {
+    btn.textContent = 'Copie !';
+    btn.classList.add('copied');
+    setTimeout(function() {
+      btn.textContent = "Copier l'email complet";
+      btn.classList.remove('copied');
+    }, 2000);
+  });
+}
+</script>
+</body>
+</html>

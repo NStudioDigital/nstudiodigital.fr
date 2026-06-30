@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>N/ Studio Digital — 20 Emails prospection v3</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: Arial, sans-serif; background: #F4F4F4; color: #0D0D0D; padding: 32px 20px; }
+  h1 { font-size: 22px; font-weight: 700; margin-bottom: 4px; }
+  .subtitle { color: #555; font-size: 13px; margin-bottom: 32px; }
+  .slash { color: #7A9478; font-weight: 700; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(520px, 1fr)); gap: 20px; }
+  .card { background: #fff; border-radius: 8px; border: 1px solid #E0E0E0; overflow: hidden; }
+  .card-header { background: #0D0D0D; color: #fff; padding: 12px 16px; display: flex; gap: 12px; align-items: flex-start; }
+  .card-num { color: #7A9478; font-size: 11px; font-weight: 700; letter-spacing: 1px; flex-shrink: 0; margin-top: 2px; }
+  .card-title { font-size: 14px; font-weight: 700; line-height: 1.3; }
+  .card-meta { font-size: 11px; color: #aaa; margin-top: 2px; }
+  .card-body { padding: 16px; }
+  .label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: #7A9478; margin-bottom: 4px; }
+  .field { font-size: 13px; background: #F4F4F4; padding: 7px 10px; border-radius: 4px; margin-bottom: 14px; }
+  .field.email-field { color: #0D0D0D; font-weight: 600; font-style: normal; }
+  .field.objet-field { font-style: italic; }
+  .corps { font-size: 13px; line-height: 1.65; white-space: pre-wrap; color: #222; }
+  .ps { color: #888; font-size: 12px; margin-top: 8px; font-style: italic; }
+  .btn-copy { margin-top: 14px; background: #0D0D0D; color: #fff; border: none; padding: 7px 14px; border-radius: 4px; cursor: pointer; font-size: 12px; font-weight: 700; letter-spacing: 0.5px; transition: background .15s; }
+  .btn-copy:hover { background: #7A9478; }
+  .btn-copy.copied { background: #7A9478; }
+</style>
+</head>
+<body>
+
+<h1>N<span class="slash">/</span> Studio Digital — 20 emails prospection</h1>
+<p class="subtitle">Lundi 22 juin 2026 · Version 3 — 100% nouveaux prospects · Email CRM intégré</p>
+
+<div class="grid" id="emails"></div>
+
+<script>
+const emails = [
+  {
+    nom: "Lumière dorée",
+    ville: "Décines-Charpieu",
+    type: "Institut de beauté",
+    email: "lumieredoree69@gmail.com",
+    objet: "Votre institut mérite une vitrine plus convaincante",
+    corps: `Bonjour,
+
+J'ai consulté la présence en ligne de Lumière dorée — l'activité semble établie, mais le site actuel ne donne pas une image suffisamment soignée pour convaincre une nouvelle cliente qui vous découvre en ligne.
+
+Je conçois des sites vitrines sur-mesure pour les instituts du Grand Lyon — 990 €, livraison en 3 semaines, avec un design qui reflète vraiment la qualité de vos soins.
+
+Seriez-vous disponible pour en discuter ?`,
+    ps: "Si vous souhaitez en savoir plus, vous pouvez prendre directement un rendez-vous de 30 minutes sur mon site nstudiodigital.fr/#contact\n\nP.S. N'hésitez pas à me signaler si le moment n'est pas opportun.",
+  },
+  {
+    nom: "Plumeria Institut",
+    ville: "Bron",
+    type: "Institut de beauté",
+    email: "laetitia@plumeria-institut.fr",
+    objet: "Votre site ne reflète pas le soin apporté à votre institut",
+    corps: `Bonjour,
+
+J'ai visité le site de Plumeria Institut — l'univers que vous proposez est soigné, mais le site actuel ne restitue pas ce niveau d'attention. Une cliente qui vous cherche pour la première fois peut passer à côté sans jamais vous contacter.
+
+Je conçois des sites vitrines sur-mesure pour les instituts du Grand Lyon — 990 €, 3 semaines, un espace en ligne qui donne envie de prendre rendez-vous.
+
+Souhaiteriez-vous qu'on en parle ?`,
+    ps: "Si vous souhaitez en savoir plus, vous pouvez prendre directement un rendez-vous de 30 minutes sur mon site nstudiodigital.fr/#contact\n\nP.S. N'hésitez pas à me signaler si le moment n'est pas opportun.",
+  },
+  {
+    nom: "Escale Bien-Être",
+    ville: "Charly",
+    type: "Institut de beauté",
+    email: "escalebs.sonia@gmail.com",
+    objet: "Votre présence en ligne ne reflète pas votre expertise",
+    corps: `Bonjour,
+
+J'ai recherché Escale Bien-Être en ligne — le site actuel ne donne pas suffisamment confiance pour décider une nouvelle cliente, notamment pour des soins bien-être où la première impression est déterminante.
+
+Je conçois des sites vitrines sur-mesure pour les instituts du Grand Lyon — 990 €, livraison en 3 semaines, avec une présentation qui rassure dès la première visite.
+
+Est-ce un sujet qui vous préoccupe en ce moment ?`,
+    ps: "Si vous souhaitez en savoir plus, vous pouvez prendre directement un rendez-vous de 30 minutes sur mon site nstudiodigital.fr/#contact\n\nP.S. N'hésitez pas à me signaler si le moment n'est pas opportun.",
+  },
+  {
+    nom: "ID Coiffure",
+    ville: "Quincieux",
+    type: "Salon de coiffure",
+    email: "i.d68coiffure@orange.fr",
+    objet: "Votre salon n'a pas de vitrine à la hauteur en ligne",
+    corps: `Bonjour,
+
+J'ai examiné la présence en ligne d'ID Coiffure — le site actuel est insuffisant pour capter de nouvelles clientes qui recherchent un coiffeur à Quincieux. La qualité de votre travail mérite une présentation plus convaincante.
+
+Je conçois des sites vitrines sur-mesure pour les salons de coiffure du Grand Lyon — 990 €, livraison en 3 semaines, domaine et code 100 % à vous.
+
+Seriez-vous intéressée par une présentation ?`,
+    ps: "Si vous souhaitez en savoir plus, vous pouvez prendre directement un rendez-vous de 30 minutes sur mon site nstudiodigital.fr/#contact\n\nP.S. N'hésitez pas à me signaler si le moment n'est pas opportun.",
+  },
+  {
+    nom: "Anne-Audrey Boscardin Massage",
+    ville: "Villeurbanne",
+    type: "Institut de massage",
+    email: "boscardinanne@gmail.com",
+    objet: "Votre site ne donne pas confiance avant la première séance",
+    corps: `Bonjour,
+
+Pour un massage bien-être, la décision d'une nouvelle cliente repose entièrement sur la confiance qu'inspire votre présence en ligne avant le premier contact. J'ai consulté votre site — il ne remplit pas encore ce rôle.
+
+Je conçois des sites vitrines sur-mesure pour les praticiens massage du Grand Lyon — 990 €, 3 semaines, une présentation qui rassure et incite à réserver.
+
+Souhaiteriez-vous qu'on en discute ?`,
+    ps: "Si vous souhaitez en savoir plus, vous pouvez prendre directement un rendez-vous de 30 minutes sur mon site nstudiodigital.fr/#contact\n\nP.S. N'hésitez pas à me signaler si le moment n'est pas opportun.",
+  },
+  {
+    nom: "Issil Coiffure",
+    ville: "Saint-Germain-au-Mont-d'Or",
+    type: "Salon de coiffure",
+    email: "contact@issilcoiffure.fr",
+    objet: "Votre site ne met pas votre salon en valeur",
+    corps: `Bonjour,
+
+J'ai consulté la présence en ligne d'Issil Coiffure — vous avez un site, mais il ne reflète pas le niveau de soin apporté à vos clientes. En ligne, une première impression insuffisante conduit souvent à un clic vers un concurrent mieux présenté.
+
+Je conçois des sites vitrines sur-mesure pour les salons de coiffure du Grand Lyon — 990 €, livraison en 3 semaines, avec une identité visuelle qui donne envie de prendre rendez-vous.
+
+Seriez-vous disponible pour en discuter ?`,
+    ps: "Si vous souhaitez en savoir plus, vous pouvez prendre directement un rendez-vous de 30 minutes sur mon site nstudiodigital.fr/#contact\n\nP.S. N'hésitez pas à me signaler si le moment n'est pas opportun.",
+  },
+  {
+    nom: "SABAI L'ESPRIT BIEN-ÊTRE",
+    ville: "Montanay",
+    type: "Centre de bien-être",
+    email: "contact@sabai-lespritbienetre.fr",
+    objet: "Votre site actuel ne reflète pas votre offre bien-être",
+    corps: `Bonjour,
+
+J'ai visité votre site — l'univers bien-être que vous proposez à Montanay mérite une présentation plus engageante. Un site insuffisant pousse des clientes potentielles vers des établissements mieux visibles en ligne, avant même qu'elles vous aient découverte.
+
+Je conçois des sites vitrines sur-mesure pour les centres bien-être du Grand Lyon — 990 €, livraison en 3 semaines, design pensé pour votre secteur.
+
+Souhaiteriez-vous qu'on en parle ?`,
+    ps: "Si vous souhaitez en savoir plus, vous pouvez prendre directement un rendez-vous de 30 minutes sur mon site nstudiodigital.fr/#contact\n\nP.S. N'hésitez pas à me signaler si le moment n'est pas opportun.",
+  },
+  {
+    nom: "A corps de l'âme",
+    ville: "Meyzieu",
+    type: "Massothérapeute",
+    email: "contact@acorpsdelame.fr",
+    objet: "Votre site ne convainc pas avant la première séance",
+    corps: `Bonjour,
+
+J'ai consulté votre présence en ligne — votre activité de massothérapie repose sur la confiance, et cette confiance doit se construire dès le site. Le site actuel n'offre pas suffisamment d'éléments pour convaincre quelqu'un qui ne vous connaît pas encore.
+
+Je conçois des sites vitrines sur-mesure pour les praticiens bien-être du Grand Lyon — 990 €, 3 semaines, une présentation qui rassure et incite à prendre contact.
+
+Est-ce un sujet sur lequel vous souhaiteriez avancer ?`,
+    ps: "Si vous souhaitez en savoir plus, vous pouvez prendre directement un rendez-vous de 30 minutes sur mon site nstudiodigital.fr/#contact\n\nP.S. N'hésitez pas à me signaler si le moment n'est pas opportun.",
+  },
+  {
+    nom: "Fabri's Micka",
+    ville: "Neuville-sur-Saône",
+    type: "Salon de coiffure",
+    email: "contact@fabriksmika.com",
+    objet: "Votre salon de coiffure mérite une meilleure vitrine",
+    corps: `Bonjour,
+
+J'ai visité le site de Fabri's Micka — l'établissement semble sérieux, mais le site actuel ne donne pas une image suffisamment professionnelle pour convaincre de nouvelles clientes qui vous cherchent à Neuville-sur-Saône.
+
+Je conçois des sites vitrines sur-mesure pour les salons de coiffure du Grand Lyon — 990 €, livraison en 3 semaines, domaine et code entièrement à vous.
+
+Souhaiteriez-vous qu'on en discute ?`,
+    ps: "Si vous souhaitez en savoir plus, vous pouvez prendre directement un rendez-vous de 30 minutes sur mon site nstudiodigital.fr/#contact\n\nP.S. N'hésitez pas à me signaler si le moment n'est pas opportun.",
+  },
+  {
+    nom: "Sand Fauv – Maquilleuse & Coach Beauté",
+    ville: "Rillieux-la-Pape",
+    type: "Institut de beauté",
+    email: "contact@sandfauv.fr",
+    objet: "Votre expertise beauté mérite une meilleure présence en ligne",
+    corps: `Bonjour,
+
+J'ai consulté votre site — votre activité de maquilleuse et coach beauté à Rillieux nécessite une présentation qui inspire immédiatement confiance. Le site actuel ne restitue pas le niveau d'expertise que vous proposez.
+
+Je conçois des sites vitrines sur-mesure pour les professionnels de la beauté du Grand Lyon — 990 €, 3 semaines, un espace en ligne qui valorise vraiment votre savoir-faire.
+
+Est-ce quelque chose que vous souhaiteriez changer ?`,
+    ps: "Si vous souhaitez en savoir plus, vous pouvez prendre directement un rendez-vous de 30 minutes sur mon site nstudiodigital.fr/#contact\n\nP.S. N'hésitez pas à me signaler si le moment n'est pas opportun.",
+  },
+  {
+    nom: "Alexandra Soins Beauté",
+    ville: "Givors",
+    type: "Institut de beauté",
+    email: "alexandrasoinsbeaute@hotmail.fr",
+    objet: "Votre site ne reflète pas la qualité de vos soins",
+    corps: `Bonjour,
+
+J'ai examiné la présence en ligne d'Alexandra Soins Beauté — le site actuel est insuffisant pour capter de nouvelles clientes qui recherchent un institut à Givors. Une présentation datée peut faire hésiter avant même le premier contact.
+
+Je conçois des sites vitrines sur-mesure pour les instituts du Grand Lyon — 990 €, livraison en 3 semaines, un design actuel qui inspire confiance dès la première visite.
+
+Seriez-vous disponible pour en parler ?`,
+    ps: "Si vous souhaitez en savoir plus, vous pouvez prendre directement un rendez-vous de 30 minutes sur mon site nstudiodigital.fr/#contact\n\nP.S. N'hésitez pas à me signaler si le moment n'est pas opportun.",
+  },
+  {
+    nom: "M&Vous Massages",
+    ville: "Saint-Priest",
+    type: "Massage à domicile / Entreprise",
+    email: "MetVous.Massages@gmail.com",
+    objet: "Vos clients ne peuvent pas vous trouver facilement en ligne",
+    corps: `Bonjour,
+
+Pour une activité de massage à domicile et en entreprise, la visibilité en ligne est votre seul outil de prospection. J'ai consulté votre présence web — le site actuel ne permet pas à de nouveaux clients de vous trouver et d'être convaincus de vous contacter.
+
+Je conçois des sites vitrines sur-mesure pour les praticiens bien-être du Grand Lyon — 990 €, 3 semaines, une présentation claire qui génère des demandes.
+
+Souhaiteriez-vous qu'on en discute ?`,
+    ps: "Si vous souhaitez en savoir plus, vous pouvez prendre directement un rendez-vous de 30 minutes sur mon site nstudiodigital.fr/#contact\n\nP.S. N'hésitez pas à me signaler si le moment n'est pas opportun.",
+  },
+  {
+    nom: "Eric Falzon Massages Bien Être",
+    ville: "Bron",
+    type: "Massage bien-être",
+    email: "eric.falzon@yahoo.fr",
+    objet: "Votre site n'inspire pas assez confiance pour un premier contact",
+    corps: `Bonjour,
+
+J'ai consulté votre présence en ligne — pour un praticien massage bien-être, la confiance se construit avant même le premier rendez-vous. Le site actuel ne suffit pas à rassurer une personne qui ne vous connaît pas.
+
+Je conçois des sites vitrines sur-mesure pour les praticiens massage du Grand Lyon — 990 €, livraison en 3 semaines, une présentation qui convertit une visite en prise de contact.
+
+Est-ce un sujet sur lequel vous souhaiteriez avancer ?`,
+    ps: "Si vous souhaitez en savoir plus, vous pouvez prendre directement un rendez-vous de 30 minutes sur mon site nstudiodigital.fr/#contact\n\nP.S. N'hésitez pas à me signaler si le moment n'est pas opportun.",
+  },
+  {
+    nom: "Chemin Faisant – Massages & Réflexologie",
+    ville: "Bron",
+    type: "Massage bien-être / Réflexologie",
+    email: "ghislaine.cheminfaisant@gmail.com",
+    objet: "Votre site ne donne pas la première impression que votre activité mérite",
+    corps: `Bonjour,
+
+J'ai visité votre site — votre approche massage et réflexologie à Bron semble sérieuse et humaine. Cependant, la présentation actuelle ne restitue pas ce soin : une cliente qui vous découvre pour la première fois peut repartir sans vous avoir contactée.
+
+Je conçois des sites vitrines sur-mesure pour les praticiens bien-être du Grand Lyon — 990 €, 3 semaines, une image en ligne à la hauteur de votre pratique.
+
+Seriez-vous disponible pour en parler ?`,
+    ps: "Si vous souhaitez en savoir plus, vous pouvez prendre directement un rendez-vous de 30 minutes sur mon site nstudiodigital.fr/#contact\n\nP.S. N'hésitez pas à me signaler si le moment n'est pas opportun.",
+  },
+  {
+    nom: "OFEAM – Marion Cappiot",
+    ville: "Charly",
+    type: "Institut de massage",
+    email: "ofeam@outlook.fr",
+    objet: "Votre présence en ligne ne reflète pas la qualité de vos soins",
+    corps: `Bonjour,
+
+J'ai consulté votre présence web — votre activité de massage à Charly repose sur la confiance, et cette confiance doit se construire avant la première séance. Le site actuel ne permet pas encore à de nouveaux clients de vous choisir sereinement.
+
+Je conçois des sites vitrines sur-mesure pour les praticiens massage du Grand Lyon — 990 €, livraison en 3 semaines, un espace en ligne qui inspire confiance dès le premier regard.
+
+Souhaiteriez-vous qu'on en discute ?`,
+    ps: "Si vous souhaitez en savoir plus, vous pouvez prendre directement un rendez-vous de 30 minutes sur mon site nstudiodigital.fr/#contact\n\nP.S. N'hésitez pas à me signaler si le moment n'est pas opportun.",
+  },
+  {
+    nom: "A PEAU T OZ",
+    ville: "Vaulx-en-Velin",
+    type: "Institut de massage",
+    email: "contact@apeautoz.fr",
+    objet: "Votre site ne convertit pas les visites en prises de rendez-vous",
+    corps: `Bonjour,
+
+J'ai consulté le site d'A PEAU T OZ — l'activité semble établie à Vaulx-en-Velin, mais le site actuel ne donne pas suffisamment envie de prendre rendez-vous. Une clientes qui hésite ne vous contactera pas si la présentation ne la rassure pas.
+
+Je conçois des sites vitrines sur-mesure pour les instituts de massage du Grand Lyon — 990 €, 3 semaines, un site qui travaille pour vous entre deux séances.
+
+Est-ce une situation que vous souhaiteriez changer ?`,
+    ps: "Si vous souhaitez en savoir plus, vous pouvez prendre directement un rendez-vous de 30 minutes sur mon site nstudiodigital.fr/#contact\n\nP.S. N'hésitez pas à me signaler si le moment n'est pas opportun.",
+  },
+  {
+    nom: "HAIR-ZONE",
+    ville: "Décines-Charpieu",
+    type: "Salon de coiffure",
+    email: "hairzone.coiffure@gmail.com",
+    objet: "Votre salon mérite une vitrine plus professionnelle",
+    corps: `Bonjour,
+
+J'ai examiné la présence en ligne de HAIR-ZONE — le site actuel ne donne pas une image suffisamment professionnelle pour capter de nouvelles clientes à Décines. La concurrence locale est visible en ligne ; votre salon doit l'être aussi.
+
+Je conçois des sites vitrines sur-mesure pour les salons de coiffure du Grand Lyon — 990 €, livraison en 3 semaines, code et domaine entièrement à vous.
+
+Souhaiteriez-vous qu'on en parle ?`,
+    ps: "Si vous souhaitez en savoir plus, vous pouvez prendre directement un rendez-vous de 30 minutes sur mon site nstudiodigital.fr/#contact\n\nP.S. N'hésitez pas à me signaler si le moment n'est pas opportun.",
+  },
+  {
+    nom: "Nouraé – Rituel et bien-être féminin",
+    ville: "Décines-Charpieu",
+    type: "Institut de spa et bien-être",
+    email: "nourae.institut@gmail.com",
+    objet: "L'univers de votre institut mérite une présentation à la hauteur",
+    corps: `Bonjour,
+
+J'ai consulté le site de Nouraé — l'univers rituel et bien-être féminin que vous proposez est distinctif, mais le site actuel ne lui rend pas justice. Pour une clientèle sensible à l'expérience, le soin visuel commence en ligne.
+
+Je conçois des sites vitrines sur-mesure pour les instituts bien-être du Grand Lyon — 990 €, 3 semaines, un design qui prolonge l'atmosphère de votre espace dès la première visite en ligne.
+
+Seriez-vous disponible pour en discuter ?`,
+    ps: "Si vous souhaitez en savoir plus, vous pouvez prendre directement un rendez-vous de 30 minutes sur mon site nstudiodigital.fr/#contact\n\nP.S. N'hésitez pas à me signaler si le moment n'est pas opportun.",
+  },
+  {
+    nom: "Institut Esprit de Femme",
+    ville: "Neuville-sur-Saône",
+    type: "Institut de beauté",
+    email: "espritdefemme1@gmail.com",
+    objet: "Votre site ne reflète pas ce que votre institut a à offrir",
+    corps: `Bonjour,
+
+J'ai visité le site d'Institut Esprit de Femme — l'activité semble soignée, mais le site actuel ne donne pas une première impression suffisamment forte pour convaincre une nouvelle cliente à Neuville-sur-Saône.
+
+Je conçois des sites vitrines sur-mesure pour les instituts du Grand Lyon — 990 €, livraison en 3 semaines, un espace en ligne qui valorise vraiment votre travail.
+
+Est-ce quelque chose que vous envisagez de corriger ?`,
+    ps: "Si vous souhaitez en savoir plus, vous pouvez prendre directement un rendez-vous de 30 minutes sur mon site nstudiodigital.fr/#contact\n\nP.S. N'hésitez pas à me signaler si le moment n'est pas opportun.",
+  },
+  {
+    nom: "Le Pouvoir du Toucher",
+    ville: "Corbas",
+    type: "Institut de bien-être",
+    email: "lepouvoirdutoucher2023@gmail.com",
+    objet: "Votre site ne traduit pas la force de votre approche",
+    corps: `Bonjour,
+
+J'ai consulté votre présence en ligne — le nom de votre institut évoque une promesse forte. Le site actuel, lui, ne la restitue pas. Pour une clientèle qui choisit un praticien bien-être avec soin, c'est une opportunité manquée à chaque recherche.
+
+Je conçois des sites vitrines sur-mesure pour les instituts bien-être du Grand Lyon — 990 €, livraison en 3 semaines, une présentation qui donne confiance avant même le premier rendez-vous.
+
+Souhaiteriez-vous qu'on en discute ?`,
+    ps: "Si vous souhaitez en savoir plus, vous pouvez prendre directement un rendez-vous de 30 minutes sur mon site nstudiodigital.fr/#contact\n\nP.S. N'hésitez pas à me signaler si le moment n'est pas opportun.",
+  },
+];
+
+const container = document.getElementById('emails');
+
+emails.forEach((e, i) => {
+  const card = document.createElement('div');
+  card.className = 'card';
+  card.innerHTML = `
+    <div class="card-header">
+      <div class="card-num">${String(i+1).padStart(2,'0')}</div>
+      <div style="flex:1">
+        <div class="card-title">${e.nom}</div>
+        <div class="card-meta">${e.ville} · ${e.type}</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="label">Email prospect</div>
+      <div class="field email-field">${e.email}</div>
+      <div class="label">Objet</div>
+      <div class="field objet-field">${e.objet}</div>
+      <div class="label">Corps</div>
+      <div class="corps">${e.corps.trim()}</div>
+      <div class="ps">${e.ps}</div>
+      <button class="btn-copy" onclick="copyEmail(this, ${i})">Copier l'email complet</button>
+    </div>
+  `;
+  container.appendChild(card);
+});
+
+function copyEmail(btn, i) {
+  const e = emails[i];
+  const full = `Objet : ${e.objet}\n\n${e.corps.trim()}\n\n${e.ps}`;
+  navigator.clipboard.writeText(full).then(() => {
+    btn.textContent = '✓ Copié !';
+    btn.classList.add('copied');
+    setTimeout(() => {
+      btn.textContent = "Copier l'email complet";
+      btn.classList.remove('copied');
+    }, 2000);
+  });
+}
+</script>
+</body>
+</html>

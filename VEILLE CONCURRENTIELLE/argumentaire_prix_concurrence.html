@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Argumentaire Prix — N/ Studio Digital</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Inter', -apple-system, sans-serif; background: #F4F4F4; color: #0D0D0D; }
+
+  .header { background: #0D0D0D; color: white; padding: 28px 40px; display: flex; align-items: center; gap: 14px; }
+  .header-slash { color: #7A9478; font-size: 2rem; font-weight: 700; }
+  .header h1 { font-size: 1.1rem; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; }
+  .header p { font-size: 0.78rem; color: #aaa; margin-top: 3px; }
+
+  .container { max-width: 900px; margin: 0 auto; padding: 40px 24px; }
+
+  .section-title {
+    font-size: 0.68rem; font-weight: 700; letter-spacing: 0.15em;
+    text-transform: uppercase; color: #7A9478; margin-bottom: 16px;
+    padding-bottom: 8px; border-bottom: 2px solid #7A9478;
+  }
+
+  .bloc { background: white; border-radius: 8px; padding: 28px; margin-bottom: 32px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+  .bloc h3 { font-size: 0.88rem; font-weight: 700; margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
+  .tag { display: inline-block; padding: 2px 10px; border-radius: 20px; font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; }
+  .tag-site { background: #e8f0e8; color: #3a5a3a; }
+  .tag-email { background: #e3f2fd; color: #1565c0; }
+  .tag-tel { background: #fff3e0; color: #e65100; }
+  .tag-objection { background: #fce4ec; color: #c62828; }
+
+  .phrase-box {
+    background: #F9F9F9; border-left: 3px solid #7A9478;
+    padding: 16px 20px; border-radius: 0 6px 6px 0;
+    font-size: 0.85rem; line-height: 1.7; margin-bottom: 12px;
+    font-style: italic;
+  }
+  .phrase-box strong { font-style: normal; }
+
+  .note { font-size: 0.75rem; color: #888; margin-top: 8px; }
+
+  .objection-item { margin-bottom: 20px; }
+  .objection-item .obj { font-size: 0.82rem; font-weight: 700; color: #c62828; margin-bottom: 6px; }
+  .objection-item .obj::before { content: "— "; }
+  .objection-item .rep { font-size: 0.82rem; line-height: 1.7; color: #333; padding-left: 12px; border-left: 2px solid #7A9478; }
+
+  .compare-table { width: 100%; border-collapse: collapse; font-size: 0.8rem; margin-top: 8px; }
+  .compare-table th { background: #0D0D0D; color: white; padding: 10px 12px; text-align: left; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.05em; }
+  .compare-table td { padding: 10px 12px; border-bottom: 1px solid #f0f0f0; vertical-align: middle; }
+  .compare-table tr.vous td { background: #f0f5f0; font-weight: 700; }
+  .check { color: #7A9478; font-weight: 700; }
+  .cross { color: #e53935; }
+  .muted { color: #aaa; font-size: 0.75rem; }
+
+  .encart { background: #0D0D0D; color: white; border-radius: 8px; padding: 24px 28px; margin-bottom: 32px; }
+  .encart h3 { color: #7A9478; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 14px; }
+  .encart .formule { font-size: 1.05rem; font-weight: 600; line-height: 1.8; }
+  .encart .formule span { color: #7A9478; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <span class="header-slash">/</span>
+  <div>
+    <h1>Argumentaire Prix vs Concurrence</h1>
+    <p>N/ Studio Digital · Usage : site, cold emails, appels, objections · Juin 2026</p>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- FORMULE CLEF -->
+  <div class="encart">
+    <h3>La formule à retenir</h3>
+    <div class="formule">
+      Un site <span>5 pages sur-mesure</span>, livré en <span>3 semaines</span>,<br>
+      avec le <span>code qui vous appartient</span> — à <span>990 €</span>.<br>
+      Les agences lyonnaises : à partir de <span>1 500 €</span>.<br>
+      Les spécialistes beauté nationaux : à partir de <span>1 570 €</span>.<br>
+      Les solutions en abonnement : <span>rien ne vous appartient jamais</span>.
+    </div>
+  </div>
+
+  <!-- TABLEAU -->
+  <div class="section-title">Tableau de référence rapide</div>
+  <div class="bloc">
+    <table class="compare-table">
+      <thead>
+        <tr>
+          <th>Acteur</th>
+          <th>Prix vitrine 5 pages</th>
+          <th>Spé. beauté Lyon</th>
+          <th>Code custom</th>
+          <th>Propriété client</th>
+          <th>Maintenance</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="vous">
+          <td>★ N/ Studio Digital</td>
+          <td>990 €</td>
+          <td class="check">✓ 100%</td>
+          <td class="check">✓</td>
+          <td class="check">✓ Totale</td>
+          <td>19 €/mois</td>
+        </tr>
+        <tr>
+          <td>Agence Dilo <span class="muted">(national)</span></td>
+          <td>990 € (1 page)<br>1 570 € (complet)</td>
+          <td class="check">✓</td>
+          <td class="cross">?</td>
+          <td class="cross">?</td>
+          <td class="muted">Non précisé</td>
+        </tr>
+        <tr>
+          <td>Digital Unicorn <span class="muted">(Lyon)</span></td>
+          <td>1 500 €</td>
+          <td class="cross">✗ Généraliste</td>
+          <td class="check">✓</td>
+          <td class="cross">?</td>
+          <td class="muted">Non précisé</td>
+        </tr>
+        <tr>
+          <td>Fabrik Web <span class="muted">(national beauté)</span></td>
+          <td>699 €</td>
+          <td class="check">✓</td>
+          <td class="cross">✗ WordPress</td>
+          <td class="check">✓</td>
+          <td class="muted">En option</td>
+        </tr>
+        <tr>
+          <td>Linkeo / Rdv360 <span class="muted">(SaaS)</span></td>
+          <td>Abonnement mensuel</td>
+          <td class="check">✓</td>
+          <td class="cross">✗</td>
+          <td class="cross">✗ Jamais</td>
+          <td class="muted">Inclus</td>
+        </tr>
+        <tr>
+          <td>Agences Lyon établies</td>
+          <td>2 000–5 000 €</td>
+          <td class="cross">✗ Généraliste</td>
+          <td class="check">✓</td>
+          <td class="check">✓</td>
+          <td>30–80 €/mois</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- USAGE PAGE TARIFS SITE -->
+  <div class="section-title">Sur votre page tarifs / site</div>
+  <div class="bloc">
+    <h3><span class="tag tag-site">Site web</span></h3>
+    <div class="phrase-box">
+      Les agences web lyonnaises démarrent à 1 500 €. Les plateformes en abonnement vous font payer chaque mois sans que le site ne vous appartienne jamais. Chez N/ Studio Digital, 990 € pour un site 5 pages en code sur-mesure, livré en 3 semaines — le code est à vous, le nom de domaine est à vous, l'hébergement est à vous.
+    </div>
+    <p class="note">→ À placer sous la section tarifaire de la page d'offre. Pas besoin de nommer les concurrents.</p>
+  </div>
+
+  <!-- USAGE COLD EMAIL -->
+  <div class="section-title">En cold email (1 argument = 1 email)</div>
+
+  <div class="bloc">
+    <h3><span class="tag tag-email">Email — angle prix</span></h3>
+    <div class="phrase-box">
+      La plupart des agences web à Lyon partent de 1 500 € pour un site vitrine. Je travaille à 990 € pour 5 pages en code sur-mesure, avec livraison en 3 semaines. Et le code vous appartient entièrement — pas d'abonnement, pas de dépendance.
+    </div>
+    <p class="note">→ À insérer en corps d'email, après l'observation personnalisée sur le salon.</p>
+  </div>
+
+  <div class="bloc">
+    <h3><span class="tag tag-email">Email — angle propriété</span></h3>
+    <div class="phrase-box">
+      Avec Planity ou Treatwell, vous avez une fiche de réservation — pas un site. Avec une plateforme en abonnement, vous payez chaque mois pour quelque chose qui ne vous appartient pas. Je livre un site en code propre, hébergé à votre nom, que vous gardez même si on arrête de travailler ensemble.
+    </div>
+    <p class="note">→ À utiliser quand le prospect est sur Planity / Treatwell / Wix.</p>
+  </div>
+
+  <!-- USAGE APPEL -->
+  <div class="section-title">À l'oral — appel découverte</div>
+  <div class="bloc">
+    <h3><span class="tag tag-tel">Téléphone / visio</span></h3>
+    <div class="phrase-box">
+      "Je suis à 990 € pour un site 5 pages livré en 3 semaines. Pour comparaison, les agences web à Lyon démarrent autour de 1 500 €, et les spécialistes beauté au niveau national sont entre 1 500 et 3 000 €. Ce que j'offre en plus : le code vous appartient totalement, et je connais votre secteur — je ne fais que ça."
+    </div>
+    <p class="note">→ À sortir si le prospect demande "c'est quel budget ?" ou hésite sur le prix.</p>
+  </div>
+
+  <!-- OBJECTIONS -->
+  <div class="section-title">Objections prix — réponses prêtes</div>
+  <div class="bloc">
+    <h3><span class="tag tag-objection">Objections fréquentes</span></h3>
+
+    <div class="objection-item">
+      <div class="obj">"J'ai vu moins cher, à 390 €."</div>
+      <div class="rep">À ce prix-là, le site est sur une plateforme mutualisée — vous ne possédez rien. Si demain ils ferment ou augmentent leurs tarifs, vous repartez de zéro. À 990 €, vous payez une fois et le site est à vous pour toujours.</div>
+    </div>
+
+    <div class="objection-item">
+      <div class="obj">"Je paie déjà Planity / Treatwell."</div>
+      <div class="rep">Planity vous aide à gérer les réservations — c'est son rôle. Mais votre fiche Planity ne remonte pas dans Google quand quelqu'un cherche "coiffeur [votre ville]". Un site vitrine, si. Les deux sont complémentaires.</div>
+    </div>
+
+    <div class="objection-item">
+      <div class="obj">"Une amie m'a dit que son site lui a coûté 300 €."</div>
+      <div class="rep">Probablement un template Wix ou Squarespace qu'elle a monté elle-même. C'est une option valable si vous avez le temps — mais ça ne se référence pas pareil, et ça se voit. Mes clients paient pour ne pas s'en occuper et avoir quelque chose qui travaille vraiment pour eux.</div>
+    </div>
+
+    <div class="objection-item">
+      <div class="obj">"990 € c'est beaucoup pour mon salon."</div>
+      <div class="rep">Si votre site vous ramène un seul nouveau client par mois, il est rentabilisé en quelques semaines. Et contrairement à la publicité, un site continue à travailler sans que vous payiez à chaque fois.</div>
+    </div>
+
+    <div class="objection-item">
+      <div class="obj">"Je vais réfléchir."</div>
+      <div class="rep">Bien sûr. Je vous envoie un récap par email avec ce qu'on a évoqué — comme ça vous avez tout sous la main pour comparer. Je suis disponible si vous avez des questions.</div>
+    </div>
+
+  </div>
+
+  <p style="font-size:0.72rem; color:#aaa; margin-top:32px; text-align:center;">
+    N/ Studio Digital · Argumentaire interne · Juin 2026 · À mettre à jour si les prix concurrents évoluent
+  </p>
+
+</div>
+</body>
+</html>
