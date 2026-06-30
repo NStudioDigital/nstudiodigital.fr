@@ -192,7 +192,11 @@
       transition: background 0.15s; white-space: nowrap;
     }
     .hero-cta:hover { background: var(--acid-dim); }
-    /* Hero image — parallax via JS on wrapper, zoom via CSS on img */
+    /* Hero image — parallax via JS on wrapper, animation douce au load */
+    @keyframes heroImgIn {
+      from { opacity: 0; transform: scale(1.08); }
+      to   { opacity: 1; transform: scale(1); }
+    }
     .hero-img-wrap {
       position: absolute; right: 48px; top: 50%;
       transform: translateY(-40%); /* initial; JS overrides for parallax */
@@ -202,10 +206,11 @@
     .hero-img-wrap img {
       display: block; width: 100%; aspect-ratio: 3/4; object-fit: cover;
       filter: grayscale(1) contrast(1.35);
-      transition: transform 0.5s ease;
+      animation: heroImgIn 1.2s ease-out 0.2s both;
     }
     @media (hover: hover) {
-      .hero-img-wrap:hover img { transform: scale(1.04); }
+      /* !important override le fill de l'animation pour le hover zoom */
+      .hero-img-wrap:hover img { transform: scale(1.04) !important; transition: transform 0.5s ease; }
     }
     .hero-counter {
       position: absolute; right: 12px; top: 50%; transform: translateY(-50%);
@@ -389,7 +394,7 @@
     .avis { background: var(--ink); padding: 96px 0; position: relative; overflow: hidden; }
     .avis-bg-img {
       position: absolute; inset: 0; width: 100%; height: 100%;
-      object-fit: cover; object-position: center 20%;
+      object-fit: cover; object-position: 30% 60%;
       opacity: 0.22; filter: grayscale(1) contrast(1.4);
       z-index: 0; pointer-events: none;
     }
@@ -516,27 +521,61 @@
     }
     .cf-submit:hover { background: var(--acid-dim); }
 
-    /* FOOTER */
+    /* CONTACT SECTION — titre PARLONS-EN + image sentiervert-footer */
+    .contact-section {
+      background: var(--ink); padding: 96px 0 80px;
+      position: relative; overflow: hidden;
+    }
+    .contact-bg-img {
+      position: absolute; inset: 0; width: 100%; height: 100%;
+      object-fit: cover; object-position: center;
+      opacity: 0.35; filter: grayscale(1) contrast(1.1);
+      z-index: 0; pointer-events: none;
+    }
+    .contact-section::before {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(rgba(10,10,10,0.55), rgba(10,10,10,0.75));
+      z-index: 1; pointer-events: none;
+    }
+    .contact-section .container { position: relative; z-index: 2; }
+
+    /* SECTION RDV — fond sentiervert-rdv, calendrier centré */
+    .rdv-section { padding: 80px 0; position: relative; overflow: hidden; background: var(--ink); }
+    .rdv-bg-img {
+      position: absolute; inset: 0; width: 100%; height: 100%;
+      object-fit: cover; object-position: center;
+      filter: grayscale(1) contrast(1.15); z-index: 0; pointer-events: none;
+    }
+    .rdv-section::before {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(rgba(10,10,10,0.6), rgba(10,10,10,0.8));
+      z-index: 1; pointer-events: none;
+    }
+    .rdv-section .container { position: relative; z-index: 2; }
+    .rdv-section-title {
+      font-family: var(--font-display); font-weight: 700;
+      font-size: clamp(18px, 3vw, 38px); text-transform: uppercase;
+      letter-spacing: 0.12em; color: var(--paper);
+      margin-bottom: 44px; text-align: center;
+    }
+    .rdv-center { display: flex; justify-content: center; }
+    .rdv-center .rdv-widget {
+      max-width: 480px; width: 100%;
+      background: rgba(10,10,10,0.7);
+      border: 1px solid var(--acid); padding: 32px;
+    }
+    @media (max-width: 600px) { .rdv-center .rdv-widget { padding: 20px; } }
+
+    /* SECTION FORMULAIRE — fond --ink simple */
+    .form-section { background: var(--ink); padding: 72px 0 96px; }
+    .form-section .contact-sub { color: var(--gray); margin-bottom: 40px; max-width: 480px; font-size: 15px; line-height: 1.7; }
+
+    /* FOOTER — fond simple, pas d'image */
     footer {
       background: var(--footer-bg);
       border-top: 1px solid rgba(200,255,77,0.15);
       padding: 44px 0;
-      position: relative; overflow: hidden;
     }
-    .footer-bg-img {
-      position: absolute; inset: 0;
-      width: 100%; height: 100%;
-      object-fit: cover; object-position: center 20%;
-      filter: grayscale(1) contrast(1.1);
-      z-index: 0;
-    }
-    footer::before {
-      content: '';
-      position: absolute; inset: 0;
-      background: linear-gradient(rgba(10,10,10,0.75), rgba(10,10,10,0.85));
-      z-index: 1; pointer-events: none;
-    }
-    .footer .container { position: relative; z-index: 2; }
     .footer-inner {
       display: flex; justify-content: space-between; align-items: center;
       flex-wrap: wrap; gap: 20px;
@@ -558,10 +597,7 @@
     .footer-demo a:hover { color: var(--acid); }
 
     /* CALENDRIER RDV */
-    .contact-body { display: grid; grid-template-columns: 1fr 360px; gap: 64px; align-items: start; }
-    @media (max-width: 960px) { .contact-body { grid-template-columns: 1fr; } }
-    .contact-col-form .cf-form { max-width: 100%; }
-    .rdv-widget { background: #111; border: 1px solid var(--line); padding: 28px; }
+    .rdv-widget { padding: 0; }
     .rdv-widget-title {
       font-family: var(--font-display); font-weight: 700; font-size: 11px;
       letter-spacing: 0.2em; text-transform: uppercase; color: var(--acid);
@@ -619,6 +655,27 @@
     }
     .slot-btn:hover { border-color: var(--acid); color: var(--acid); }
     .slot-btn.selected { background: var(--acid); color: var(--ink); border-color: var(--acid); }
+
+    /* BACK TO TOP */
+    .back-to-top {
+      position: fixed; bottom: 32px; right: 32px; z-index: 500;
+      width: 48px; height: 48px;
+      background: var(--acid); border: none; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0; pointer-events: none;
+      transition: opacity 0.3s, background 0.15s;
+    }
+    .back-to-top.visible { opacity: 1; pointer-events: auto; }
+    .back-to-top:hover { background: var(--acid-dim); }
+    .back-to-top svg { width: 18px; height: 18px; }
+    @media (max-width: 768px) { .back-to-top { bottom: 20px; right: 16px; width: 44px; height: 44px; } }
+
+    /* RESPONSIVE MOBILE */
+    @media (max-width: 600px) {
+      .slot-btn { min-height: 44px; padding: 12px 16px; }
+      .cal-cell { font-size: 12px; }
+      .rdv-section-title { letter-spacing: 0.06em; }
+    }
   </style>
 </head>
 <body>
@@ -830,62 +887,72 @@
   </div>
 </section>
 
-<!-- CONTACT -->
+<!-- CONTACT — titre PARLONS-EN sur fond sentiervert-footer.jpg -->
 <section class="contact-section" id="contact">
+  <img class="contact-bg-img" src="sentiervert-footer.jpg" alt="" aria-hidden="true" loading="lazy"/>
   <div class="container">
     <h2 class="contact-giant reveal">Parlons-en.</h2>
-    <div class="contact-body">
-      <div class="contact-col-form">
-        <p class="contact-sub reveal">Je réponds personnellement à chaque demande. Aucun formulaire automatique, aucun délai artificiel.</p>
-        <form class="cf-form reveal" action="#" method="post">
-          <div class="cf-row">
-            <input class="cf-input" type="text" name="prenom" placeholder="Prénom" required/>
-            <input class="cf-input" type="text" name="nom" placeholder="Nom" required/>
-          </div>
-          <input class="cf-input" type="email" name="email" placeholder="Adresse e-mail" required/>
-          <input class="cf-input" type="tel" name="tel" placeholder="Téléphone (optionnel)"/>
-          <select class="cf-input" name="motif">
-            <option value="" disabled selected>Motif de consultation</option>
-            <option>Bilan de vitalité (première consultation)</option>
-            <option>Stress &amp; fatigue chronique</option>
-            <option>Troubles digestifs</option>
-            <option>Déséquilibres hormonaux</option>
-            <option>Sommeil &amp; récupération</option>
-            <option>Immunité &amp; terrain</option>
-            <option>Accompagnement sportif</option>
-            <option>Autre</option>
-          </select>
-          <select class="cf-input" name="format">
-            <option value="" disabled selected>Format souhaité</option>
-            <option>Cabinet — Lyon 6e</option>
-            <option>Visioconférence</option>
-            <option>Indifférent</option>
-          </select>
-          <textarea class="cf-input" name="message" rows="3" placeholder="Quelques mots sur votre situation (optionnel)"></textarea>
-          <div class="cf-submit-row">
-            <button type="submit" class="cf-submit">Envoyer →</button>
-          </div>
-        </form>
-      </div>
-      <div class="contact-col-cal reveal">
-        <div class="rdv-widget" id="rdvWidget">
-          <span class="rdv-widget-title">Choisissez votre créneau</span>
-          <div class="cal-header">
-            <button class="cal-nav cal-prev" type="button" aria-label="Mois précédent">←</button>
-            <span class="cal-month-label"></span>
-            <button class="cal-nav cal-next" type="button" aria-label="Mois suivant">→</button>
-          </div>
-          <div class="cal-grid" id="calGrid"></div>
-          <div class="cal-slots" id="calSlots"></div>
+  </div>
+</section>
+
+<!-- SECTION RDV — fond sentiervert-rdv.jpg + calendrier centré -->
+<section class="rdv-section" id="rdv">
+  <img class="rdv-bg-img" src="sentiervert-rdv.jpg" alt="" aria-hidden="true" loading="lazy"/>
+  <div class="container">
+    <h3 class="rdv-section-title reveal">Réservez votre créneau</h3>
+    <div class="rdv-center">
+      <div class="rdv-widget reveal" id="rdvWidget">
+        <span class="rdv-widget-title">Choisissez votre créneau</span>
+        <div class="cal-header">
+          <button class="cal-nav cal-prev" type="button" aria-label="Mois précédent">←</button>
+          <span class="cal-month-label"></span>
+          <button class="cal-nav cal-next" type="button" aria-label="Mois suivant">→</button>
         </div>
+        <div class="cal-grid" id="calGrid"></div>
+        <div class="cal-slots" id="calSlots"></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- FOOTER -->
+<!-- FORMULAIRE — fond --ink simple -->
+<section class="form-section">
+  <div class="container">
+    <p class="contact-sub reveal">Je réponds personnellement à chaque demande. Aucun formulaire automatique, aucun délai artificiel.</p>
+    <form class="cf-form reveal" action="#" method="post">
+      <div class="cf-row">
+        <input class="cf-input" type="text" name="prenom" placeholder="Prénom" required/>
+        <input class="cf-input" type="text" name="nom" placeholder="Nom" required/>
+      </div>
+      <input class="cf-input" type="email" name="email" placeholder="Adresse e-mail" required/>
+      <input class="cf-input" type="tel" name="tel" placeholder="Téléphone (optionnel)"/>
+      <select class="cf-input" name="motif">
+        <option value="" disabled selected>Motif de consultation</option>
+        <option>Bilan de vitalité (première consultation)</option>
+        <option>Stress &amp; fatigue chronique</option>
+        <option>Troubles digestifs</option>
+        <option>Déséquilibres hormonaux</option>
+        <option>Sommeil &amp; récupération</option>
+        <option>Immunité &amp; terrain</option>
+        <option>Accompagnement sportif</option>
+        <option>Autre</option>
+      </select>
+      <select class="cf-input" name="format">
+        <option value="" disabled selected>Format souhaité</option>
+        <option>Cabinet — Lyon 6e</option>
+        <option>Visioconférence</option>
+        <option>Indifférent</option>
+      </select>
+      <textarea class="cf-input" name="message" rows="3" placeholder="Quelques mots sur votre situation (optionnel)"></textarea>
+      <div class="cf-submit-row">
+        <button type="submit" class="cf-submit">Envoyer →</button>
+      </div>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER — fond simple, sans image -->
 <footer>
-  <img class="footer-bg-img" src="sentiervert-footer.jpg" alt="" aria-hidden="true" loading="lazy"/>
   <div class="container">
     <div class="footer-inner">
       <div>
@@ -898,6 +965,13 @@
     </div>
   </div>
 </footer>
+
+<!-- BACK TO TOP -->
+<button class="back-to-top" id="backToTop" aria-label="Retour en haut de page">
+  <svg viewBox="0 0 18 18" fill="none" stroke="#0A0A0A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <polyline points="3,12 9,5 15,12"/>
+  </svg>
+</button>
 
 <script>
   // ─── NAV HAMBURGER ───────────────────────────────────────────────────────────
@@ -984,6 +1058,15 @@
   }, { passive: true });
 
   updateParallax(); // état initial
+
+  // ─── BACK TO TOP ─────────────────────────────────────────────────────────────
+  const bttBtn = document.getElementById('backToTop');
+  if (bttBtn) {
+    window.addEventListener('scroll', () => {
+      bttBtn.classList.toggle('visible', window.scrollY > 600);
+    }, { passive: true });
+    bttBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  }
 
   // ─── WIDGET CALENDRIER RDV ──────────────────────────────────────────────────
   (function () {
