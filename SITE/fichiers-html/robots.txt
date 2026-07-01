@@ -1,5 +1,3 @@
 User-agent: *
-Disallow: /mentions-legales.html
-Disallow: /client-guide-google-business.html
 
 Sitemap: https://www.nstudiodigital.fr/sitemap.xml
