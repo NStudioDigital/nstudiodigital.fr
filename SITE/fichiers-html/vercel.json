@@ -1,0 +1,19 @@
+{
+  "redirects": [
+    {
+      "source": "/demo-main-en-or.html",
+      "destination": "/demos/demo-main-en-or.html",
+      "permanent": true
+    },
+    {
+      "source": "/demo-main-en-or-v2.html",
+      "destination": "/demos/demo-main-en-or-v2.html",
+      "permanent": true
+    },
+    {
+      "source": "/demo-naturopathe-brut.html",
+      "destination": "/demos/demo-naturopathe-brut.html",
+      "permanent": true
+    }
+  ]
+}
